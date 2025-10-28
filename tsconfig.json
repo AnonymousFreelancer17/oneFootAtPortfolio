@@ -4,12 +4,6 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/auth-services-e2e"
-    },
-    {
-      "path": "./apps/auth-services"
-    },
-    {
       "path": "./apps/portfolio-web"
     },
     {

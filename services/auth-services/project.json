@@ -1,0 +1,18 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nx/node:build",
+      "options": {
+        "outputPath": "dist/apps/auth-services",
+        "main": "apps/auth-services/src/main.ts",
+        "tsConfig": "apps/auth-services/tsconfig.app.json"
+      }
+    },
+    "serve": {
+      "executor": "@nx/node:execute",
+      "options": {
+        "buildTarget": "auth-service:build"
+      }
+    }
+  }
+}
