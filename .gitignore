@@ -1,5 +1,10 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+.env
+.env.development
+.env.staging
+.env.production
+
 # compiled output
 dist
 tmp
@@ -44,3 +49,7 @@ Thumbs.db
 .github/instructions/nx.instructions.md
 
 test-output
+
+# Next.js
+.next
+out

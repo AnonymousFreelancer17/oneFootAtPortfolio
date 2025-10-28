@@ -1,10 +1,10 @@
 {
-  "name": "@one-foot-at-portfolio/auth-services-e2e",
+  "name": "@one-foot-at-portfolio/api-gateway-e2e",
   "version": "0.0.1",
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@one-foot-at-portfolio/auth-services"
+      "@one-foot-at-portfolio/api-gateway"
     ],
     "targets": {
       "e2e": {
@@ -13,12 +13,12 @@
           "{projectRoot}/test-output/jest/coverage"
         ],
         "options": {
-          "jestConfig": "apps/auth-services-e2e/jest.config.ts",
+          "jestConfig": "services/api-gateway-e2e/jest.config.ts",
           "passWithNoTests": true
         },
         "dependsOn": [
-          "@one-foot-at-portfolio/auth-services:build",
-          "@one-foot-at-portfolio/auth-services:serve"
+          "@one-foot-at-portfolio/api-gateway:build",
+          "@one-foot-at-portfolio/api-gateway:serve"
         ]
       }
     }

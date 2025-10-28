@@ -8,6 +8,21 @@
     },
     {
       "path": "./apps/auth-services"
+    },
+    {
+      "path": "./apps/portfolio-web"
+    },
+    {
+      "path": "./services/auth-services-e2e"
+    },
+    {
+      "path": "./services/auth-services"
+    },
+    {
+      "path": "./services/api-gateway-e2e"
+    },
+    {
+      "path": "./services/api-gateway"
     }
   ]
 }

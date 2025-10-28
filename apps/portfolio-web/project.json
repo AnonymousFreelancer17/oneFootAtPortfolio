@@ -1,0 +1,37 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "portfolio-web",
+  "projectType": "application",
+  "sourceRoot": "apps/portfolio-web/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/portfolio-web"
+      },
+      "configurations": {
+        "production": {},
+        "development": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "portfolio-web:build",
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "portfolio-web:build:production",
+          "dev": false
+        },
+        "development": {
+          "buildTarget": "portfolio-web:build:development",
+          "dev": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

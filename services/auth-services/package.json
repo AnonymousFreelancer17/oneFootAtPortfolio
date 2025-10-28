@@ -4,44 +4,6 @@
   "private": true,
   "nx": {
     "targets": {
-      "build": {
-        "executor": "@nx/esbuild:esbuild",
-        "outputs": [
-          "{options.outputPath}"
-        ],
-        "defaultConfiguration": "production",
-        "options": {
-          "platform": "node",
-          "outputPath": "apps/auth-services/dist",
-          "format": [
-            "cjs"
-          ],
-          "bundle": false,
-          "main": "apps/auth-services/src/main.ts",
-          "tsConfig": "apps/auth-services/tsconfig.app.json",
-          "assets": [
-            "apps/auth-services/src/assets"
-          ],
-          "esbuildOptions": {
-            "sourcemap": true,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        },
-        "configurations": {
-          "development": {},
-          "production": {
-            "generateLockfile": true,
-            "esbuildOptions": {
-              "sourcemap": false,
-              "outExtension": {
-                ".js": ".js"
-              }
-            }
-          }
-        }
-      },
       "prune-lockfile": {
         "dependsOn": [
           "build"
@@ -49,8 +11,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/apps/auth-services/dist/package.json",
-          "{workspaceRoot}/apps/auth-services/dist/package-lock.json"
+          "{workspaceRoot}/services/auth-services/dist/package.json",
+          "{workspaceRoot}/services/auth-services/dist/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -62,7 +24,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/apps/auth-services/dist/workspace_modules"
+          "{workspaceRoot}/services/auth-services/dist/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -100,12 +62,6 @@
         "options": {
           "passWithNoTests": true
         }
-      },
-      "docker:build": {
-        "dependsOn": [
-          "build",
-          "prune"
-        ]
       }
     }
   },
