@@ -17,21 +17,6 @@
     },
     {
       "path": "./services/api-gateway"
-    },
-    {
-      "path": "./apps/ecommerce"
-    },
-    {
-      "path": "./apps/business-CRM"
-    },
-    {
-      "path": "./apps/blog-platform"
-    },
-    {
-      "path": "./services/scrapper-service-e2e"
-    },
-    {
-      "path": "./services/scrapper-service"
     }
   ]
 }
