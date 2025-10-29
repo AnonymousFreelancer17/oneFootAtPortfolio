@@ -1,14 +1,8 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import express from 'express';
-import * as path from 'path';
+
 
 const app = express();
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/', (req, res) => {
   res.send({ message: 'Welcome to auth-services!' });

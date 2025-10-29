@@ -1,12 +1,38 @@
 import express from 'express';
-import * as path from 'path';
+import dotenv from 'dotenv';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+
 
 const app = express();
-app.use()
+app.use(express.json());
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+dotenv.config();
 
-app.get('/api', (req, res) => {
+const services = {
+
+   auth : {
+    target : process.env.AUTH_SERVICE_URL,
+    changeOrigin : true,
+    pathRewrite: {
+      '^/auth': '/auth'
+    },
+   },
+   scrapper : {
+    target : process.env.SCRAPPER_SERVICE_URL,
+    changeOrigin : true,
+    pathRewrite: {
+      '^/scrapper': '/scrapper'
+    },
+   },
+
+}
+
+app.use('/auth', createProxyMiddleware(services.auth));
+
+app.use('/scrapper', createProxyMiddleware(services.scrapper));
+
+
+app.get('/', (req, res) => {
   res.send({ message: 'Welcome to api-gateway!' });
 });
 
