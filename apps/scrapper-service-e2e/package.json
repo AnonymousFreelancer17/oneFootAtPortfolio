@@ -1,0 +1,26 @@
+{
+  "name": "@one-foot-at-portfolio/scrapper-service-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@one-foot-at-portfolio/scrapper-service"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/scrapper-service-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@one-foot-at-portfolio/scrapper-service:build",
+          "@one-foot-at-portfolio/scrapper-service:serve"
+        ]
+      }
+    }
+  }
+}

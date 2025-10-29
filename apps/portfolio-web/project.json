@@ -1,12 +1,15 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "portfolio-web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/portfolio-web/src",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/portfolio-web"
       },
@@ -32,6 +35,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

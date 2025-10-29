@@ -47,7 +47,10 @@
       "exclude": [
         "apps/auth-services-e2e/**/*",
         "services/auth-services-e2e/**/*",
-        "services/api-gateway-e2e/**/*"
+        "services/api-gateway-e2e/**/*",
+        "apps/auth-services-e2e/**/*",
+        "apps/api-gateway-e2e/**/*",
+        "apps/scrapper-service-e2e/**/*"
       ]
     },
     {
@@ -80,18 +83,6 @@
       }
     }
   ],
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test"
-        ]
-      }
-    }
-  },
   "targetDefaults": {
     "@nx/esbuild:esbuild": {
       "cache": true,
@@ -106,7 +97,14 @@
     "test": {
       "dependsOn": [
         "^build"
-      ]
+      ],
+      "cache": true
+    },
+    "build": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
     }
   },
   "generators": {

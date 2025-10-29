@@ -7,16 +7,22 @@
       "path": "./apps/portfolio-web"
     },
     {
-      "path": "./services/auth-services-e2e"
+      "path": "./apps/auth-services-e2e"
     },
     {
-      "path": "./services/auth-services"
+      "path": "./apps/auth-services"
     },
     {
-      "path": "./services/api-gateway-e2e"
+      "path": "./apps/api-gateway-e2e"
     },
     {
-      "path": "./services/api-gateway"
+      "path": "./apps/api-gateway"
+    },
+    {
+      "path": "./apps/scrapper-service-e2e"
+    },
+    {
+      "path": "./apps/scrapper-service"
     }
   ]
 }

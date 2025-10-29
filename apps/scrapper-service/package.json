@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/api-gateway",
+  "name": "@one-foot-at-portfolio/scrapper-service",
   "version": "0.0.1",
   "private": true,
   "nx": {
@@ -11,8 +11,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/services/api-gateway/dist/package.json",
-          "{workspaceRoot}/services/api-gateway/dist/package-lock.json"
+          "{workspaceRoot}/apps/scrapper-service/dist/package.json",
+          "{workspaceRoot}/apps/scrapper-service/dist/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -24,7 +24,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/services/api-gateway/dist/workspace_modules"
+          "{workspaceRoot}/apps/scrapper-service/dist/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -46,16 +46,21 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@one-foot-at-portfolio/api-gateway:build",
+          "buildTarget": "@one-foot-at-portfolio/scrapper-service:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@one-foot-at-portfolio/api-gateway:build:development"
+            "buildTarget": "@one-foot-at-portfolio/scrapper-service:build:development"
           },
           "production": {
-            "buildTarget": "@one-foot-at-portfolio/api-gateway:build:production"
+            "buildTarget": "@one-foot-at-portfolio/scrapper-service:build:production"
           }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
         }
       }
     }

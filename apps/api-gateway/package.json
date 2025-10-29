@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/auth-services",
+  "name": "@one-foot-at-portfolio/api-gateway",
   "version": "0.0.1",
   "private": true,
   "nx": {
@@ -11,8 +11,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/services/auth-services/dist/package.json",
-          "{workspaceRoot}/services/auth-services/dist/package-lock.json"
+          "{workspaceRoot}/apps/api-gateway/dist/package.json",
+          "{workspaceRoot}/apps/api-gateway/dist/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -24,7 +24,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/services/auth-services/dist/workspace_modules"
+          "{workspaceRoot}/apps/api-gateway/dist/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -46,15 +46,15 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@one-foot-at-portfolio/auth-services:build",
+          "buildTarget": "@one-foot-at-portfolio/api-gateway:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@one-foot-at-portfolio/auth-services:build:development"
+            "buildTarget": "@one-foot-at-portfolio/api-gateway:build:development"
           },
           "production": {
-            "buildTarget": "@one-foot-at-portfolio/auth-services:build:production"
+            "buildTarget": "@one-foot-at-portfolio/api-gateway:build:production"
           }
         }
       },
