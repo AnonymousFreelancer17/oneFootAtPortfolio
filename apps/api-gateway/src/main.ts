@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import router from './routes/router';
 
 
 const app = express();
@@ -30,6 +31,8 @@ const services = {
 app.use('/auth', createProxyMiddleware(services.auth));
 
 app.use('/scrapper', createProxyMiddleware(services.scrapper));
+
+app.use('/api' , router);
 
 
 app.get('/', (req, res) => {

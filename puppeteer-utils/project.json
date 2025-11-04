@@ -1,0 +1,21 @@
+{
+  "name": "puppeteer-utils",
+  "sourceRoot": "apps/puppeteer-utils/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/apps/puppeteer-utils",
+        "main": "apps/puppeteer-utils/src/index.ts",
+        "tsConfig": "apps/puppeteer-utils/tsconfig.app.json"
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "puppeteer-utils:build"
+      }
+    }
+  }
+}

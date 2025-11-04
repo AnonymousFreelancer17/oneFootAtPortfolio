@@ -2,7 +2,13 @@
   "extends": "../../tsconfig.base.json",
   "files": [],
   "include": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+  },
   "references": [
+    {
+      "path": "../../puppeteer-utils"
+    },
     {
       "path": "./tsconfig.app.json"
     },

@@ -1,18 +1,13 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import express from 'express';
-import * as path from 'path';
+import router from './routes/router';
+import cors from 'cors';
+
 
 const app = express();
+app.use(express.json());
+app.use(cors())
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
-app.get('/', (req, res) => {
-  res.send({ message: 'Welcome to scrapper-service!' });
-});
+app.use('/', router);
 
 const port = process.env.SCRAPPER_SERVICE_PORT || 3333;
 const server = app.listen(port, () => {

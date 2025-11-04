@@ -1,6 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    
+  },
   "files": [],
   "references": [
     {
@@ -23,6 +27,12 @@
     },
     {
       "path": "./apps/scrapper-service"
+    },
+    {
+      "path": "./apps/ecommerce"
+    },
+    {
+      "path": "./puppeteer-utils"
     }
   ]
 }

@@ -16,6 +16,10 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@one-foot-at-portfolio/source"]
+    "customConditions": ["@one-foot-at-portfolio/source"],
+    "paths" : {
+      "@puppeteer" : ["puppeteer-utils/src/index.ts"],
+      "@puppeteer/*" : ["puppeteer-utils/src/*"]
+    }
   }
 }
