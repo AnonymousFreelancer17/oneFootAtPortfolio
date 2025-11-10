@@ -1,0 +1,1910 @@
+[
+  {
+    "index": 0,
+    "category_name": "Chicken, Meat & Fish",
+    "subCategories": [
+      {
+        "sub_category_name": "Exotic Meat",
+        "href": "/cn/exotic-meat/cid/4/1201"
+      },
+      {
+        "sub_category_name": "Fish & Seafood",
+        "href": "/cn/fish-seafood/cid/4/1361"
+      },
+      {
+        "sub_category_name": "Chicken",
+        "href": "/cn/chicken/cid/4/1362"
+      },
+      {
+        "sub_category_name": "Mutton",
+        "href": "/cn/mutton/cid/4/1363"
+      },
+      {
+        "sub_category_name": "Sausage, Salami & Ham",
+        "href": "/cn/sausage-salami-ham/cid/4/1388"
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "category_name": "Pet Care",
+    "subCategories": [
+      {
+        "sub_category_name": "Dog Food & Treats",
+        "href": "/cn/dog-food-treats/cid/5/133"
+      },
+      {
+        "sub_category_name": "Cat Food & Treats",
+        "href": "/cn/cat-food-treats/cid/5/134"
+      },
+      {
+        "sub_category_name": "Pet Grooming & Accessories",
+        "href": "/cn/pet-grooming-accessories/cid/5/403"
+      },
+      {
+        "sub_category_name": "Cat Treats",
+        "href": "/cn/cat-treats/cid/5/291"
+      },
+      {
+        "sub_category_name": "Accessories & Other Supplies",
+        "href": "/cn/accessories-other-supplies/cid/5/192"
+      },
+      {
+        "sub_category_name": "Dog Treat",
+        "href": "/cn/dog-treat/cid/5/227"
+      },
+      {
+        "sub_category_name": "Other Pet Supplies",
+        "href": "/cn/other-pet-supplies/cid/5/1466"
+      },
+      {
+        "sub_category_name": "Pet Health & Supplements",
+        "href": "/cn/pet-health-supplements/cid/5/992"
+      },
+      {
+        "sub_category_name": "Pet Litter",
+        "href": "/cn/pet-litter/cid/5/991"
+      },
+      {
+        "sub_category_name": "Pet Toys",
+        "href": "/cn/pet-toys/cid/5/1614"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "category_name": "Baby Care",
+    "subCategories": [
+      {
+        "sub_category_name": "Baby Diapers",
+        "href": "/cn/baby-diapers/cid/7/84"
+      },
+      {
+        "sub_category_name": "Baby Feeding Needs",
+        "href": "/cn/baby-feeding-needs/cid/7/169"
+      },
+      {
+        "sub_category_name": "Baby Wipes",
+        "href": "/cn/baby-wipes/cid/7/996"
+      },
+      {
+        "sub_category_name": "Hygiene",
+        "href": "/cn/hygiene/cid/7/85"
+      },
+      {
+        "sub_category_name": "Baby's Health & Safety Tools",
+        "href": "/cn/babys-health-safety-tools/cid/7/997"
+      },
+      {
+        "sub_category_name": "Oral & Nasal Care",
+        "href": "/cn/oral-nasal-care/cid/7/998"
+      },
+      {
+        "sub_category_name": "Baby Gift Hampers",
+        "href": "/cn/baby-gift-hampers/cid/7/999"
+      },
+      {
+        "sub_category_name": "Diapers & Wipes",
+        "href": "/cn/diapers-wipes/cid/7/1000"
+      },
+      {
+        "sub_category_name": "Baby Bathing Needs",
+        "href": "/cn/baby-bathing-needs/cid/7/1001"
+      },
+      {
+        "sub_category_name": "Baby Skin & Hair Care",
+        "href": "/cn/baby-skin-hair-care/cid/7/1002"
+      },
+      {
+        "sub_category_name": "Baby Food",
+        "href": "/cn/baby-food/cid/7/1590"
+      },
+      {
+        "sub_category_name": "Mom Care",
+        "href": "/cn/mom-care/cid/7/1967"
+      },
+      {
+        "sub_category_name": "Other Diapering Needs",
+        "href": "/cn/other-diapering-needs/cid/7/1966"
+      },
+      {
+        "sub_category_name": "Nursing",
+        "href": "/cn/nursing/cid/7/597"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "category_name": "Magazines",
+    "subCategories": [
+      {
+        "sub_category_name": "Current Affairs & Business",
+        "href": "/cn/current-affairs-business/cid/851/1015"
+      },
+      {
+        "sub_category_name": "Business Bookss",
+        "href": "/cn/business-bookss/cid/851/763"
+      },
+      {
+        "sub_category_name": "Current Affairs Books",
+        "href": "/cn/current-affairs-books/cid/851/761"
+      },
+      {
+        "sub_category_name": "Children's Books",
+        "href": "/cn/childrens-books/cid/851/649"
+      },
+      {
+        "sub_category_name": "Lifestyle Books",
+        "href": "/cn/lifestyle-books/cid/851/648"
+      },
+      {
+        "sub_category_name": "Hobby Books",
+        "href": "/cn/hobby-books/cid/851/1342"
+      },
+      {
+        "sub_category_name": "Architecture Books",
+        "href": "/cn/architecture-books/cid/851/1430"
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "category_name": "Sweet Tooth",
+    "subCategories": [
+      {
+        "sub_category_name": "Flavoured Yogurts",
+        "href": "/cn/flavoured-yogurts/cid/9/106"
+      },
+      {
+        "sub_category_name": "Ice Cream & Frozen Dessert",
+        "href": "/cn/ice-cream-frozen-dessert/cid/9/183"
+      },
+      {
+        "sub_category_name": "Indian Sweets",
+        "href": "/cn/indian-sweets/cid/9/943"
+      },
+      {
+        "sub_category_name": "Chocolates",
+        "href": "/cn/chocolates/cid/9/944"
+      },
+      {
+        "sub_category_name": "Chocolate Packs",
+        "href": "/cn/chocolate-packs/cid/9/1173"
+      },
+      {
+        "sub_category_name": "Chocolate Syrup",
+        "href": "/cn/chocolate-syrup/cid/9/1289"
+      },
+      {
+        "sub_category_name": "Candies & Gum",
+        "href": "/cn/candies-gum/cid/9/1930"
+      },
+      {
+        "sub_category_name": "Mouth Fresheners",
+        "href": "/cn/mouth-fresheners/cid/9/1933"
+      },
+      {
+        "sub_category_name": "Cakes and Rolls",
+        "href": "/cn/cakes-and-rolls/cid/9/108"
+      },
+      {
+        "sub_category_name": "Chocolate Bars",
+        "href": "/cn/chocolate-bars/cid/9/1736"
+      },
+      {
+        "sub_category_name": "Filled Bars",
+        "href": "/cn/filled-bars/cid/9/1737"
+      },
+      {
+        "sub_category_name": "Wafer Chocolates",
+        "href": "/cn/wafer-chocolates/cid/9/1172"
+      },
+      {
+        "sub_category_name": "Syrups",
+        "href": "/cn/syrups/cid/9/1298"
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "category_name": "Tea, Coffee & Health Drinks",
+    "subCategories": [
+      {
+        "sub_category_name": "Vegan Drinks",
+        "href": "/cn/vegan-drinks/cid/12/87"
+      },
+      {
+        "sub_category_name": "Tea",
+        "href": "/cn/tea/cid/12/957"
+      },
+      {
+        "sub_category_name": "Health Drinks",
+        "href": "/cn/health-drinks/cid/12/960"
+      },
+      {
+        "sub_category_name": "Herbal Drinks",
+        "href": "/cn/herbal-drinks/cid/12/1109"
+      },
+      {
+        "sub_category_name": "Milk Drinks",
+        "href": "/cn/milk-drinks/cid/12/1184"
+      },
+      {
+        "sub_category_name": "Coffee",
+        "href": "/cn/coffee/cid/12/1322"
+      },
+      {
+        "sub_category_name": "Leaf & Dust Tea",
+        "href": "/cn/leaf-dust-tea/cid/12/25"
+      },
+      {
+        "sub_category_name": "Black Tea",
+        "href": "/cn/black-tea/cid/12/1561"
+      },
+      {
+        "sub_category_name": "Vegan Milk",
+        "href": "/cn/vegan-milk/cid/12/948"
+      },
+      {
+        "sub_category_name": "Hot Chocolate Drink",
+        "href": "/cn/hot-chocolate-drink/cid/12/90"
+      },
+      {
+        "sub_category_name": "Health Drinks & Supplements",
+        "href": "/cn/health-drinks-supplements/cid/12/21"
+      },
+      {
+        "sub_category_name": "Chocolate Health Drinks",
+        "href": "/cn/chocolate-health-drinks/cid/12/1106"
+      },
+      {
+        "sub_category_name": "Exotic & Flavoured Tea",
+        "href": "/cn/exotic-flavoured-tea/cid/12/1562"
+      },
+      {
+        "sub_category_name": "Green Tea",
+        "href": "/cn/green-tea/cid/12/1104"
+      },
+      {
+        "sub_category_name": "Roasted & Ground Coffee",
+        "href": "/cn/roasted-ground-coffee/cid/12/720"
+      },
+      {
+        "sub_category_name": "Instant Coffee",
+        "href": "/cn/instant-coffee/cid/12/958"
+      },
+      {
+        "sub_category_name": "Filter Coffee",
+        "href": "/cn/filter-coffee/cid/12/1589"
+      },
+      {
+        "sub_category_name": "Coffee Bags",
+        "href": "/cn/coffee-bags/cid/12/1105"
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "category_name": "Beauty & Cosmetics",
+    "subCategories": [
+      {
+        "sub_category_name": "Hair Care",
+        "href": "/cn/hair-care/cid/13/77"
+      },
+      {
+        "sub_category_name": "Beauty and Makeup",
+        "href": "/cn/beauty-and-makeup/cid/13/98"
+      },
+      {
+        "sub_category_name": "Eyeliner",
+        "href": "/cn/eyeliner/cid/13/100"
+      },
+      {
+        "sub_category_name": "Mascara",
+        "href": "/cn/mascara/cid/13/102"
+      },
+      {
+        "sub_category_name": "Lipstick",
+        "href": "/cn/lipstick/cid/13/1611"
+      },
+      {
+        "sub_category_name": "BB & CC cream",
+        "href": "/cn/bb-cc-cream/cid/13/208"
+      },
+      {
+        "sub_category_name": "Makeup brushes",
+        "href": "/cn/makeup-brushes/cid/13/215"
+      },
+      {
+        "sub_category_name": "Compact",
+        "href": "/cn/compact/cid/13/218"
+      },
+      {
+        "sub_category_name": "Foundation",
+        "href": "/cn/foundation/cid/13/207"
+      },
+      {
+        "sub_category_name": "Nail color remover",
+        "href": "/cn/nail-color-remover/cid/13/1725"
+      },
+      {
+        "sub_category_name": "After shave",
+        "href": "/cn/after-shave/cid/13/309"
+      },
+      {
+        "sub_category_name": "Hair color",
+        "href": "/cn/hair-color/cid/13/247"
+      },
+      {
+        "sub_category_name": "Nail color/paints",
+        "href": "/cn/nail-colorpaints/cid/13/1123"
+      },
+      {
+        "sub_category_name": "Primer",
+        "href": "/cn/primer/cid/13/214"
+      },
+      {
+        "sub_category_name": "Hair tools & accessories",
+        "href": "/cn/hair-tools-accessories/cid/13/159"
+      },
+      {
+        "sub_category_name": "Eye accessories",
+        "href": "/cn/eye-accessories/cid/13/186"
+      },
+      {
+        "sub_category_name": "Nail accessories",
+        "href": "/cn/nail-accessories/cid/13/170"
+      },
+      {
+        "sub_category_name": "Body accessories",
+        "href": "/cn/body-accessories/cid/13/160"
+      },
+      {
+        "sub_category_name": "Face Accessories",
+        "href": "/cn/face-accessories/cid/13/171"
+      },
+      {
+        "sub_category_name": "Hair Serum",
+        "href": "/cn/hair-serum/cid/13/1604"
+      },
+      {
+        "sub_category_name": "Hair Oil",
+        "href": "/cn/hair-oil/cid/13/1016"
+      },
+      {
+        "sub_category_name": "Hair Mask",
+        "href": "/cn/hair-mask/cid/13/329"
+      },
+      {
+        "sub_category_name": "Women's Razors & Trimmers",
+        "href": "/cn/womens-razors-trimmers/cid/13/339"
+      },
+      {
+        "sub_category_name": "Hair Removal",
+        "href": "/cn/hair-removal/cid/13/703"
+      },
+      {
+        "sub_category_name": "Facial Kit",
+        "href": "/cn/facial-kit/cid/13/344"
+      },
+      {
+        "sub_category_name": "Lip Scrubs, Masks & Serums",
+        "href": "/cn/lip-scrubs-masks-serums/cid/13/369"
+      },
+      {
+        "sub_category_name": "Lip Balm",
+        "href": "/cn/lip-balm/cid/13/276"
+      },
+      {
+        "sub_category_name": "Eye Creams & Masks",
+        "href": "/cn/eye-creams-masks/cid/13/237"
+      },
+      {
+        "sub_category_name": "Lip Tint",
+        "href": "/cn/lip-tint/cid/13/260"
+      },
+      {
+        "sub_category_name": "Lip Primer",
+        "href": "/cn/lip-primer/cid/13/141"
+      },
+      {
+        "sub_category_name": "Lip Liner",
+        "href": "/cn/lip-liner/cid/13/121"
+      },
+      {
+        "sub_category_name": "Lip Gloss",
+        "href": "/cn/lip-gloss/cid/13/124"
+      },
+      {
+        "sub_category_name": "Shampoo",
+        "href": "/cn/shampoo/cid/13/223"
+      },
+      {
+        "sub_category_name": "Hair Spray, Gel & Wax",
+        "href": "/cn/hair-spray-gel-wax/cid/13/246"
+      },
+      {
+        "sub_category_name": "Hair Oil, Masks & Serums",
+        "href": "/cn/hair-oil-masks-serums/cid/13/245"
+      },
+      {
+        "sub_category_name": "Conditioners",
+        "href": "/cn/conditioners/cid/13/235"
+      },
+      {
+        "sub_category_name": "Fragrance Gift Sets",
+        "href": "/cn/fragrance-gift-sets/cid/13/588"
+      },
+      {
+        "sub_category_name": "Women's Fragrance",
+        "href": "/cn/womens-fragrance/cid/13/753"
+      },
+      {
+        "sub_category_name": "Men's Fragrance",
+        "href": "/cn/mens-fragrance/cid/13/754"
+      },
+      {
+        "sub_category_name": "Makeup Fixer",
+        "href": "/cn/makeup-fixer/cid/13/935"
+      },
+      {
+        "sub_category_name": "Contour & Bronzer",
+        "href": "/cn/contour-bronzer/cid/13/248"
+      },
+      {
+        "sub_category_name": "Concealer",
+        "href": "/cn/concealer/cid/13/213"
+      },
+      {
+        "sub_category_name": "Toners & Mists",
+        "href": "/cn/toners-mists/cid/13/240"
+      },
+      {
+        "sub_category_name": "Face Cream & Gel",
+        "href": "/cn/face-cream-gel/cid/13/164"
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "category_name": "Dairy, Bread & Eggs",
+    "subCategories": [
+      {
+        "sub_category_name": "Cheese",
+        "href": "/cn/cheese/cid/14/33"
+      },
+      {
+        "sub_category_name": "Curd & Yogurt",
+        "href": "/cn/curd-yogurt/cid/14/123"
+      },
+      {
+        "sub_category_name": "Condensed Milk",
+        "href": "/cn/condensed-milk/cid/14/130"
+      },
+      {
+        "sub_category_name": "Gourmet Cheese",
+        "href": "/cn/gourmet-cheese/cid/14/185"
+      },
+      {
+        "sub_category_name": "Buns & Pav",
+        "href": "/cn/buns-pav/cid/14/279"
+      },
+      {
+        "sub_category_name": "Milk",
+        "href": "/cn/milk/cid/14/922"
+      },
+      {
+        "sub_category_name": "Paneer & Tofu",
+        "href": "/cn/paneer-tofu/cid/14/923"
+      },
+      {
+        "sub_category_name": "Butter & More",
+        "href": "/cn/butter-more/cid/14/952"
+      },
+      {
+        "sub_category_name": "Bread",
+        "href": "/cn/bread/cid/14/953"
+      },
+      {
+        "sub_category_name": "Cream & Whitener",
+        "href": "/cn/cream-whitener/cid/14/1092"
+      },
+      {
+        "sub_category_name": "Oats",
+        "href": "/cn/oats/cid/14/584"
+      },
+      {
+        "sub_category_name": "Granola",
+        "href": "/cn/granola/cid/14/613"
+      },
+      {
+        "sub_category_name": "Muesli",
+        "href": "/cn/muesli/cid/14/1307"
+      },
+      {
+        "sub_category_name": "Kids Cereals",
+        "href": "/cn/kids-cereals/cid/14/1739"
+      },
+      {
+        "sub_category_name": "Flakes",
+        "href": "/cn/flakes/cid/14/1098"
+      },
+      {
+        "sub_category_name": "Curd",
+        "href": "/cn/curd/cid/14/949"
+      },
+      {
+        "sub_category_name": "Yogurt",
+        "href": "/cn/yogurt/cid/14/1094"
+      },
+      {
+        "sub_category_name": "Eggs",
+        "href": "/cn/eggs/cid/14/1200"
+      },
+      {
+        "sub_category_name": "Peanut Butter",
+        "href": "/cn/peanut-butter/cid/14/644"
+      },
+      {
+        "sub_category_name": "Poha",
+        "href": "/cn/poha/cid/14/1288"
+      },
+      {
+        "sub_category_name": "Chocolate Spreads",
+        "href": "/cn/chocolate-spreads/cid/14/504"
+      },
+      {
+        "sub_category_name": "Honey",
+        "href": "/cn/honey/cid/14/610"
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "category_name": "Breakfast & Instant Food",
+    "subCategories": [
+      {
+        "sub_category_name": "Energy Bars",
+        "href": "/cn/energy-bars/cid/15/152"
+      },
+      {
+        "sub_category_name": "Breakfast Cereal",
+        "href": "/cn/breakfast-cereal/cid/15/954"
+      },
+      {
+        "sub_category_name": "Noodles",
+        "href": "/cn/noodles/cid/15/962"
+      },
+      {
+        "sub_category_name": "Soup",
+        "href": "/cn/soup/cid/15/964"
+      },
+      {
+        "sub_category_name": "Instant Mixes",
+        "href": "/cn/instant-mixes/cid/15/965"
+      },
+      {
+        "sub_category_name": "Pasta",
+        "href": "/cn/pasta/cid/15/968"
+      },
+      {
+        "sub_category_name": "Plant Based Meat",
+        "href": "/cn/plant-based-meat/cid/15/1127"
+      },
+      {
+        "sub_category_name": "Vermicelli",
+        "href": "/cn/vermicelli/cid/15/1140"
+      },
+      {
+        "sub_category_name": "Ready to Eat",
+        "href": "/cn/ready-to-eat/cid/15/1294"
+      },
+      {
+        "sub_category_name": "Frozen Non-Veg Snacks",
+        "href": "/cn/frozen-non-veg-snacks/cid/15/1412"
+      },
+      {
+        "sub_category_name": "Frozen Veg Snacks",
+        "href": "/cn/frozen-veg-snacks/cid/15/1413"
+      },
+      {
+        "sub_category_name": "Batter",
+        "href": "/cn/batter/cid/15/1425"
+      },
+      {
+        "sub_category_name": "Herbs & Seasoning",
+        "href": "/cn/herbs-seasoning/cid/15/1968"
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "category_name": "Atta, Rice & Dal",
+    "subCategories": [
+      {
+        "sub_category_name": "Moong & Masoor",
+        "href": "/cn/moong-masoor/cid/16/505"
+      },
+      {
+        "sub_category_name": "Rice",
+        "href": "/cn/rice/cid/16/1161"
+      },
+      {
+        "sub_category_name": "Besan, Sooji & Maida",
+        "href": "/cn/besan-sooji-maida/cid/16/1166"
+      },
+      {
+        "sub_category_name": "Poha, Daliya & Other Grains",
+        "href": "/cn/poha-daliya-other-grains/cid/16/1295"
+      },
+      {
+        "sub_category_name": "Rajma, Chhole & Others",
+        "href": "/cn/rajma-chhole-others/cid/16/1573"
+      },
+      {
+        "sub_category_name": "Urad",
+        "href": "/cn/urad/cid/16/1197"
+      },
+      {
+        "sub_category_name": "Pesticide-Free Pulses",
+        "href": "/cn/pesticide-free-pulses/cid/16/11"
+      },
+      {
+        "sub_category_name": "Chana",
+        "href": "/cn/chana/cid/16/1702"
+      },
+      {
+        "sub_category_name": "Toor",
+        "href": "/cn/toor/cid/16/1010"
+      },
+      {
+        "sub_category_name": "Arhar",
+        "href": "/cn/arhar/cid/16/1195"
+      },
+      {
+        "sub_category_name": "Sonamasuri & Kolam Rice",
+        "href": "/cn/sonamasuri-kolam-rice/cid/16/1192"
+      },
+      {
+        "sub_category_name": "Ponni Rice",
+        "href": "/cn/ponni-rice/cid/16/1482"
+      },
+      {
+        "sub_category_name": "Basmati Rice",
+        "href": "/cn/basmati-rice/cid/16/1164"
+      },
+      {
+        "sub_category_name": "Soya",
+        "href": "/cn/soya/cid/16/1297"
+      },
+      {
+        "sub_category_name": "Rajma",
+        "href": "/cn/rajma/cid/16/1198"
+      },
+      {
+        "sub_category_name": "Flours",
+        "href": "/cn/flours/cid/16/48"
+      },
+      {
+        "sub_category_name": "Moong",
+        "href": "/cn/moong/cid/16/1196"
+      },
+      {
+        "sub_category_name": "Sooji",
+        "href": "/cn/sooji/cid/16/1194"
+      },
+      {
+        "sub_category_name": "Maida",
+        "href": "/cn/maida/cid/16/1483"
+      },
+      {
+        "sub_category_name": "Besan",
+        "href": "/cn/besan/cid/16/1193"
+      },
+      {
+        "sub_category_name": "Atta",
+        "href": "/cn/atta/cid/16/1165"
+      },
+      {
+        "sub_category_name": "Kabuli Chana",
+        "href": "/cn/kabuli-chana/cid/16/8"
+      },
+      {
+        "sub_category_name": "Dried Peas",
+        "href": "/cn/dried-peas/cid/16/1009"
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "category_name": "Cleaning Essentials",
+    "subCategories": [
+      {
+        "sub_category_name": "Shoe Polish & Brush",
+        "href": "/cn/shoe-polish-brush/cid/18/57"
+      },
+      {
+        "sub_category_name": "Detergent Powder & Bars",
+        "href": "/cn/detergent-powder-bars/cid/18/983"
+      },
+      {
+        "sub_category_name": "Laundry Additives",
+        "href": "/cn/laundry-additives/cid/18/985"
+      },
+      {
+        "sub_category_name": "Toilet Cleaners & More",
+        "href": "/cn/toilet-cleaners-more/cid/18/987"
+      },
+      {
+        "sub_category_name": "Liquid Detergents",
+        "href": "/cn/liquid-detergents/cid/18/1077"
+      },
+      {
+        "sub_category_name": "Cleaning Tools",
+        "href": "/cn/cleaning-tools/cid/18/1082"
+      },
+      {
+        "sub_category_name": "Disinfectant & More",
+        "href": "/cn/disinfectant-more/cid/18/1784"
+      },
+      {
+        "sub_category_name": "Garbage Bags",
+        "href": "/cn/garbage-bags/cid/18/1833"
+      },
+      {
+        "sub_category_name": "Car Fresheners",
+        "href": "/cn/car-fresheners/cid/18/1089"
+      },
+      {
+        "sub_category_name": "Air Fresheners",
+        "href": "/cn/air-fresheners/cid/18/982"
+      },
+      {
+        "sub_category_name": "Floor Cleaners & More",
+        "href": "/cn/floor-cleaners-more/cid/18/51"
+      },
+      {
+        "sub_category_name": "Multi-Purpose Disinfectants",
+        "href": "/cn/multi-purpose-disinfectants/cid/18/1983"
+      },
+      {
+        "sub_category_name": "Dishwashing Gels & Powders",
+        "href": "/cn/dishwashing-gels-powders/cid/18/1078"
+      },
+      {
+        "sub_category_name": "Dishwashing Bars",
+        "href": "/cn/dishwashing-bars/cid/18/988"
+      },
+      {
+        "sub_category_name": "Scrubbers & Cleaning Aids",
+        "href": "/cn/scrubbers-cleaning-aids/cid/18/1079"
+      },
+      {
+        "sub_category_name": "Dishwashing Accessories",
+        "href": "/cn/dishwashing-accessories/cid/18/986"
+      },
+      {
+        "sub_category_name": "Detergent Bars",
+        "href": "/cn/detergent-bars/cid/18/984"
+      },
+      {
+        "sub_category_name": "Detergent Powder & Bars",
+        "href": "/cn/detergent-powder-bars/cid/18/54"
+      },
+      {
+        "sub_category_name": "Brooms & Mops",
+        "href": "/cn/brooms-mops/cid/18/1280"
+      },
+      {
+        "sub_category_name": "Wipers",
+        "href": "/cn/wipers/cid/18/1271"
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "category_name": "Digital Goods",
+    "subCategories": [
+      {
+        "sub_category_name": "Antivirus",
+        "href": "/cn/antivirus/cid/416/58"
+      },
+      {
+        "sub_category_name": "System Utilities",
+        "href": "/cn/system-utilities/cid/416/60"
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "category_name": "Personal Care",
+    "subCategories": [
+      {
+        "sub_category_name": "Shampoo & Conditioner",
+        "href": "/cn/shampoo-conditioner/cid/163/166"
+      },
+      {
+        "sub_category_name": "Body Moisturizers & More",
+        "href": "/cn/body-moisturizers-more/cid/163/690"
+      },
+      {
+        "sub_category_name": "Hair Colour & More",
+        "href": "/cn/hair-colour-more/cid/163/691"
+      },
+      {
+        "sub_category_name": "Men's Grooming",
+        "href": "/cn/mens-grooming/cid/163/692"
+      },
+      {
+        "sub_category_name": "Cosmetics",
+        "href": "/cn/cosmetics/cid/163/693"
+      },
+      {
+        "sub_category_name": "Soaps",
+        "href": "/cn/soaps/cid/163/696"
+      },
+      {
+        "sub_category_name": "Hand & Foot Care",
+        "href": "/cn/hand-foot-care/cid/163/698"
+      },
+      {
+        "sub_category_name": "Handwash",
+        "href": "/cn/handwash/cid/163/699"
+      },
+      {
+        "sub_category_name": "Hair Oil & Serum",
+        "href": "/cn/hair-oil-serum/cid/163/702"
+      },
+      {
+        "sub_category_name": "Bath & Body Kits",
+        "href": "/cn/bath-body-kits/cid/163/710"
+      },
+      {
+        "sub_category_name": "Oral Care",
+        "href": "/cn/oral-care/cid/163/722"
+      },
+      {
+        "sub_category_name": "Feminine Care",
+        "href": "/cn/feminine-care/cid/163/723"
+      },
+      {
+        "sub_category_name": "Shower Gels & Scrubs",
+        "href": "/cn/shower-gels-scrubs/cid/163/981"
+      },
+      {
+        "sub_category_name": "Deodorants & Powders",
+        "href": "/cn/deodorants-powders/cid/163/1115"
+      },
+      {
+        "sub_category_name": "Facial Care",
+        "href": "/cn/facial-care/cid/163/1117"
+      },
+      {
+        "sub_category_name": "Women's Grooming",
+        "href": "/cn/womens-grooming/cid/163/1893"
+      },
+      {
+        "sub_category_name": "Jewellery",
+        "href": "/cn/jewellery/cid/163/1920"
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "category_name": "Organic & Gourmet",
+    "subCategories": [
+      {
+        "sub_category_name": "Baby Food",
+        "href": "/cn/baby-food/cid/175/47"
+      },
+      {
+        "sub_category_name": "Snacks & Munchies",
+        "href": "/cn/snacks-munchies/cid/175/82"
+      },
+      {
+        "sub_category_name": "Breakfast & More",
+        "href": "/cn/breakfast-more/cid/175/96"
+      },
+      {
+        "sub_category_name": "Healthy Proteins",
+        "href": "/cn/healthy-proteins/cid/175/97"
+      },
+      {
+        "sub_category_name": "Beverages",
+        "href": "/cn/beverages/cid/175/655"
+      },
+      {
+        "sub_category_name": "Oil & Ghee",
+        "href": "/cn/oil-ghee/cid/175/799"
+      },
+      {
+        "sub_category_name": "Pulses & Millets",
+        "href": "/cn/pulses-millets/cid/175/800"
+      },
+      {
+        "sub_category_name": "Flour",
+        "href": "/cn/flour/cid/175/801"
+      },
+      {
+        "sub_category_name": "Spices & Vinegar",
+        "href": "/cn/spices-vinegar/cid/175/803"
+      },
+      {
+        "sub_category_name": "Dairy Products",
+        "href": "/cn/dairy-products/cid/175/882"
+      },
+      {
+        "sub_category_name": "Veggies and Fruits",
+        "href": "/cn/veggies-and-fruits/cid/175/919"
+      },
+      {
+        "sub_category_name": "Cookies & Wafers",
+        "href": "/cn/cookies-wafers/cid/175/939"
+      },
+      {
+        "sub_category_name": "Cooking Essentials",
+        "href": "/cn/cooking-essentials/cid/175/946"
+      },
+      {
+        "sub_category_name": "Chocolates & Candies",
+        "href": "/cn/chocolates-candies/cid/175/1044"
+      },
+      {
+        "sub_category_name": "Sauces & Spreads",
+        "href": "/cn/sauces-spreads/cid/175/1128"
+      },
+      {
+        "sub_category_name": "Noodles & Pasta",
+        "href": "/cn/noodles-pasta/cid/175/1313"
+      },
+      {
+        "sub_category_name": "Tea & Coffee",
+        "href": "/cn/tea-coffee/cid/175/1563"
+      },
+      {
+        "sub_category_name": "Rice & Rice Products",
+        "href": "/cn/rice-rice-products/cid/175/1935"
+      },
+      {
+        "sub_category_name": "Organic Salt",
+        "href": "/cn/organic-salt/cid/175/1936"
+      },
+      {
+        "sub_category_name": "Dry Fruits, Nuts & Seeds",
+        "href": "/cn/dry-fruits-nuts-seeds/cid/175/1937"
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "category_name": "Paan Corner",
+    "subCategories": [
+      {
+        "sub_category_name": "Hookah Needs",
+        "href": "/cn/hookah-needs/cid/229/173"
+      },
+      {
+        "sub_category_name": "Paan",
+        "href": "/cn/paan/cid/229/342"
+      },
+      {
+        "sub_category_name": "Cigarettes & Tobacco",
+        "href": "/cn/cigarettes-tobacco/cid/229/1948"
+      },
+      {
+        "sub_category_name": "Smoking Needs",
+        "href": "/cn/smoking-needs/cid/229/1982"
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "category_name": "Pharma & Wellness",
+    "subCategories": [
+      {
+        "sub_category_name": "Healthcare Devices",
+        "href": "/cn/healthcare-devices/cid/287/62"
+      },
+      {
+        "sub_category_name": "Cough & Cold",
+        "href": "/cn/cough-cold/cid/287/75"
+      },
+      {
+        "sub_category_name": "Adult Nutritional Drinks",
+        "href": "/cn/adult-nutritional-drinks/cid/287/2186"
+      },
+      {
+        "sub_category_name": "Personal Body Massagers",
+        "href": "/cn/personal-body-massagers/cid/287/1350"
+      },
+      {
+        "sub_category_name": "Lubricants and Enhancers",
+        "href": "/cn/lubricants-and-enhancers/cid/287/756"
+      },
+      {
+        "sub_category_name": "Wound Care And Pain Relief",
+        "href": "/cn/wound-care-and-pain-relief/cid/287/155"
+      },
+      {
+        "sub_category_name": "Everyday Medicines",
+        "href": "/cn/everyday-medicines/cid/287/289"
+      },
+      {
+        "sub_category_name": "Skin Treatment",
+        "href": "/cn/skin-treatment/cid/287/199"
+      },
+      {
+        "sub_category_name": "Vitamins & Daily Nutrition",
+        "href": "/cn/vitamins-daily-nutrition/cid/287/293"
+      },
+      {
+        "sub_category_name": "Smoking Cessation",
+        "href": "/cn/smoking-cessation/cid/287/290"
+      },
+      {
+        "sub_category_name": "Digestive Care",
+        "href": "/cn/digestive-care/cid/287/298"
+      },
+      {
+        "sub_category_name": "Supplements",
+        "href": "/cn/supplements/cid/287/308"
+      },
+      {
+        "sub_category_name": "Adult Diapers",
+        "href": "/cn/adult-diapers/cid/287/629"
+      },
+      {
+        "sub_category_name": "Condoms",
+        "href": "/cn/condoms/cid/287/707"
+      },
+      {
+        "sub_category_name": "Other Pharma",
+        "href": "/cn/other-pharma/cid/287/1120"
+      },
+      {
+        "sub_category_name": "Beauty Supplements",
+        "href": "/cn/beauty-supplements/cid/287/295"
+      },
+      {
+        "sub_category_name": "Antiseptic Liquid",
+        "href": "/cn/antiseptic-liquid/cid/287/1121"
+      },
+      {
+        "sub_category_name": "Masks & Sanitizers",
+        "href": "/cn/masks-sanitizers/cid/287/1826"
+      },
+      {
+        "sub_category_name": "Pre & Post Workout",
+        "href": "/cn/pre-post-workout/cid/287/306"
+      },
+      {
+        "sub_category_name": "Sexual Wellness",
+        "href": "/cn/sexual-wellness/cid/287/741"
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "category_name": "Cold Drinks & Juices",
+    "subCategories": [
+      {
+        "sub_category_name": "Energy Drinks",
+        "href": "/cn/energy-drinks/cid/332/19"
+      },
+      {
+        "sub_category_name": "Coldpress",
+        "href": "/cn/coldpress/cid/332/91"
+      },
+      {
+        "sub_category_name": "Coconut Water",
+        "href": "/cn/coconut-water/cid/332/1594"
+      },
+      {
+        "sub_category_name": "Concentrates & Syrups",
+        "href": "/cn/concentrates-syrups/cid/332/109"
+      },
+      {
+        "sub_category_name": "Sharbat",
+        "href": "/cn/sharbat/cid/332/24"
+      },
+      {
+        "sub_category_name": "Mango Drink",
+        "href": "/cn/mango-drink/cid/332/1108"
+      },
+      {
+        "sub_category_name": "Flavored Milk",
+        "href": "/cn/flavored-milk/cid/332/36"
+      },
+      {
+        "sub_category_name": "Lassi",
+        "href": "/cn/lassi/cid/332/1093"
+      },
+      {
+        "sub_category_name": "Specialty Milk",
+        "href": "/cn/specialty-milk/cid/332/1091"
+      },
+      {
+        "sub_category_name": "Soda",
+        "href": "/cn/soda/cid/332/1600"
+      },
+      {
+        "sub_category_name": "Cold Drink in Bottles",
+        "href": "/cn/cold-drink-in-bottles/cid/332/23"
+      },
+      {
+        "sub_category_name": "Cocktail Mixers/Tonic Waters",
+        "href": "/cn/cocktail-mixerstonic-waters/cid/332/1103"
+      },
+      {
+        "sub_category_name": "Cold Drink in a Can",
+        "href": "/cn/cold-drink-in-a-can/cid/332/1107"
+      },
+      {
+        "sub_category_name": "Ice Cubes",
+        "href": "/cn/ice-cubes/cid/332/219"
+      },
+      {
+        "sub_category_name": "Mineral Water",
+        "href": "/cn/mineral-water/cid/332/22"
+      },
+      {
+        "sub_category_name": "Non-Alcoholic Drinks",
+        "href": "/cn/non-alcoholic-drinks/cid/332/1486"
+      },
+      {
+        "sub_category_name": "Glucose Energy Drink",
+        "href": "/cn/glucose-energy-drink/cid/332/640"
+      },
+      {
+        "sub_category_name": "Water & Ice Cubes",
+        "href": "/cn/water-ice-cubes/cid/332/270"
+      },
+      {
+        "sub_category_name": "Fruit Juices",
+        "href": "/cn/fruit-juices/cid/332/955"
+      },
+      {
+        "sub_category_name": "Cold Coffee",
+        "href": "/cn/cold-coffee/cid/332/412"
+      },
+      {
+        "sub_category_name": "Iced Tea",
+        "href": "/cn/iced-tea/cid/332/93"
+      },
+      {
+        "sub_category_name": "100% Juice",
+        "href": "/cn/100-juice/cid/332/1318"
+      },
+      {
+        "sub_category_name": "Soft Drinks",
+        "href": "/cn/soft-drinks/cid/332/1102"
+      },
+      {
+        "sub_category_name": "Soda & Mixers",
+        "href": "/cn/soda-mixers/cid/332/1599"
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "category_name": "Ice Cream & Frozen Desserts",
+    "subCategories": [
+      {
+        "sub_category_name": "Tubs",
+        "href": "/cn/tubs/cid/1969/1962"
+      },
+      {
+        "sub_category_name": "Sticks",
+        "href": "/cn/sticks/cid/1969/263"
+      },
+      {
+        "sub_category_name": "Sandwiches, Cakes, and Other",
+        "href": "/cn/sandwiches-cakes-and-other/cid/1969/333"
+      },
+      {
+        "sub_category_name": "Cups",
+        "href": "/cn/cups/cid/1969/262"
+      },
+      {
+        "sub_category_name": "Cones",
+        "href": "/cn/cones/cid/1969/1410"
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "category_name": "Bakery & Biscuits",
+    "subCategories": [
+      {
+        "sub_category_name": "Cookies",
+        "href": "/cn/cookies/cid/888/28"
+      },
+      {
+        "sub_category_name": "Cream Biscuits",
+        "href": "/cn/cream-biscuits/cid/888/105"
+      },
+      {
+        "sub_category_name": "Rusks & Wafers",
+        "href": "/cn/rusks-wafers/cid/888/107"
+      },
+      {
+        "sub_category_name": "Sweet & Salty",
+        "href": "/cn/sweet-salty/cid/888/144"
+      },
+      {
+        "sub_category_name": "Glucose & Marie",
+        "href": "/cn/glucose-marie/cid/888/209"
+      },
+      {
+        "sub_category_name": "Healthy & Digestive",
+        "href": "/cn/healthy-digestive/cid/888/938"
+      },
+      {
+        "sub_category_name": "Baking Ingredients & Mixes",
+        "href": "/cn/baking-ingredients-mixes/cid/888/971"
+      },
+      {
+        "sub_category_name": "Gourmet Bakery",
+        "href": "/cn/gourmet-bakery/cid/888/1663"
+      },
+      {
+        "sub_category_name": "Specialty Breads",
+        "href": "/cn/specialty-breads/cid/888/1097"
+      },
+      {
+        "sub_category_name": "Milk & White Breads",
+        "href": "/cn/milk-white-breads/cid/888/31"
+      },
+      {
+        "sub_category_name": "Fresh Muffins & Cake",
+        "href": "/cn/fresh-muffins-cake/cid/888/176"
+      },
+      {
+        "sub_category_name": "Fresh Bakery",
+        "href": "/cn/fresh-bakery/cid/888/477"
+      },
+      {
+        "sub_category_name": "Buns, Pavs & Pizza Base",
+        "href": "/cn/buns-pavs-pizza-base/cid/888/1956"
+      },
+      {
+        "sub_category_name": "Brown & Multigrain Breads",
+        "href": "/cn/brown-multigrain-breads/cid/888/198"
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "category_name": "Sauces & Spreads",
+    "subCategories": [
+      {
+        "sub_category_name": "Cooking Sauces & Paste",
+        "href": "/cn/cooking-sauces-paste/cid/972/929"
+      },
+      {
+        "sub_category_name": "Dips & Spreads",
+        "href": "/cn/dips-spreads/cid/972/974"
+      },
+      {
+        "sub_category_name": "Jams",
+        "href": "/cn/jams/cid/972/975"
+      },
+      {
+        "sub_category_name": "Honey",
+        "href": "/cn/honey/cid/972/976"
+      },
+      {
+        "sub_category_name": "Chocolate Spreads",
+        "href": "/cn/chocolate-spreads/cid/972/978"
+      },
+      {
+        "sub_category_name": "Chutney & Pickle",
+        "href": "/cn/chutney-pickle/cid/972/1126"
+      },
+      {
+        "sub_category_name": "Asian Sauces",
+        "href": "/cn/asian-sauces/cid/972/1130"
+      },
+      {
+        "sub_category_name": "Tomato & Chilli Ketchups",
+        "href": "/cn/tomato-chilli-ketchups/cid/972/1131"
+      },
+      {
+        "sub_category_name": "Chyawanprash",
+        "href": "/cn/chyawanprash/cid/972/1135"
+      },
+      {
+        "sub_category_name": "Salad Dressings",
+        "href": "/cn/salad-dressings/cid/972/1375"
+      },
+      {
+        "sub_category_name": "Peanut Butter",
+        "href": "/cn/peanut-butter/cid/972/1918"
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "category_name": "Munchies",
+    "subCategories": [
+      {
+        "sub_category_name": "Namkeen Snacks",
+        "href": "/cn/namkeen-snacks/cid/1237/29"
+      },
+      {
+        "sub_category_name": "Papad & Fryums",
+        "href": "/cn/papad-fryums/cid/1237/80"
+      },
+      {
+        "sub_category_name": "Popcorn",
+        "href": "/cn/popcorn/cid/1237/156"
+      },
+      {
+        "sub_category_name": "Nachos",
+        "href": "/cn/nachos/cid/1237/316"
+      },
+      {
+        "sub_category_name": "Healthy Snacks",
+        "href": "/cn/healthy-snacks/cid/1237/816"
+      },
+      {
+        "sub_category_name": "Chips & Crisps",
+        "href": "/cn/chips-crisps/cid/1237/940"
+      },
+      {
+        "sub_category_name": "Bhujia & Mixtures",
+        "href": "/cn/bhujia-mixtures/cid/1237/1178"
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "category_name": "Home & Office",
+    "subCategories": [
+      {
+        "sub_category_name": "Soft Toys & Greeting Cards",
+        "href": "/cn/soft-toys-greeting-cards/cid/1379/394"
+      },
+      {
+        "sub_category_name": "Games",
+        "href": "/cn/games/cid/1379/1868"
+      },
+      {
+        "sub_category_name": "Collectible Toy Guns & Accessories",
+        "href": "/cn/collectible-toy-guns-accessories/cid/1379/596"
+      },
+      {
+        "sub_category_name": "DIY and Learning",
+        "href": "/cn/diy-and-learning/cid/1379/591"
+      },
+      {
+        "sub_category_name": "Bags",
+        "href": "/cn/bags/cid/1379/120"
+      },
+      {
+        "sub_category_name": "Party Essentials",
+        "href": "/cn/party-essentials/cid/1379/126"
+      },
+      {
+        "sub_category_name": "Kids Toys & More",
+        "href": "/cn/kids-toys-more/cid/1379/305"
+      },
+      {
+        "sub_category_name": "Repellents",
+        "href": "/cn/repellents/cid/1379/926"
+      },
+      {
+        "sub_category_name": "Bathroom Essentials",
+        "href": "/cn/bathroom-essentials/cid/1379/1014"
+      },
+      {
+        "sub_category_name": "Pooja Needs",
+        "href": "/cn/pooja-needs/cid/1379/1048"
+      },
+      {
+        "sub_category_name": "Stationery Needs",
+        "href": "/cn/stationery-needs/cid/1379/1049"
+      },
+      {
+        "sub_category_name": "Kitchen & Dining Needs",
+        "href": "/cn/kitchen-dining-needs/cid/1379/1052"
+      },
+      {
+        "sub_category_name": "Tissues & Disposables",
+        "href": "/cn/tissues-disposables/cid/1379/1075"
+      },
+      {
+        "sub_category_name": "Fresheners",
+        "href": "/cn/fresheners/cid/1379/1085"
+      },
+      {
+        "sub_category_name": "Electrical Accessories",
+        "href": "/cn/electrical-accessories/cid/1379/1187"
+      },
+      {
+        "sub_category_name": "Electronic Accessories",
+        "href": "/cn/electronic-accessories/cid/1379/1387"
+      },
+      {
+        "sub_category_name": "Home Decor & Storage",
+        "href": "/cn/home-decor-storage/cid/1379/1433"
+      },
+      {
+        "sub_category_name": "Festive & Occasion Needs",
+        "href": "/cn/festive-occasion-needs/cid/1379/1674"
+      },
+      {
+        "sub_category_name": "Clothing, Footwear & Accessories",
+        "href": "/cn/clothing-footwear-accessories/cid/1379/1715"
+      },
+      {
+        "sub_category_name": "Home & Kitchen Appliances",
+        "href": "/cn/home-kitchen-appliances/cid/1379/1886"
+      },
+      {
+        "sub_category_name": "Books",
+        "href": "/cn/books/cid/1379/1970"
+      },
+      {
+        "sub_category_name": "Sports, Fitness & Outdoors",
+        "href": "/cn/sports-fitness-outdoors/cid/1379/1992"
+      },
+      {
+        "sub_category_name": "Trimmers",
+        "href": "/cn/trimmers/cid/1379/2108"
+      },
+      {
+        "sub_category_name": "Hair Dryer",
+        "href": "/cn/hair-dryer/cid/1379/2109"
+      },
+      {
+        "sub_category_name": "Weighing Machines & Massagers",
+        "href": "/cn/weighing-machines-massagers/cid/1379/2110"
+      },
+      {
+        "sub_category_name": "Mixer Grinders",
+        "href": "/cn/mixer-grinders/cid/1379/1882"
+      },
+      {
+        "sub_category_name": "Fans",
+        "href": "/cn/fans/cid/1379/2106"
+      },
+      {
+        "sub_category_name": "Electric Kettles",
+        "href": "/cn/electric-kettles/cid/1379/2111"
+      },
+      {
+        "sub_category_name": "Choppers",
+        "href": "/cn/choppers/cid/1379/1068"
+      },
+      {
+        "sub_category_name": "Iron",
+        "href": "/cn/iron/cid/1379/1890"
+      },
+      {
+        "sub_category_name": "Toasters",
+        "href": "/cn/toasters/cid/1379/1883"
+      },
+      {
+        "sub_category_name": "Clocks & Calculators",
+        "href": "/cn/clocks-calculators/cid/1379/2107"
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "category_name": "Vegetables & Fruits",
+    "subCategories": [
+      {
+        "sub_category_name": "Exotics & Premium",
+        "href": "/cn/exotics-premium/cid/1487/278"
+      },
+      {
+        "sub_category_name": "Freshly Cut & Sprouts",
+        "href": "/cn/freshly-cut-sprouts/cid/1487/395"
+      },
+      {
+        "sub_category_name": "Gourmet Mushroom",
+        "href": "/cn/gourmet-mushroom/cid/1487/482"
+      },
+      {
+        "sub_category_name": "Organic & Hydroponic",
+        "href": "/cn/organic-hydroponic/cid/1487/742"
+      },
+      {
+        "sub_category_name": "Combo Offer",
+        "href": "/cn/combo-offer/cid/1487/928"
+      },
+      {
+        "sub_category_name": "Fruits",
+        "href": "/cn/fruits/cid/1487/1503"
+      },
+      {
+        "sub_category_name": "Flowers & Leaves",
+        "href": "/cn/flowers-leaves/cid/1487/1452"
+      },
+      {
+        "sub_category_name": "Fresh Juice & Dips",
+        "href": "/cn/fresh-juice-dips/cid/1487/1941"
+      },
+      {
+        "sub_category_name": "Frozen Indian Breads",
+        "href": "/cn/frozen-indian-breads/cid/1487/116"
+      },
+      {
+        "sub_category_name": "Frozen Veg",
+        "href": "/cn/frozen-veg/cid/1487/157"
+      },
+      {
+        "sub_category_name": "Fresh Vegetables",
+        "href": "/cn/fresh-vegetables/cid/1487/1489"
+      },
+      {
+        "sub_category_name": "Frozen Peas & Corn",
+        "href": "/cn/frozen-peas-corn/cid/1487/172"
+      },
+      {
+        "sub_category_name": "Frozen Potato Snacks",
+        "href": "/cn/frozen-potato-snacks/cid/1487/122"
+      },
+      {
+        "sub_category_name": "Other Frozen Vegetables",
+        "href": "/cn/other-frozen-vegetables/cid/1487/222"
+      },
+      {
+        "sub_category_name": "Hydroponics",
+        "href": "/cn/hydroponics/cid/1487/39"
+      },
+      {
+        "sub_category_name": "Leafies & Herbs",
+        "href": "/cn/leafies-herbs/cid/1487/1871"
+      },
+      {
+        "sub_category_name": "Other Frozen Snacks",
+        "href": "/cn/other-frozen-snacks/cid/1487/125"
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "category_name": "Masala, Oil & More",
+    "subCategories": [
+      {
+        "sub_category_name": "Powdered Masala",
+        "href": "/cn/powdered-masala/cid/1557/50"
+      },
+      {
+        "sub_category_name": "Dates & Seeds",
+        "href": "/cn/dates-seeds/cid/1557/815"
+      },
+      {
+        "sub_category_name": "Oil",
+        "href": "/cn/oil/cid/1557/917"
+      },
+      {
+        "sub_category_name": "Whole Spices",
+        "href": "/cn/whole-spices/cid/1557/930"
+      },
+      {
+        "sub_category_name": "Salt, Sugar & Jaggery",
+        "href": "/cn/salt-sugar-jaggery/cid/1557/933"
+      },
+      {
+        "sub_category_name": "Ghee & Vanaspati",
+        "href": "/cn/ghee-vanaspati/cid/1557/1158"
+      },
+      {
+        "sub_category_name": "Dry Fruits",
+        "href": "/cn/dry-fruits/cid/1557/1160"
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "category_name": "Toys & Games",
+    "subCategories": [
+      {
+        "sub_category_name": "Rattles",
+        "href": "/cn/rattles/cid/675/739"
+      },
+      {
+        "sub_category_name": "Light & Musical Toys",
+        "href": "/cn/light-musical-toys/cid/675/680"
+      },
+      {
+        "sub_category_name": "Tents & Pools",
+        "href": "/cn/tents-pools/cid/675/480"
+      },
+      {
+        "sub_category_name": "Sports Toys",
+        "href": "/cn/sports-toys/cid/675/483"
+      },
+      {
+        "sub_category_name": "Teddy Bears",
+        "href": "/cn/teddy-bears/cid/675/496"
+      },
+      {
+        "sub_category_name": "Cartoon Characters",
+        "href": "/cn/cartoon-characters/cid/675/487"
+      },
+      {
+        "sub_category_name": "Animal Toys",
+        "href": "/cn/animal-toys/cid/675/495"
+      },
+      {
+        "sub_category_name": "Novelty Toys",
+        "href": "/cn/novelty-toys/cid/675/409"
+      },
+      {
+        "sub_category_name": "Writing Pad Toys, Laptop Toys & Tablet Toys",
+        "href": "/cn/writing-pad-toys-laptop-toys-tablet-toys/cid/675/499"
+      },
+      {
+        "sub_category_name": "Science Project Kits",
+        "href": "/cn/science-project-kits/cid/675/500"
+      },
+      {
+        "sub_category_name": "Learning Toys",
+        "href": "/cn/learning-toys/cid/675/677"
+      },
+      {
+        "sub_category_name": "Building & Block Toys",
+        "href": "/cn/building-block-toys/cid/675/678"
+      },
+      {
+        "sub_category_name": "Dolls & Accessories",
+        "href": "/cn/dolls-accessories/cid/675/242"
+      },
+      {
+        "sub_category_name": "Puzzles",
+        "href": "/cn/puzzles/cid/675/479"
+      },
+      {
+        "sub_category_name": "Games for Adults",
+        "href": "/cn/games-for-adults/cid/675/734"
+      },
+      {
+        "sub_category_name": "Cube Games",
+        "href": "/cn/cube-games/cid/675/396"
+      },
+      {
+        "sub_category_name": "Card Games",
+        "href": "/cn/card-games/cid/675/486"
+      },
+      {
+        "sub_category_name": "Board Games",
+        "href": "/cn/board-games/cid/675/484"
+      },
+      {
+        "sub_category_name": "Slime",
+        "href": "/cn/slime/cid/675/413"
+      },
+      {
+        "sub_category_name": "Clay & Dough",
+        "href": "/cn/clay-dough/cid/675/474"
+      },
+      {
+        "sub_category_name": "Art & Craft Kits",
+        "href": "/cn/art-craft-kits/cid/675/475"
+      },
+      {
+        "sub_category_name": "Remote Control Toys",
+        "href": "/cn/remote-control-toys/cid/675/497"
+      },
+      {
+        "sub_category_name": "Model Toy Vehiclesme",
+        "href": "/cn/model-toy-vehiclesme/cid/675/498"
+      },
+      {
+        "sub_category_name": "Battle Toys",
+        "href": "/cn/battle-toys/cid/675/410"
+      },
+      {
+        "sub_category_name": "Action Figures",
+        "href": "/cn/action-figures/cid/675/397"
+      },
+      {
+        "sub_category_name": "Toddler & Baby Toys",
+        "href": "/cn/toddler-baby-toys/cid/675/683"
+      },
+      {
+        "sub_category_name": "Soft Toys",
+        "href": "/cn/soft-toys/cid/675/257"
+      },
+      {
+        "sub_category_name": "Learning & Education Toys",
+        "href": "/cn/learning-education-toys/cid/675/256"
+      },
+      {
+        "sub_category_name": "Dolls & Play Sets",
+        "href": "/cn/dolls-play-sets/cid/675/266"
+      },
+      {
+        "sub_category_name": "Cards, Puzzles & Board Games: Classic Entertainment for All",
+        "href": "/cn/cards-puzzles-board-games-classic-entertainment-for-all/cid/675/258"
+      },
+      {
+        "sub_category_name": "Art & Craft Games",
+        "href": "/cn/art-craft-games/cid/675/231"
+      },
+      {
+        "sub_category_name": "Action Toys & Toy Vehicles",
+        "href": "/cn/action-toys-toy-vehicles/cid/675/151"
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "category_name": "Books",
+    "subCategories": [
+      {
+        "sub_category_name": "Travel & Tourism Books",
+        "href": "/cn/travel-tourism-books/cid/1559/210"
+      },
+      {
+        "sub_category_name": "Subject Reference & Learning Books",
+        "href": "/cn/subject-reference-learning-books/cid/1559/392"
+      },
+      {
+        "sub_category_name": "Sports Books",
+        "href": "/cn/sports-books/cid/1559/582"
+      },
+      {
+        "sub_category_name": "Society & Social Sciences Books",
+        "href": "/cn/society-social-sciences-books/cid/1559/212"
+      },
+      {
+        "sub_category_name": "Self Help Books",
+        "href": "/cn/self-help-books/cid/1559/515"
+      },
+      {
+        "sub_category_name": "Science & Technology Books",
+        "href": "/cn/science-technology-books/cid/1559/201"
+      },
+      {
+        "sub_category_name": "Religion & Spirituality Books",
+        "href": "/cn/religion-spirituality-books/cid/1559/570"
+      },
+      {
+        "sub_category_name": "Political Books",
+        "href": "/cn/political-books/cid/1559/567"
+      },
+      {
+        "sub_category_name": "Poetry Books",
+        "href": "/cn/poetry-books/cid/1559/563"
+      },
+      {
+        "sub_category_name": "History Books",
+        "href": "/cn/history-books/cid/1559/583"
+      },
+      {
+        "sub_category_name": "Health, Fitness & Nutrition Books",
+        "href": "/cn/health-fitness-nutrition-books/cid/1559/519"
+      },
+      {
+        "sub_category_name": "Cook Books",
+        "href": "/cn/cook-books/cid/1559/526"
+      },
+      {
+        "sub_category_name": "Business, Economics & Finance Books",
+        "href": "/cn/business-economics-finance-books/cid/1559/518"
+      },
+      {
+        "sub_category_name": "Analysis & Strategy Books",
+        "href": "/cn/analysis-strategy-books/cid/1559/517"
+      },
+      {
+        "sub_category_name": "Activity Books for Adults",
+        "href": "/cn/activity-books-for-adults/cid/1559/516"
+      },
+      {
+        "sub_category_name": "Short Stories Books",
+        "href": "/cn/short-stories-books/cid/1559/366"
+      },
+      {
+        "sub_category_name": "Science Fiction Books",
+        "href": "/cn/science-fiction-books/cid/1559/321"
+      },
+      {
+        "sub_category_name": "Romance Books",
+        "href": "/cn/romance-books/cid/1559/1586"
+      },
+      {
+        "sub_category_name": "Mystery & Thriller Books",
+        "href": "/cn/mystery-thriller-books/cid/1559/241"
+      },
+      {
+        "sub_category_name": "Literature / Classics Books",
+        "href": "/cn/literature-classics-books/cid/1559/221"
+      },
+      {
+        "sub_category_name": "Humour Books",
+        "href": "/cn/humour-books/cid/1559/265"
+      },
+      {
+        "sub_category_name": "Horror Books",
+        "href": "/cn/horror-books/cid/1559/236"
+      },
+      {
+        "sub_category_name": "Historical & Mythological Books",
+        "href": "/cn/historical-mythological-books/cid/1559/234"
+      },
+      {
+        "sub_category_name": "Fantasy Books",
+        "href": "/cn/fantasy-books/cid/1559/233"
+      },
+      {
+        "sub_category_name": "Contemporary Books",
+        "href": "/cn/contemporary-books/cid/1559/230"
+      },
+      {
+        "sub_category_name": "Action & Adventure Books",
+        "href": "/cn/action-adventure-books/cid/1559/220"
+      },
+      {
+        "sub_category_name": "Children's Activity Books",
+        "href": "/cn/childrens-activity-books/cid/1559/512"
+      },
+      {
+        "sub_category_name": "Non Fiction Books",
+        "href": "/cn/non-fiction-books/cid/1559/275"
+      },
+      {
+        "sub_category_name": "Manga & Graphic Novels",
+        "href": "/cn/manga-graphic-novels/cid/1559/216"
+      },
+      {
+        "sub_category_name": "Fiction Books",
+        "href": "/cn/fiction-books/cid/1559/274"
+      },
+      {
+        "sub_category_name": "Children's Books",
+        "href": "/cn/childrens-books/cid/1559/273"
+      },
+      {
+        "sub_category_name": "Biographies & Memoirs",
+        "href": "/cn/biographies-memoirs/cid/1559/217"
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "category_name": "Stores",
+    "subCategories": [
+      {
+        "sub_category_name": "Print Store",
+        "href": "/print"
+      }
+    ]
+  },
+  {
+    "index": 27,
+    "category_name": "E-Cards",
+    "subCategories": [
+      {
+        "sub_category_name": "Rakhi Gifts",
+        "href": "/dc/?collection_uuid=4981b5da-20ea-439a-bd29-4a13e3b59f82"
+      }
+    ]
+  }
+]

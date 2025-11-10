@@ -3,7 +3,10 @@
   "files": [],
   "include": [],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
+    "paths": {
+      "src/*" : ["./*"]
+    }
   },
   "references": [
     {

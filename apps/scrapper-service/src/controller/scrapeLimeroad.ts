@@ -1,25 +1,15 @@
 import { rotateSession } from "../../../../puppeteer-utils/src/index";
-import fs from "fs";
 import path from "path";
+
+//  import deepScroll functionality
+import deepAutoScroll from "../lib/Deepscroll";
+import SafeWriteJSON from "../lib/SafeWriteJSON";
+import FilterUniqueElements from "../lib/FilteringUniqueElements";
 
 const CACHE_PATH = path.join(
   process.cwd(),
   "apps/scrapper-service/data/limeroad_raw.json"
 );
-
-function filterUniqueProducts(data: any[]): any[] {
-  const seen = new Set<string>();
-
-  return data.filter((item) => {
-    const key =
-      item.href ||
-      JSON.stringify(item.images?.slice().sort() || []).substring(0, 200);
-
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
 
 // ✅ Main Scraper Function
 export async function scrapeLimeroad(page: any) {
@@ -114,62 +104,18 @@ export async function scrapeLimeroad(page: any) {
     return results;
   });
   
-  const cleanData = filterUniqueProducts(data);
+  const cleanData = FilterUniqueElements(data);
 
   console.log(`🧾 Scraped ${cleanData.length} product entries from Limeroad.`);
 
 
-  await safeWriteJSON(CACHE_PATH, cleanData);
+  await SafeWriteJSON(CACHE_PATH, cleanData);
   console.log(`💾 Data cached successfully at: ${CACHE_PATH}`);
 
   return cleanData;
 }
 
-// ✅ Deep Auto-Scroll with Lazy-Load Handling
-async function deepAutoScroll(page: any) {
-  console.log("📜 Starting deep auto-scroll...");
 
-  await page.evaluate(async () => {
-    const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
-    let lastHeight = document.body.scrollHeight;
-    let sameHeightCounter = 0;
-
-    for (let i = 0; i < 60; i++) {
-      window.scrollTo(0, document.body.scrollHeight);
-      await delay(6000);
-
-      const newHeight = document.body.scrollHeight;
-      const lazyImages = document.querySelectorAll("img[data-src], img[data-lazy]");
-      lazyImages.forEach((img: any) => {
-        if (img.dataset.src) img.src = img.dataset.src;
-      });
-
-      if (newHeight === lastHeight) {
-        sameHeightCounter++;
-        if (sameHeightCounter >= 3) break; // stop if no new content after 3 tries
-      } else {
-        sameHeightCounter = 0;
-      }
-
-      lastHeight = newHeight;
-    }
-
-    console.log("✅ Finished auto-scroll, all lazy content loaded.");
-  });
-}
-
-// ✅ Safe JSON Write
-async function safeWriteJSON(filePath: string, data: any) {
-  try {
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    const tmpPath = `${filePath}.tmp`;
-    fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2), "utf8");
-    fs.renameSync(tmpPath, filePath);
-  } catch (err) {
-    console.error("❌ Failed to write JSON cache:", err);
-  }
-}
 
 export async function scrapeLimeroadWithSession() {
   return await rotateSession(scrapeLimeroad);

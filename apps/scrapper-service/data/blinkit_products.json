@@ -1,0 +1,870 @@
+[
+  {
+    "index": 0,
+    "category_name": "Chicken, Meat & Fish",
+    "subCategories": [
+      {
+        "sub_category_name": "Exotic Meat",
+        "href": "/cn/exotic-meat/cid/4/1201",
+        "products": [
+          {
+            "name": "ChefiGo Chicken Curry Cut450 g",
+            "weight": "11 minsChefiGo Chicken Curry Cut450 g₹141 ₹210ADD",
+            "price": "11 minsChefiGo Chicken Curry Cut450 g₹141 ₹210ADD",
+            "oldPrice": "11 minsChefiGo Chicken Curry Cut450 g₹141 ₹210ADD",
+            "offer": "32%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b40cb3c5-bf69-4154-b40e-bbf2e4baafdd.png"
+          },
+          {
+            "name": "ChefiGo Boneless Chicken Breast450 g",
+            "weight": "11 minsChefiGo Boneless Chicken Breast450 g₹240 ₹280ADD",
+            "price": "11 minsChefiGo Boneless Chicken Breast450 g₹240 ₹280ADD",
+            "oldPrice": "11 minsChefiGo Boneless Chicken Breast450 g₹240 ₹280ADD",
+            "offer": "14%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/224694c0-b1c9-4910-89d1-beaa1bb89569.png"
+          },
+          {
+            "name": "ChefiGo Chicken Pepperoni Slices150 g",
+            "weight": "12 minsChefiGo Chicken Pepperoni Slices150 g₹155 ₹175ADD",
+            "price": "12 minsChefiGo Chicken Pepperoni Slices150 g₹155 ₹175ADD",
+            "oldPrice": "12 minsChefiGo Chicken Pepperoni Slices150 g₹155 ₹175ADD",
+            "offer": "11%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3b2ed51b-83d6-4c45-9c87-e447d2b55481.png"
+          },
+          {
+            "name": "ChefiGo Chicken Masala Salami150 g",
+            "weight": "12 minsChefiGo Chicken Masala Salami150 g₹170ADD",
+            "price": "12 minsChefiGo Chicken Masala Salami150 g₹170ADD",
+            "oldPrice": "ChefiGo Chicken Masala Salami150 g₹170ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/65e80b23-b476-4d33-adff-5e44d9697b88.png"
+          },
+          {
+            "name": "Truchicken Chicken Curry Cut (No Backbone)400 g",
+            "weight": "11 minsTruchicken Chicken Curry Cut (No Backbone)400 g₹159 ₹210ADD",
+            "price": "11 minsTruchicken Chicken Curry Cut (No Backbone)400 g₹159 ₹210ADD",
+            "oldPrice": "11 minsTruchicken Chicken Curry Cut (No Backbone)400 g₹159 ₹210ADD",
+            "offer": "24%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b6566431-2751-4394-bf20-ed1a12067cce.png"
+          },
+          {
+            "name": "ChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g",
+            "weight": "11 minsChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g₹169 ₹280ADD",
+            "price": "11 minsChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g₹169 ₹280ADD",
+            "oldPrice": "11 minsChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g₹169 ₹280ADD",
+            "offer": "39%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3bccc95c-255b-43ab-9643-b3ce13ea858c.png"
+          },
+          {
+            "name": "Licious Chicken Drumstick2 pieces",
+            "weight": "2 pieces",
+            "price": "11 minsLicious Chicken Drumstick2 pieces₹120 ₹135ADD",
+            "oldPrice": "11 minsLicious Chicken Drumstick2 pieces₹120 ₹135ADD",
+            "offer": "11%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/470debf5-a2bc-4846-9b7a-3402427fdd60.png"
+          },
+          {
+            "name": "Licious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g",
+            "weight": "11 minsLicious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g₹162 ₹179",
+            "price": "11 minsLicious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g₹162 ₹179",
+            "oldPrice": "11 minsLicious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g₹162 ₹179",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/fe38d6b4-c558-43c4-9600-619547e57385.png"
+          },
+          {
+            "name": "Licious Chicken Breast - Boneless400 g",
+            "weight": "11 minsLicious Chicken Breast - Boneless400 g₹295",
+            "price": "11 minsLicious Chicken Breast - Boneless400 g₹295",
+            "oldPrice": "11 minsLicious Chicken Breast - Boneless400 g₹295",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/ed401770-12f2-45b4-8870-a22cf6409a31.png"
+          },
+          {
+            "name": "Licious Rich Goat Mutton Curry Cut500 g",
+            "weight": "11 minsLicious Rich Goat Mutton Curry Cut500 g₹589 ₹675",
+            "price": "11 minsLicious Rich Goat Mutton Curry Cut500 g₹589 ₹675",
+            "oldPrice": "11 minsLicious Rich Goat Mutton Curry Cut500 g₹589 ₹675",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8ed22843-af1e-4f1b-8b8a-63caff9a2176.png"
+          },
+          {
+            "name": "Licious Freshwater Rohu Bengali Cut Fish (without Head)400 g",
+            "weight": "12 minsLicious Freshwater Rohu Bengali Cut Fish (without Head)400 g₹289",
+            "price": "12 minsLicious Freshwater Rohu Bengali Cut Fish (without Head)400 g₹289",
+            "oldPrice": "12 minsLicious Freshwater Rohu Bengali Cut Fish (without Head)400 g₹289",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9511e24f-240e-4520-9b78-0c6c7ae23df5.png"
+          },
+          {
+            "name": "Licious Basa Cubes (Boneless)400 g",
+            "weight": "12 minsLicious Basa Cubes (Boneless)400 g₹535",
+            "price": "12 minsLicious Basa Cubes (Boneless)400 g₹535",
+            "oldPrice": "12 minsLicious Basa Cubes (Boneless)400 g₹535",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9fee02e5-db87-4b0d-8242-6c916ffdc55d.png"
+          },
+          {
+            "name": "Licious Chicken Curry Cut (Small Pieces)450 g",
+            "weight": "11 minsLicious Chicken Curry Cut (Small Pieces)450 g₹179",
+            "price": "11 minsLicious Chicken Curry Cut (Small Pieces)450 g₹179",
+            "oldPrice": "11 minsLicious Chicken Curry Cut (Small Pieces)450 g₹179",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/448d07a2-1fb6-4997-b3bb-2daf981c68bd.png"
+          },
+          {
+            "name": "Licious Boneless Chicken Cubes450 g",
+            "weight": "11 minsLicious Boneless Chicken Cubes450 g₹339",
+            "price": "11 minsLicious Boneless Chicken Cubes450 g₹339",
+            "oldPrice": "11 minsLicious Boneless Chicken Cubes450 g₹339",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/27949243-124e-48f4-8f34-592ec60f113a.png"
+          },
+          {
+            "name": "ChefiGo Boneless Cubes Chicken (Tikka Cut)450 g",
+            "weight": "11 minsChefiGo Boneless Cubes Chicken (Tikka Cut)450 g₹247 ₹310",
+            "price": "11 minsChefiGo Boneless Cubes Chicken (Tikka Cut)450 g₹247 ₹310",
+            "oldPrice": "11 minsChefiGo Boneless Cubes Chicken (Tikka Cut)450 g₹247 ₹310",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/ebd2b074-6729-4124-9aeb-4b468b96a04d.png"
+          },
+          {
+            "name": "ChefiGo Boneless Chicken Thigh500 g",
+            "weight": "11 minsChefiGo Boneless Chicken Thigh500 g₹260",
+            "price": "11 minsChefiGo Boneless Chicken Thigh500 g₹260",
+            "oldPrice": "11 minsChefiGo Boneless Chicken Thigh500 g₹260",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/fde2cf34-dbb4-4182-8823-e88fe2a66b9b.png"
+          },
+          {
+            "name": "Truchicken Boneless Chicken Breast400 g",
+            "weight": "11 minsTruchicken Boneless Chicken Breast400 g₹215 ₹275",
+            "price": "11 minsTruchicken Boneless Chicken Breast400 g₹215 ₹275",
+            "oldPrice": "11 minsTruchicken Boneless Chicken Breast400 g₹215 ₹275",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c4bbd33d-fcee-418b-b967-9f0597b14251.png"
+          },
+          {
+            "name": "Licious Chicken Drumstick - Pack of 6400 g",
+            "weight": "11 minsLicious Chicken Drumstick - Pack of 6400 g₹331 ₹375",
+            "price": "11 minsLicious Chicken Drumstick - Pack of 6400 g₹331 ₹375",
+            "oldPrice": "11 minsLicious Chicken Drumstick - Pack of 6400 g₹331 ₹375",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/10bbfb1d-fc73-47f5-9567-a223a4484402.png"
+          },
+          {
+            "name": "Licious Chicken Keema (Mini Pack)250 g",
+            "weight": "11 minsLicious Chicken Keema (Mini Pack)250 g₹195 ₹219",
+            "price": "11 minsLicious Chicken Keema (Mini Pack)250 g₹195 ₹219",
+            "oldPrice": "11 minsLicious Chicken Keema (Mini Pack)250 g₹195 ₹219",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "ChefiGo Mutton Curry Cut500 g",
+            "weight": "11 minsChefiGo Mutton Curry Cut500 g₹266 ₹625",
+            "price": "11 minsChefiGo Mutton Curry Cut500 g₹266 ₹625",
+            "oldPrice": "11 minsChefiGo Mutton Curry Cut500 g₹266 ₹625",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Licious Goat Curry Cut (Mini Pack)300 g",
+            "weight": "11 minsLicious Goat Curry Cut (Mini Pack)300 g₹238 ₹409",
+            "price": "11 minsLicious Goat Curry Cut (Mini Pack)300 g₹238 ₹409",
+            "oldPrice": "11 minsLicious Goat Curry Cut (Mini Pack)300 g₹238 ₹409",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "FreshToHome Mutton Curry Cut480 g",
+            "weight": "11 minsFreshToHome Mutton Curry Cut480 g₹521 ₹699",
+            "price": "11 minsFreshToHome Mutton Curry Cut480 g₹521 ₹699",
+            "oldPrice": "11 minsFreshToHome Mutton Curry Cut480 g₹521 ₹699",
+            "offer": "",
+            "image": ""
+          }
+        ]
+      },
+      {
+        "sub_category_name": "Fish & Seafood",
+        "href": "/cn/fish-seafood/cid/4/1361",
+        "products": [
+          {
+            "name": "ITC Master Chef Medium Prawns Peeled & Deveined (Frozen)200 g",
+            "weight": "11 minsITC Master Chef Medium Prawns Peeled & Deveined (Frozen)200 g₹215 ₹250ADD",
+            "price": "11 minsITC Master Chef Medium Prawns Peeled & Deveined (Frozen)200 g₹215 ₹250ADD",
+            "oldPrice": "11 minsITC Master Chef Medium Prawns Peeled & Deveined (Frozen)200 g₹215 ₹250ADD",
+            "offer": "14%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/ef81fa54-80d6-48cf-aa12-3ff0fffc8c54.png"
+          },
+          {
+            "name": "ITC Master Chef Large Prawns (Freshly Frozen)200 g",
+            "weight": "11 minsITC Master Chef Large Prawns (Freshly Frozen)200 g₹266 ₹285ADD",
+            "price": "11 minsITC Master Chef Large Prawns (Freshly Frozen)200 g₹266 ₹285ADD",
+            "oldPrice": "11 minsITC Master Chef Large Prawns (Freshly Frozen)200 g₹266 ₹285ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d5384381-2c82-4c27-af6a-53a8ca75d537.png"
+          },
+          {
+            "name": "Godrej Real Good Large Prawns Peeled & Devined200 g",
+            "weight": "11 minsGodrej Real Good Large Prawns Peeled & Devined200 g₹219 ₹280ADD",
+            "price": "11 minsGodrej Real Good Large Prawns Peeled & Devined200 g₹219 ₹280ADD",
+            "oldPrice": "11 minsGodrej Real Good Large Prawns Peeled & Devined200 g₹219 ₹280ADD",
+            "offer": "21%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b22516f2-d94e-4848-b22c-9f08387ab21f.png"
+          },
+          {
+            "name": "Golden Prize Pink Salmon Fish Oil2 x 120 g",
+            "weight": "12 minsGolden Prize Pink Salmon Fish Oil2 x 120 g₹609 ₹650ADD",
+            "price": "12 minsGolden Prize Pink Salmon Fish Oil2 x 120 g₹609 ₹650ADD",
+            "oldPrice": "12 minsGolden Prize Pink Salmon Fish Oil2 x 120 g₹609 ₹650ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f5449958-7588-4028-b353-c36dd6894aef.png"
+          },
+          {
+            "name": "Golden Prize Tuna Chunk In Olive Oil2 x 185 g",
+            "weight": "12 minsGolden Prize Tuna Chunk In Olive Oil2 x 185 g₹534 ₹570ADD",
+            "price": "12 minsGolden Prize Tuna Chunk In Olive Oil2 x 185 g₹534 ₹570ADD",
+            "oldPrice": "12 minsGolden Prize Tuna Chunk In Olive Oil2 x 185 g₹534 ₹570ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e2e616c6-8956-4469-86f6-a1fd66670a9e.png"
+          },
+          {
+            "name": "Golden Prize Tuna Chunk In Soyabean Oil2 x 185 g",
+            "weight": "12 minsGolden Prize Tuna Chunk In Soyabean Oil2 x 185 g₹450 ₹480ADD",
+            "price": "12 minsGolden Prize Tuna Chunk In Soyabean Oil2 x 185 g₹450 ₹480ADD",
+            "oldPrice": "12 minsGolden Prize Tuna Chunk In Soyabean Oil2 x 185 g₹450 ₹480ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b293f4d9-85e0-4857-a3ff-b09976ca7421.png"
+          },
+          {
+            "name": "Golden Prize Tuna Chunks in Tomato Sauce4 x 185 g",
+            "weight": "12 minsGolden Prize Tuna Chunks in Tomato Sauce4 x 185 g₹862 ₹920ADD",
+            "price": "12 minsGolden Prize Tuna Chunks in Tomato Sauce4 x 185 g₹862 ₹920ADD",
+            "oldPrice": "12 minsGolden Prize Tuna Chunks in Tomato Sauce4 x 185 g₹862 ₹920ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/16f410cd-bac1-4c62-8714-53ed45e31e6f.png"
+          },
+          {
+            "name": "Golden Prize Tuna Flakes in Oil with Red Chil4 x 185 g",
+            "weight": "12 minsGolden Prize Tuna Flakes in Oil with Red Chil4 x 185 g₹656 ₹700ADD",
+            "price": "12 minsGolden Prize Tuna Flakes in Oil with Red Chil4 x 185 g₹656 ₹700ADD",
+            "oldPrice": "12 minsGolden Prize Tuna Flakes in Oil with Red Chil4 x 185 g₹656 ₹700ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1178c0b3-2cf9-44ec-a0f4-9bdcc81f8d6a.png"
+          },
+          {
+            "name": "Golden Prize Tuna Chunks in Brine4 x 185 g",
+            "weight": "12 minsGolden Prize Tuna Chunks in Brine4 x 185 g₹825 ₹880ADD",
+            "price": "12 minsGolden Prize Tuna Chunks in Brine4 x 185 g₹825 ₹880ADD",
+            "oldPrice": "12 minsGolden Prize Tuna Chunks in Brine4 x 185 g₹825 ₹880ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/265f22dd-1ba8-48bf-b6c1-1cb0a6c75321.png"
+          },
+          {
+            "name": "Golden Prize Tuna Salad Mexican Style2 x 185 g",
+            "weight": "12 minsGolden Prize Tuna Salad Mexican Style2 x 185 g₹459 ₹490ADD",
+            "price": "12 minsGolden Prize Tuna Salad Mexican Style2 x 185 g₹459 ₹490ADD",
+            "oldPrice": "12 minsGolden Prize Tuna Salad Mexican Style2 x 185 g₹459 ₹490ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/93c441eb-c0bd-411c-bb7a-b7ef3303df35.png"
+          },
+          {
+            "name": "Godrej Real Good Medium Prawns Peeled & Devined200 g",
+            "weight": "11 minsGodrej Real Good Medium Prawns Peeled & Devined200 g₹199 ₹265ADD",
+            "price": "11 minsGodrej Real Good Medium Prawns Peeled & Devined200 g₹199 ₹265ADD",
+            "oldPrice": "11 minsGodrej Real Good Medium Prawns Peeled & Devined200 g₹199 ₹265ADD",
+            "offer": "24%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8eb98ba1-eec2-4977-8491-74ff02599571.png"
+          },
+          {
+            "name": "Licious Freshwater Rohu Bengali Cut Fish (without Head)400 g",
+            "weight": "12 minsLicious Freshwater Rohu Bengali Cut Fish (without Head)400 g₹289",
+            "price": "12 minsLicious Freshwater Rohu Bengali Cut Fish (without Head)400 g₹289",
+            "oldPrice": "12 minsLicious Freshwater Rohu Bengali Cut Fish (without Head)400 g₹289",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9511e24f-240e-4520-9b78-0c6c7ae23df5.png"
+          },
+          {
+            "name": "Licious Basa Cubes (Boneless)400 g",
+            "weight": "12 minsLicious Basa Cubes (Boneless)400 g₹535",
+            "price": "12 minsLicious Basa Cubes (Boneless)400 g₹535",
+            "oldPrice": "12 minsLicious Basa Cubes (Boneless)400 g₹535",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9fee02e5-db87-4b0d-8242-6c916ffdc55d.png"
+          }
+        ]
+      },
+      {
+        "sub_category_name": "Chicken",
+        "href": "/cn/chicken/cid/4/1362",
+        "products": [
+          {
+            "name": "ChefiGo Chicken Curry Cut450 g",
+            "weight": "11 minsChefiGo Chicken Curry Cut450 g₹141 ₹210ADD",
+            "price": "11 minsChefiGo Chicken Curry Cut450 g₹141 ₹210ADD",
+            "oldPrice": "11 minsChefiGo Chicken Curry Cut450 g₹141 ₹210ADD",
+            "offer": "32%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b40cb3c5-bf69-4154-b40e-bbf2e4baafdd.png"
+          },
+          {
+            "name": "Delichic Raw Frozen Chicken Curry Cut500 g",
+            "weight": "11 minsDelichic Raw Frozen Chicken Curry Cut500 g₹187 ₹220ADD",
+            "price": "11 minsDelichic Raw Frozen Chicken Curry Cut500 g₹187 ₹220ADD",
+            "oldPrice": "11 minsDelichic Raw Frozen Chicken Curry Cut500 g₹187 ₹220ADD",
+            "offer": "15%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/083ce352-d863-411c-9fd3-78021f3ca4aa.png"
+          },
+          {
+            "name": "ChefiGo Boneless Chicken Breast450 g",
+            "weight": "11 minsChefiGo Boneless Chicken Breast450 g₹240 ₹280ADD",
+            "price": "11 minsChefiGo Boneless Chicken Breast450 g₹240 ₹280ADD",
+            "oldPrice": "11 minsChefiGo Boneless Chicken Breast450 g₹240 ₹280ADD",
+            "offer": "14%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/224694c0-b1c9-4910-89d1-beaa1bb89569.png"
+          },
+          {
+            "name": "Meatigo By Prasuma Antibiotic-Free Boneless Chicken Breast (Frozen)450 g",
+            "weight": "11 minsMeatigo By Prasuma Antibiotic-Free Boneless Chicken Breast (Frozen)450 g₹262 ₹275ADD",
+            "price": "11 minsMeatigo By Prasuma Antibiotic-Free Boneless Chicken Breast (Frozen)450 g₹262 ₹275ADD",
+            "oldPrice": "Meatigo By Prasuma Antibiotic-Free Boneless Chicken Breast (Frozen)450 g₹262 ₹275ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/760ea53a-2aa9-4ce8-9975-b778c47b34d0.png"
+          },
+          {
+            "name": "Meatzza Boneless Frozen Chicken Breast (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Boneless Frozen Chicken Breast (Antibiotic Free)500 g₹260ADD",
+            "price": "11 minsMeatzza Boneless Frozen Chicken Breast (Antibiotic Free)500 g₹260ADD",
+            "oldPrice": "Meatzza Boneless Frozen Chicken Breast (Antibiotic Free)500 g₹260ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/73d677d7-5b06-4e2d-86c9-31c654e49470.png"
+          },
+          {
+            "name": "Delichic Frozen Chicken Liver500 g",
+            "weight": "11 minsDelichic Frozen Chicken Liver500 g₹150ADD",
+            "price": "11 minsDelichic Frozen Chicken Liver500 g₹150ADD",
+            "oldPrice": "Delichic Frozen Chicken Liver500 g₹150ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/07ecbdb4-6c1e-4958-b74e-3ddfb39d2d65.png"
+          },
+          {
+            "name": "Meatzza Mince Frozen Chicken Keema (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Mince Frozen Chicken Keema (Antibiotic Free)500 g₹260ADD",
+            "price": "11 minsMeatzza Mince Frozen Chicken Keema (Antibiotic Free)500 g₹260ADD",
+            "oldPrice": "Meatzza Mince Frozen Chicken Keema (Antibiotic Free)500 g₹260ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/08db889c-ecef-4a8c-8ad7-434ba92e9137.png"
+          },
+          {
+            "name": "Delichic Boneless Frozen Chicken Tikka Cubes Cut500 g",
+            "weight": "11 minsDelichic Boneless Frozen Chicken Tikka Cubes Cut500 g₹268 ₹280ADD",
+            "price": "11 minsDelichic Boneless Frozen Chicken Tikka Cubes Cut500 g₹268 ₹280ADD",
+            "oldPrice": "Delichic Boneless Frozen Chicken Tikka Cubes Cut500 g₹268 ₹280ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/69440196-e222-4e82-8322-18f2c1c2f3f5.png"
+          },
+          {
+            "name": "Meatzza Boneless Frozen Chicken Thigh (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Boneless Frozen Chicken Thigh (Antibiotic Free)500 g₹280ADD",
+            "price": "11 minsMeatzza Boneless Frozen Chicken Thigh (Antibiotic Free)500 g₹280ADD",
+            "oldPrice": "Meatzza Boneless Frozen Chicken Thigh (Antibiotic Free)500 g₹280ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/130eb31a-c504-4b83-9333-ec0f443298f1.png"
+          },
+          {
+            "name": "Meatzza Frozen Chicken Drumstick (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Frozen Chicken Drumstick (Antibiotic Free)500 g₹245ADD",
+            "price": "11 minsMeatzza Frozen Chicken Drumstick (Antibiotic Free)500 g₹245ADD",
+            "oldPrice": "Meatzza Frozen Chicken Drumstick (Antibiotic Free)500 g₹245ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/af9686c9-de9e-4189-ae7a-61131bdc965d.png"
+          },
+          {
+            "name": "Meatigo By Prasuma Antibiotic-Free Chicken Curry Cut (Frozen)450 g",
+            "weight": "11 minsMeatigo By Prasuma Antibiotic-Free Chicken Curry Cut (Frozen)450 g₹186 ₹195ADD",
+            "price": "11 minsMeatigo By Prasuma Antibiotic-Free Chicken Curry Cut (Frozen)450 g₹186 ₹195ADD",
+            "oldPrice": "Meatigo By Prasuma Antibiotic-Free Chicken Curry Cut (Frozen)450 g₹186 ₹195ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5f398a82-ccb4-4fc3-b04f-a059b53533b8.png"
+          },
+          {
+            "name": "Meatzza Bone-in Frozen Chicken Curry Cut (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Bone-in Frozen Chicken Curry Cut (Antibiotic Free)500 g₹195ADD",
+            "price": "11 minsMeatzza Bone-in Frozen Chicken Curry Cut (Antibiotic Free)500 g₹195ADD",
+            "oldPrice": "Meatzza Bone-in Frozen Chicken Curry Cut (Antibiotic Free)500 g₹195ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/6e127fad-f3f8-4d35-9a4c-420dc7025fc2.png"
+          },
+          {
+            "name": "Meatzza Frozen Chicken Wings (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Frozen Chicken Wings (Antibiotic Free)500 g₹230ADD",
+            "price": "11 minsMeatzza Frozen Chicken Wings (Antibiotic Free)500 g₹230ADD",
+            "oldPrice": "Meatzza Frozen Chicken Wings (Antibiotic Free)500 g₹230ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d0bcd764-d0d4-4c36-894c-61e3a51c1e72.png"
+          },
+          {
+            "name": "Delichic Boneless Frozen Chicken Thigh500 g",
+            "weight": "11 minsDelichic Boneless Frozen Chicken Thigh500 g₹285 ₹300ADD",
+            "price": "11 minsDelichic Boneless Frozen Chicken Thigh500 g₹285 ₹300ADD",
+            "oldPrice": "11 minsDelichic Boneless Frozen Chicken Thigh500 g₹285 ₹300ADD",
+            "offer": "5%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f3dd603b-55e8-48c3-9838-97cf41c06ed6.png"
+          },
+          {
+            "name": "Delichic Frozen Chicken Keema500 g",
+            "weight": "11 minsDelichic Frozen Chicken Keema500 g₹239 ₹270ADD",
+            "price": "11 minsDelichic Frozen Chicken Keema500 g₹239 ₹270ADD",
+            "oldPrice": "11 minsDelichic Frozen Chicken Keema500 g₹239 ₹270ADD",
+            "offer": "11%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5d402948-e722-4406-9494-5efaefeb1e2e.png"
+          },
+          {
+            "name": "Delichic Frozen Chicken Drumstick500 g",
+            "weight": "11 minsDelichic Frozen Chicken Drumstick500 g₹243 ₹270ADD",
+            "price": "11 minsDelichic Frozen Chicken Drumstick500 g₹243 ₹270ADD",
+            "oldPrice": "11 minsDelichic Frozen Chicken Drumstick500 g₹243 ₹270ADD",
+            "offer": "10%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9cdc6295-3cc2-46a5-9a98-fedb1768a4c1.png"
+          },
+          {
+            "name": "Delichic Frozen Chicken Breast500 g",
+            "weight": "11 minsDelichic Frozen Chicken Breast500 g₹264 ₹280ADD",
+            "price": "11 minsDelichic Frozen Chicken Breast500 g₹264 ₹280ADD",
+            "oldPrice": "11 minsDelichic Frozen Chicken Breast500 g₹264 ₹280ADD",
+            "offer": "5%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c1e14684-2802-4314-924c-9c437aeb1d92.png"
+          },
+          {
+            "name": "Truchicken Chicken Curry Cut (No Backbone)400 g",
+            "weight": "11 minsTruchicken Chicken Curry Cut (No Backbone)400 g₹159 ₹210ADD",
+            "price": "11 minsTruchicken Chicken Curry Cut (No Backbone)400 g₹159 ₹210ADD",
+            "oldPrice": "11 minsTruchicken Chicken Curry Cut (No Backbone)400 g₹159 ₹210ADD",
+            "offer": "24%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b6566431-2751-4394-bf20-ed1a12067cce.png"
+          },
+          {
+            "name": "ChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g",
+            "weight": "11 minsChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g₹169 ₹280ADD",
+            "price": "11 minsChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g₹169 ₹280ADD",
+            "oldPrice": "11 minsChefiGo Chicken Drumstick (Antibiotic Residue Free)500 g₹169 ₹280ADD",
+            "offer": "39%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Licious Chicken Drumstick2 pieces",
+            "weight": "2 pieces",
+            "price": "11 minsLicious Chicken Drumstick2 pieces₹120 ₹135ADD",
+            "oldPrice": "11 minsLicious Chicken Drumstick2 pieces₹120 ₹135ADD",
+            "offer": "11%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Licious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g",
+            "weight": "11 minsLicious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g₹162 ₹179",
+            "price": "11 minsLicious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g₹162 ₹179",
+            "oldPrice": "11 minsLicious Chicken Curry Cut (Large - 7 to 11 Pcs)450 g₹162 ₹179",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Licious Chicken Breast - Boneless400 g",
+            "weight": "11 minsLicious Chicken Breast - Boneless400 g₹295",
+            "price": "11 minsLicious Chicken Breast - Boneless400 g₹295",
+            "oldPrice": "11 minsLicious Chicken Breast - Boneless400 g₹295",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Licious Chicken Curry Cut (Small Pieces)450 g",
+            "weight": "11 minsLicious Chicken Curry Cut (Small Pieces)450 g₹179",
+            "price": "11 minsLicious Chicken Curry Cut (Small Pieces)450 g₹179",
+            "oldPrice": "11 minsLicious Chicken Curry Cut (Small Pieces)450 g₹179",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Licious Boneless Chicken Cubes450 g",
+            "weight": "11 minsLicious Boneless Chicken Cubes450 g₹339",
+            "price": "11 minsLicious Boneless Chicken Cubes450 g₹339",
+            "oldPrice": "11 minsLicious Boneless Chicken Cubes450 g₹339",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "ChefiGo Boneless Cubes Chicken (Tikka Cut)450 g",
+            "weight": "11 minsChefiGo Boneless Cubes Chicken (Tikka Cut)450 g₹247 ₹310",
+            "price": "11 minsChefiGo Boneless Cubes Chicken (Tikka Cut)450 g₹247 ₹310",
+            "oldPrice": "11 minsChefiGo Boneless Cubes Chicken (Tikka Cut)450 g₹247 ₹310",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Delichic Chicken Broth200 g",
+            "weight": "11 minsDelichic Chicken Broth200 g₹182 ₹299",
+            "price": "11 minsDelichic Chicken Broth200 g₹182 ₹299",
+            "oldPrice": "11 minsDelichic Chicken Broth200 g₹182 ₹299",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "ChefiGo Boneless Chicken Thigh500 g",
+            "weight": "11 minsChefiGo Boneless Chicken Thigh500 g₹260",
+            "price": "11 minsChefiGo Boneless Chicken Thigh500 g₹260",
+            "oldPrice": "11 minsChefiGo Boneless Chicken Thigh500 g₹260",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Truchicken Boneless Chicken Breast400 g",
+            "weight": "11 minsTruchicken Boneless Chicken Breast400 g₹215 ₹275",
+            "price": "11 minsTruchicken Boneless Chicken Breast400 g₹215 ₹275",
+            "oldPrice": "11 minsTruchicken Boneless Chicken Breast400 g₹215 ₹275",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Licious Chicken Drumstick - Pack of 6400 g",
+            "weight": "11 minsLicious Chicken Drumstick - Pack of 6400 g₹331 ₹375",
+            "price": "11 minsLicious Chicken Drumstick - Pack of 6400 g₹331 ₹375",
+            "oldPrice": "11 minsLicious Chicken Drumstick - Pack of 6400 g₹331 ₹375",
+            "offer": "",
+            "image": ""
+          },
+          {
+            "name": "Licious Chicken Keema (Mini Pack)250 g",
+            "weight": "11 minsLicious Chicken Keema (Mini Pack)250 g₹195 ₹219",
+            "price": "11 minsLicious Chicken Keema (Mini Pack)250 g₹195 ₹219",
+            "oldPrice": "11 minsLicious Chicken Keema (Mini Pack)250 g₹195 ₹219",
+            "offer": "",
+            "image": ""
+          }
+        ]
+      },
+      {
+        "sub_category_name": "Mutton",
+        "href": "/cn/mutton/cid/4/1363",
+        "products": [
+          {
+            "name": "Delichic Frozen Mutton Curry Cut500 g",
+            "weight": "11 minsDelichic Frozen Mutton Curry Cut500 g₹539 ₹599ADD",
+            "price": "11 minsDelichic Frozen Mutton Curry Cut500 g₹539 ₹599ADD",
+            "oldPrice": "11 minsDelichic Frozen Mutton Curry Cut500 g₹539 ₹599ADD",
+            "offer": "10%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/54485b40-6b39-4de0-a0d7-15200d6539c3.png"
+          },
+          {
+            "name": "Meatzza Frozen Mutton Curry Cut (Antibiotic Free)500 g",
+            "weight": "11 minsMeatzza Frozen Mutton Curry Cut (Antibiotic Free)500 g₹550ADD",
+            "price": "11 minsMeatzza Frozen Mutton Curry Cut (Antibiotic Free)500 g₹550ADD",
+            "oldPrice": "Meatzza Frozen Mutton Curry Cut (Antibiotic Free)500 g₹550ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/a448d2b1-ac73-48a0-9de7-19a4d20c7865.png"
+          },
+          {
+            "name": "Delichic Frozen Mutton Keema (Mince)500 g",
+            "weight": "11 minsDelichic Frozen Mutton Keema (Mince)500 g₹536 ₹599ADD",
+            "price": "11 minsDelichic Frozen Mutton Keema (Mince)500 g₹536 ₹599ADD",
+            "oldPrice": "11 minsDelichic Frozen Mutton Keema (Mince)500 g₹536 ₹599ADD",
+            "offer": "10%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d46fa663-4022-4c55-95e4-58a4e054797c.png"
+          },
+          {
+            "name": "Meatzza Frozen Mutton Keema /Mince (Antibiotic Free)450 g",
+            "weight": "11 minsMeatzza Frozen Mutton Keema /Mince (Antibiotic Free)450 g₹545ADD",
+            "price": "11 minsMeatzza Frozen Mutton Keema /Mince (Antibiotic Free)450 g₹545ADD",
+            "oldPrice": "Meatzza Frozen Mutton Keema /Mince (Antibiotic Free)450 g₹545ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e530f970-f528-4c12-9730-62288eb8313a.png"
+          },
+          {
+            "name": "Allana Mutton Curry Cut500 g",
+            "weight": "11 minsAllana Mutton Curry Cut500 g₹266 ₹630",
+            "price": "11 minsAllana Mutton Curry Cut500 g₹266 ₹630",
+            "oldPrice": "11 minsAllana Mutton Curry Cut500 g₹266 ₹630",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/89b0f2b2-2a37-4793-b291-9c6cfcaf2b82.png"
+          },
+          {
+            "name": "Licious Rich Goat Mutton Curry Cut500 g",
+            "weight": "11 minsLicious Rich Goat Mutton Curry Cut500 g₹589 ₹675",
+            "price": "11 minsLicious Rich Goat Mutton Curry Cut500 g₹589 ₹675",
+            "oldPrice": "11 minsLicious Rich Goat Mutton Curry Cut500 g₹589 ₹675",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8ed22843-af1e-4f1b-8b8a-63caff9a2176.png"
+          },
+          {
+            "name": "ChefiGo Mutton Curry Cut500 g",
+            "weight": "11 minsChefiGo Mutton Curry Cut500 g₹266 ₹625",
+            "price": "11 minsChefiGo Mutton Curry Cut500 g₹266 ₹625",
+            "oldPrice": "11 minsChefiGo Mutton Curry Cut500 g₹266 ₹625",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/bb0c0d57-b57c-4da1-b973-6f3750d52bf3.png"
+          },
+          {
+            "name": "Licious Goat Curry Cut (Mini Pack)300 g",
+            "weight": "11 minsLicious Goat Curry Cut (Mini Pack)300 g₹238 ₹409",
+            "price": "11 minsLicious Goat Curry Cut (Mini Pack)300 g₹238 ₹409",
+            "oldPrice": "11 minsLicious Goat Curry Cut (Mini Pack)300 g₹238 ₹409",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/4e2bfeb9-72c5-43f6-81b8-5a93bbdd06a2.png"
+          },
+          {
+            "name": "FreshToHome Mutton Curry Cut480 g",
+            "weight": "11 minsFreshToHome Mutton Curry Cut480 g₹521 ₹699",
+            "price": "11 minsFreshToHome Mutton Curry Cut480 g₹521 ₹699",
+            "oldPrice": "11 minsFreshToHome Mutton Curry Cut480 g₹521 ₹699",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/72ce89b6-ad5a-4ba2-a2d7-fffa6e53d85e.png"
+          }
+        ]
+      },
+      {
+        "sub_category_name": "Sausage, Salami & Ham",
+        "href": "/cn/sausage-salami-ham/cid/4/1388",
+        "products": [
+          {
+            "name": "Venky's Breakfast Chicken Sausage (Frozen)500 g",
+            "weight": "9 minsVenky's Breakfast Chicken Sausage (Frozen)500 g₹217 ₹257ADD",
+            "price": "9 minsVenky's Breakfast Chicken Sausage (Frozen)500 g₹217 ₹257ADD",
+            "oldPrice": "9 minsVenky's Breakfast Chicken Sausage (Frozen)500 g₹217 ₹257ADD",
+            "offer": "15%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/68e530e6-bae8-4505-8f90-ae5e0e9ca8af.png"
+          },
+          {
+            "name": "Prasuma Chicken Sausage250 g",
+            "weight": "9 minsPrasuma Chicken Sausage250 g₹161 ₹180ADD2 options",
+            "price": "9 minsPrasuma Chicken Sausage250 g₹161 ₹180ADD2 options",
+            "oldPrice": "9 minsPrasuma Chicken Sausage250 g₹161 ₹180ADD2 options",
+            "offer": "10%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/7a54b77c-767e-4c59-bf7e-3fa6b9fef464.png"
+          },
+          {
+            "name": "Godrej Yummiez Pepper & Herb Chicken Sausage (Frozen)250 g",
+            "weight": "9 minsGodrej Yummiez Pepper & Herb Chicken Sausage (Frozen)250 g₹179 ₹199ADD",
+            "price": "9 minsGodrej Yummiez Pepper & Herb Chicken Sausage (Frozen)250 g₹179 ₹199ADD",
+            "oldPrice": "9 minsGodrej Yummiez Pepper & Herb Chicken Sausage (Frozen)250 g₹179 ₹199ADD",
+            "offer": "10%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/cf1a9c1d-0c16-4191-9049-5db58140a740.png"
+          },
+          {
+            "name": "Godrej Yummiez Breakfast Chicken Sausage (Frozen)250 g",
+            "weight": "9 minsGodrej Yummiez Breakfast Chicken Sausage (Frozen)250 g₹169 ₹190ADD",
+            "price": "9 minsGodrej Yummiez Breakfast Chicken Sausage (Frozen)250 g₹169 ₹190ADD",
+            "oldPrice": "9 minsGodrej Yummiez Breakfast Chicken Sausage (Frozen)250 g₹169 ₹190ADD",
+            "offer": "11%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/7a484cfa-559c-46cd-9c26-4fee238e9527.png"
+          },
+          {
+            "name": "La Carne Classic Pork Salami (Frozen)250 g",
+            "weight": "9 minsLa Carne Classic Pork Salami (Frozen)250 g₹255 ₹300ADD",
+            "price": "9 minsLa Carne Classic Pork Salami (Frozen)250 g₹255 ₹300ADD",
+            "oldPrice": "9 minsLa Carne Classic Pork Salami (Frozen)250 g₹255 ₹300ADD",
+            "offer": "15%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8f60befd-5b0b-4611-97af-894f7695ef7a.png"
+          },
+          {
+            "name": "Prasuma Chicken Ham200 g",
+            "weight": "9 minsPrasuma Chicken Ham200 g₹174 ₹185ADD",
+            "price": "9 minsPrasuma Chicken Ham200 g₹174 ₹185ADD",
+            "oldPrice": "9 minsPrasuma Chicken Ham200 g₹174 ₹185ADD",
+            "offer": "5%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/dccea74c-b339-4c63-b6e7-b7d3bb0f3006.png"
+          },
+          {
+            "name": "Prasuma Chicken Chilli Salami200 g",
+            "weight": "9 minsPrasuma Chicken Chilli Salami200 g₹142 ₹175ADD",
+            "price": "9 minsPrasuma Chicken Chilli Salami200 g₹142 ₹175ADD",
+            "oldPrice": "9 minsPrasuma Chicken Chilli Salami200 g₹142 ₹175ADD",
+            "offer": "18%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/72dbe789-b91c-41ef-aff9-674015066ea9.png"
+          },
+          {
+            "name": "Carnivore Plain Sliced Chicken Salami (Frozen)250 g",
+            "weight": "9 minsCarnivore Plain Sliced Chicken Salami (Frozen)250 g₹163 ₹180ADD",
+            "price": "9 minsCarnivore Plain Sliced Chicken Salami (Frozen)250 g₹163 ₹180ADD",
+            "oldPrice": "9 minsCarnivore Plain Sliced Chicken Salami (Frozen)250 g₹163 ₹180ADD",
+            "offer": "9%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/6dda09d3-23c9-4200-bc7a-9f2db0184c72.png"
+          },
+          {
+            "name": "La Carne Pork Premium Bacon250 g",
+            "weight": "9 minsLa Carne Pork Premium Bacon250 g₹350 ₹400ADD",
+            "price": "9 minsLa Carne Pork Premium Bacon250 g₹350 ₹400ADD",
+            "oldPrice": "9 minsLa Carne Pork Premium Bacon250 g₹350 ₹400ADD",
+            "offer": "12%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/7711dde5-0583-4e70-961e-26db525461d0.png"
+          },
+          {
+            "name": "Carnivore Chicken Spicy Salami (Frozen)250 g",
+            "weight": "9 minsCarnivore Chicken Spicy Salami (Frozen)250 g₹163 ₹180ADD",
+            "price": "9 minsCarnivore Chicken Spicy Salami (Frozen)250 g₹163 ₹180ADD",
+            "oldPrice": "9 minsCarnivore Chicken Spicy Salami (Frozen)250 g₹163 ₹180ADD",
+            "offer": "9%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/67b87cca-08e3-44d2-bbd3-bc0984815efb.png"
+          },
+          {
+            "name": "Prasuma Pork Bacon Small Pack150 g",
+            "weight": "9 minsPrasuma Pork Bacon Small Pack150 g₹210ADD",
+            "price": "9 minsPrasuma Pork Bacon Small Pack150 g₹210ADD",
+            "oldPrice": "Prasuma Pork Bacon Small Pack150 g₹210ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/56c9fafa-8ee0-43c2-bca9-0c01a9e4dc59.png"
+          },
+          {
+            "name": "Prasuma Pork Breakfast Bacon300 g",
+            "weight": "9 minsPrasuma Pork Breakfast Bacon300 g₹348 ₹370ADD",
+            "price": "9 minsPrasuma Pork Breakfast Bacon300 g₹348 ₹370ADD",
+            "oldPrice": "9 minsPrasuma Pork Breakfast Bacon300 g₹348 ₹370ADD",
+            "offer": "5%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/be7faf1c-6088-4097-8dbb-de857507d881.png"
+          },
+          {
+            "name": "La Carne Breakfast Chicken Sausage (Frozen)500 g",
+            "weight": "9 minsLa Carne Breakfast Chicken Sausage (Frozen)500 g₹280 ₹340ADD",
+            "price": "9 minsLa Carne Breakfast Chicken Sausage (Frozen)500 g₹280 ₹340ADD",
+            "oldPrice": "9 minsLa Carne Breakfast Chicken Sausage (Frozen)500 g₹280 ₹340ADD",
+            "offer": "17%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/7d365c01-3eb8-4fc3-bc2e-702b848490d0.png"
+          },
+          {
+            "name": "Godrej Yummiez Chicken Breakfast Salami (Frozen)250 g",
+            "weight": "9 minsGodrej Yummiez Chicken Breakfast Salami (Frozen)250 g₹169 ₹190ADD",
+            "price": "9 minsGodrej Yummiez Chicken Breakfast Salami (Frozen)250 g₹169 ₹190ADD",
+            "oldPrice": "9 minsGodrej Yummiez Chicken Breakfast Salami (Frozen)250 g₹169 ₹190ADD",
+            "offer": "11%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/104c2219-cd32-4901-a420-c08669c3488b.png"
+          },
+          {
+            "name": "Godrej Yummiez Chicken Pepper & Herb Salami (Frozen)250 g",
+            "weight": "9 minsGodrej Yummiez Chicken Pepper & Herb Salami (Frozen)250 g₹179 ₹186ADD",
+            "price": "9 minsGodrej Yummiez Chicken Pepper & Herb Salami (Frozen)250 g₹179 ₹186ADD",
+            "oldPrice": "Godrej Yummiez Chicken Pepper & Herb Salami (Frozen)250 g₹179 ₹186ADD",
+            "offer": "",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/cf58c9d0-ad90-4e61-8798-0b321bdc8792.png"
+          },
+          {
+            "name": "Delichic Herbs Chicken Sausage (Frozen)200 g",
+            "weight": "9 minsDelichic Herbs Chicken Sausage (Frozen)200 g₹140 ₹150ADD",
+            "price": "9 minsDelichic Herbs Chicken Sausage (Frozen)200 g₹140 ₹150ADD",
+            "oldPrice": "9 minsDelichic Herbs Chicken Sausage (Frozen)200 g₹140 ₹150ADD",
+            "offer": "6%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/fc1e1bf2-8aeb-4710-8f26-19ad325c13bd.png"
+          },
+          {
+            "name": "Prasuma Pork Pepperoni Salami100 g",
+            "weight": "9 minsPrasuma Pork Pepperoni Salami100 g₹174 ₹185ADD",
+            "price": "9 minsPrasuma Pork Pepperoni Salami100 g₹174 ₹185ADD",
+            "oldPrice": "9 minsPrasuma Pork Pepperoni Salami100 g₹174 ₹185ADD",
+            "offer": "5%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1d3e3f49-2f64-4bdc-8eba-9ef96affa5b7.png"
+          },
+          {
+            "name": "Prasuma Pork Sausage250 g",
+            "weight": "9 minsPrasuma Pork Sausage250 g₹198 ₹235ADD",
+            "price": "9 minsPrasuma Pork Sausage250 g₹198 ₹235ADD",
+            "oldPrice": "9 minsPrasuma Pork Sausage250 g₹198 ₹235ADD",
+            "offer": "15%\nOFF",
+            "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c28ef799-36d9-463a-8fa4-ebf27700f361.png"
+          },
+          {
+            "name": "Prasuma Pork Ham200 g",
+            "weight": "9 minsPrasuma Pork Ham200 g₹231 ₹260ADD",
+            "price": "9 minsPrasuma Pork Ham200 g₹231 ₹260ADD",
+            "oldPrice": "9 minsPrasuma Pork Ham200 g₹231 ₹260ADD",
+            "offer": "11%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Meatzza Chicken Masala Sliced Salami250 g",
+            "weight": "9 minsMeatzza Chicken Masala Sliced Salami250 g₹130 ₹175ADD",
+            "price": "9 minsMeatzza Chicken Masala Sliced Salami250 g₹130 ₹175ADD",
+            "oldPrice": "9 minsMeatzza Chicken Masala Sliced Salami250 g₹130 ₹175ADD",
+            "offer": "25%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Godrej Yummiez Cheese & Onion Chicken Sausage250 g",
+            "weight": "9 minsGodrej Yummiez Cheese & Onion Chicken Sausage250 g₹189 ₹215ADD",
+            "price": "9 minsGodrej Yummiez Cheese & Onion Chicken Sausage250 g₹189 ₹215ADD",
+            "oldPrice": "9 minsGodrej Yummiez Cheese & Onion Chicken Sausage250 g₹189 ₹215ADD",
+            "offer": "12%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Godrej Yummiez Chilli Chicken Sausage (Frozen)250 g",
+            "weight": "9 minsGodrej Yummiez Chilli Chicken Sausage (Frozen)250 g₹159 ₹178ADD",
+            "price": "9 minsGodrej Yummiez Chilli Chicken Sausage (Frozen)250 g₹159 ₹178ADD",
+            "oldPrice": "9 minsGodrej Yummiez Chilli Chicken Sausage (Frozen)250 g₹159 ₹178ADD",
+            "offer": "10%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Carnivore Masala Chicken Sausage250 g",
+            "weight": "9 minsCarnivore Masala Chicken Sausage250 g₹161 ₹190ADD",
+            "price": "9 minsCarnivore Masala Chicken Sausage250 g₹161 ₹190ADD",
+            "oldPrice": "9 minsCarnivore Masala Chicken Sausage250 g₹161 ₹190ADD",
+            "offer": "15%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Carnivore Black Pepper Chicken Salami (Frozen)250 g",
+            "weight": "9 minsCarnivore Black Pepper Chicken Salami (Frozen)250 g₹161 ₹190ADD",
+            "price": "9 minsCarnivore Black Pepper Chicken Salami (Frozen)250 g₹161 ₹190ADD",
+            "oldPrice": "9 minsCarnivore Black Pepper Chicken Salami (Frozen)250 g₹161 ₹190ADD",
+            "offer": "15%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Meatzza Cheese Onion Chicken Sausage200 g",
+            "weight": "9 minsMeatzza Cheese Onion Chicken Sausage200 g₹160 ₹210ADD",
+            "price": "9 minsMeatzza Cheese Onion Chicken Sausage200 g₹160 ₹210ADD",
+            "oldPrice": "9 minsMeatzza Cheese Onion Chicken Sausage200 g₹160 ₹210ADD",
+            "offer": "23%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Godrej Yummiez Cheese Cocktail Chicken Sausage - Buy 1 Get 1400 g (200 g + 200 g)",
+            "weight": "9 minsGodrej Yummiez Cheese Cocktail Chicken Sausage - Buy 1 Get 1400 g (200 g + 200 g)₹199 ₹234ADD",
+            "price": "9 minsGodrej Yummiez Cheese Cocktail Chicken Sausage - Buy 1 Get 1400 g (200 g + 200 g)₹199 ₹234ADD",
+            "oldPrice": "9 minsGodrej Yummiez Cheese Cocktail Chicken Sausage - Buy 1 Get 1400 g (200 g + 200 g)₹199 ₹234ADD",
+            "offer": "14%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Keventer Italian Chicken Sausage500 g",
+            "weight": "9 minsKeventer Italian Chicken Sausage500 g₹288 ₹360ADD",
+            "price": "9 minsKeventer Italian Chicken Sausage500 g₹288 ₹360ADD",
+            "oldPrice": "9 minsKeventer Italian Chicken Sausage500 g₹288 ₹360ADD",
+            "offer": "20%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Sardar Chicken Sausage / Frankfurter250 g",
+            "weight": "9 minsSardar Chicken Sausage / Frankfurter250 g₹175 ₹190ADD",
+            "price": "9 minsSardar Chicken Sausage / Frankfurter250 g₹175 ₹190ADD",
+            "oldPrice": "9 minsSardar Chicken Sausage / Frankfurter250 g₹175 ₹190ADD",
+            "offer": "7%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Delichic Spicy Chicken Salami (Frozen)250 g",
+            "weight": "9 minsDelichic Spicy Chicken Salami (Frozen)250 g₹146 ₹190ADD",
+            "price": "9 minsDelichic Spicy Chicken Salami (Frozen)250 g₹146 ₹190ADD",
+            "oldPrice": "9 minsDelichic Spicy Chicken Salami (Frozen)250 g₹146 ₹190ADD",
+            "offer": "23%\nOFF",
+            "image": ""
+          },
+          {
+            "name": "Sardar Chicken Sausage250 g",
+            "weight": "9 minsSardar Chicken Sausage250 g₹175 ₹190ADD",
+            "price": "9 minsSardar Chicken Sausage250 g₹175 ₹190ADD",
+            "oldPrice": "9 minsSardar Chicken Sausage250 g₹175 ₹190ADD",
+            "offer": "7%\nOFF",
+            "image": ""
+          }
+        ]
+      }
+    ]
+  }
+]

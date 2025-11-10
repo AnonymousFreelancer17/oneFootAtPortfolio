@@ -21,6 +21,7 @@
     "out-tsc",
     "dist",
     "jest.config.ts",
+    "data",
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
   ],
