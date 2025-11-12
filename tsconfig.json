@@ -32,7 +32,7 @@
       "path": "./apps/ecommerce"
     },
     {
-      "path": "./puppeteer-utils"
+      "path": "./lib/puppeteer-utils"
     }
   ]
 }

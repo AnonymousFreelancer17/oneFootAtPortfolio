@@ -12,7 +12,7 @@ router.get("/limeroad", async (req: Request, res: Response) => {
     const data = await scrapeLimeroadWithSession();
 
     // Save data to JSON file
-    const outputPath = path.join(__dirname, "../../data/limeroad_data.json");
+    const outputPath = path.join(__dirname, "../data/limeroad_data.json");
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
 

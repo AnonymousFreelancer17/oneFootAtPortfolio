@@ -1,4 +1,4 @@
-import { rotateSession } from "../../../../puppeteer-utils/src/index";
+import { rotateSession } from "../../../../lib/puppeteer-utils/src/index";
 import path from "path";
 import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";
@@ -7,12 +7,12 @@ import pLimit from "p-limit";
 
 const BASE_URL = `https://blinkit.com`;
 
-const CACHE_PATH = path.join(
+const CACHE_BLINKIT_CATEGORIES_PATH = path.join(
   process.cwd(),
   "apps/scrapper-service/data/blinkit_categories.json"
 );
 
-const CACHE_PRODUCTS_PATH = path.join(
+const CACHE_BLINKIT_PRODUCTS_PATH = path.join(
   process.cwd(),
   "apps/scrapper-service/data/blinkit_products.json"
 );
@@ -91,8 +91,8 @@ export async function scrapeCategories(page: any) {
     return { results };
   });
 
-  await SafeWriteJSON(CACHE_PATH, results);
-  console.log(`💾 Data cached successfully at: ${CACHE_PATH}`);
+  await SafeWriteJSON(CACHE_BLINKIT_CATEGORIES_PATH, results);
+  console.log(`💾 Data cached successfully at: ${CACHE_BLINKIT_CATEGORIES_PATH}`);
   console.log(`✅ Extracted ${results.length} categories`);
   return results;
 }
@@ -202,8 +202,8 @@ export async function scrapeProductsFromSubCategories(
     }
   }
 
-  await SafeWriteJSON(CACHE_PRODUCTS_PATH, categories);
-  console.log(`💾 Product data cached successfully at: ${CACHE_PRODUCTS_PATH}`);
+  await SafeWriteJSON(CACHE_BLINKIT_PRODUCTS_PATH, categories);
+  console.log(`💾 Product data cached successfully at: ${CACHE_BLINKIT_PRODUCTS_PATH}`);
 
   return categories;
 }
@@ -216,9 +216,9 @@ export async function scrapeBlinkitProductsWithSession() {
   let categories;
 
   // ✅ 1️⃣ Use cache if available
-  if (fs.existsSync(CACHE_PATH)) {
+  if (fs.existsSync(CACHE_BLINKIT_CATEGORIES_PATH)) {
     console.log("📂 Using cached categories data...");
-    const data = fs.readFileSync(CACHE_PATH, "utf-8");
+    const data = fs.readFileSync(CACHE_BLINKIT_CATEGORIES_PATH, "utf-8");
     categories = JSON.parse(data);
   } else {
     console.log("🌐 No cache found. Scraping categories from Blinkit...");
@@ -256,8 +256,8 @@ export async function scrapeBlinkitProductsWithSession() {
 
   // ✅ 4️⃣ After ALL sub-categories and categories are done, write once
   if (allCategoryResults.length > 0) {
-    await SafeWriteJSON(CACHE_PRODUCTS_PATH, allCategoryResults);
-    console.log(`💾 Product data cached successfully at: ${CACHE_PRODUCTS_PATH}`);
+    await SafeWriteJSON(CACHE_BLINKIT_PRODUCTS_PATH, allCategoryResults);
+    console.log(`💾 Product data cached successfully at: ${CACHE_BLINKIT_PRODUCTS_PATH}`);
   } else {
     console.warn("⚠️ No successful categories to cache.");
   }

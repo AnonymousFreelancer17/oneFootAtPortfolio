@@ -25,9 +25,5 @@
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
   ],
-  "references": [
-    {
-      "path": "../../puppeteer-utils/tsconfig.lib.json"
-    }
-  ]
+  "references": []
 }
