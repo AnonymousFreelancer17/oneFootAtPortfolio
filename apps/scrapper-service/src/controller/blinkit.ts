@@ -14,7 +14,7 @@ const CACHE_BLINKIT_CATEGORIES_PATH = path.join(
 
 const CACHE_BLINKIT_PRODUCTS_PATH = path.join(
   process.cwd(),
-  "apps/scrapper-service/data/blinkit_products.json"
+  "apps/scrapper-service/tmp_cache/blinkit_products.json"
 );
 
 
@@ -215,52 +215,41 @@ export async function scrapeBlinkitCategoryWithSession() {
 export async function scrapeBlinkitProductsWithSession() {
   let categories;
 
-  // ✅ 1️⃣ Use cache if available
   if (fs.existsSync(CACHE_BLINKIT_CATEGORIES_PATH)) {
     console.log("📂 Using cached categories data...");
-    const data = fs.readFileSync(CACHE_BLINKIT_CATEGORIES_PATH, "utf-8");
-    categories = JSON.parse(data);
+    categories = JSON.parse(fs.readFileSync(CACHE_BLINKIT_CATEGORIES_PATH, "utf-8"));
   } else {
     console.log("🌐 No cache found. Scraping categories from Blinkit...");
     const categoriesResult = await rotateSession(scrapeCategories);
     categories = categoriesResult?.results || categoriesResult;
   }
 
-  // ✅ 2️⃣ Limit concurrency to avoid bans (e.g., 3 parallel sessions)
   const limit = pLimit(3);
-
-  // ✅ 3️⃣ Store all category results in memory
   const allCategoryResults: any[] = [];
 
-  const categoryPromises = categories.map((category: any) =>
-    limit(async () => {
-      console.log(`⚙️ Starting scrape for category: ${category.category_name}`);
-      try {
-        const result = await rotateSession(async (page: any) => {
-          return await scrapeProductsFromSubCategories(page, [category]);
-        });
-
-        if (Array.isArray(result) && result.length > 0) {
-          allCategoryResults.push(result[0]);
-          console.log(`✅ Finished category: ${category.category_name}`);
-        } else {
-          console.warn(`⚠️ No products found for category: ${category.category_name}`);
+  await Promise.all(
+    categories.map((category: any) =>
+      limit(async () => {
+        console.log(`⚙️ Starting scrape for category: ${category.category_name}`);
+        try {
+          const result = await rotateSession(async (page: any) => {
+            return await scrapeProductsFromSubCategories(page, [category]);
+          });
+          if (Array.isArray(result) && result.length > 0) {
+            allCategoryResults.push(result[0]);
+            console.log(`✅ Finished category: ${category.category_name}`);
+          }
+        } catch (err: any) {
+          console.error(`❌ Failed category: ${category.category_name}:`, err.message);
         }
-      } catch (err:any) {
-        console.error(`❌ Failed category: ${category.category_name}:`, err.message);
-      }
-    })
+      })
+    )
   );
 
-  await Promise.allSettled(categoryPromises);
-
-  // ✅ 4️⃣ After ALL sub-categories and categories are done, write once
-  if (allCategoryResults.length > 0) {
-    await SafeWriteJSON(CACHE_BLINKIT_PRODUCTS_PATH, allCategoryResults);
-    console.log(`💾 Product data cached successfully at: ${CACHE_BLINKIT_PRODUCTS_PATH}`);
-  } else {
-    console.warn("⚠️ No successful categories to cache.");
-  }
+  // ✅ Only write ONCE after all categories complete
+  await SafeWriteJSON(CACHE_BLINKIT_PRODUCTS_PATH, allCategoryResults);
+  console.log(`💾 Final product data cached successfully at: ${CACHE_BLINKIT_PRODUCTS_PATH}`);
 
   return allCategoryResults;
 }
+ 
