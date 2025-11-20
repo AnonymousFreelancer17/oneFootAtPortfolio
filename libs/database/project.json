@@ -1,0 +1,26 @@
+{
+  "name": "database",
+  "targets": {
+    "prisma-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "prisma generate --schema=libs/database/prisma/auth.schema.prisma",
+          "prisma generate --schema=libs/database/prisma/scrapper.schema.prisma"
+        ]
+      }
+    },
+    "prisma-push-auth": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma db push --schema=libs/database/prisma/auth.schema.prisma"
+      }
+    },
+    "prisma-push-scrapper": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma db push --schema=libs/database/prisma/scrapper.schema.prisma"
+      }
+    }
+  }
+}

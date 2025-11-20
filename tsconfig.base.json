@@ -18,8 +18,10 @@
     "target": "es2022",
     "customConditions": ["@one-foot-at-portfolio/source"],
     "paths" : {
-      "@puppeteer" : ["./lib/puppeteer-utils/src/index.ts"],
-      "@puppeteer/*" : ["./lib/puppeteer-utils/src/*"]
+      "@puppeteer" : ["./libs/puppeteer-utils/src/index.ts"],
+      "@puppeteer/*" : ["./libs/puppeteer-utils/src/*"],
+      "@database": ["libs/database/src/index.ts"],
+      "@database/*": ["libs/database/src/*"]
     }
   }
 }

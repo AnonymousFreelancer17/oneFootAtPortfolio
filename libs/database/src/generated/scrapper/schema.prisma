@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/scrapper"
+}
+
+datasource db {
+  provider = "mongodb"
+}
+
+model ScrappedItem {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  url   String
+}

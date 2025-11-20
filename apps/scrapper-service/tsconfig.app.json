@@ -27,7 +27,7 @@
   ],
   "references": [
     {
-      "path": "../../lib/puppeteer-utils"
+      "path": "../../libs/puppeteer-utils"
     }
   ]
 }

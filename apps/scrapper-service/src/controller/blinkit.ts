@@ -1,4 +1,4 @@
-import { rotateSession } from "../../../../lib/puppeteer-utils/src/index";
+import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
 import path from "path";
 import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";

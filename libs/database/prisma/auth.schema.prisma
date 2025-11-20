@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/auth"
+}
+
+datasource db {
+  provider = "mongodb"
+}
+
+model User {
+  id    String @db.ObjectId @id @default(auto()) @map("_id")
+  email String @unique
+  name  String?
+}
