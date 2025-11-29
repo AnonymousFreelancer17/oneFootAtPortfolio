@@ -5,6 +5,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
+  url      = env("SCRAPPER_DATABASE_URL")
 }
 
 model ScrappedItem {

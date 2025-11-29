@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/client.js';
+import * as runtime from './runtime/library.js';
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -21,7 +21,7 @@ export type ScrappedItem = $Result.DefaultSelection<Prisma.$ScrappedItemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -30,19 +30,19 @@ export type ScrappedItem = $Result.DefaultSelection<Prisma.$ScrappedItemPayload>
  * const scrappedItems = await prisma.scrappedItem.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
     /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -51,12 +51,12 @@ export class PrismaClient<
    * const scrappedItems = await prisma.scrappedItem.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
    * Connect with the database
@@ -67,6 +67,13 @@ export class PrismaClient<
    * Disconnect from the database
    */
   $disconnect(): $Utils.JsPromise<void>;
+
+  /**
+   * Add a middleware
+   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
+   * @see https://pris.ly/d/extensions
+   */
+  $use(cb: Prisma.Middleware): void
 
 /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -99,9 +106,8 @@ export class PrismaClient<
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $runCommandRaw(command: Prisma.InputJsonObject): Prisma.PrismaPromise<Prisma.JsonObject>
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.scrappedItem`: Exposes CRUD operations for the **ScrappedItem** model.
@@ -111,7 +117,7 @@ export class PrismaClient<
     * const scrappedItems = await prisma.scrappedItem.findMany()
     * ```
     */
-  get scrappedItem(): Prisma.ScrappedItemDelegate<ExtArgs, ClientOptions>;
+  get scrappedItem(): Prisma.ScrappedItemDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -132,6 +138,7 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
+  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -152,6 +159,14 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
+   * Metrics 
+   */
+  export type Metrics = runtime.Metrics
+  export type Metric<T> = runtime.Metric<T>
+  export type MetricHistogram = runtime.MetricHistogram
+  export type MetricHistogramBucket = runtime.MetricHistogramBucket
+
+  /**
   * Extensions
   */
   export import Extension = $Extensions.UserArgs
@@ -162,22 +177,20 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 7.0.0
-   * Query Engine version: 0c19ccc313cf9911a90d99d2ac2eb0280c76c513
+   * Prisma Client JS version: 5.22.0
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
-    engine: string
   }
 
-  export const prismaVersion: PrismaVersion
+  export const prismaVersion: PrismaVersion 
 
   /**
    * Utility Types
    */
 
 
-  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -187,15 +200,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -205,9 +218,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -217,9 +230,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -230,21 +243,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -432,7 +445,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -552,15 +565,15 @@ export namespace Prisma {
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
 
 
-
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  export type Datasources = {
+    db?: Datasource
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
-    globalOmitOptions: {
-      omit: GlobalOmitOptions
-    }
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
+  }
+
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
       modelProps: "scrappedItem"
       txIsolationLevel: never
@@ -657,30 +670,30 @@ export namespace Prisma {
   export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
   export interface PrismaClientOptions {
     /**
+     * Overwrites the datasource url from your schema.prisma file
+     */
+    datasources?: Datasources
+    /**
+     * Overwrites the datasource url from your schema.prisma file
+     */
+    datasourceUrl?: string
+    /**
      * @default "colorless"
      */
     errorFormat?: ErrorFormat
     /**
      * @example
      * ```
-     * // Shorthand for `emit: 'stdout'`
+     * // Defaults to stdout
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events only
+     * // Emit as events
      * log: [
-     *   { emit: 'event', level: 'query' },
-     *   { emit: 'event', level: 'info' },
-     *   { emit: 'event', level: 'warn' }
-     *   { emit: 'event', level: 'error' }
+     *   { emit: 'stdout', level: 'query' },
+     *   { emit: 'stdout', level: 'info' },
+     *   { emit: 'stdout', level: 'warn' }
+     *   { emit: 'stdout', level: 'error' }
      * ]
-     * 
-     * / Emit as events and log to stdout
-     * og: [
-     *  { emit: 'stdout', level: 'query' },
-     *  { emit: 'stdout', level: 'info' },
-     *  { emit: 'stdout', level: 'warn' }
-     *  { emit: 'stdout', level: 'error' }
-     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -694,29 +707,8 @@ export namespace Prisma {
       maxWait?: number
       timeout?: number
     }
-    /**
-     * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
-     */
-    accelerateUrl?: string
-    /**
-     * Global configuration for omitting model fields by default.
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   omit: {
-     *     user: {
-     *       password: true
-     *     }
-     *   }
-     * })
-     * ```
-     */
-    omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {
-    scrappedItem?: ScrappedItemOmit
-  }
+
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -725,15 +717,10 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
-
-  export type GetLogType<T> = CheckIsLogLevel<
-    T extends LogDefinition ? T['level'] : T
-  >;
-
-  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
-    ? GetLogType<T[number]>
-    : never;
+  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
+  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
+    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
+    : never
 
   export type QueryEvent = {
     timestamp: Date
@@ -762,7 +749,6 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
-    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -773,6 +759,25 @@ export namespace Prisma {
     | 'runCommandRaw'
     | 'findRaw'
     | 'groupBy'
+
+  /**
+   * These options are being passed into the middleware as "params"
+   */
+  export type MiddlewareParams = {
+    model?: ModelName
+    action: PrismaAction
+    args: any
+    dataPath: string[]
+    runInTransaction: boolean
+  }
+
+  /**
+   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
+   */
+  export type Middleware<T = any> = (
+    params: MiddlewareParams,
+    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
+  ) => $Utils.JsPromise<T>
 
   // tested in getLogLevel.test.ts
   export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
@@ -947,14 +952,12 @@ export namespace Prisma {
   }, ExtArgs["result"]["scrappedItem"]>
 
 
-
   export type ScrappedItemSelectScalar = {
     id?: boolean
     title?: boolean
     url?: boolean
   }
 
-  export type ScrappedItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url", ExtArgs["result"]["scrappedItem"]>
 
   export type $ScrappedItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ScrappedItem"
@@ -969,12 +972,12 @@ export namespace Prisma {
 
   type ScrappedItemGetPayload<S extends boolean | null | undefined | ScrappedItemDefaultArgs> = $Result.GetResult<Prisma.$ScrappedItemPayload, S>
 
-  type ScrappedItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ScrappedItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type ScrappedItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ScrappedItemFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: ScrappedItemCountAggregateInputType | true
     }
 
-  export interface ScrappedItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface ScrappedItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ScrappedItem'], meta: { name: 'ScrappedItem' } }
     /**
      * Find zero or one ScrappedItem that matches the filter.
@@ -987,10 +990,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends ScrappedItemFindUniqueArgs>(args: SelectSubset<T, ScrappedItemFindUniqueArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ScrappedItemFindUniqueArgs>(args: SelectSubset<T, ScrappedItemFindUniqueArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one ScrappedItem that matches the filter or throw an error with `error.code='P2025'`
+     * Find one ScrappedItem that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {ScrappedItemFindUniqueOrThrowArgs} args - Arguments to find a ScrappedItem
      * @example
@@ -1001,7 +1004,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ScrappedItemFindUniqueOrThrowArgs>(args: SelectSubset<T, ScrappedItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ScrappedItemFindUniqueOrThrowArgs>(args: SelectSubset<T, ScrappedItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first ScrappedItem that matches the filter.
@@ -1016,7 +1019,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends ScrappedItemFindFirstArgs>(args?: SelectSubset<T, ScrappedItemFindFirstArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ScrappedItemFindFirstArgs>(args?: SelectSubset<T, ScrappedItemFindFirstArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first ScrappedItem that matches the filter or
@@ -1032,7 +1035,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends ScrappedItemFindFirstOrThrowArgs>(args?: SelectSubset<T, ScrappedItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ScrappedItemFindFirstOrThrowArgs>(args?: SelectSubset<T, ScrappedItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more ScrappedItems that matches the filter.
@@ -1050,7 +1053,7 @@ export namespace Prisma {
      * const scrappedItemWithIdOnly = await prisma.scrappedItem.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ScrappedItemFindManyArgs>(args?: SelectSubset<T, ScrappedItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ScrappedItemFindManyArgs>(args?: SelectSubset<T, ScrappedItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a ScrappedItem.
@@ -1064,7 +1067,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends ScrappedItemCreateArgs>(args: SelectSubset<T, ScrappedItemCreateArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ScrappedItemCreateArgs>(args: SelectSubset<T, ScrappedItemCreateArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many ScrappedItems.
@@ -1092,7 +1095,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends ScrappedItemDeleteArgs>(args: SelectSubset<T, ScrappedItemDeleteArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ScrappedItemDeleteArgs>(args: SelectSubset<T, ScrappedItemDeleteArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one ScrappedItem.
@@ -1109,7 +1112,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ScrappedItemUpdateArgs>(args: SelectSubset<T, ScrappedItemUpdateArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ScrappedItemUpdateArgs>(args: SelectSubset<T, ScrappedItemUpdateArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more ScrappedItems.
@@ -1161,14 +1164,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends ScrappedItemUpsertArgs>(args: SelectSubset<T, ScrappedItemUpsertArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ScrappedItemUpsertArgs>(args: SelectSubset<T, ScrappedItemUpsertArgs<ExtArgs>>): Prisma__ScrappedItemClient<$Result.GetResult<Prisma.$ScrappedItemPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
     /**
      * Find zero or more ScrappedItems that matches the filter.
      * @param {ScrappedItemFindRawArgs} args - Select which filters you would like to apply.
      * @example
      * const scrappedItem = await prisma.scrappedItem.findRaw({
-     *   filter: { age: { $gt: 25 } }
+     *   filter: { age: { $gt: 25 } } 
      * })
      */
     findRaw(args?: ScrappedItemFindRawArgs): Prisma.PrismaPromise<JsonObject>
@@ -1324,7 +1327,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ScrappedItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ScrappedItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1353,7 +1356,7 @@ export namespace Prisma {
 
   /**
    * Fields of the ScrappedItem model
-   */
+   */ 
   interface ScrappedItemFieldRefs {
     readonly id: FieldRef<"ScrappedItem", 'String'>
     readonly title: FieldRef<"ScrappedItem", 'String'>
@@ -1371,10 +1374,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * Filter, which ScrappedItem to fetch.
      */
     where: ScrappedItemWhereUniqueInput
@@ -1389,10 +1388,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * Filter, which ScrappedItem to fetch.
      */
     where: ScrappedItemWhereUniqueInput
@@ -1406,10 +1401,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ScrappedItem
      */
     select?: ScrappedItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
     /**
      * Filter, which ScrappedItem to fetch.
      */
@@ -1455,10 +1446,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * Filter, which ScrappedItem to fetch.
      */
     where?: ScrappedItemWhereInput
@@ -1503,10 +1490,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * Filter, which ScrappedItems to fetch.
      */
     where?: ScrappedItemWhereInput
@@ -1546,10 +1529,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * The data needed to create a ScrappedItem.
      */
     data: XOR<ScrappedItemCreateInput, ScrappedItemUncheckedCreateInput>
@@ -1574,10 +1553,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * The data needed to update a ScrappedItem.
      */
     data: XOR<ScrappedItemUpdateInput, ScrappedItemUncheckedUpdateInput>
@@ -1599,10 +1574,6 @@ export namespace Prisma {
      * Filter which ScrappedItems to update
      */
     where?: ScrappedItemWhereInput
-    /**
-     * Limit how many ScrappedItems to update.
-     */
-    limit?: number
   }
 
   /**
@@ -1613,10 +1584,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ScrappedItem
      */
     select?: ScrappedItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
     /**
      * The filter to search for the ScrappedItem to update in case it exists.
      */
@@ -1640,10 +1607,6 @@ export namespace Prisma {
      */
     select?: ScrappedItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
-    /**
      * Filter which ScrappedItem to delete.
      */
     where: ScrappedItemWhereUniqueInput
@@ -1657,10 +1620,6 @@ export namespace Prisma {
      * Filter which ScrappedItems to delete
      */
     where?: ScrappedItemWhereInput
-    /**
-     * Limit how many ScrappedItems to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -1699,10 +1658,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ScrappedItem
      */
     select?: ScrappedItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrappedItem
-     */
-    omit?: ScrappedItemOmit<ExtArgs> | null
   }
 
 
@@ -1736,7 +1691,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
@@ -1949,6 +1904,14 @@ export namespace Prisma {
   }
 
 
+
+  /**
+   * Aliases for legacy arg types
+   */
+    /**
+     * @deprecated Use ScrappedItemDefaultArgs instead
+     */
+    export type ScrappedItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ScrappedItemDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

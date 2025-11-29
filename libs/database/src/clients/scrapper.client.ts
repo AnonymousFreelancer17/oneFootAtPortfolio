@@ -1,11 +1,13 @@
-import { PrismaClient as ScrapperClient } from '../generated/scrapper';
+import { PrismaClient } from "../generated/scrapper";
 
-const globalForScrapper = global as unknown as { scrapperDb: ScrapperClient };
+let prisma: PrismaClient;
 
-export const scrapperDb =
-  globalForScrapper.scrapperDb ??
-  new ScrapperClient({
-    datasourceUrl: process.env.SCRAPPER_DATABASE_URL,
-  });
+declare const global: any;
 
-if (process.env.NODE_ENV !== 'production') globalForScrapper.scrapperDb = scrapperDb;
+if (!global.__scrapper_prisma__) {
+  global.__scrapper_prisma__ = new PrismaClient();
+}
+
+prisma = global.__scrapper_prisma__;
+
+export const scrapperDb = prisma;

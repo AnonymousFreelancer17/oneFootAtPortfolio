@@ -16,12 +16,14 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@one-foot-at-portfolio/source"],
-    "paths" : {
-      "@puppeteer" : ["./libs/puppeteer-utils/src/index.ts"],
-      "@puppeteer/*" : ["./libs/puppeteer-utils/src/*"],
-      "@database": ["libs/database/src/index.ts"],
-      "@database/*": ["libs/database/src/*"]
+    "baseUrl": ".",
+    "paths": {
+      "@puppeteer": ["libs/puppeteer-utils/src/index.ts"],
+      "@puppeteer/*": ["libs/puppeteer-utils/src/*"],
+      "@oneFootAtPortfolio/database": ["libs/database/src"],
+      "@oneFootAtPortfolio/database/*": ["libs/database/src/*"],
+      "@oneFootAtPortfolio/error_handler": ["./libs/error_handler/src"],
+      "@oneFootAtPortfolio/error_handler/*": ["libs/error_handler/src/*"]
     }
   }
 }

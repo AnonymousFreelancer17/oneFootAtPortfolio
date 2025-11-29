@@ -1,11 +1,13 @@
-import { PrismaClient as AuthClient } from '../generated/auth';
+import { PrismaClient } from "../generated/auth";
 
-const globalForAuth = global as unknown as { authDb: AuthClient };
+let prisma: PrismaClient;
 
-export const authDb =
-  globalForAuth.authDb ??
-  new AuthClient({
-    datasourceUrl: process.env.AUTH_DATABASE_URL,
-  });
+declare const global: any;
 
-if (process.env.NODE_ENV !== 'production') globalForAuth.authDb = authDb;
+if (!global.__auth_prisma__) {
+  global.__auth_prisma__ = new PrismaClient();
+}
+
+prisma = global.__auth_prisma__;
+
+export const authDb = prisma;

@@ -2,7 +2,8 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "ignoreDeprecations" : "6.0"
   },
   "files": [],
   "references": [
@@ -34,10 +35,10 @@
       "path": "./libs/puppeteer-utils"
     },
     {
-      "path": "./libs"
+      "path": "./libs/error_handler"
     },
     {
-      "path": "./libs"
+      "path": "./libs/database"
     }
   ]
 }
