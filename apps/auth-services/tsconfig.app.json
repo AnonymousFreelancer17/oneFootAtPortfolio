@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "rootDir": "../../", // <-- Add this line to set the root directory to the monorepo root
+    "rootDir": "../../",
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,

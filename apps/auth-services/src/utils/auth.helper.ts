@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
-import { ValidationError } from '@oneFootAtPortfolio/error-handler';
-// import { redis } from '../../../../packages/libs/redis';
+import { ValidationError } from '../../../../libs/error_handler/src/index';
+import { redis } from '../../../../libs/database/src/index';
 import { sendEmail } from '../utils/sendMail';
 import { NextFunction } from 'express';
 

@@ -1,10 +1,16 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response , NextFunction } from "express";
 import { scrapeLimeroadWithSession } from "../controller/scrapeLimeroad";
 import fs from "fs";
 import path from "path";
 import { scrapeBlinkitCategoryWithSession, scrapeBlinkitProductsWithSession } from "../controller/blinkit";
-
+ 
 const router = express.Router();
+
+router.get('/',(req:Request ,res: Response,next:NextFunction)=>{
+  res.status(200).send(
+    "Hello from scrapper services"
+  )
+})
 
 router.get("/limeroad", async (req: Request, res: Response) => {
   try {

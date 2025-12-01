@@ -20,10 +20,10 @@
     "paths": {
       "@puppeteer": ["libs/puppeteer-utils/src/index.ts"],
       "@puppeteer/*": ["libs/puppeteer-utils/src/*"],
-      "@oneFootAtPortfolio/database": ["libs/database/src"],
-      "@oneFootAtPortfolio/database/*": ["libs/database/src/*"],
-      "@oneFootAtPortfolio/error_handler": ["./libs/error_handler/src"],
-      "@oneFootAtPortfolio/error_handler/*": ["libs/error_handler/src/*"]
+      "@one-foot-at-portfolio/database": ["libs/database/src"],
+      "@one-foot-at-portfolio/database/*": ["libs/database/src/*"],
+      "@one-foot-at-portfolio/error_handler": ["libs/error_handler/src"],
+      "@one-foot-at-portfolio/error_handler/*": ["libs/error_handler/src/*"]
     }
   }
 }

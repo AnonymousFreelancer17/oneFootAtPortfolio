@@ -6,8 +6,8 @@ import {
   validateRegistrationData,
   verifyOtp as verifyOtpHelper,
 } from '../utils/auth.helper';
-import { authDb as prisma } from '@oneFootAtPortfolio/database/clients/auth.client';
-import { redis } from '@oneFootAtPortfolio/database/clients/redis.client'
+import { authDb as prisma } from '../../../../libs/database/src/index';
+import { redis } from '../../../../libs/database/src/index'
 import {ValidationError} from '../../../../libs/error_handler';
 import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';

@@ -43,6 +43,6 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+  console.log(`Listening at API_GATEWAY_SERVER - http://localhost:${port}/api`);
 });
 server.on('error', console.error);
