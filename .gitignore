@@ -54,3 +54,6 @@ test-output
 .next
 out
 /generated/prisma
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
