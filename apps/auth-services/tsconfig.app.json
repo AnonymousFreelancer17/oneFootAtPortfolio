@@ -19,9 +19,6 @@
   "exclude": ["**/*.spec.ts"],
   "references": [
     {
-      "path": "../../libs/error_handler/tsconfig.lib.json"
-    },
-    {
       "path": "../../libs/database/tsconfig.lib.json"
     }
   ]

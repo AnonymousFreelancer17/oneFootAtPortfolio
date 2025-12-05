@@ -9,10 +9,16 @@ datasource db {
 }
 
 model Users {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  email      String  @unique
-  name       String?
-  password   String?
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  service String?
+
+  email  String? @unique
+  mobile String? @unique
+
+  name     String?
+  password String?
+
   isVerified Boolean @default(false)
 
   authProvider String?

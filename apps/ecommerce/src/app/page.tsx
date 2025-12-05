@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Index() {
   const [data, setData] = useState<any[]>([]);
@@ -13,7 +14,7 @@ export default function Index() {
       try {
         // Use http instead of https for localhost
         const response = await axios.get(
-          "http://localhost:8000/api/blinkit-products"
+          "http://localhost:8000/scrapper/limeroad"
         );
 
         console.log(response.data.data);
@@ -43,44 +44,24 @@ export default function Index() {
     );
 
   return (
-    <div className="w-screen h-auto flex justify-center items-center">
-      {data.map((d, index) => {
-        return (
-          <div
-            key={index}
-            className="w-10/12 flex justify-center items-center"
-          >
-            <div>
-              <h2 className="text-black font-bold text-xl">
-                {d.category_name}
-              </h2>
-            </div>
+    <div className="w-screen min-h-screen flex flex-wrap gap-6 p-10 justify-center bg-gray-100 dark:bg-black">
+      {data?.map((item, index) => (
+        <Link
+          href = {item.hrefs[0] || ""}
+          key={index}
+          className="w-56 bg-white dark:bg-gray-700 shadow-md rounded-2xl p-4 flex flex-col items-center"
+        >
+          <img
+            src={item.images[1] || item.images[0] }
+            alt={item.name || "product"}
+            className="w-full h-56 object-cover rounded-lg"
+          />
 
-            <div className="w-full flex justify-center items-center gap-2">
-              {d.subCategories.map((item: any, idx: any) => {
-                return (
-                  <div className="flex justify-center items-center bg-white shadow-lg" key={idx}>
-                    <h2 className="text-lg font-medium text-gray-600">
-                      {item.sub_category_name}
-                    </h2>
-
-                    <div className="">
-                      {item.products?.map((products: any, id: any) => {
-                        return <div className="bg-white shadow-lg" key={id}>
-                          <h2 className="font-medium text-blue-500">
-                            {products.name}
-                          </h2>
-                          <img src={products.image} alt="" />
-                        </div>;
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="mt-3 text-center">
+            <h3 className="font-semibold">{item.brand || "Unknown Brand"}</h3>
           </div>
-        );
-      })}
+        </Link>
+      ))}
     </div>
   );
 }

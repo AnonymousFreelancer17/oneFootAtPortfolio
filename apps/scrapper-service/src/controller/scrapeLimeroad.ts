@@ -5,10 +5,11 @@ import path from "path";
 import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";
 import FilterUniqueElements from "../lib/FilteringUniqueElements";
+import removeGenderPopup from "../lib/AutoKillPopups";
 
 const CACHE_PATH = path.join(
   process.cwd(),
-  "apps/scrapper-service/data/limeroad_raw.json"
+  "apps/scrapper-service/tmp_cache/limeroad_raw.json"
 );
 
 // ✅ Main Scraper Function
@@ -26,6 +27,8 @@ export async function scrapeLimeroad(page: any) {
 
   console.log("🕵️ Waiting for product elements...");
   await page.waitForSelector("div.bs img", { timeout: 45000 });
+
+  await removeGenderPopup(page);
 
   // 🔍 Step 2: Extract all visible product containers
   const data = await page.evaluate(() => {
@@ -50,9 +53,9 @@ export async function scrapeLimeroad(page: any) {
       const hrefs = Array.from(item.querySelectorAll("a"))
         .map((a) => a.href)
         .filter((a) => !!a);
-    
+
       const bannedURL =
-    "https://img4.junaroad.com/user_profile/profile_5c8ea4717083883eb50b9ba4-1694619030.png";
+        "https://img4.junaroad.com/user_profile/profile_5c8ea4717083883eb50b9ba4-1694619030.png";
 
       // Collect all image URLs (with clean filtering)
       const rawImages = Array.from(item.querySelectorAll("img"))
@@ -73,17 +76,21 @@ export async function scrapeLimeroad(page: any) {
         );
 
       // Remove duplicates + normalize relative URLs
-      const images = Array.from(new Set(rawImages.map((src) => {
-        try {
-          const url = new URL(src, window.location.origin);
-          return url.href;
-        } catch {
-          return src;
-        }
-      })));
+      const images = Array.from(
+        new Set(
+          rawImages.map((src) => {
+            try {
+              const url = new URL(src, window.location.origin);
+              return url.href;
+            } catch {
+              return src;
+            }
+          })
+        )
+      );
 
-      if(images.length >= 10){
-        return
+      if (images.length >= 10) {
+        return;
       }
       const text = (item.textContent || "").trim();
 
@@ -103,19 +110,16 @@ export async function scrapeLimeroad(page: any) {
 
     return results;
   });
-  
+
   const cleanData = FilterUniqueElements(data);
 
   console.log(`🧾 Scraped ${cleanData.length} product entries from Limeroad.`);
-
 
   await SafeWriteJSON(CACHE_PATH, cleanData);
   console.log(`💾 Data cached successfully at: ${CACHE_PATH}`);
 
   return cleanData;
 }
-
-
 
 export async function scrapeLimeroadWithSession() {
   return await rotateSession(scrapeLimeroad);
