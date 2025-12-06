@@ -8,6 +8,9 @@
   },
   "references": [
     {
+      "path": "../../libs/error_handler"
+    },
+    {
       "path": "../../libs/database"
     },
     {
