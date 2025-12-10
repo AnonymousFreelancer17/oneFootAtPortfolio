@@ -18,10 +18,11 @@
     "target": "es2022",
     "baseUrl": ".",
     "paths": {
-      "@ui/*" : ["libs/ui/src/*"],
+      "@one-foot-at-portfolio/ui/*" : ["libs/ui/src/*"],
+      "@one-foot-at-portfolio/ui" : ["libs/ui/src/index.ts"],
       "@puppeteer": ["libs/puppeteer-utils/src/index.ts"],
       "@puppeteer/*": ["libs/puppeteer-utils/src/*"],
-      "@one-foot-at-portfolio/database": ["libs/database/src"],
+      "@one-foot-at-portfolio/database": ["libs/database/src/index"],
       "@one-foot-at-portfolio/database/*": ["libs/database/src/*"],
       "@one-foot-at-portfolio/error_handler": ["libs/error_handler/src"],
       "@one-foot-at-portfolio/error_handler/*": ["libs/error_handler/src/*"]

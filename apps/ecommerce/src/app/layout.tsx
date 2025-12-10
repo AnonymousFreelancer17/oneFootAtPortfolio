@@ -1,6 +1,8 @@
-import Navbar from "../component/Navbar";
-import "./global.css";
-import { ThemeProvider } from "@ui";
+import Navbar from "../../../../libs/ui/src/components/Navbar";
+import "./globals.css"
+
+
+import {ThemeProvider} from "../../../../libs/ui/src/index"
 
 export const metadata = {
   title: "Welcome to ecommerce",
@@ -16,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <Navbar />
+          <Navbar source="ecommerce" />
           {children}
         </ThemeProvider>
       </body>

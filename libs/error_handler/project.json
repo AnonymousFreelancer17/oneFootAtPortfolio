@@ -1,0 +1,21 @@
+{
+  "name": "@one-foot-at-portfolio/error_handler",
+  "sourceRoot": "libs/error_handler/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/error_handler",
+        "main": "libs/error_handler/src/index.ts",
+        "tsConfig": "libs/error_handler/tsconfig.app.json"
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "error_handler:build"
+      }
+    }
+  }
+}

@@ -19,13 +19,13 @@ const nextConfig = {
 
   webpack: (config) => {
     // Add alias for UI shared library
-    config.resolve.alias["@ui"] = path.resolve(
+    config.resolve.alias["@one-foot-at-portfolio/ui"] = path.resolve(
       __dirname,
       "../../libs/ui/src"
     );
 
     // Add alias for other shared libs easily later
-    config.resolve.alias["@database"] = path.resolve(
+    config.resolve.alias["@one-foot-at-portfolio/database"] = path.resolve(
       __dirname,
       "../../libs/database/src"
     );

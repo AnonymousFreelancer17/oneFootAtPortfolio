@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@ui/*": ["../../libs/ui/src/*"]
+      "@one-foot-at-portfolio/ui/*": ["../../libs/ui/src/*"]
     },
     "outDir": "dist",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
@@ -44,5 +44,10 @@
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
     ".next"
+  ],
+  "references": [
+    {
+      "path": "../../libs/ui"
+    }
   ]
 }

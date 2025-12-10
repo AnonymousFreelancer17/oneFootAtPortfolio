@@ -2,15 +2,50 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "master",
   "projects": {
-    "portfolio-web": {
-      "tags": []
+    "projects": {
+      "@oneFootAtPortfolio/portfolio-web": {
+        "tags": []
+      },
+      "@oneFootAtPortfolio/auth-services": {
+        "tags": ["type:service", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/auth-services-e2e": {
+        "tags": ["type:e2e", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/api-gateway": {
+        "tags": ["type:service", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/api-gateway-e2e": {
+        "tags": ["type:e2e", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/scrapper-service": {
+        "tags": ["type:service", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/scrapper-service-e2e": {
+        "tags": ["type:e2e", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/ui": {
+        "tags": ["type:ui", "scope:shared"]
+      },
+      "@oneFootAtPortfolio/database": {
+        "tags": ["type:shared", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/error_handler": {
+        "tags": ["type:shared", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/puppeteer-utils": {
+        "tags": ["type:shared", "scope:backend"]
+      },
+      "@oneFootAtPortfolio/source": {
+        "tags": ["root"]
+      },
+      "@oneFootAtPortfolio/ecommerce": {
+        "tags": ["type:frontend"]
+      }
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -19,9 +54,7 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": [
-      "{workspaceRoot}/.github/workflows/ci.yml"
-    ]
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "nxCloudId": "690085ef8bb5cf2dd8715458",
   "plugins": [
@@ -45,9 +78,6 @@
         "targetName": "test"
       },
       "exclude": [
-        "apps/auth-services-e2e/**/*",
-        "services/auth-services-e2e/**/*",
-        "services/api-gateway-e2e/**/*",
         "apps/auth-services-e2e/**/*",
         "apps/api-gateway-e2e/**/*",
         "apps/scrapper-service-e2e/**/*"
@@ -100,18 +130,11 @@
   "targetDefaults": {
     "@nx/esbuild:esbuild": {
       "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "test": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": true
     },
     "build": {
@@ -122,13 +145,8 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {
