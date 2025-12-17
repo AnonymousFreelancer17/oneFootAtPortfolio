@@ -1,10 +1,10 @@
 "use client";
 
-
-import { StoreIcon } from "lucide-react";
+import { StoreIcon, User } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaAppStore, FaBell, FaSearch, FaStore } from "react-icons/fa";
+import { FaAppStore, FaBell, FaSearch } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 type NavItem = {
   title: string;
@@ -26,7 +26,7 @@ const navlinks: NavGroup[] = [
       { title: "Kids", type: "redirect", to: "/kid" },
       { title: "Offers", type: "redirect", to: "/offers" },
       { title: "offline Stores", type: "redirect", to: "/offline-stores" },
-      { title: "Register", type: "redirect", to: "/auth/register" },
+      // { title: "Register", type: "redirect", to: "/auth/register" },
       { title: "Login", type: "redirect", to: "/auth/login" },
     ],
   },
@@ -34,6 +34,15 @@ const navlinks: NavGroup[] = [
 
 export default function Navbar({ source }: { source: string }) {
   const [data, setData] = useState<NavItem[]>([]);
+  const pathname = usePathname();
+
+  const hideNavbarRoutes = [
+    "/auth/login",
+    "/auth/register",
+    "/studio",
+    "/admin",
+  ];
+  const shouldHideSomeElements = hideNavbarRoutes.includes(pathname);
 
   useEffect(() => {
     const found = navlinks.find((item) => item.source === source);
@@ -43,7 +52,7 @@ export default function Navbar({ source }: { source: string }) {
   return (
     <div className="w-screen flex flex-col justify-center items-center">
       {/* Top Bar */}
-      <div className="w-full h-[40px] flex justify-center items-center border-b border-gray-300 dark:border-gray-700">
+      <div className={`w-full ${shouldHideSomeElements ? "h-[80px] fixed top-0" :"h-[40px]"} flex justify-center items-center border-b border-gray-300 dark:border-gray-700`}>
         <div className="w-11/12 flex justify-between items-center">
           <button
             type="button"
@@ -53,17 +62,18 @@ export default function Navbar({ source }: { source: string }) {
             Download App
           </button>
 
-          <div className="md:flex hidden justify-center items-center gap-x-4">
+          <div className="md:flex hidden justify-center items-center gap-x-6">
             {data?.map((d, index) => (
               <Link
                 key={index}
                 href={d?.to}
-                className={`${
+                className={`flex gap-x-2 ${
                   d?.title === "Login" || d?.title === "Register"
-                    ? "font-bold px-2"
-                    : "font-medium text-gray-700 dark:text-gray-400"
+                    ? "text-md font-medium px-2 bg-pink-500 rounded-sm"
+                    : "text-gray-700 dark:text-gray-200"
                 }`}
               >
+                {/* {d.title === "Login" && <User /> } */}
                 {d.title}
               </Link>
             ))}
@@ -72,7 +82,7 @@ export default function Navbar({ source }: { source: string }) {
       </div>
 
       {/* Main Navbar */}
-      <div className="w-full h-[60px] flex justify-center items-center border-b border-gray-400 dark:border-gray-700">
+      {!shouldHideSomeElements && <div className="w-full h-[60px] flex justify-center items-center border-b border-gray-400 dark:border-gray-700">
         <div className="w-11/12 h-full flex justify-between items-center">
           <Link
             href={"/"}
@@ -108,20 +118,26 @@ export default function Navbar({ source }: { source: string }) {
 
           {/* Right Icons */}
           <div className="w-2/12 h-full gap-x-4 flex justify-end items-center">
-            <button type="button" className="px-3 h-4/5 relative flex justify-center items-center">
+            <button
+              type="button"
+              className="px-3 h-4/5 relative flex justify-center items-center"
+            >
               <FaBell size={20} className="relative" />
-              <div className="w-5 h-5 rounded-full bg-red-500 text-white text-xs flex justify-center items-center absolute right-0 top-0 mt-1 mr-1 font-bold">12</div>
+              <div className="w-5 h-5 rounded-full bg-red-500 text-white text-xs flex justify-center items-center absolute right-0 top-0 mt-1 mr-1 font-bold">
+                12
+              </div>
             </button>
 
-            <button type="button" className="px-3 h-4/5 flex flex-col justify-center items-center">
+            <button
+              type="button"
+              className="px-3 h-4/5 flex flex-col justify-center items-center"
+            >
               <StoreIcon />
-              <div className="text-xs font-bold">
-                 Cart
-              </div>
+              <div className="text-xs font-bold">Cart</div>
             </button>
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

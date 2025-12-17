@@ -5,12 +5,79 @@ import path from "path";
 import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";
 import FilterUniqueElements from "../lib/FilteringUniqueElements";
-import removeGenderPopup from "../lib/AutoKillPopups";
+import killLimeRoadPopup from "../lib/AutoKillPopups";
 
 const CACHE_PATH = path.join(
   process.cwd(),
   "apps/scrapper-service/tmp_cache/limeroad_raw.json"
 );
+
+export async function getCategories(page: any) {
+  console.log("Navigating to Limeroad categories...");
+
+  await page.goto("https://www.limeroad.com/categories", {
+    waitUntil: "networkidle2",
+    timeout: 60000,
+  });
+
+  await page.waitForSelector(".menucf", { timeout: 45000 });
+
+  await page.evaluateOnNewDocument(killLimeRoadPopup);
+  await deepAutoScroll(page);
+
+  const data = await page.evaluate(() => {
+    const results: {
+      index: number;
+      category: string;
+      href: string;
+      subCategories: {
+        subCategory: string;
+        href: string;
+      }[];
+    }[] = [];
+
+    const boxes = document.querySelectorAll(".menucf .menuBox");
+
+    boxes.forEach((box, index) => {
+      // Category anchor
+      const catA = box.querySelector("a");
+      if (!catA) return;
+
+      const category = (catA.textContent || "").trim();
+      const href = (catA as HTMLAnchorElement).href;
+
+      // Sub categories
+      const subCategories: { subCategory: string; href: string }[] = [];
+
+      const subLinks = box.querySelectorAll(".menuBox a:not(:first-child)");
+
+      subLinks.forEach((subA) => {
+        const subCategory = (subA.textContent || "").trim();
+        const subHref = (subA as HTMLAnchorElement).href;
+
+        if (subCategory && subHref) {
+          subCategories.push({ subCategory, href: subHref });
+        }
+      });
+
+      results.push({
+        index,
+        category,
+        href,
+        subCategories,
+      });
+    });
+
+    return results;
+  });
+
+  const cleanData = FilterUniqueElements(data);
+  
+  await SafeWriteJSON(
+    "apps/scrapper-service/tmp_cache/limeroad_categories.json",
+    cleanData
+  );
+}
 
 // ✅ Main Scraper Function
 export async function scrapeLimeroad(page: any) {
@@ -22,20 +89,23 @@ export async function scrapeLimeroad(page: any) {
     timeout: 60000,
   });
 
+  console.log("🕵️ Waiting for product elements...");
+  await Promise.race([
+    page.waitForSelector("div.bs img", { timeout: 45000 }),
+    page
+      .waitForSelector("#genderSelectPopup", { timeout: 45000 })
+      .catch(() => {}),
+  ]);
+
+  await page.evaluateOnNewDocument(killLimeRoadPopup);
+
   console.log("⏳ Scrolling deeply to load all content...");
   await deepAutoScroll(page);
-
-  console.log("🕵️ Waiting for product elements...");
-  await page.waitForSelector("div.bs img", { timeout: 45000 });
-
-  await removeGenderPopup(page);
 
   // 🔍 Step 2: Extract all visible product containers
   const data = await page.evaluate(() => {
     const results: {
       index: number;
-      outerHTML: string;
-      innerHTML: string;
       hrefs: string[];
       images: string[];
       text: string;
@@ -98,8 +168,6 @@ export async function scrapeLimeroad(page: any) {
       if (images.length !== 0) {
         results.push({
           index,
-          outerHTML: item.outerHTML,
-          innerHTML: item.innerHTML,
           hrefs,
           images,
           text,
@@ -123,4 +191,8 @@ export async function scrapeLimeroad(page: any) {
 
 export async function scrapeLimeroadWithSession() {
   return await rotateSession(scrapeLimeroad);
+}
+
+export async function scrapeLimeroadCategoriesWithSession() {
+  return await rotateSession(getCategories);
 }

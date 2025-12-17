@@ -52,7 +52,7 @@ export const sendEmail = async (
 
     const html = await renderEmailTemplate(templateName, data);
 
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
       from: `"Retail CRM" <${process.env.SMTP_USER}>`,
       to: to.trim(),
       subject,

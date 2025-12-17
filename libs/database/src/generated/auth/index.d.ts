@@ -815,10 +815,12 @@ export namespace Prisma {
     id: string | null
     service: string | null
     email: string | null
-    mobile: string | null
+    phone_number: string | null
+    phone_code: string | null
     name: string | null
     password: string | null
-    isVerified: boolean | null
+    isEmailVerified: boolean | null
+    isPhoneNumberVerified: boolean | null
     authProvider: string | null
     providerId: string | null
     createdAt: Date | null
@@ -829,10 +831,12 @@ export namespace Prisma {
     id: string | null
     service: string | null
     email: string | null
-    mobile: string | null
+    phone_number: string | null
+    phone_code: string | null
     name: string | null
     password: string | null
-    isVerified: boolean | null
+    isEmailVerified: boolean | null
+    isPhoneNumberVerified: boolean | null
     authProvider: string | null
     providerId: string | null
     createdAt: Date | null
@@ -843,10 +847,12 @@ export namespace Prisma {
     id: number
     service: number
     email: number
-    mobile: number
+    phone_number: number
+    phone_code: number
     name: number
     password: number
-    isVerified: number
+    isEmailVerified: number
+    isPhoneNumberVerified: number
     authProvider: number
     providerId: number
     createdAt: number
@@ -859,10 +865,12 @@ export namespace Prisma {
     id?: true
     service?: true
     email?: true
-    mobile?: true
+    phone_number?: true
+    phone_code?: true
     name?: true
     password?: true
-    isVerified?: true
+    isEmailVerified?: true
+    isPhoneNumberVerified?: true
     authProvider?: true
     providerId?: true
     createdAt?: true
@@ -873,10 +881,12 @@ export namespace Prisma {
     id?: true
     service?: true
     email?: true
-    mobile?: true
+    phone_number?: true
+    phone_code?: true
     name?: true
     password?: true
-    isVerified?: true
+    isEmailVerified?: true
+    isPhoneNumberVerified?: true
     authProvider?: true
     providerId?: true
     createdAt?: true
@@ -887,10 +897,12 @@ export namespace Prisma {
     id?: true
     service?: true
     email?: true
-    mobile?: true
+    phone_number?: true
+    phone_code?: true
     name?: true
     password?: true
-    isVerified?: true
+    isEmailVerified?: true
+    isPhoneNumberVerified?: true
     authProvider?: true
     providerId?: true
     createdAt?: true
@@ -974,10 +986,12 @@ export namespace Prisma {
     id: string
     service: string | null
     email: string | null
-    mobile: string | null
+    phone_number: string | null
+    phone_code: string | null
     name: string | null
     password: string | null
-    isVerified: boolean
+    isEmailVerified: boolean
+    isPhoneNumberVerified: boolean
     authProvider: string | null
     providerId: string | null
     createdAt: Date
@@ -1005,10 +1019,12 @@ export namespace Prisma {
     id?: boolean
     service?: boolean
     email?: boolean
-    mobile?: boolean
+    phone_number?: boolean
+    phone_code?: boolean
     name?: boolean
     password?: boolean
-    isVerified?: boolean
+    isEmailVerified?: boolean
+    isPhoneNumberVerified?: boolean
     authProvider?: boolean
     providerId?: boolean
     createdAt?: boolean
@@ -1020,10 +1036,12 @@ export namespace Prisma {
     id?: boolean
     service?: boolean
     email?: boolean
-    mobile?: boolean
+    phone_number?: boolean
+    phone_code?: boolean
     name?: boolean
     password?: boolean
-    isVerified?: boolean
+    isEmailVerified?: boolean
+    isPhoneNumberVerified?: boolean
     authProvider?: boolean
     providerId?: boolean
     createdAt?: boolean
@@ -1038,10 +1056,12 @@ export namespace Prisma {
       id: string
       service: string | null
       email: string | null
-      mobile: string | null
+      phone_number: string | null
+      phone_code: string | null
       name: string | null
       password: string | null
-      isVerified: boolean
+      isEmailVerified: boolean
+      isPhoneNumberVerified: boolean
       authProvider: string | null
       providerId: string | null
       createdAt: Date
@@ -1441,10 +1461,12 @@ export namespace Prisma {
     readonly id: FieldRef<"Users", 'String'>
     readonly service: FieldRef<"Users", 'String'>
     readonly email: FieldRef<"Users", 'String'>
-    readonly mobile: FieldRef<"Users", 'String'>
+    readonly phone_number: FieldRef<"Users", 'String'>
+    readonly phone_code: FieldRef<"Users", 'String'>
     readonly name: FieldRef<"Users", 'String'>
     readonly password: FieldRef<"Users", 'String'>
-    readonly isVerified: FieldRef<"Users", 'Boolean'>
+    readonly isEmailVerified: FieldRef<"Users", 'Boolean'>
+    readonly isPhoneNumberVerified: FieldRef<"Users", 'Boolean'>
     readonly authProvider: FieldRef<"Users", 'String'>
     readonly providerId: FieldRef<"Users", 'String'>
     readonly createdAt: FieldRef<"Users", 'DateTime'>
@@ -1757,10 +1779,12 @@ export namespace Prisma {
     id: 'id',
     service: 'service',
     email: 'email',
-    mobile: 'mobile',
+    phone_number: 'phone_number',
+    phone_code: 'phone_code',
     name: 'name',
     password: 'password',
-    isVerified: 'isVerified',
+    isEmailVerified: 'isEmailVerified',
+    isPhoneNumberVerified: 'isPhoneNumberVerified',
     authProvider: 'authProvider',
     providerId: 'providerId',
     createdAt: 'createdAt',
@@ -1850,10 +1874,12 @@ export namespace Prisma {
     id?: StringFilter<"Users"> | string
     service?: StringNullableFilter<"Users"> | string | null
     email?: StringNullableFilter<"Users"> | string | null
-    mobile?: StringNullableFilter<"Users"> | string | null
+    phone_number?: StringNullableFilter<"Users"> | string | null
+    phone_code?: StringNullableFilter<"Users"> | string | null
     name?: StringNullableFilter<"Users"> | string | null
     password?: StringNullableFilter<"Users"> | string | null
-    isVerified?: BoolFilter<"Users"> | boolean
+    isEmailVerified?: BoolFilter<"Users"> | boolean
+    isPhoneNumberVerified?: BoolFilter<"Users"> | boolean
     authProvider?: StringNullableFilter<"Users"> | string | null
     providerId?: StringNullableFilter<"Users"> | string | null
     createdAt?: DateTimeFilter<"Users"> | Date | string
@@ -1864,10 +1890,12 @@ export namespace Prisma {
     id?: SortOrder
     service?: SortOrder
     email?: SortOrder
-    mobile?: SortOrder
+    phone_number?: SortOrder
+    phone_code?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    isVerified?: SortOrder
+    isEmailVerified?: SortOrder
+    isPhoneNumberVerified?: SortOrder
     authProvider?: SortOrder
     providerId?: SortOrder
     createdAt?: SortOrder
@@ -1877,28 +1905,32 @@ export namespace Prisma {
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    mobile?: string
+    phone_number?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
     service?: StringNullableFilter<"Users"> | string | null
+    phone_code?: StringNullableFilter<"Users"> | string | null
     name?: StringNullableFilter<"Users"> | string | null
     password?: StringNullableFilter<"Users"> | string | null
-    isVerified?: BoolFilter<"Users"> | boolean
+    isEmailVerified?: BoolFilter<"Users"> | boolean
+    isPhoneNumberVerified?: BoolFilter<"Users"> | boolean
     authProvider?: StringNullableFilter<"Users"> | string | null
     providerId?: StringNullableFilter<"Users"> | string | null
     createdAt?: DateTimeFilter<"Users"> | Date | string
     updatedAt?: DateTimeFilter<"Users"> | Date | string
-  }, "id" | "email" | "mobile">
+  }, "id" | "email" | "phone_number">
 
   export type UsersOrderByWithAggregationInput = {
     id?: SortOrder
     service?: SortOrder
     email?: SortOrder
-    mobile?: SortOrder
+    phone_number?: SortOrder
+    phone_code?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    isVerified?: SortOrder
+    isEmailVerified?: SortOrder
+    isPhoneNumberVerified?: SortOrder
     authProvider?: SortOrder
     providerId?: SortOrder
     createdAt?: SortOrder
@@ -1915,10 +1947,12 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Users"> | string
     service?: StringNullableWithAggregatesFilter<"Users"> | string | null
     email?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    mobile?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    phone_number?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    phone_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
     name?: StringNullableWithAggregatesFilter<"Users"> | string | null
     password?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    isVerified?: BoolWithAggregatesFilter<"Users"> | boolean
+    isEmailVerified?: BoolWithAggregatesFilter<"Users"> | boolean
+    isPhoneNumberVerified?: BoolWithAggregatesFilter<"Users"> | boolean
     authProvider?: StringNullableWithAggregatesFilter<"Users"> | string | null
     providerId?: StringNullableWithAggregatesFilter<"Users"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Users"> | Date | string
@@ -1929,10 +1963,12 @@ export namespace Prisma {
     id?: string
     service?: string | null
     email?: string | null
-    mobile?: string | null
+    phone_number?: string | null
+    phone_code?: string | null
     name?: string | null
     password?: string | null
-    isVerified?: boolean
+    isEmailVerified?: boolean
+    isPhoneNumberVerified?: boolean
     authProvider?: string | null
     providerId?: string | null
     createdAt?: Date | string
@@ -1943,10 +1979,12 @@ export namespace Prisma {
     id?: string
     service?: string | null
     email?: string | null
-    mobile?: string | null
+    phone_number?: string | null
+    phone_code?: string | null
     name?: string | null
     password?: string | null
-    isVerified?: boolean
+    isEmailVerified?: boolean
+    isPhoneNumberVerified?: boolean
     authProvider?: string | null
     providerId?: string | null
     createdAt?: Date | string
@@ -1956,10 +1994,12 @@ export namespace Prisma {
   export type UsersUpdateInput = {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_code?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isPhoneNumberVerified?: BoolFieldUpdateOperationsInput | boolean
     authProvider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -1969,10 +2009,12 @@ export namespace Prisma {
   export type UsersUncheckedUpdateInput = {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_code?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isPhoneNumberVerified?: BoolFieldUpdateOperationsInput | boolean
     authProvider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -1983,10 +2025,12 @@ export namespace Prisma {
     id?: string
     service?: string | null
     email?: string | null
-    mobile?: string | null
+    phone_number?: string | null
+    phone_code?: string | null
     name?: string | null
     password?: string | null
-    isVerified?: boolean
+    isEmailVerified?: boolean
+    isPhoneNumberVerified?: boolean
     authProvider?: string | null
     providerId?: string | null
     createdAt?: Date | string
@@ -1996,10 +2040,12 @@ export namespace Prisma {
   export type UsersUpdateManyMutationInput = {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_code?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isPhoneNumberVerified?: BoolFieldUpdateOperationsInput | boolean
     authProvider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2009,10 +2055,12 @@ export namespace Prisma {
   export type UsersUncheckedUpdateManyInput = {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_code?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isPhoneNumberVerified?: BoolFieldUpdateOperationsInput | boolean
     authProvider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2070,10 +2118,12 @@ export namespace Prisma {
     id?: SortOrder
     service?: SortOrder
     email?: SortOrder
-    mobile?: SortOrder
+    phone_number?: SortOrder
+    phone_code?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    isVerified?: SortOrder
+    isEmailVerified?: SortOrder
+    isPhoneNumberVerified?: SortOrder
     authProvider?: SortOrder
     providerId?: SortOrder
     createdAt?: SortOrder
@@ -2084,10 +2134,12 @@ export namespace Prisma {
     id?: SortOrder
     service?: SortOrder
     email?: SortOrder
-    mobile?: SortOrder
+    phone_number?: SortOrder
+    phone_code?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    isVerified?: SortOrder
+    isEmailVerified?: SortOrder
+    isPhoneNumberVerified?: SortOrder
     authProvider?: SortOrder
     providerId?: SortOrder
     createdAt?: SortOrder
@@ -2098,10 +2150,12 @@ export namespace Prisma {
     id?: SortOrder
     service?: SortOrder
     email?: SortOrder
-    mobile?: SortOrder
+    phone_number?: SortOrder
+    phone_code?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    isVerified?: SortOrder
+    isEmailVerified?: SortOrder
+    isPhoneNumberVerified?: SortOrder
     authProvider?: SortOrder
     providerId?: SortOrder
     createdAt?: SortOrder

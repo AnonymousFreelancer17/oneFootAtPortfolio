@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import { ValidationError } from '../../../../libs/error_handler/src/index';
 import { redis } from '../../../../libs/database/src/index';
 import { sendEmail } from '../utils/sendMail';
-import { NextFunction } from 'express';
 
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -12,13 +11,15 @@ export const validateRegistrationData = (
   data: any,
   userType: 'user' | 'seller'
 ) => {
-  const { name, email, password, phone_number, country } = data;
+  const { name, email, password, phone_number, gstin, country } = data;
 
   if (
     !name ||
     !email ||
     !password ||
-    (userType === 'seller' && (!phone_number || !country))
+    !phone_number ||
+    !country ||
+    (userType === 'seller' && (!gstin))
   ) {
     throw new ValidationError(`Missing required fields!`);
   }
@@ -28,7 +29,7 @@ export const validateRegistrationData = (
   }
 };
 
-export const checkOtpRestrictions = async (email: string, next: NextFunction) => {
+export const checkOtpRestrictions = async (email: string) => {
   if (await redis.get(`otp_lock:${email}`)) {
     throw new ValidationError(`Account locked! Try again after 30 mins.`);
   }
@@ -42,7 +43,7 @@ export const checkOtpRestrictions = async (email: string, next: NextFunction) =>
   }
 };
 
-export const trackOtpRequests = async (email: string, next: NextFunction) => {
+export const trackOtpRequests = async (email: string) => {
   const otpRequestKey = `otp_request_count:${email}`;
   let otpRequests = parseInt((await redis.get(otpRequestKey)) || '0');
 

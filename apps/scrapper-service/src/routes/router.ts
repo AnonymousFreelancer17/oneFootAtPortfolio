@@ -1,5 +1,5 @@
 import express, { Request, Response , NextFunction } from "express";
-import { scrapeLimeroadWithSession } from "../controller/scrapeLimeroad";
+import { scrapeLimeroadWithSession, scrapeLimeroadCategoriesWithSession } from "../controller/scrapeLimeroad";
 import fs from "fs";
 import path from "path";
 import { scrapeBlinkitCategoryWithSession, scrapeBlinkitProductsWithSession } from "../controller/blinkit";
@@ -11,6 +11,24 @@ router.get('/',(req:Request ,res: Response,next:NextFunction)=>{
     "Hello from scrapper services"
   )
 })
+
+router.get("/limeroad-categories", async (req: Request, res: Response) => {
+  try {
+    console.log("🕵️ Starting Limeroad scrape...");
+    const data = await scrapeLimeroadCategoriesWithSession();
+
+    // Save data to JSON file
+    const outputPath = path.join(__dirname, "../tmp_cache/limeroad_categories.json");
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
+
+    console.log("✅ Scraping completed and saved to limeroad_data.json");
+    res.json({ success: true, count: data.length, data });
+  } catch (error: any) {
+    console.error("❌ Scraping failed:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 router.get("/limeroad", async (req: Request, res: Response) => {
   try {
