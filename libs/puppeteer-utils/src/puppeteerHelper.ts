@@ -14,6 +14,7 @@ export async function createBrowserSession(
     "--disable-setuid-sandbox",
     "--disable-dev-shm-usage",
     "--disable-blink-features=AutomationControlled",
+    "--start-maximized"
   ];
 
   if (useProxy && proxy) args.push(`--proxy-server=${proxy}`);

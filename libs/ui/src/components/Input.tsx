@@ -344,10 +344,10 @@ const Input = ({
           {icon ? icon : <CircleAlert />}
 
           {phoneCode && (
-            <div className="w-16 relative bg-blue-500">
+            <div className="w-16 relative bg-green-600">
               <select
                 name="phone_code"
-                className="w-full py-[9px] bg-transparent text-gray-100"
+                className="w-full py-[9px] bg-transparent text-white"
               >
                 {country_code?.map((d, index) => {
                   return (
@@ -369,9 +369,9 @@ const Input = ({
             autoComplete=""
             onChange={onChange}
             id={name}
-            className={`flex-1 block ${
+            className={` ${
               phoneCode ? "" : "ps-12"
-            } pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-sm focus:ring-brand focus:border-brand shadow-xs placeholder:text-body text-right`}
+            } flex-1 block pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-400 placeholder:text-neutral-600 text-right`}
             placeholder={placeholder}
           />
         </div>

@@ -2,7 +2,7 @@
 
 // export components
 
-export * from './components/ui/button';
+export * from './components/ui/buttons/button.js';
 export * from './components/ui/navigation-menu';
 export * from './components/ui/table'
 // export * from "./styles/globals.css"

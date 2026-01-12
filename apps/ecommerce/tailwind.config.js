@@ -4,6 +4,7 @@ import { join } from "path";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // presets:[uiPreset],
+  darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "../../libs/ui/src/**/*.{js,ts,jsx,tsx}",

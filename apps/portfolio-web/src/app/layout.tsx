@@ -1,6 +1,6 @@
-import './global.css';
+// import './global.css';
 
-import Navbar from "@/component/Navbar"
+import Navbar from "../../../../libs/ui/src/components/Navbar"
 
 export const metadata = {
   title: 'Welcome to portfolio-web',
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-         <Navbar />
+         <Navbar source="portfolio" />
         {children}
         
         </body>

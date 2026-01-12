@@ -21,33 +21,30 @@ export const userRegistration = async (
   next: NextFunction
 ) => {
   try {
-    validateRegistrationData(req.body, "user");
     const { name, email, phone_number, service } = req.body;
 
-    // if (!email || !name || !phone_number || !service)
-    //   throw new ValidationError("Name and email are required");
+    if (!name || !email || !phone_number || !service) {
+      throw new ValidationError(
+        "Name, email, phone number and service are required"
+      );
+    }
 
-    // console.log(`[User Registration] Email: ${email}, Name: ${name}`);
+    const existingUser = await prisma.users.findFirst({
+      where: { email, service },
+    });
 
-    // const existingUser = await prisma.users.findUnique({ where: { email } });
-    // console.log("3️⃣ Prisma check done");
+    if (existingUser) {
+      throw new ValidationError("User already exists");
+    }
 
-    // if (existingUser)
-    //   throw new ValidationError("User already exists with this email");
+    await checkOtpRestrictions(email);
+    await trackOtpRequests(email);
+    await sendOtp(name, email, "user-activation-mail");
 
-    // await checkOtpRestrictions(email);
-    // console.log("4️⃣ OTP restriction check passed");
-    // await trackOtpRequests(email);
-    // console.log("5️⃣ OTP request tracked");
-
-    // await sendOtp(name, email, "user-activation-mail");
-    // console.log("6️⃣ OTP sent");
-
-    return res
-      .status(200)
-      .json({ message: "OTP sent to your email. Please verify your account." });
+    return res.status(200).json({
+      message: "OTP sent to your email",
+    });
   } catch (error) {
-    console.error("[Registration Error]:", error);
     return next(error);
   }
 };
@@ -63,26 +60,26 @@ export const verifyRegistrationOtp = async (
   next: NextFunction
 ) => {
   try {
-    const { email, otp, name, password, service, phone_number, phone_code } =
-      req.body;
-
-    console.log({
+    const {
       email,
       otp,
       name,
-      phone_number,
       password,
       service,
+      phone_number,
       phone_code,
-    });
+    } = req.body;
 
-    if (!email || !otp || !service || !phone_number || !phone_code)
-      throw new ValidationError("Email ,OTP and Service are required");
+    if (!email || !otp || !service || !phone_number || !phone_code) {
+      throw new ValidationError("Missing required fields");
+    }
 
-    const isValid = await verifyOtpHelper(email, otp);
-    if (!isValid) throw new ValidationError("Invalid OTP");
+    const isValidOtp = await verifyOtpHelper(email, otp);
+    if (!isValidOtp) throw new ValidationError("Invalid OTP");
 
-    const securedPassword = password ? await hashPassword(password) : null;
+    const hashedPassword = password
+      ? await hashPassword(password)
+      : null;
 
     const user = await prisma.users.create({
       data: {
@@ -91,21 +88,22 @@ export const verifyRegistrationOtp = async (
         service,
         phone_number,
         phone_code,
-        password: securedPassword,
+        password: hashedPassword,
         isEmailVerified: true,
       },
     });
 
     await redis.del(`otp:${email}`);
 
-    return res
-      .status(201)
-      .json({ message: "Account verified successfully", user });
+    return res.status(201).json({
+      message: "Account verified successfully",
+      user,
+    });
   } catch (error) {
-    console.error("[OTP Verification Error]:", error);
     return next(error);
   }
 };
+
 
 /**
  * ✅ User Login Controller

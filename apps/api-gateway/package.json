@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/api-gateway",
+  "name": "api-gateway",
   "version": "0.0.1",
   "private": true,
   "nx": {

@@ -1,8 +1,14 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import router from './routes/router';
 import cors from "cors";
+
+
+// importing router
+import router from './routes/router';
+
+
+
 
 
 const app = express();
@@ -40,6 +46,8 @@ app.use('/api' , router);
 app.get('/', (req, res) => {
   res.send({ message: 'Welcome to api-gateway!' });
 });
+
+
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {

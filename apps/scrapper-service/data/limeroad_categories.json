@@ -1,0 +1,417 @@
+{
+  "women": {
+    "Ethnic Wear": {
+      "href": "https://www.limeroad.com/clothing/ethnic-wear?src_id=navdeskEthnicWear__00",
+      "categories": {
+        "Kurta & Kurtis": {
+          "href": ""
+        },
+        "Sarees": {
+          "href": ""
+        },
+        "Ethnic Sets": {
+          "href": ""
+        },
+        "Ethnic Co-Ord Sets": {
+          "href": ""
+        },
+        "Lehengas & Blouse": {
+          "href": ""
+        },
+        "Ethnic Dresses": {
+          "href": ""
+        },
+        "Skirts": {
+          "href": ""
+        },
+        "Leggings, Salwar & Churidaar": {
+          "href": ""
+        },
+        "Shawls & Dupattas": {
+          "href": ""
+        },
+        "Tapered Pants": {
+          "href": ""
+        },
+        "Woolen Kurta": {
+          "href": ""
+        },
+        "Unstitched & Semi-Stitched Suits": {
+          "href": ""
+        },
+        "Winter Wear Accessories Combo": {
+          "href": ""
+        }
+      }
+    },
+
+    "Western Wear": {
+      "href" : "",
+      "categories": {
+        "Dresses" : {
+          "href" : ""
+        },
+        "Tops" : {
+          "href" : ""
+        },
+        "Tunics" : {
+          "href" : ""
+        },
+        "T-Shirts" : {
+          "href" : ""
+        },
+        "Jeans & Jeggings" : {
+          "href" : ""
+        },
+        "Trousers" : {
+          "href" : ""
+        },
+        "Co-Ord Sets" : {
+          "href" : ""
+        },
+        "Shirts" : {
+          "href" : ""
+        },
+        "Jumpsuits" : {
+          "href" : ""
+        },
+        "Shorts" : {
+          "href" : ""
+        },
+        "Kaftans" : {
+          "href" : ""
+        },
+        "Shrugs" : {
+          "href" : ""
+        },
+        "Cargos" : {
+          "href" : ""
+        },
+        "Joggers" : {
+          "href" : ""
+        },
+        "Shackets" : {
+          "href" : ""
+        },
+        "Sweaters & Sweatshirts" : {
+          "href" : ""
+        },
+        "Jackets, Blazers & Coats" : {
+          "href" : ""
+        },
+        "Mufflers, Gloves & Caps" : {
+          "href" : ""
+        },
+        "Stoles" : {
+          "href" : ""
+        }
+      }
+    },
+
+    "Sports & Activewear": {
+      "categories": ["Swimwear", "Tights", "Track Pants", "Sports Bra"]
+    },
+
+    "Lingerie & Sleepwear": {
+      "categories": [
+        "Bra",
+        "Panties",
+        "Lingerie Sets",
+        "Sleepwear & Loungewear",
+        "Shape Wear",
+        "Camisoles & Thermals"
+      ]
+    },
+
+    "Western Wear Plus Size": {
+      "categories": ["Dresses", "Tops", "Co-Ords", "T-Shirts"]
+    },
+
+    "Jewellery": {
+      "categories": [
+        "Imitation Jewellery",
+        "Earrings",
+        "Necklace & Pendants",
+        "Rings, Bangles & Bracelets"
+      ]
+    },
+
+    "Footwear": {
+      "categories": [
+        "Flats",
+        "Heels",
+        "Casual Shoes",
+        "Flip Flops",
+        "Sports Shoes & Sneakers",
+        "Boots"
+      ]
+    },
+
+    "Electronics": {
+      "categories": [
+        "Smart Watches",
+        "Bluetooth Speaker",
+        "Earbuds",
+        "Bluetooth Neckband"
+      ]
+    },
+
+    "Brands": {
+      "list": [
+        "3Buddy Fashion",
+        "Anubhutte",
+        "Aurelia",
+        "Azira",
+        "Baggit",
+        "Clovia",
+        "Cottinfab",
+        "Drape and Dazzle",
+        "Globus",
+        "Hive91",
+        "IUGA",
+        "MELON - By PlusS",
+        "Mojilaa",
+        "Moomaya",
+        "Oxolloxo",
+        "Readiprint",
+        "SOCH",
+        "Styli",
+        "Trendif",
+        "Vaamsi",
+        "VAIRAGEE",
+        "Vibhagyaa",
+        "VredeVogel",
+        "W"
+      ]
+    }
+  },
+  "men": {
+    "Top Wear": {
+      "categories": [
+        "Casual Shirts",
+        "Formal Shirts",
+        "Polo T-Shirts",
+        "T-Shirts",
+        "Oversized T-Shirts",
+        "Co-Ord Sets",
+        "Suits & Blazers"
+      ]
+    },
+
+    "Bottom Wear": {
+      "categories": [
+        "Cargos",
+        "Casual Trousers",
+        "Formal Trousers",
+        "Jeans",
+        "Joggers",
+        "Shorts & Three Fourths"
+      ]
+    },
+
+    "Ethnic Wear": {
+      "categories": [
+        "Ethnic Wear Sets",
+        "Ethnic Bottom Wear",
+        "Kurtas",
+        "Nehru Jackets",
+        "Waist Coat"
+      ]
+    },
+
+    "Sports Wear": {
+      "categories": ["Shorts", "T-Shirts", "Track Pants", "Track Suits"]
+    },
+
+    "Plus Size": {
+      "categories": ["Top Wear", "Bottom Wear", "Inner Wear"]
+    },
+
+    "Footwear": {
+      "categories": [
+        "Casual Shoes",
+        "Formal Shoes",
+        "Jutis & Mojaris",
+        "Sports Shoes",
+        "Slippers & Sandals"
+      ]
+    },
+
+    "Winter Wear": {
+      "categories": [
+        "Gloves",
+        "Jackets",
+        "Shackets",
+        "Shawls & Mufflers",
+        "Sweaters",
+        "Sweatshirts",
+        "Thermals",
+        "Accessories Combos"
+      ]
+    },
+
+    "Accessories": {
+      "categories": [
+        "Caps & Hats",
+        "Cufflinks & Bracelets",
+        "Lapel Pins & Brooch",
+        "Handkerchiefs",
+        "Headphones & Speakers",
+        "Socks",
+        "Ties & Pocket Squares"
+      ]
+    },
+
+    "Innerwear": {
+      "categories": ["Boxers", "Briefs", "Vests"]
+    },
+
+    "Electronics": {
+      "categories": [
+        "Smart Watches",
+        "Bluetooth Speaker",
+        "Earbuds",
+        "Bluetooth Neckband"
+      ]
+    },
+
+    "Brands": {
+      "list": [
+        "Action Milano",
+        "AD By Arvind",
+        "AUSK",
+        "BENTOKE",
+        "CAMEY",
+        "Classic Polo",
+        "CRIMSOUNE CLUB",
+        "Deshbandhukhadi",
+        "Dollar",
+        "Duke",
+        "HangUp",
+        "HUETRAP",
+        "INKKR",
+        "Jompers",
+        "Ketch",
+        "ONE SKY",
+        "SHOWOFF",
+        "STARFOX",
+        "TAB91",
+        "GETGOLF",
+        "RIGO",
+        "TWENTY EIGHT",
+        "TS Lifestyle",
+        "Ustraa",
+        "UNIBERRY",
+        "VELTICK"
+      ]
+    }
+  },
+  "kids": {
+    "Boys": {
+      "Top Wear": {
+        "categories": ["T-Shirts", "Shirts"]
+      },
+
+      "Bottom Wear": {
+        "categories": ["Bottom Wear"]
+      },
+
+      "Ethnic Wear": {
+        "categories": ["Ethnic Wear", "Suit Sets"]
+      },
+
+      "Winter Wear": {
+        "categories": ["Sweaters & Sweatshirts", "Coats & Jackets"]
+      },
+
+      "Innerwear & Nightwear": {
+        "categories": ["Innerwear & Nightwear"]
+      },
+
+      "Sets & Combos": {
+        "categories": ["Twin Sets & Dungarees"]
+      },
+
+      "Shop By Age": {
+        "ages": ["0-2 Years", "2-6 Years", "6-12 Years", "12-16 Years"]
+      }
+    },
+
+    "Girls": {
+      "Top Wear": {
+        "categories": ["Tees & Tops"]
+      },
+
+      "Dresses": {
+        "categories": ["Dresses & Frocks", "Party Gowns"]
+      },
+
+      "Bottom Wear": {
+        "categories": ["Bottom Wear", "Leggings"]
+      },
+
+      "Ethnic Wear": {
+        "categories": ["Ethnic Wear"]
+      },
+
+      "Winter Wear": {
+        "categories": ["Sweaters, Sweatshirts & Cardigans", "Coats & Jackets"]
+      },
+
+      "Sets & Combos": {
+        "categories": ["Twin Sets & Jumpsuits"]
+      },
+
+      "Innerwear & Nightwear": {
+        "categories": ["Innerwear & Nightwear", "Girls Panty"]
+      },
+
+      "Shop By Age": {
+        "ages": ["0-2 Years", "2-6 Years", "6-12 Years", "12-16 Years"]
+      }
+    },
+
+    "Footwear": {
+      "categories": [
+        "Sandals & Floaters",
+        "Casual Shoes",
+        "Sports Shoes",
+        "Formal Shoes"
+      ]
+    },
+
+    "Accessories": {
+      "categories": ["Socks", "Cap", "Sunglasses", "Bag"]
+    },
+
+    "Bed & Bath": {
+      "categories": ["Bedsheet", "Mat", "Blanket", "Curtain"]
+    },
+
+    "Infants": {
+      "categories": ["Onesies & Rompers", "Frocks", "Twin Sets", "Diaper"]
+    }
+  },
+  "home": {
+    "Bed Linen & Furnishing": {
+      "Bedroom": {
+        "categories": [
+          "Bed Sheet Sets",
+          "Quilts & Comforters",
+          "Blankets",
+          "Bed Covers",
+          "Pillow Covers",
+          "Curtains"
+        ]
+      },
+
+      "Bath": {
+        "categories": ["Towels", "Bath Mats", "Shower Curtains"]
+      }
+    },
+
+    "Brands": {
+      "categories": ["Bella Casa", "Cortina"]
+    }
+  }
+}

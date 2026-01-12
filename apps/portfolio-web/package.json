@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/portfolio-web",
+  "name": "portfolio-web",
   "version": "0.0.1",
   "private": true,
   "dependencies": {

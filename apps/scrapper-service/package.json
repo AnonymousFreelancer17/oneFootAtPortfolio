@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/scrapper-service",
+  "name": "scrapper-service",
   "version": "0.0.1",
   "private": true,
   "nx": {

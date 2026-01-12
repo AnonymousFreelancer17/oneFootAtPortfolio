@@ -18,6 +18,7 @@
     "target": "es2022",
     "baseUrl": ".",
     "paths": {
+      "@libs/database": ["libs/database/src"],
       "@one-foot-at-portfolio/ui/*" : ["libs/ui/src/*"],
       "@one-foot-at-portfolio/ui" : ["libs/ui/src/index.ts"],
       "@puppeteer": ["libs/puppeteer-utils/src/index.ts"],
