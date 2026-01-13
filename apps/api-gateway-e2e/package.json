@@ -1,10 +1,10 @@
 {
-  "name": "@one-foot-at-portfolio/api-gateway-e2e",
+  "name": "api-gateway-e2e",
   "version": "0.0.1",
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@one-foot-at-portfolio/api-gateway"
+      "api-gateway"
     ],
     "targets": {
       "e2e": {
@@ -17,8 +17,8 @@
           "passWithNoTests": true
         },
         "dependsOn": [
-          "@one-foot-at-portfolio/api-gateway:build",
-          "@one-foot-at-portfolio/api-gateway:serve"
+          "api-gateway:build",
+          "api-gateway:serve"
         ]
       }
     }

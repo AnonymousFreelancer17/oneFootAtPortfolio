@@ -1,10 +1,10 @@
 {
-  "name": "@one-foot-at-portfolio/auth-services-e2e",
+  "name": "auth-services-e2e",
   "version": "0.0.1",
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@one-foot-at-portfolio/auth-services"
+      "auth-services"
     ],
     "targets": {
       "e2e": {
@@ -17,8 +17,8 @@
           "passWithNoTests": true
         },
         "dependsOn": [
-          "@one-foot-at-portfolio/auth-services:build",
-          "@one-foot-at-portfolio/auth-services:serve"
+          "auth-services:build",
+          "auth-services:serve"
         ]
       }
     }

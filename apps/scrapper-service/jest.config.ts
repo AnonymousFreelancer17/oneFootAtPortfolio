@@ -1,5 +1,5 @@
 export default {
-  displayName: '@one-foot-at-portfolio/scrapper-service',
+  displayName: 'scrapper-service',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

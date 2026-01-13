@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/database",
+  "name": "database",
   "targets": {
     "prisma-generate": {
       "executor": "nx:run-commands",

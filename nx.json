@@ -3,43 +3,43 @@
   "defaultBase": "master",
   "projects": {
     "projects": {
-      "@oneFootAtPortfolio/portfolio-web": {
+      "@portfolio-web": {
         "tags": []
       },
-      "@oneFootAtPortfolio/auth-services": {
+      "@auth-services": {
         "tags": ["type:service", "scope:backend"]
       },
-      "@oneFootAtPortfolio/auth-services-e2e": {
+      "@auth-services-e2e": {
         "tags": ["type:e2e", "scope:backend"]
       },
-      "@oneFootAtPortfolio/api-gateway": {
+      "@api-gateway": {
         "tags": ["type:service", "scope:backend"]
       },
-      "@oneFootAtPortfolio/api-gateway-e2e": {
+      "@api-gateway-e2e": {
         "tags": ["type:e2e", "scope:backend"]
       },
-      "@oneFootAtPortfolio/scrapper-service": {
+      "@scrapper-service": {
         "tags": ["type:service", "scope:backend"]
       },
-      "@oneFootAtPortfolio/scrapper-service-e2e": {
+      "@scrapper-service-e2e": {
         "tags": ["type:e2e", "scope:backend"]
       },
-      "@oneFootAtPortfolio/ui": {
+      "@ui": {
         "tags": ["type:ui", "scope:shared"]
       },
-      "@oneFootAtPortfolio/database": {
+      "@database": {
         "tags": ["type:shared", "scope:backend"]
       },
-      "@oneFootAtPortfolio/error_handler": {
+      "@error_handler": {
         "tags": ["type:shared", "scope:backend"]
       },
-      "@oneFootAtPortfolio/puppeteer-utils": {
+      "@puppeteer-utils": {
         "tags": ["type:shared", "scope:backend"]
       },
-      "@oneFootAtPortfolio/source": {
+      "@source": {
         "tags": ["root"]
       },
-      "@oneFootAtPortfolio/ecommerce": {
+      "@ecommerce": {
         "tags": ["type:frontend"]
       }
     }

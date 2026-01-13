@@ -11,8 +11,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/apps/auth-services/dist/package.json",
-          "{workspaceRoot}/apps/auth-services/dist/package-lock.json"
+          "{workspaceRoot}/dist/apps/auth-services/package.json",
+          "{workspaceRoot}/dist/apps/auth-services/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -24,7 +24,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/apps/auth-services/dist/workspace_modules"
+          "{workspaceRoot}/dist/apps/auth-services/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -46,15 +46,15 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@one-foot-at-portfolio/auth-services:build",
+          "buildTarget": "auth-services:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@one-foot-at-portfolio/auth-services:build:development"
+            "buildTarget": "auth-services:build:development"
           },
           "production": {
-            "buildTarget": "@one-foot-at-portfolio/auth-services:build:production"
+            "buildTarget": "auth-services:build:production"
           }
         }
       }

@@ -11,8 +11,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/apps/api-gateway/dist/package.json",
-          "{workspaceRoot}/apps/api-gateway/dist/package-lock.json"
+          "{workspaceRoot}/dist/apps/api-gateway/package.json",
+          "{workspaceRoot}/dist/apps/api-gateway/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -24,7 +24,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/apps/api-gateway/dist/workspace_modules"
+          "{workspaceRoot}/dist/apps/api-gateway/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -46,15 +46,15 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@one-foot-at-portfolio/api-gateway:build",
+          "buildTarget": "api-gateway:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@one-foot-at-portfolio/api-gateway:build:development"
+            "buildTarget": "api-gateway:build:development"
           },
           "production": {
-            "buildTarget": "@one-foot-at-portfolio/api-gateway:build:production"
+            "buildTarget": "api-gateway:build:production"
           }
         }
       },

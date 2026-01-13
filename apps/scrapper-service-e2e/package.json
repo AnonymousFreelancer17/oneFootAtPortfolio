@@ -1,10 +1,10 @@
 {
-  "name": "@one-foot-at-portfolio/scrapper-service-e2e",
+  "name": "scrapper-service-e2e",
   "version": "0.0.1",
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@one-foot-at-portfolio/scrapper-service"
+      "scrapper-service"
     ],
     "targets": {
       "e2e": {
@@ -17,8 +17,8 @@
           "passWithNoTests": true
         },
         "dependsOn": [
-          "@one-foot-at-portfolio/scrapper-service:build",
-          "@one-foot-at-portfolio/scrapper-service:serve"
+          "scrapper-service:build",
+          "scrapper-service:serve"
         ]
       }
     }

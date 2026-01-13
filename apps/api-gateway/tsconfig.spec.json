@@ -1,12 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "outDir": "./out-tsc/jest",
     "types": [
       "jest",
       "node"
     ],
-    "baseUrl": ".",
+
   },
   "include": [
     "jest.config.ts",

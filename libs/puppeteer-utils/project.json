@@ -1,5 +1,5 @@
 {
-  "name": "@one-foot-at-portfolio/puppeteer-utils",
+  "name": "puppeteer-utils",
   "sourceRoot": "libs/puppeteer-utils/src",
   "projectType": "library",
   "targets": {

@@ -1,10 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "out-tsc/@one-foot-at-portfolio/api-gateway-e2e",
+    "outDir": "../../dist/apps/api-gateway-e2e",
     "esModuleInterop": true,
     "noUnusedLocals": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "jest.config.ts",

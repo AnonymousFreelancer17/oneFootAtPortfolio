@@ -1,5 +1,5 @@
 export default {
-  displayName: '@one-foot-at-portfolio/api-gateway',
+  displayName: 'api-gateway',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

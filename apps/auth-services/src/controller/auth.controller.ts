@@ -3,17 +3,23 @@ import {
   checkOtpRestrictions,
   sendOtp,
   trackOtpRequests,
-  validateRegistrationData,
+  // validateRegistrationData,
   verifyOtp as verifyOtpHelper,
 } from "../utils/auth.helper";
 import { authDb as prisma } from "../../../../libs/database/src/index";
 import { redis } from "../../../../libs/database/src/index";
-import { ValidationError } from "../../../../libs/error_handler";
-import { OAuth2Client } from "google-auth-library";
-import jwt from "jsonwebtoken";
-import { hashPassword, verifyPassword } from "../utils/JWT";
 
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+// importing from error-handler library
+import { ValidationError } from "@error_handler";
+
+
+// import { OAuth2Client } from "google-auth-library";
+// import jwt from "jsonwebtoken";
+
+
+import { hashPassword } from "../utils/JWT";
+
+// const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 export const userRegistration = async (
   req: Request,

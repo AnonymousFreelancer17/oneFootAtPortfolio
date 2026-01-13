@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
     "outDir": "../../dist/libs/database",
     "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+    "tsBuildInfoFile": "../../dist/libs/database/tsconfig.lib.tsbuildinfo",
     "emitDeclarationOnly": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,

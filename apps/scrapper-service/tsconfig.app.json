@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "../../dist/apps/scrapper-service",
     "types": ["node", "express"],
     "target": "ES2021",
     "lib": ["ES2021", "DOM"],
@@ -13,7 +13,7 @@
     "skipLibCheck": true,
     "strict": true,
     "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
+    "tsBuildInfoFile": "../../dist/apps/scrapper-service/tsconfig.app.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
   "exclude": [

@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "@nx/enforce-module-boundaries": [
+      "error",
+      {
+        "depConstraints": [
+          {
+            "sourceTag": "type:app",
+            "onlyDependOnLibsWithTags": ["type:lib"]
+          },
+          {
+            "sourceTag": "scope:backend",
+            "onlyDependOnLibsWithTags": ["scope:shared"]
+          }
+        ]
+      }
+    ]
+  }
+}

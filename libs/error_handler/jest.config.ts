@@ -10,7 +10,7 @@ const swcJestConfig = JSON.parse(
 swcJestConfig.swcrc = false;
 
 export default {
-  displayName: '@one-foot-at-portfolio/libs',
+  displayName: 'error_handler',
   preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {

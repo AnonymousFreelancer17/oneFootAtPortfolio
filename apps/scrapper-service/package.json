@@ -11,8 +11,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/apps/scrapper-service/dist/package.json",
-          "{workspaceRoot}/apps/scrapper-service/dist/package-lock.json"
+          "{workspaceRoot}/dist/apps/scrapper-service/package.json",
+          "{workspaceRoot}/dist/apps/scrapper-service/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -24,7 +24,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/apps/scrapper-service/dist/workspace_modules"
+          "{workspaceRoot}/dist/apps/scrapper-service/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -46,15 +46,15 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@one-foot-at-portfolio/scrapper-service:build",
+          "buildTarget": "scrapper-service:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@one-foot-at-portfolio/scrapper-service:build:development"
+            "buildTarget": "scrapper-service:build:development"
           },
           "production": {
-            "buildTarget": "@one-foot-at-portfolio/scrapper-service:build:production"
+            "buildTarget": "scrapper-service:build:production"
           }
         }
       },

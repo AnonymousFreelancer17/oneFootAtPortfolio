@@ -1,21 +1,26 @@
 {
-  "name": "@one-foot-at-portfolio/error_handler",
-  "sourceRoot": "libs/error_handler/src",
-  "projectType": "library",
-  "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "options": {
-        "outputPath": "dist/libs/error_handler",
-        "main": "libs/error_handler/src/index.ts",
-        "tsConfig": "libs/error_handler/tsconfig.app.json"
-      }
-    },
-    "serve": {
-      "executor": "@nx/js:node",
-      "options": {
-        "buildTarget": "error_handler:build"
-      }
-    }
-  }
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "../../dist/libs/error_handler",
+    "tsBuildInfoFile": "../../dist/libs/error_handler/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node"
+    ],
+    "allowImportingTsExtensions": true,
+    "module": "esnext",
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "src/**/*.ts"
+, "src/userAgents.ts"  ],
+  "references": [],
+  "exclude": [
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }

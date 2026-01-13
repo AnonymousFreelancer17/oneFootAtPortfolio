@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    // "ignoreDeprecations" : "6.0",
+    "outDir": "../../dist/apps/auth-services",
     "rootDir": "../../",
     "module": "nodenext",
     "moduleResolution": "nodenext",
@@ -11,7 +10,7 @@
       "node",
       "express"
     ],
-    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
+    "tsBuildInfoFile": "../../dist/apps/auth-services/tsconfig.app.tsbuildinfo"
   },
   "include": [
     "src/**/*.ts",

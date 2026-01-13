@@ -1,27 +1,22 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "ignoreDeprecations" : "5.0",
     "rootDir": "src",
-    "outDir": "dist",
-    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
-    "emitDeclarationOnly": true,
+    "outDir": "../../dist/libs/error_handler",
+
     "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": [
-      "node"
-    ],
-    "allowImportingTsExtensions": true,
-    "module": "esnext",
-    "moduleResolution": "bundler"
+    "emitDeclarationOnly": true,
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    "types": ["node"],
+    "tsBuildInfoFile": "../../dist/libs/error_handler/tsconfig.lib.tsbuildinfo"
   },
-  "include": [
-    "src/**/*.ts"
-, "src/userAgents.ts"  ],
-  "references": [],
+  "include": ["src/**/*.ts"],
   "exclude": [
-    "jest.config.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts"
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "jest.config.ts"
   ]
 }
