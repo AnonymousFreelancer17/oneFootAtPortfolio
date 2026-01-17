@@ -56,7 +56,7 @@ export default function Index() {
   return (
     <div className="w-screen min-h-screen flex flex-wrap gap-6 p-10 justify-center bg-gray-100 dark:bg-black">
       <div className="lg:w-11/12 md:w-11/12 sm:w-full flex flex-col">
-        <div className="w-full md:h-[80vh] sm:h-auto flex justify-center items-center bg-red-400">
+        <div className="w-full md:h-[80vh] sm:h-auto flex justify-center items-center dark:text-white text-black">
           <div className="text-xl">
             Why only Stop at <div>Fashion ?</div>
           </div>
@@ -66,15 +66,20 @@ export default function Index() {
             <div>
               <div>The</div>
               <div>Stories ,Culture ,people, World!</div>
+              <div>
+                <button type="button" >
+                  Shop Now
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="w-full h-screen bg-green-400 gap-4 flex-col justify-center items-center">
-          <div className="w-full h-[60px] font-semibold text-xl flex justify-center items-center">
+        <div className="w-full h-screen gap-4 flex-col justify-center items-center">
+          <div className="w-full h-[60px] font-semibold text-xl flex justify-center items-center dark:text-white text-black">
             Stories
           </div>
-          <div className="flex-1 flex-grow-1 flex flex-wrap justify-center items-center gap-4 bg-purple-400">
+          <div className="flex-1 flex-grow-1 flex flex-wrap justify-center items-center gap-4">
             {loading ? (
               <div className="relative flex-1">
                 <FaSpinner className="animate-spin transition-all" />

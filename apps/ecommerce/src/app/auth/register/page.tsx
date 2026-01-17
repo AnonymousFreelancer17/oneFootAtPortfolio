@@ -104,7 +104,11 @@ const Page = () => {
 
   return (
     <div className="lg:w-[80vw] md:w-[80vw] w-[90vw] h-full dark:bg-neutral-900 bg-neutral-100 dark:text-white text-black flex justify-center items-center">
-      <div className="w-2/3 md:flex hidden justify-center items-center"></div>
+      <div className="w-2/3 md:flex hidden justify-center items-center">
+      
+      
+
+      </div>
 
       <div className="lg:w-1/3 md:w-1/2 w-full h-full flex flex-col justify-center items-center gap-y-8 dark:text-neutral-400 text-gray-600">
         <div className="w-10/12 flex flex-col gap-y-2">

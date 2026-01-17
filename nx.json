@@ -7,45 +7,82 @@
         "tags": []
       },
       "@auth-services": {
-        "tags": ["type:service", "scope:backend"]
+        "tags": [
+          "type:service",
+          "scope:backend"
+        ]
       },
       "@auth-services-e2e": {
-        "tags": ["type:e2e", "scope:backend"]
+        "tags": [
+          "type:e2e",
+          "scope:backend"
+        ]
       },
       "@api-gateway": {
-        "tags": ["type:service", "scope:backend"]
+        "tags": [
+          "type:service",
+          "scope:backend"
+        ]
       },
       "@api-gateway-e2e": {
-        "tags": ["type:e2e", "scope:backend"]
+        "tags": [
+          "type:e2e",
+          "scope:backend"
+        ]
       },
       "@scrapper-service": {
-        "tags": ["type:service", "scope:backend"]
+        "tags": [
+          "type:service",
+          "scope:backend"
+        ]
       },
       "@scrapper-service-e2e": {
-        "tags": ["type:e2e", "scope:backend"]
+        "tags": [
+          "type:e2e",
+          "scope:backend"
+        ]
       },
       "@ui": {
-        "tags": ["type:ui", "scope:shared"]
+        "tags": [
+          "type:ui",
+          "scope:shared"
+        ]
       },
       "@database": {
-        "tags": ["type:shared", "scope:backend"]
+        "tags": [
+          "type:shared",
+          "scope:backend"
+        ]
       },
       "@error_handler": {
-        "tags": ["type:shared", "scope:backend"]
+        "tags": [
+          "type:shared",
+          "scope:backend"
+        ]
       },
       "@puppeteer-utils": {
-        "tags": ["type:shared", "scope:backend"]
+        "tags": [
+          "type:shared",
+          "scope:backend"
+        ]
       },
       "@source": {
-        "tags": ["root"]
+        "tags": [
+          "root"
+        ]
       },
       "@ecommerce": {
-        "tags": ["type:frontend"]
+        "tags": [
+          "type:frontend"
+        ]
       }
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -54,7 +91,9 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml"
+    ]
   },
   "nxCloudId": "690085ef8bb5cf2dd8715458",
   "plugins": [
@@ -130,11 +169,18 @@
   "targetDefaults": {
     "@nx/esbuild:esbuild": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true
     },
     "build": {
@@ -145,8 +191,13 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   },
   "generators": {
@@ -158,7 +209,18 @@
     },
     "@nx/react": {
       "library": {
+        "style": "tailwind",
+        "linter": "none",
         "unitTestRunner": "jest"
+      },
+      "application": {
+        "babel": true,
+        "style": "tailwind",
+        "linter": "none",
+        "bundler": "vite"
+      },
+      "component": {
+        "style": "tailwind"
       }
     }
   },

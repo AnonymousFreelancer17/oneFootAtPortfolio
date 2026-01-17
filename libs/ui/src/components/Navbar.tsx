@@ -205,12 +205,15 @@ export default function Navbar({ source }: { source: string }) {
             {/* Search Bar */}
             <div className="flex-1 min-h-full lg:flex hidden justify-center items-center">
               {/* Category Select */}
-              <div className="h-[40px] flex items-center border border-green-600 rounded-tl-md rounded-bl-md px-2 bg-green-600">
-                <LayoutGrid size={16} color="white" />
+              <div className="w-[200px] h-[40px] flex items-center justify-center border border-green-600 rounded-tl-md rounded-bl-md bg-green-600 relative">
+
+                <LayoutGrid size={16} color="white" className="absolute left-[10px]" />
+                
                 <select
                   name="category"
-                  className="p-2 h-full bg-transparent dark:text-white text-white outline-none cursor-pointer"
+                  className="w-full h-full bg-transparent dark:text-white text-white outline-none cursor-pointer relative text-left px-8"
                 >
+                  
                   <option
                     className="w-full bg-green-600 dark:text-white text-white"
                     value="all-category"
@@ -300,13 +303,13 @@ export default function Navbar({ source }: { source: string }) {
 
        {/*  for smaller screens only  */}
       <div className="w-screen h-[60px] lg:hidden md:flex flex justify-center items-center border-b dark:border-neutral-600 border-neutral-400 dark:bg-neutral-900 bg-neutral-100">
-              <div className="w-10/12 flex justify-center items-center">
+              <div className="w-11/12 flex justify-center items-center">
                 {/* Category Select */}
-              <div className="h-11/12 flex items-center border border-neutral-200 dark:border-neutral-700 rounded-tl-md rounded-bl-md px-2 bg-green-600">
-                <LayoutGrid size={16} color="white" />
+              <div className="md:w-[200px] sm:w-[150px] w-[150px] h-11/12 flex justify-center items-center border border-green-600 rounded-tl-md rounded-bl-md bg-green-600 relative">
+                <LayoutGrid size={16} color="white" className="absolute left-[10px]" />
                 <select
                   name="category"
-                  className="p-2 h-full bg-transparent dark:text-white text-white outline-none cursor-pointer"
+                  className="w-full h-full py-2 md:ps-8 sm:ps-8 ps-8 bg-transparent dark:text-white text-white outline-none cursor-pointer"
                 >
                   <option
                     className="w-full bg-green-600 dark:text-white text-white"
@@ -328,7 +331,7 @@ export default function Navbar({ source }: { source: string }) {
               </div>
 
               {/* Search Input */}
-              <div className="flex-1 h-11/12 flex items-center border border-neutral-200 dark:border-neutral-700 rounded-br-md rounded-tr-md p-2 bg-neutral-200 dark:bg-neutral-900 relative">
+              <div className="flex-1 h-11/12 flex items-center border-t border-r border-b border-neutral-400 dark:border-neutral-600 rounded-br-md rounded-tr-md p-2 bg-neutral-200 dark:bg-neutral-900 relative">
                 <div className="flex-1 h-full flex gap-x-2 justify-center items-center relative">
                   <FaSearch className="dark:text-white text-black" />
                   <input

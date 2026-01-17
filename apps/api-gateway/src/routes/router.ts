@@ -26,7 +26,7 @@ router.get('/blinkit-products',async (req: Request,res: Response, next: NextFunc
 });
 
 
-// router.get('/geo', getGeoLocation);
+router.get('/geo', getGeoLocation);
 
 
 export default router;
