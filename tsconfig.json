@@ -32,9 +32,6 @@
       "path": "./apps/ecommerce"
     },
     {
-      "path": "./libs/puppeteer-utils"
-    },
-    {
       "path": "./libs/error_handler"
     },
     {
@@ -44,7 +41,7 @@
       "path": "./libs/ui"
     },
     {
-      "path": "./apps/restraunt"
+      "path": "./apps/restaurant"
     }
   ]
 }
