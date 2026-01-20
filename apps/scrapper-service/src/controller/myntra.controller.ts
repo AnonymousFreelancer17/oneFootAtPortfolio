@@ -1,19 +1,21 @@
 import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
-// import path from "path";
+import fs from "fs";
+import path from "path";
 
 //  import deepScroll functionality
 import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";
-import killLimeRoadPopup from "../lib/AutoKillPopups";
-import { cacheExists } from "../utils/cache.utils";
 
 type Product = {
   productCode: string;
+
+  href: string;
 
   brand: string;
   title: string;
   rating: string;
   ratingCount: string;
+  size: string;
   SRP: string;
   MRP: string;
   images: Array<string>;
@@ -44,56 +46,262 @@ type Categories = Record<
 
 // categories
 export async function getCategories(page: any) {
-  console.log("🧭 Navigating to LimeRoad...");
+  console.log("🧭 Navigating to Myntra...");
 
   await page.goto("https://www.myntra.com", {
     waitUntil: "domcontentloaded",
     timeout: 60000,
   });
 
-  await page.evaluateOnNewDocument(killLimeRoadPopup);
+  const data: Categories = await page.evaluate(() => {
+    const allowedRoots = ["men", "women", "kids", "home", "beauty", "genz"];
 
-  await deepAutoScroll(page);
+    const slugify = (text: string) =>
+      text
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]/g, "");
 
-   const data: Categories = await page.evaluate(() => {
-    
+    const result: any = {
+      men: {},
+      women: {},
+      kids: {},
+      home: {},
+      beauty: {},
+      genz: {},
+    };
 
-      const result: Record<string, CategoryGroup> = {};
-      let currentGroup: string | null = null;
+    document.querySelectorAll(".desktop-navContent").forEach((nav) => {
+      const rootAnchor = nav.querySelector(".desktop-navLink > a");
+      if (!rootAnchor) return;
 
-      root
-        .querySelectorAll(
-          ".desktop-navContent"
-        )
-        .forEach((el) => {
+      const rootTitle = rootAnchor.textContent?.trim().toLowerCase();
+      const rootHref = rootAnchor.getAttribute("href") || "";
 
+      if (!rootTitle || !allowedRoots.includes(rootTitle)) return;
 
-        //  selecting the div-group to get the 
-          const category= el?.querySelector(".desktop-navLink");
+      const categoryContainer = nav.querySelector(".desktop-categoryContainer");
+      if (!categoryContainer) return;
 
-        //    selecting the anchor tag
-          const categoryAnchorRaw = category?.querySelector("a");
+      const groups: Record<string, any> = {};
 
-        //    getting the fields for category
-          const categoryTextContent = categoryAnchorRaw?.textContent.trim() || null;
-          const categorynchorHref = categoryAnchorRaw?.getAttribute("href") || null
- 
-          // it returns men | women | kids | home | beauty | genz 
- 
-          //  getting the li items from the container
-          const 
+      categoryContainer
+        .querySelectorAll(".desktop-navBlock")
+        .forEach((block) => {
+          let currentGroupKey: string | null = null;
 
+          block
+            .querySelectorAll(".desktop-categoryName, .desktop-categoryLink")
+            .forEach((el) => {
+              // 🆕 New group encountered
+              if (el.classList.contains("desktop-categoryName")) {
+                const groupTitle = el.textContent?.trim();
+                if (!groupTitle) return;
+
+                currentGroupKey = slugify(groupTitle);
+
+                groups[currentGroupKey] = {
+                  href: rootHref,
+                  categories: {},
+                };
+              }
+
+              // ➕ Category under current group
+              else if (
+                el.classList.contains("desktop-categoryLink") &&
+                currentGroupKey
+              ) {
+                const title = el.textContent?.trim();
+                const href = el.getAttribute("href");
+                if (!title || !href) return;
+
+                groups[currentGroupKey].categories[slugify(title)] = {
+                  title,
+                  href: href.startsWith("http")
+                    ? href
+                    : `https://www.myntra.com${href}`,
+                  products: {},
+                };
+              }
+            });
         });
 
-      return result;
-    }
+      result[rootTitle] = groups;
+    });
+
+    return result;
+  });
 
   await SafeWriteJSON(
-    "apps/scrapper-service/tmp_cache/limeroad_categories.json",
-    data
+    "apps/scrapper-service/tmp_cache/myntra/categories.json",
+    data,
   );
 
   console.log("✅ Complete mega-menu scraped successfully");
 
   return data;
+}
+
+// helper funciton to extract data
+
+async function extractProductsFromPage(page: any) {
+  return await page.evaluate(() => {
+    const products: any[] = [];
+
+    document.querySelectorAll(".product-base").forEach((card) => {
+      // getting the product_code = id
+      const productCode = card.getAttribute("id");
+
+      // getting the href
+      const linkEl = card.querySelector("a");
+      // const imgEl = card.querySelector("img");
+      const images = card.querySelector("source")?.getAttribute("srcset");
+
+      const href = linkEl?.getAttribute("href");
+      if (!href) return;
+
+      products.push({
+        productCode,
+        href: href.startsWith("http") ? href : `https://www.myntra.com${href}`,
+        brand: card.querySelector(".product-brand")?.textContent?.trim() || "",
+        title:
+          card.querySelector(".product-product")?.textContent?.trim() || "",
+        rating:
+          card.querySelector(".product-ratingsContainer span")?.textContent ||
+          "",
+        ratingCount:
+          card
+            .querySelector(".product-ratingsCount")
+            ?.textContent?.replace("|", "")
+            ?.trim() || "",
+        size: card.querySelector(".product-sizeInventoryPresent")?.textContent?.trim() || null,
+        SRP: card.querySelector(".product-discountedPrice")?.textContent || "",
+        MRP: card.querySelector(".product-strike")?.textContent || "",
+        images: images
+          ? images.split(",").map((i) => i.trim().split(" ")[0])
+          : [],
+        productDetails: [],
+        sizeAndFit: [],
+        materialAndCare: [],
+        specification: {},
+        seller: [],
+      });
+    });
+
+    return products || [];
+  });
+}
+
+export async function getProducts(page: any) {
+  const filePath = path.join(
+    process.cwd(),
+    "apps/scrapper-service",
+    "tmp_cache",
+    "myntra",
+    "categories.json",
+  );
+
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const categories = JSON.parse(raw);
+
+  for (const rootKey of Object.keys(categories)) {
+    const rootGroups = categories[rootKey];
+
+    for (const groupKey of Object.keys(rootGroups)) {
+      const group = rootGroups[groupKey];
+
+      for (const categoryKey of Object.keys(group.categories)) {
+        const category = group.categories[categoryKey];
+
+        console.log(
+          `🔍 Scraping: ${rootKey} → ${groupKey} → ${category.title}`,
+        );
+
+        try {
+          const seen = new Set<string>();
+
+          console.log(`➡️ Loading: ${category.href}`);
+
+          await page.goto(category.href, {
+            waitUntil: "networkidle2",
+            timeout: 60000,
+          });
+
+          await page.waitForSelector(".product-base", {
+            timeout: 30000,
+          });
+
+          const initialCount = await page.evaluate(
+            () => document.querySelectorAll(".product-base").length,
+          );
+          console.log("🧪 Initial products:", initialCount);
+
+          // 🔥 Infinite scroll
+          await deepAutoScroll(page);
+
+          // React hydration buffer
+          await new Promise((r) => setTimeout(r, 2000));
+
+          const finalCount = await page.evaluate(
+            () => document.querySelectorAll(".product-base").length,
+          );
+          console.log("🧪 After scroll products:", finalCount);
+
+          const products = await extractProductsFromPage(page);
+
+          for (const product of products) {
+            if (!product.productCode) continue;
+
+            if (!seen.has(product.productCode)) {
+              seen.add(product.productCode);
+              category.products[product.productCode] = product;
+            }
+          }
+
+          console.log(
+            `✅ ${category.title}: ${Object.keys(category.products).length} products`,
+          );
+        } catch (err: any) {
+          console.error(
+            `❌ Failed: ${rootKey} → ${groupKey} → ${category.title}`,
+          );
+          console.error(err?.message || err);
+
+          // Optional: screenshot for debugging
+          try {
+            await page.screenshot({
+              path: `error-${categoryKey}.png`,
+              fullPage: true,
+            });
+          } catch {}
+
+          // 🔥 Continue with next category
+          continue;
+        }
+      }
+    }
+  }
+
+  // ✅ Always save whatever was collected
+  fs.writeFileSync(
+    path.join(
+      process.cwd(),
+      "apps/scrapper-service/tmp_cache/myntra/products.json",
+    ),
+    JSON.stringify(categories, null, 2),
+  );
+
+  console.log("🎉 Scraping completed (with fault tolerance)");
+}
+
+
+
+// functions with session rotation to expect and react to failures and being reactuve about it!
+
+export async function scrapeMyntraCategories() {
+  return await rotateSession(getCategories);
+}
+
+export async function scrapeMyntraProducts() {
+  return await rotateSession(getProducts);
 }

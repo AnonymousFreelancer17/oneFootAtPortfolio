@@ -19,6 +19,8 @@
     "baseUrl": ".",
     "paths": {
        "@error_handler": ["libs/error_handler/src/index.ts"],
+       "@ui": ["libs/ui/src/index.ts"],
+
     }
   }
 }

@@ -2,7 +2,7 @@ const express = require("express");
 import { NextFunction, Request, Response } from "express";
 import safeReadJSON from "../../src/utility/SafeReadJSON";
 import path from "path";
-import { getGeoLocation } from "../controller/geo.controller";
+// import { getGeoLocation } from "../controller/geo.controller";
 
 
 const router = express.Router();
@@ -26,7 +26,7 @@ router.get('/blinkit-products',async (req: Request,res: Response, next: NextFunc
 });
 
 
-router.get('/geo', getGeoLocation);
+// router.get('/geo', getGeoLocation);
 
 
 export default router;

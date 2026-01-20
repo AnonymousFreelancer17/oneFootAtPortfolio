@@ -10,7 +10,7 @@ import { authDb as prisma } from "../../../../libs/database/src/index";
 import { redis } from "../../../../libs/database/src/index";
 
 // importing from error-handler library
-import { ValidationError } from "@error_handler";
+import { ValidationError } from "../../../../libs/error_handler/src/index";
 
 
 // import { OAuth2Client } from "google-auth-library";
@@ -31,7 +31,7 @@ export const userRegistration = async (
 
     if (!name || !email || !phone_number || !service) {
       throw new ValidationError(
-        "Name, email, phone number and service are required"
+        "Name, email, phone number are required"
       );
     }
 
@@ -42,7 +42,8 @@ export const userRegistration = async (
     if (existingUser) {
       throw new ValidationError("User already exists");
     }
-
+    
+    
     await checkOtpRestrictions(email);
     await trackOtpRequests(email);
     await sendOtp(name, email, "user-activation-mail");

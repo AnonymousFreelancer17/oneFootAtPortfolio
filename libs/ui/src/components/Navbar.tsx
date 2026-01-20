@@ -101,7 +101,7 @@ export default function Navbar({ source }: { source: string }) {
       try {
         // Use http instead of https for localhost
         const response = await axios.get(
-          "http://localhost:8000/scrapper/limeroad/categories"
+          "http://localhost:8000/scrapper/myntra/categories"
         );
 
         console.log(response.data.parsed);

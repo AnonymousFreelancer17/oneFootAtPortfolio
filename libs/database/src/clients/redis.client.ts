@@ -8,8 +8,6 @@ const createRedis = () => {
   const url = process.env.REDIS_URL;
   if (!url) throw new Error("❌ REDIS_URL missing in .env");
 
-  console.log("🔗 Connecting to Redis:", url);
-
   const client = new Redis(url, {
     tls: {}, // required for Upstash
     maxRetriesPerRequest: null, // Upstash requires disabling this

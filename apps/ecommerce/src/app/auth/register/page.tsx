@@ -7,14 +7,10 @@ import { FaFacebook, FaGoogle, FaSpinner } from "react-icons/fa";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
-
-
+import { log } from "console";
 
 const Page = () => {
   const router = useRouter();
-
-
 
   const [service, setService] = useState("ecommerce");
   const [username, setUsername] = useState("Aditya verma");
@@ -31,19 +27,14 @@ const Page = () => {
   const [verificationAsTrue, setVerificationAsTrue] = useState(false);
 
   const handleRegister = async () => {
+    if (loading) return;
+
     setErrorMsg("");
     setSuccessMsg("");
-
-    // Basic validation
-    if (!username || !email || !phoneNumber || !password) {
-      setErrorMsg("Please fill all required fields.");
-      return;
-    }
+    setLoading(true);
 
     try {
-      setLoading(true);
-
-      const res = await axios.post(`http://localhost:8000/auth/register`, {
+      const res = await axios.post("/auth/register", {
         name: username,
         email,
         phone_number: phoneNumber,
@@ -52,12 +43,20 @@ const Page = () => {
         service,
       });
 
-      setSuccessMsg(`Registration successful! - ${res.data?.message}`);
+      console.log({
+        name: username,
+        email,
+        phoneNumber,
+        phoneCode,
+        password,
+        service,
+      });
+
+      // 🔥 AFTER request fully resolves
       setRegistrationAsTrue(true);
+      setSuccessMsg(res.data?.message || "OTP sent");
     } catch (err: any) {
-      console.log(err);
       setErrorMsg(err.response?.data?.message || "Registration failed.");
-      setRegistrationAsTrue(false);
     } finally {
       setLoading(false);
     }
@@ -85,7 +84,7 @@ const Page = () => {
           phone_number: phoneNumber,
           phone_code: phoneCode,
           password,
-        }
+        },
       );
 
       setSuccessMsg(`Verification successful! - ${res.data?.message}`);
@@ -104,11 +103,7 @@ const Page = () => {
 
   return (
     <div className="lg:w-[80vw] md:w-[80vw] w-[90vw] h-full dark:bg-neutral-900 bg-neutral-100 dark:text-white text-black flex justify-center items-center">
-      <div className="w-2/3 md:flex hidden justify-center items-center">
-      
-      
-
-      </div>
+      <div className="w-2/3 md:flex hidden justify-center items-center"></div>
 
       <div className="lg:w-1/3 md:w-1/2 w-full h-full flex flex-col justify-center items-center gap-y-8 dark:text-neutral-400 text-gray-600">
         <div className="w-10/12 flex flex-col gap-y-2">
@@ -210,12 +205,21 @@ const Page = () => {
             <input type="checkbox" name="checkbox" className="text-xl p-4" />
 
             {/* linking privacy Page */}
-            <div className="flex gap-x-2">
-              <div>I agree to the</div>
-              <Link href="#" className="text-green-600 font-medium">
-                Terms & condition
-              </Link>
-            </div>
+            {registrationAsTrue ? (
+              <div className="flex gap-x-2">
+                <div>Resend OTP :  </div>
+                <Link href="#" className="text-green-600 font-medium">
+                  Terms & condition
+                </Link>
+              </div>
+            ) : (
+              <div className="flex gap-x-2">
+                <div>I agree to the</div>
+                <Link href="#" className="text-green-600 font-medium">
+                  Terms & condition
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
@@ -264,12 +268,8 @@ const Page = () => {
             Facebook
           </button>
         </div>
-           
 
-
-
-
-           {/*  breaking news on the vendor authentication */}
+        {/*  breaking news on the vendor authentication */}
         {/* <div className="w-10/12 flex flex-col justify-center items-start">
           <div>
             We are presenting the golden opportunity to all the proud business
