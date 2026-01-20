@@ -101,6 +101,45 @@ const Page = () => {
     }
   };
 
+  const ResendOtp = async () => {
+    setSuccessMsg("");
+    setErrorMsg("");
+
+    if (!otp) {
+      setErrorMsg("Validation error : OTP is not valid!");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await axios.post(
+        `http://localhost:8000/auth/resend-OTP`,
+        {
+          name: username,
+          email,
+          otp,
+          service,
+          phone_number: phoneNumber,
+          phone_code: phoneCode,
+          password,
+        },
+      );
+
+      setSuccessMsg(`Verification successful! - ${res.data?.message}`);
+      setVerificationAsTrue(true);
+
+      localStorage.setItem("token", res.data.user?.token); // JWT
+      localStorage.setItem("loginTime", new Date().toISOString());
+
+      router.push("/");
+    } catch (error: any) {
+      setErrorMsg(error.response?.data?.message || "Registration failed.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="lg:w-[80vw] md:w-[80vw] w-[90vw] h-full dark:bg-neutral-900 bg-neutral-100 dark:text-white text-black flex justify-center items-center">
       <div className="w-2/3 md:flex hidden justify-center items-center"></div>
@@ -207,10 +246,7 @@ const Page = () => {
             {/* linking privacy Page */}
             {registrationAsTrue ? (
               <div className="flex gap-x-2">
-                <div>Resend OTP :  </div>
-                <Link href="#" className="text-green-600 font-medium">
-                  Terms & condition
-                </Link>
+                <button type="button" className="text-green-600" onClick={ResendOtp} >Resend OTP to ${email}</button>
               </div>
             ) : (
               <div className="flex gap-x-2">

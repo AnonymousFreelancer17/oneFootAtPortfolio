@@ -60,6 +60,7 @@ export const sendEmail = async (
       text: html.replace(/<[^>]*>/g, ""), // plain text fallback
     });
 
+    console.log(`sent mail to ${to}`)
      
     return true;
   } catch (error) {

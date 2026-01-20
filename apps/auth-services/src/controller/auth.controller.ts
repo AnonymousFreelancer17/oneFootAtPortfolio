@@ -12,10 +12,8 @@ import { redis } from "../../../../libs/database/src/index";
 // importing from error-handler library
 import { ValidationError } from "../../../../libs/error_handler/src/index";
 
-
 // import { OAuth2Client } from "google-auth-library";
 // import jwt from "jsonwebtoken";
-
 
 import { hashPassword } from "../utils/JWT";
 
@@ -24,15 +22,13 @@ import { hashPassword } from "../utils/JWT";
 export const userRegistration = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { name, email, phone_number, service } = req.body;
 
     if (!name || !email || !phone_number || !service) {
-      throw new ValidationError(
-        "Name, email, phone number are required"
-      );
+      throw new ValidationError("Name, email, phone number are required");
     }
 
     const existingUser = await prisma.users.findFirst({
@@ -42,8 +38,7 @@ export const userRegistration = async (
     if (existingUser) {
       throw new ValidationError("User already exists");
     }
-    
-    
+
     await checkOtpRestrictions(email);
     await trackOtpRequests(email);
     await sendOtp(name, email, "user-activation-mail");
@@ -64,29 +59,28 @@ export const userRegistration = async (
 export const verifyRegistrationOtp = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
-    const {
-      email,
-      otp,
-      name,
-      password,
-      service,
-      phone_number,
-      phone_code,
-    } = req.body;
+    const { email, otp, name, password, service, phone_number, phone_code } =
+      req.body;
 
     if (!email || !otp || !service || !phone_number || !phone_code) {
       throw new ValidationError("Missing required fields");
     }
 
+    const existingUser = await prisma.users.findFirst({
+      where: { email, service },
+    });
+
+    if (existingUser) {
+      throw new ValidationError("User already verified");
+    }
+
     const isValidOtp = await verifyOtpHelper(email, otp);
     if (!isValidOtp) throw new ValidationError("Invalid OTP");
 
-    const hashedPassword = password
-      ? await hashPassword(password)
-      : null;
+    const hashedPassword = password ? await hashPassword(password) : null;
 
     const user = await prisma.users.create({
       data: {
@@ -111,6 +105,24 @@ export const verifyRegistrationOtp = async (
   }
 };
 
+// resend OTP
+export const resendOtp = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { email, name } = req.body;
+
+    await checkOtpRestrictions(email);
+    await trackOtpRequests(email);
+    await sendOtp(name, email, "user-activation-mail");
+
+    res.json({ message: "OTP resent successfully" });
+  } catch (e) {
+    next(e);
+  }
+};
 
 /**
  * ✅ User Login Controller
