@@ -1,8 +1,8 @@
 {
-  "name": "ecommerce",
+  "name": "restaurant",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/ecommerce/src",
+  "sourceRoot": "apps/restaurant/src",
   "tags": [],
   "targets": {
     "build": {
@@ -11,7 +11,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "../../dist/apps/ecommerce"
+        "outputPath": "../../dist/apps/restaurant"
       },
       "configurations": {
         "production": {},
@@ -21,17 +21,17 @@
     "serve": {
       "executor": "@nx/next:server",
       "options": {
-        "buildTarget": "ecommerce:build",
+        "buildTarget": "restaurant:build",
         "dev": true,
-        "port": 4300
+        "port": 4500
       },
       "configurations": {
         "production": {
-          "buildTarget": "ecommerce:build:production",
+          "buildTarget": "restaurant:build:production",
           "dev": false
         },
         "development": {
-          "buildTarget": "ecommerce:build:development",
+          "buildTarget": "restaurant:build:development",
           "dev": true
         }
       }

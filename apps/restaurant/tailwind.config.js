@@ -1,14 +1,13 @@
-const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
-const { join } = require('path');
+import { join } from "path";
+// const uiPreset = require("../../libs/ui/tailwind.preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // presets:[uiPreset],
+  darkMode: "class",
   content: [
-    join(
-      __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
-    ),
-    ...createGlobPatternsForDependencies(__dirname),
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "../../libs/ui/src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},

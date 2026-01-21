@@ -1,4 +1,4 @@
-import Navbar from "../../../../libs/ui/src/components/Navbar";
+import { Navbar } from "../../../../libs/ui/src/components/Navbar";
 import "./globals.css";
 
 import { ThemeProvider } from "../../../../libs/ui/src/index";

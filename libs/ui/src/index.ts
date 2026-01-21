@@ -2,6 +2,7 @@
 
 // export components
 
+export * from "./components/Navbar"
 export * from './components/ui/buttons/button.js';
 export * from './components/ui/navigation-menu';
 export * from './components/ui/table'

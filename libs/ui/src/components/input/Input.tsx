@@ -321,7 +321,7 @@ const Input = ({
   phoneCode,
   value,
   name,
-  onChange
+  onChange,
 }: {
   label: string;
   icon: ReactNode;
@@ -332,13 +332,18 @@ const Input = ({
   phoneCode: boolean;
   value: string;
   name: string;
-  onChange: any
+  onChange: any;
 }) => {
   return (
-    <div className={`` + contClassName}>
-      <label htmlFor={name} className="block mb-2.5 text-sm font-medium text-heading">
-        {label}
-      </label>
+    <div className={contClassName}>
+      {label && (
+        <label
+          htmlFor={name}
+          className="block mb-2.5 text-sm font-medium text-heading"
+        >
+          {label}
+        </label>
+      )}
       <div className={`` + className}>
         <div className="h-full absolute left-0 ps-3 pe-3 z-10 flex justify-center items-center gap-x-2">
           {icon ? icon : <CircleAlert />}

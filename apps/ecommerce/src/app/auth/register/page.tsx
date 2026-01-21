@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Input from "../../../../../../libs/ui/src/components/Input";
+import Input from "../../../../../../libs/ui/src/components/input/Input";
 
 import { Key, Mail, Phone, User } from "lucide-react";
 import { FaFacebook, FaGoogle, FaSpinner } from "react-icons/fa";

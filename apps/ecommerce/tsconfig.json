@@ -21,9 +21,9 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@one-foot-at-portfolio/ui/*": ["../../libs/ui/src/*"]
+      "@ui/*": ["../../libs/ui/src/*"]
     },
-    "outDir": "dist",
+    "outDir": "../../dist/apps/",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [

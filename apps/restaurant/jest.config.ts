@@ -1,10 +1,19 @@
-export default {
-  displayName: '@one-foot-at-portfolio/restraunt',
-  preset: '../../jest.preset.js',
+import type { Config } from 'jest';
+import nextJest from 'next/jest.js';
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+const config: Config = {
+  displayName: 'restaurant',
+  preset: '../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
-    '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nx/react/babel'] }]
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: 'test-output/jest/coverage'
+  coverageDirectory: '../coverage/restaurant',
+  testEnvironment: 'jsdom',
 };
+
+export default createJestConfig(config);

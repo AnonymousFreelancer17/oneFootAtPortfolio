@@ -75,6 +75,11 @@
         "tags": [
           "type:frontend"
         ]
+      },
+      "@restaurant": {
+        "tags": [
+          "type:frontend"
+        ]
       }
     }
   },

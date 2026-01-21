@@ -1,18 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/jest",
-    "jsx": "react-jsx",
-    "ignoreDeprecations": "6.0",
-    "types": [
-      "jest",
-      "node",
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
-    ],
-    "module": "esnext",
-    "moduleResolution": "bundler"
-  },
+"compilerOptions": {
+
+  "outDir": "./out-tsc/jest",
+  "jsx": "preserve",
+  "types": [
+    "jest",
+    "node"
+  ],
+  "module": "esnext",
+  "moduleResolution": "bundler",
+  "noEmit": true
+},
   "include": [
     "jest.config.ts",
     "src/**/*.test.ts",
@@ -27,7 +26,7 @@
   ],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.json"
     }
   ]
 }
