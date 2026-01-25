@@ -294,6 +294,44 @@ export async function getProducts(page: any) {
   console.log("🎉 Scraping completed (with fault tolerance)");
 }
 
+export async function getProductsDetails(page:any){
+   const filePath = path.join(
+    process.cwd(),
+    "apps/scrapper-service",
+    "tmp_cache",
+    "myntra",
+    "products.json",
+  );
+
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const categories = JSON.parse(raw);
+
+  for (const rootKey of Object.keys(categories)) {
+    const rootGroups = categories[rootKey];
+
+    for (const groupKey of Object.keys(rootGroups)) {
+      const group = rootGroups[groupKey];
+
+      for (const categoryKey of Object.keys(group.categories)) {
+        const category = group.categories[categoryKey];
+
+        console.log(
+          `🔍 Scraping: ${rootKey} → ${groupKey} → ${category.title}`,
+        );
+
+       
+         try {
+          
+         } catch (error) {
+          
+         }
+
+
+
+      }
+    }
+  }
+}
 
 
 // functions with session rotation to expect and react to failures and being reactuve about it!

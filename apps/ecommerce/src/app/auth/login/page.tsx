@@ -1,15 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import Input from "../../../../../../libs/ui/src/components/input/Input";
+import { Input } from "../../../../../../libs/ui/src/components/input";
 
 import { Key, Mail } from "lucide-react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import _countryCode from "../../../../public/data/countryCode.json";
 
-
 const Page = () => {
-
   const [username, setUsername] = useState("");
 
   return (
@@ -24,36 +22,59 @@ const Page = () => {
 
           <div className="w-full flex gap-x-2">
             Don't have an account?
-            <Link href="/auth/register" className="text-green-600 font-medium">Register</Link>
+            <Link href="/auth/register" className="text-green-600 font-medium">
+              Register
+            </Link>
           </div>
         </div>
 
         <div className="w-full flex flex-col justify-center items-center gap-y-2">
-          <Input
-          
-            contClassName="w-10/12 relative"
-            label={"Your Email"}
-            phoneCode={false}
-            className="w-full relative flex justify-center items-center "
-            placeholder="name@gmail.com"
-            inputType="text"
-            value=""
-            name="name"
-            onChange={()=>{}}
-            icon={<Mail />}
-          />
+         
 
           <Input
-            contClassName="w-10/12 relative"
-            label={"Your Password"}
+            type="input"
+            containerClassName="w-10/12 relative"
+            label="Email"
+            iconVisibility={true}
+            icon={<Mail className="absolute top-[10px] left-[10px]" />}
+            inputType="text"
+            placeholder="name@gmail.com"
+            optionData={
+              <>
+              </>
+            }
+            inputContainerClassName="w-full "
+            iconClassName=""
+            labelClassName="block mb-2.5 text-sm font-medium text-heading"
+            className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 text-right`}
             phoneCode={false}
-            className="w-full relative flex justify-center items-center"
-            value=""
-            onChange={()=>{}}
-            placeholder="********"
-            name="password"
+            value={""}
+            name="email"
+            onChange={""}
+          />
+
+           
+
+          <Input
+            type="input"
+            containerClassName="w-10/12 relative"
+            label="Password"
+            iconVisibility={true}
+            icon={<Key className="absolute top-[10px] left-[10px]" />}
             inputType="password"
-            icon={<Key />}
+            placeholder="*************"
+            optionData={
+              <>
+              </>
+            }
+            inputContainerClassName="w-full"
+            iconClassName=""
+            labelClassName="block mb-2.5 text-sm font-medium text-heading"
+            className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 text-right`}
+            phoneCode={false}
+            value={""}
+            name=""
+            onChange={""}
           />
         </div>
 
@@ -87,9 +108,7 @@ const Page = () => {
           </button>
         </div>
 
-   
-
-   {/*  breking news on vendor login */}
+        {/*  breking news on vendor login */}
         {/* <div className="w-10/12 flex flex-col justify-center items-start">
           <div>
             We are presenting the golden opportunity to all the proud business

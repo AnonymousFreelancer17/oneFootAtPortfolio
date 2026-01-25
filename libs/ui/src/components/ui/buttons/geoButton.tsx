@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -22,7 +24,7 @@ function CountryFlag({ code }: { code: string }) {
 
 
 
-export default function LocaleButton() {
+export function LocaleButton() {
   const [locale, setLocale] = useState<Locale | null>(null);
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function LocaleButton() {
   return (
     <button
       className="
-        flex items-center gap-2
+        flex items-center gap-1
         text-white
         rounded-full
         text-sm font-medium

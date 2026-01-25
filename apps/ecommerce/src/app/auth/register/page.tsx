@@ -1,30 +1,29 @@
 "use client";
-import React, { useState } from "react";
-import Input from "../../../../../../libs/ui/src/components/input/Input";
+import React, { useState, ChangeEvent } from "react";
+import { Input } from "../../../../../../libs/ui/src/components/input";
 
-import { Key, Mail, Phone, User } from "lucide-react";
+import { Key, Mail, User2 } from "lucide-react";
 import { FaFacebook, FaGoogle, FaSpinner } from "react-icons/fa";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { log } from "console";
 
 const Page = () => {
   const router = useRouter();
 
   const [service, setService] = useState("ecommerce");
-  const [username, setUsername] = useState("Aditya verma");
-  const [email, setEmail] = useState("adityaverma4648@gmail.com");
-  const [phoneNumber, setPhoneNumber] = useState("6261997767");
-  const [phoneCode, setPhoneCode] = useState("+91");
-  const [password, setPassword] = useState("Clearity@1");
   const [otp, setOtp] = useState("");
+  const [formData, setFormData] = useState({
+    source: service,
+    email: "",
+    username: "",
+    password: "",
+  });
 
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [registrationAsTrue, setRegistrationAsTrue] = useState(false);
-  const [verificationAsTrue, setVerificationAsTrue] = useState(false);
 
   const handleRegister = async () => {
     if (loading) return;
@@ -34,23 +33,9 @@ const Page = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("/auth/register", {
-        name: username,
-        email,
-        phone_number: phoneNumber,
-        phone_code: phoneCode,
-        password,
-        service,
-      });
+      const res = await axios.post("/auth/register", formData);
 
-      console.log({
-        name: username,
-        email,
-        phoneNumber,
-        phoneCode,
-        password,
-        service,
-      });
+      console.log(formData);
 
       // 🔥 AFTER request fully resolves
       setRegistrationAsTrue(true);
@@ -76,19 +61,10 @@ const Page = () => {
 
       const res = await axios.post(
         `http://localhost:8000/auth/verify-registration`,
-        {
-          name: username,
-          email,
-          otp,
-          service,
-          phone_number: phoneNumber,
-          phone_code: phoneCode,
-          password,
-        },
+        formData,
       );
 
       setSuccessMsg(`Verification successful! - ${res.data?.message}`);
-      setVerificationAsTrue(true);
 
       localStorage.setItem("token", res.data.user?.token); // JWT
       localStorage.setItem("loginTime", new Date().toISOString());
@@ -113,21 +89,11 @@ const Page = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post(
-        `http://localhost:8000/auth/resend-OTP`,
-        {
-          name: username,
-          email,
-          otp,
-          service,
-          phone_number: phoneNumber,
-          phone_code: phoneCode,
-          password,
-        },
-      );
+      const res = await axios.post(`http://localhost:8000/auth/resend-OTP`, {
+        formData,
+      });
 
       setSuccessMsg(`Verification successful! - ${res.data?.message}`);
-      setVerificationAsTrue(true);
 
       localStorage.setItem("token", res.data.user?.token); // JWT
       localStorage.setItem("loginTime", new Date().toISOString());
@@ -140,8 +106,19 @@ const Page = () => {
     }
   };
 
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
-    <div className="lg:w-[80vw] md:w-[80vw] w-[90vw] h-full dark:bg-neutral-900 bg-neutral-100 dark:text-white text-black flex justify-center items-center">
+    <div className="lg:w-[80vw] md:w-[80vw] w-[90vw] h-[80vh] dark:text-white text-black flex justify-center items-center">
       <div className="w-2/3 md:flex hidden justify-center items-center"></div>
 
       <div className="lg:w-1/3 md:w-1/2 w-full h-full flex flex-col justify-center items-center gap-y-8 dark:text-neutral-400 text-gray-600">
@@ -150,108 +127,120 @@ const Page = () => {
             Register as a Customer
           </h2>
 
-          <div className="w-full flex gap-x-2">
+          <div className="w-full flex gap-x-2 dark:text-white text-black">
             Already have an account?
-            <Link href="/auth/login" className="text-green-600 font-medium">
+            <Link href="/auth/login" className="text-green-500 font-medium">
               Login
             </Link>
           </div>
         </div>
 
+        {errorMsg && <p className="text-red-500">{errorMsg}</p>}
+        {successMsg && <p className="text-green-500">{successMsg}</p>}
+
         {registrationAsTrue ? (
           <div className="w-full flex flex-col justify-center items-center gap-y-2">
             <Input
-              contClassName="w-10/12 relative"
-              label={"Enter a secure OTP"}
-              phoneCode={false}
-              className="w-full relative flex justify-center items-center"
-              name="otp"
-              placeholder="OTP"
+              type="input"
+              containerClassName="w-10/12 relative"
+              label="Verification OTP"
+              iconVisibility={true}
+              icon={<Key className="absolute top-[10px] left-[10px]" />}
               inputType="text"
+              placeholder="OTP"
+              optionData={<></>}
+              inputContainerClassName="w-full"
+              labelClassName="block mb-2.5 text-sm font-medium text-heading"
+              className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 dark:text-white text-black text-right`}
+              phoneCode={false}
               value={otp}
-              onChange={(e: any) => {
+              name="otp"
+              onChange={(e) => {
                 setOtp(e.target.value);
               }}
-              icon={<Key />}
             />
           </div>
         ) : (
           <div className="w-full flex flex-col justify-center items-center gap-y-2">
             <Input
-              contClassName="w-10/12 relative"
-              label={"Your Username"}
-              phoneCode={false}
-              className="w-full relative flex justify-center items-center "
+              type="input"
+              containerClassName="w-10/12 relative"
+              label="User"
+              iconVisibility={true}
+              icon={<User2 className="absolute top-[10px] left-[10px]" />}
+              inputType="text"
               placeholder="username"
-              inputType="text"
-              name="name"
-              value={username}
-              onChange={(e: any) => {
-                setUsername(e.target.value);
-              }}
-              icon={<User />}
+              optionData={<></>}
+              inputContainerClassName="w-full "
+              labelClassName="block mb-2.5 text-sm font-medium text-heading"
+              className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 dark:text-white text-black text-right`}
+              phoneCode={false}
+              value={formData.username}
+              name="username"
+              onChange={handleChange}
             />
 
             <Input
-              contClassName="w-10/12 relative"
-              label={"Your Email"}
-              phoneCode={false}
-              className="w-full relative flex justify-center items-center "
+              type="input"
+              containerClassName="w-10/12 relative"
+              label="Email"
+              iconVisibility={true}
+              icon={<Mail className="absolute top-[10px] left-[10px]" />}
+              inputType="text"
               placeholder="name@gmail.com"
-              inputType="text"
-              name="email"
-              value={email}
-              onChange={(e: any) => {
-                setEmail(e.target.value);
-              }}
-              icon={<Mail />}
-            />
-
-            <Input
-              contClassName="w-10/12 relative"
-              label={"Mobile Number"}
-              phoneCode={true}
-              className="w-full relative flex justify-center items-center "
-              placeholder="1234567890"
-              inputType="text"
-              name="phone_number"
-              value={phoneNumber}
-              onChange={(e: any) => {
-                setPhoneNumber(e.target.value);
-              }}
-              icon={<Phone />}
-            />
-
-            <Input
-              contClassName="w-10/12 relative"
-              label={"Your Password"}
+              optionData={<></>}
+              inputContainerClassName="w-full "
+              labelClassName="block mb-2.5 text-sm font-medium text-heading"
+              className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 dark:text-white text-black text-right`}
               phoneCode={false}
-              className="w-full relative flex justify-center items-center "
-              placeholder="password"
-              value={password}
-              name="password"
-              onChange={(e: any) => {
-                setPassword(e.target.value);
-              }}
+              value={formData.email}
+              name="email"
+              onChange={handleChange}
+            />
+
+            <Input
+              type="input"
+              containerClassName="w-10/12 relative"
+              label="Password"
+              iconVisibility={true}
+              icon={<Key className="absolute top-[10px] left-[10px]" />}
               inputType="password"
-              icon={<Key />}
+              placeholder="*************"
+              optionData={<></>}
+              inputContainerClassName="w-full"
+              labelClassName="block mb-2.5 text-sm font-medium text-heading"
+              className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 dark:text-white text-black text-right`}
+              phoneCode={false}
+              value={formData.password}
+              name="password"
+              onChange={handleChange}
             />
           </div>
         )}
 
         <div className="w-10/12 flex flex-col justify-start items-center">
-          <div className="w-full flex gap-x-1.5">
-            <input type="checkbox" name="checkbox" className="text-xl p-4" />
+          <div className="w-full flex gap-x-4">
+            <input
+              type="checkbox"
+              name="checkbox"
+              className="text-xl w-5 rounded-md"
+            />
 
             {/* linking privacy Page */}
             {registrationAsTrue ? (
               <div className="flex gap-x-2">
-                <button type="button" className="text-green-600" onClick={ResendOtp} >Resend OTP to ${email}</button>
+                <button
+                  type="button"
+                  className="text-green-600"
+                  onClick={ResendOtp}
+                >
+                  Resend OTP to ${formData.email}
+                </button>
               </div>
             ) : (
-              <div className="flex gap-x-2">
+              <div className="flex gap-x-2 dark:text-white text-black">
                 <div>I agree to the</div>
-                <Link href="#" className="text-green-600 font-medium">
+                <Link href="#" className="text-green-500 font-medium">
                   Terms & condition
                 </Link>
               </div>
@@ -263,7 +252,8 @@ const Page = () => {
           {registrationAsTrue ? (
             <button
               type="button"
-              className="w-full py-3 bg-green-600 rounded-md flex justify-center items-center"
+              disabled={loading}
+              className="w-full py-3 bg-green-500 rounded-md dark:text-white text-black flex justify-center items-center"
               onClick={() => handleRegisterationVerification()}
             >
               Verify
@@ -271,8 +261,8 @@ const Page = () => {
           ) : (
             <button
               type="button"
-              disabled={loading ? true : false}
-              className="w-full py-3 bg-green-600 rounded-md flex justify-center items-center"
+              disabled={loading}
+              className="w-full py-3 bg-green-500 font-medium text-white rounded-md flex justify-center items-center"
               onClick={() => handleRegister()}
             >
               {loading ? (
@@ -284,37 +274,26 @@ const Page = () => {
           )}
         </div>
 
-        <div className="w-10/12 flex justify-center items-center font-bold">
+        <div className="w-10/12 flex justify-center items-center font-bold dark:text-white text-black">
           <h2>Or</h2>
         </div>
 
-        <div className="w-10/12 flex justify-center items-center gap-x-2 text-gray-100">
+        <div className="w-10/12 flex justify-center items-center gap-x-2 text-white ">
           <button
             type="button"
-            className="w-1/2 px-10 py-3 bg-green-600 rounded-md flex justify-center items-center gap-x-2"
+            className="w-1/2 px-10 py-3 bg-green-500 rounded-md flex justify-center items-center gap-x-2 font-medium"
           >
             <FaGoogle />
             Google
           </button>
           <button
             type="button"
-            className="w-1/2 px-10 py-3 bg-green-600 rounded-md flex justify-center items-center gap-x-2"
+            className="w-1/2 px-10 py-3 bg-green-500 rounded-md flex justify-center items-center gap-x-2 font-medium"
           >
             <FaFacebook />
             Facebook
           </button>
         </div>
-
-        {/*  breaking news on the vendor authentication */}
-        {/* <div className="w-10/12 flex flex-col justify-center items-start">
-          <div>
-            We are presenting the golden opportunity to all the proud business
-            owners to become an independent e-vendor representing your
-            speciality!
-          </div>
-
-          <div className="font-medium text-green-600">Register as a Vendor</div>
-        </div> */}
       </div>
     </div>
   );

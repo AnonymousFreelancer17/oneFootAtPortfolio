@@ -1,29 +1,12 @@
 "use client";
 
-import {
-  User2,
-  MapPin,
-  InfoIcon,
-  Shield,
-  Download,
-  LayoutGrid,
-  Book,
-  Phone,
-} from "lucide-react";
-import Link from "next/link";
-import { ReactNode, useEffect, useState } from "react";
-import { FaHeart, FaSearch, FaShoppingBag } from "react-icons/fa";
 import { usePathname } from "next/navigation";
-
-import axios from "axios";
-import LocaleButton from "./ui/buttons/geoButton.js";
-import ThemeToggle from "./ui/themeTogglerButton";
-import ButtonWithCounter from "./ui/buttons/buttonWithCounter.js";
+import { ReactElement } from "react";
 
 type NavItem = {
   title: string;
   type: string;
-  content: ReactNode;
+  content: ReactElement;
   align?: "left" | "right" | "center";
   trigger?: "onClick" | "onMouseEnter";
   modalSize?: "fullScreen" | "menuSize";
@@ -36,99 +19,39 @@ type NavGroup = {
   data: NavItem[];
 };
 
-// const navlinks: NavGroup[] = [
-//   {
-//     source: "ecommerce",
-//     downloadLink: "",
-//     logo: "",
-//     data: [
-//       {
-//         title: "Men",
-//         type: "redirect",
-//         content: `<>men</>`,
-//         trigger: "onClick",
-//         align: "center",
-//         modalSize: "fullScreen",
-//       },
-//       {
-//         title: "Women",
-//         type: "redirect",
-//         content: `<>women</>`,
-//         trigger: "onClick",
-//         align: "center",
-//         modalSize: "fullScreen",
-//       },
-//       {
-//         title: "Kids",
-//         type: "redirect",
-//         content: `<>kid</>`,
-//         trigger: "onClick",
-//         align: "left",
-//         modalSize: "fullScreen",
-//       },
-//       {
-//         title: "Home",
-//         type: "redirect",
-//         content: `<>Home</>`,
-//         trigger: "onClick",
-//         align: "left",
-//         modalSize: "fullScreen",
-//       },
-//       {
-//         title: "Offline Stores",
-//         type: "redirect",
-//         content: `<>offline-stores</>`,
-//         trigger: "onClick",
-//         align: "left",
-//         modalSize: "fullScreen",
-//       },
-//     ],
-//   },
-// ];
-
 export function Navbar({
   source,
   className,
+  containerClassName,
+  topNav,
+  topNavContent,
+  hideNavAtRoutes,
+  mainNav,
+  mainNavContent,
 }: {
   source: string;
   className: string;
+  containerClassName: string;
+  topNav: boolean;
+  topNavContent: ReactElement;
+  hideNavAtRoutes: Array<string>;
+  mainNav: boolean;
+  mainNavContent: ReactElement;
 }) {
-  // const [data, setData] = useState<NavItem[]>([]);
-  // const pathname = usePathname();
+  const pathname = usePathname();
 
-  // const [category, setCategory] = useState<any[]>([]);
+  const hideNavbarRoutes = hideNavAtRoutes;
+  const shouldHideSomeElements = hideNavbarRoutes.includes(pathname);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // Use http instead of https for localhost
-  //       const response = await axios.get(
-  //         "http://localhost:8000/scrapper/myntra/categories",
-  //       );
+  return (
+    <nav className={className}>
+      {!shouldHideSomeElements && (
+        <div className={containerClassName}>
+          {topNav && topNavContent}
 
-  //       console.log(response.data.parsed);
-
-  //       setCategory(response.data.parsed);
-  //     } catch (err: any) {
-  //       console.log(err);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  // const hideNavbarRoutes = [
-  //   // "/auth/login",
-  //   // "/auth/register",
-  //   "/studio",
-  //   "/admin",
-  // ];
-  // const shouldHideSomeElements = hideNavbarRoutes.includes(pathname);
-
-  // useEffect(() => {
-  //   const found = navlinks.find((item) => item.source === source);
-  //   if (found) setData(found.data);
-  // }, [source]);
-
-  return <nav className={className}></nav>;
+          {mainNav && mainNavContent}
+        </div>
+      )}
+    </nav>
+  );
 }

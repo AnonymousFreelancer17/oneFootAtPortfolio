@@ -1,9 +1,11 @@
+"use client";
+
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-export default function ThemeToggle() {
+export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("light");
 
   /* ---------------------------
@@ -40,8 +42,8 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle theme"
       className=" gap-x-2
-                 text-black dark:text-white
-                 transition-all duration-300 flex justify-center items-center text-center"
+                 text-black dark:text-white hidden
+                 transition-all duration-300 md:flex justify-center items-center text-center"
     >
       <div
         className="w-6 h-6 rounded-full border dark:
