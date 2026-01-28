@@ -9,22 +9,11 @@ const router = express.Router();
 
 router.get('/',(req: Request,res: Response, next: NextFunction)=>{
     res.json({
-        message : "Welcome to routes"
+        message : "Welcome to api-gateway"
     })
 });
 
-const DATA_PATH = path.join(process.cwd(), "apps/scrapper-service/data/blinkit_products.json");
-
-
-
-router.get('/blinkit-products',async (req: Request,res: Response, next: NextFunction)=>{
-
-    const data = await safeReadJSON(DATA_PATH);
-    res.status(200).json({
-        data
-    })
-});
-
+ 
 
 // router.get('/geo', getGeoLocation);
 

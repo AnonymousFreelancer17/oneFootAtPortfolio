@@ -162,7 +162,7 @@ async function extractProductsFromPage(page: any) {
 
       products.push({
         productCode,
-        href: href.startsWith("http") ? href : `https://www.myntra.com${href}`,
+        href: href.startsWith("http") ? href : `https://www.myntra.com/${href}`,
         brand: card.querySelector(".product-brand")?.textContent?.trim() || "",
         title:
           card.querySelector(".product-product")?.textContent?.trim() || "",
@@ -174,7 +174,10 @@ async function extractProductsFromPage(page: any) {
             .querySelector(".product-ratingsCount")
             ?.textContent?.replace("|", "")
             ?.trim() || "",
-        size: card.querySelector(".product-sizeInventoryPresent")?.textContent?.trim() || null,
+        size:
+          card
+            .querySelector(".product-sizeInventoryPresent")
+            ?.textContent?.trim() || null,
         SRP: card.querySelector(".product-discountedPrice")?.textContent || "",
         MRP: card.querySelector(".product-strike")?.textContent || "",
         images: images
@@ -294,8 +297,8 @@ export async function getProducts(page: any) {
   console.log("🎉 Scraping completed (with fault tolerance)");
 }
 
-export async function getProductsDetails(page:any){
-   const filePath = path.join(
+export async function getProductsDetails(page: any) {
+  const filePath = path.join(
     process.cwd(),
     "apps/scrapper-service",
     "tmp_cache",
@@ -315,24 +318,113 @@ export async function getProductsDetails(page:any){
       for (const categoryKey of Object.keys(group.categories)) {
         const category = group.categories[categoryKey];
 
-        console.log(
-          `🔍 Scraping: ${rootKey} → ${groupKey} → ${category.title}`,
-        );
+        console.log(`🔍 Details: ${rootKey} → ${groupKey} → ${category.title}`);
 
-       
-         try {
-          
-         } catch (error) {
-          
-         }
+        for (const productCode of Object.keys(category.products)) {
+          const product = category.products[productCode];
 
+          // ✅ Skip already enriched products
+          if (
+            product.productDetails?.length ||
+            product.materialAndCare?.length
+          ) {
+            continue;
+          }
 
+          console.log(`➡️ Product: ${productCode}`);
 
+          try {
+            await page.goto(product.href, {
+              waitUntil: "networkidle2",
+              timeout: 60000,
+            });
+
+            await page.waitForSelector(".pdp-title", { timeout: 20000 });
+
+            const details = await page.evaluate(() => {
+              const textArr = (sel: string) =>
+                Array.from(document.querySelectorAll(sel))
+                  .map((e) => e.textContent?.trim())
+                  .filter(Boolean);
+
+              const images = Array.from(
+                document.querySelectorAll(".image-grid-image"),
+              )
+                .map((img: any) => img.src)
+                .filter(Boolean);
+
+              const specification: Record<string, string> = {};
+              document.querySelectorAll(".index-tableRow").forEach((row) => {
+                const key = row
+                  .querySelector(".index-rowKey")
+                  ?.textContent?.trim();
+                const val = row
+                  .querySelector(".index-rowValue")
+                  ?.textContent?.trim();
+                if (key && val) specification[key] = val;
+              });
+
+              return {
+                brand:
+                  document.querySelector(".pdp-title")?.textContent?.trim() ||
+                  "",
+                title:
+                  document.querySelector(".pdp-name")?.textContent?.trim() ||
+                  "",
+                rating:
+                  document.querySelector(".index-overallRating")?.textContent ||
+                  "",
+                ratingCount:
+                  document.querySelector(".index-ratingsCount")?.textContent ||
+                  "",
+                SRP:
+                  document.querySelector(".pdp-price strong")?.textContent ||
+                  "",
+                MRP: document.querySelector(".pdp-mrp s")?.textContent || "",
+                images,
+                productDetails: textArr(".index-descriptionText"),
+                sizeAndFit: textArr(".index-sizeFitDesc"),
+                materialAndCare: textArr(".index-materialCareDesc"),
+                specification,
+                seller: textArr(".supplier-productSellerName"),
+              };
+            });
+
+            // ✅ Merge back safely
+            Object.assign(product, details);
+
+            // ⏳ Politeness delay (important for Myntra)
+            await new Promise((r) => setTimeout(r, 1200));
+          } catch (err: any) {
+            console.error(
+              `❌ Failed product ${productCode}`,
+              err?.message || err,
+            );
+
+            // Optional screenshot
+            try {
+              await page.screenshot({
+                path: `error-product-${productCode}.png`,
+                fullPage: true,
+              });
+            } catch {}
+
+            continue;
+          }
+        }
       }
     }
   }
-}
 
+  fs.writeFileSync(
+    path.join(
+      process.cwd(),
+      "apps/scrapper-service/tmp_cache/myntra/products-details.json",
+    ),
+    JSON.stringify(categories, null, 2),
+  );
+  console.log("🎉 Product details scraping completed");
+}
 
 // functions with session rotation to expect and react to failures and being reactuve about it!
 
@@ -342,4 +434,8 @@ export async function scrapeMyntraCategories() {
 
 export async function scrapeMyntraProducts() {
   return await rotateSession(getProducts);
+}
+
+export async function scrapeMyntraProductdetails() {
+  return rotateSession(getProductsDetails);
 }

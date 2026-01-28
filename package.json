@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx serve portfolio-web --configuration=development",
-    "dev:all": "nx run-many --target=serve --projects=auth-services,api-gateway,scrapper-service --parallel",
+    "scrape:dev": "nx build scrapper-service && node dist/apps/scrapper-service/src/main.js",
+    "dev:all": "nx run-many --target=serve --projects=scrapper-service,auth-services,api-gateway, --parallel",
     "staging": "nx serve portfolio-web --configuration=staging",
     "build:staging": "nx build portfolio-web --configuration=staging",
     "build:prod": "nx build portfolio-web --configuration=production",
@@ -110,11 +110,8 @@
   },
   "workspaces": [
     "apps/*",
-    "services/*",
-    "puppeteer-utils",
-    "libs",
-    "libs/ui",
-    "restaurant"
+    "libs/*",
+    "libs/ui"
   ],
   "nx": {
     "includedScripts": [],

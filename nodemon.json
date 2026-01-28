@@ -1,10 +1,12 @@
 {
   "watch": ["apps/scrapper-service/src"],
-  "ext": "ts,js,json",
+  "ext": "ts,js",
   "ignore": [
     "**/dist/**",
-    "./apps/scrapper-service/data",
-    "./apps/scrapper-service/data/**/*.json"
+    "**/data/**",
+    "**/*.json",
+    "**/*.log",
+    "**/screenshots/**"
   ],
-  "exec": "nx build scrapper-service && node --inspect=0 dist/apps/scrapper-service/src/main.js"
+  "exec": "nx build scrapper-service && node dist/apps/scrapper-service/src/main.js"
 }

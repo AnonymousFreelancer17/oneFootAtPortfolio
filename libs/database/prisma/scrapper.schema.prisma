@@ -8,8 +8,82 @@ datasource db {
   url      = env("SCRAPPER_DATABASE_URL")
 }
 
-model ScrappedItem {
-  id    String @db.ObjectId @id @default(auto()) @map("_id")
-  title String
-  url   String
+model MyntraProduct {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  productCode String @unique
+  href        String
+
+  brand       String
+  title       String
+
+  rating      String?
+  ratingCount String?
+
+  size        String?
+  SRP         String?
+  MRP         String?
+
+  images           String[]
+  productDetails   String[]
+  sizeAndFit       String[]
+  materialAndCare  String[]
+
+  specification Json
+  seller        String[]
+
+  rootCategory  String
+  groupCategory String
+  categorySlug  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("myntra_products")
+}
+
+/* =========================
+   BLINKIT
+========================= */
+
+model BlinkitProduct {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  sku      String @unique
+  title    String
+  brand    String?
+  price    Float
+  mrp      Float?
+  quantity String?
+
+  images String[]
+  category String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blinkit_products")
+}
+
+/* =========================
+   LIMEROAD
+========================= */
+
+model LimeroadProduct {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  itemId String @unique
+  title  String
+  brand  String?
+
+  price String
+  mrp   String?
+
+  images String[]
+  category String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("limeroad_products")
 }

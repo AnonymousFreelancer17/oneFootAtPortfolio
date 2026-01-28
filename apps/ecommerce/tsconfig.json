@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "types": [
+      "node"
+    ],
     "ignoreDeprecations": "6.0",
     "jsx": "preserve",
     "noEmit": true,
@@ -9,7 +12,11 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -20,8 +27,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@ui/*": ["../../libs/ui/src/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@ui/*": [
+        "../../libs/ui/src/*"
+      ]
     },
     "outDir": "../../dist/apps/",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
@@ -30,6 +41,7 @@
     "../../apps/ecommerce/.next/types/**/*.ts",
     "../../dist/apps/ecommerce/.next/types/**/*.ts",
     "next-env.d.ts",
+    "src/**/*",
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",

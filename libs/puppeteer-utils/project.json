@@ -7,8 +7,8 @@
       "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/libs/puppeteer-utils",
-        "main": "libs/puppeteer-utils/src/index.ts",
-        "tsConfig": "libs/puppeteer-utils/tsconfig.app.json"
+        "main": "dist/libs/puppeteer-utils/src/index.ts",
+        "tsConfig": "dist/libs/puppeteer-utils/tsconfig.app.json"
       }
     },
     "serve": {

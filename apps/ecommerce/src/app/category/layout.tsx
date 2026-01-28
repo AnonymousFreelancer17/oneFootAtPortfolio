@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const layout = ({children} : {children : HTMLElement}) => {
+const layout = ({children} : {children : ReactNode}) => {
   return (
-    <>{children}</>
+    <div className='w-screen min:h-screen flex justify-center items-center bg-red-400'>{children}</div>
   )
 }
 

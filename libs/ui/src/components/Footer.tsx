@@ -1,9 +1,11 @@
 "use client";
 
-export const Footer = ({className} : {className: string;}) => {
+export const Footer = ({className , list} : {className: string;list:any;}) => {
   return (
     <footer className={className}>
-      Footer
+      {list?.map((d: any,index: any)=>{
+        return <div key={index}>{d}</div>
+      })}
     </footer>
   );
 };
