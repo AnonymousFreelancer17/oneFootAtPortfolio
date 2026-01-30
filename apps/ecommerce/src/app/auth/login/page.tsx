@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Input } from "../../../../../../libs/ui/src/components/input";
 
 import { Key, Mail } from "lucide-react";
@@ -8,7 +8,21 @@ import Link from "next/link";
 import _countryCode from "../../../../public/data/countryCode.json";
 
 const Page = () => {
-  const [username, setUsername] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="lg:w-[80vw] md:w-[80vw] w-[90vw] h-[80vh] text-black dark:text-white flex justify-center items-center">
@@ -29,8 +43,6 @@ const Page = () => {
         </div>
 
         <div className="w-full flex flex-col justify-center items-center gap-y-2">
-         
-
           <Input
             type="input"
             containerClassName="w-10/12 relative"
@@ -39,21 +51,15 @@ const Page = () => {
             icon={<Mail className="absolute top-[10px] left-[10px]" />}
             inputType="text"
             placeholder="name@gmail.com"
-            optionData={
-              <>
-              </>
-            }
+            optionData={<></>}
             inputContainerClassName="w-full "
-            iconClassName=""
             labelClassName="block mb-2.5 text-sm font-medium text-heading"
-            className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 text-right`}
+            className={`flex-1 block ps-12 pe-3 py-3 dark:text-white text-black dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 text-right`}
             phoneCode={false}
-            value={""}
+            value={formData.email}
             name="email"
-            onChange={""}
+            onChange={(e) => {handleChange(e)}}
           />
-
-           
 
           <Input
             type="input"
@@ -63,18 +69,14 @@ const Page = () => {
             icon={<Key className="absolute top-[10px] left-[10px]" />}
             inputType="password"
             placeholder="*************"
-            optionData={
-              <>
-              </>
-            }
+            optionData={<></>}
             inputContainerClassName="w-full"
-            iconClassName=""
             labelClassName="block mb-2.5 text-sm font-medium text-heading"
-            className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 text-right`}
+            className={`flex-1 block ps-12 pe-3 py-3 dark:text-white text-black dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 text-right`}
             phoneCode={false}
-            value={""}
-            name=""
-            onChange={""}
+            value={formData.password}
+            name="password"
+            onChange={(e) => {handleChange(e)}}
           />
         </div>
 

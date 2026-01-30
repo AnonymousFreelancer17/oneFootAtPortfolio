@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "../../utils/cn";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CarouselProps {
   children: React.ReactNode[];
@@ -43,11 +44,11 @@ export function Carousel({
     <div className={cn("relative w-full overflow-hidden", className)}>
       {/* Slides */}
       <div
-        className="flex transition-transform duration-500 ease-out"
+        className="w-full h-full flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {children.map((child, index) => (
-          <div key={index} className="w-full flex-shrink-0">
+          <div key={index} className="w-full flex justify-center items-center flex-shrink-0">
             {child}
           </div>
         ))}
@@ -58,15 +59,15 @@ export function Carousel({
         <>
           <button
             onClick={prev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+            className="w-8 h-8 flex justify-center items-center absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
           >
-            ‹
+            <ChevronLeft />
           </button>
           <button
             onClick={next}
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+            className="w-8 h-8 flex justify-center items-center absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
           >
-            ›
+            <ChevronRight />
           </button>
         </>
       )}
@@ -81,8 +82,8 @@ export function Carousel({
               className={cn(
                 "h-2 w-2 rounded-full transition-all",
                 current === index
-                  ? "bg-primary w-4"
-                  : "bg-gray-300 hover:bg-gray-400"
+                  ? "bg-green-500 w-4"
+                  : "dark:bg-neutral-300 bg-neutral-500 hover:bg-neutral-700"
               )}
             />
           ))}
