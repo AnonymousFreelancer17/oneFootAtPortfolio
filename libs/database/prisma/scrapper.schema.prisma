@@ -29,7 +29,7 @@ model MyntraProduct {
   sizeAndFit       String[]
   materialAndCare  String[]
 
-  specification Json
+  specification String[]
   seller        String[]
 
   rootCategory  String

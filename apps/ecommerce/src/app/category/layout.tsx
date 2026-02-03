@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { CheckboxFilter } from "../../../../../libs/ui/src/components/checkboxFilter/index";
 import { Slider } from "../../../../../libs/ui/src/components/slider-input/index";
 

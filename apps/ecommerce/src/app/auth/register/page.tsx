@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useRef } from "react";
 import { Input } from "../../../../../../libs/ui/src/components/input";
 
 import { Key, Mail, User2 } from "lucide-react";
@@ -14,40 +14,55 @@ const Page = () => {
   const [service, setService] = useState("ecommerce");
   const [otp, setOtp] = useState("");
   const [formData, setFormData] = useState({
-    source: service,
+    service: service,
     email: "",
     username: "",
     password: "",
   });
+  const submittingRef = useRef(false);
 
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [registrationAsTrue, setRegistrationAsTrue] = useState(false);
 
-  const handleRegister = async () => {
-    if (loading) return;
+  const handleRegister = async (e: any) => {
+    e.preventDefault();
+
+    if (submittingRef.current) return;
+    submittingRef.current = true;
 
     setErrorMsg("");
     setSuccessMsg("");
     setLoading(true);
 
     try {
-      const res = await axios.post("/auth/register", formData);
+      const res = await axios.post(
+        "http://localhost:8000/auth/register",
+        {
+          name: formData.username,
+          email: formData.email,
+          service: formData.service,
+        },
+        {
+          timeout: 15000, // ⏱ increase timeout
+        },
+      );
 
-      console.log(formData);
-
-      // 🔥 AFTER request fully resolves
       setRegistrationAsTrue(true);
       setSuccessMsg(res.data?.message || "OTP sent");
     } catch (err: any) {
-      setErrorMsg(err.response?.data?.message || "Registration failed.");
+      setErrorMsg(
+        err.response?.data?.message || err.message || "Registration failed",
+      );
     } finally {
       setLoading(false);
+      submittingRef.current = false;
     }
   };
 
-  const handleRegisterationVerification = async () => {
+  const handleRegisterationVerification = async (e: any) => {
+    e.preventDefault();
     setSuccessMsg("");
     setErrorMsg("");
 
@@ -61,7 +76,14 @@ const Page = () => {
 
       const res = await axios.post(
         `http://localhost:8000/auth/verify-registration`,
-        formData,
+        {
+          email: formData.email,
+          service: formData.service,
+          otp,
+        },
+        {
+          timeout: 1000,
+        },
       );
 
       setSuccessMsg(`Verification successful! - ${res.data?.message}`);
@@ -254,7 +276,7 @@ const Page = () => {
               type="button"
               disabled={loading}
               className="w-full py-3 bg-green-500 rounded-md dark:text-white text-black flex justify-center items-center"
-              onClick={() => handleRegisterationVerification()}
+              onClick={(e) => handleRegisterationVerification(e)}
             >
               Verify
             </button>
@@ -263,7 +285,7 @@ const Page = () => {
               type="button"
               disabled={loading}
               className="w-full py-3 bg-green-500 font-medium text-white rounded-md flex justify-center items-center"
-              onClick={() => handleRegister()}
+              onClick={(e) => handleRegister(e)}
             >
               {loading ? (
                 <FaSpinner color="#fff" className="animate-spin" />

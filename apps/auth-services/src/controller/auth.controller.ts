@@ -25,11 +25,14 @@ export const userRegistration = async (
   next: NextFunction,
 ) => {
   try {
-    const { name, email, phone_number, service } = req.body;
+    const { name, email, service } = req.body;
 
-    if (!name || !email || !phone_number || !service) {
+    console.log("➡️ Registration request:", { name, email, service });
+
+    if (!name || !email || !service) {
       throw new ValidationError("Name, email, phone number are required");
     }
+    
 
     const existingUser = await prisma.users.findFirst({
       where: { email, service },
@@ -40,8 +43,13 @@ export const userRegistration = async (
     }
 
     await checkOtpRestrictions(email);
+    console.log("✅ OTP restriction check passed");
+
     await trackOtpRequests(email);
+    console.log("✅ OTP request tracked");
+
     await sendOtp(name, email, "user-activation-mail");
+    console.log("📧 sendOtp called successfully");
 
     return res.status(200).json({
       message: "OTP sent to your email",
@@ -62,10 +70,9 @@ export const verifyRegistrationOtp = async (
   next: NextFunction,
 ) => {
   try {
-    const { email, otp, name, password, service, phone_number, phone_code } =
-      req.body;
+    const { email, otp, name, password, service } = req.body;
 
-    if (!email || !otp || !service || !phone_number || !phone_code) {
+    if (!email || !otp || !service) {
       throw new ValidationError("Missing required fields");
     }
 
@@ -87,8 +94,6 @@ export const verifyRegistrationOtp = async (
         email,
         name,
         service,
-        phone_number,
-        phone_code,
         password: hashedPassword,
         isEmailVerified: true,
       },

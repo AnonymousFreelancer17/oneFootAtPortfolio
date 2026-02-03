@@ -12,7 +12,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "rootDir": "src",
     "tsBuildInfoFile": "../../dist/apps/scrapper-service/tsconfig.app.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
@@ -27,6 +26,9 @@
   "references": [
     {
       "path": "../../libs/puppeteer-utils/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/database/tsconfig.lib.json"
     }
   ]
 }

@@ -13,13 +13,17 @@ model Users {
 
   service String?
 
-  email  String? @unique
-  mobile String? @unique
+  email        String? @unique
+  phone_number String? @unique
+  phone_code   String?
 
   name     String?
   password String?
 
-  isVerified Boolean @default(false)
+  // isAgreedToT&C Boolean @default(false)
+
+  isEmailVerified       Boolean @default(false)
+  isPhoneNumberVerified Boolean @default(false)
 
   authProvider String?
   providerId   String?

@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.22.0
- * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+ * Prisma Client JS version: 6.5.0
+ * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
  */
 Prisma.prismaVersion = {
-  client: "5.22.0",
-  engine: "605197351a3c8bdd595af2d2a9bc3025bca48ea2"
+  client: "6.5.0",
+  engine: "173f8d54f8d52e692c7e27e72a88314ec7aeff60"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -48,11 +48,6 @@ In case this error is unexpected for you, please report it in https://pris.ly/pr
 Prisma.PrismaClientValidationError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientValidationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.NotFoundError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`NotFoundError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
 )}
 Prisma.Decimal = Decimal
@@ -115,10 +110,55 @@ Prisma.NullTypes = {
  * Enums
  */
 
-exports.Prisma.ScrappedItemScalarFieldEnum = {
+exports.Prisma.MyntraProductScalarFieldEnum = {
   id: 'id',
+  productCode: 'productCode',
+  href: 'href',
+  brand: 'brand',
   title: 'title',
-  url: 'url'
+  rating: 'rating',
+  ratingCount: 'ratingCount',
+  size: 'size',
+  SRP: 'SRP',
+  MRP: 'MRP',
+  images: 'images',
+  productDetails: 'productDetails',
+  sizeAndFit: 'sizeAndFit',
+  materialAndCare: 'materialAndCare',
+  specification: 'specification',
+  seller: 'seller',
+  rootCategory: 'rootCategory',
+  groupCategory: 'groupCategory',
+  categorySlug: 'categorySlug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BlinkitProductScalarFieldEnum = {
+  id: 'id',
+  sku: 'sku',
+  title: 'title',
+  brand: 'brand',
+  price: 'price',
+  mrp: 'mrp',
+  quantity: 'quantity',
+  images: 'images',
+  category: 'category',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LimeroadProductScalarFieldEnum = {
+  id: 'id',
+  itemId: 'itemId',
+  title: 'title',
+  brand: 'brand',
+  price: 'price',
+  mrp: 'mrp',
+  images: 'images',
+  category: 'category',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -133,7 +173,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  ScrappedItem: 'ScrappedItem'
+  MyntraProduct: 'MyntraProduct',
+  BlinkitProduct: 'BlinkitProduct',
+  LimeroadProduct: 'LimeroadProduct'
 };
 
 /**
