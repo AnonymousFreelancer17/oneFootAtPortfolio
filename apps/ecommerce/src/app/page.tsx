@@ -1,70 +1,27 @@
 "use client";
 
 import axios from "axios";
-import { Circle, Copy, Heart } from "lucide-react";
-import { Button } from "../../../../libs/ui/src/components/button";
+// import { Circle, Copy, Heart } from "lucide-react";
+// import { Button } from "../../../../libs/ui/src/components/button";
 import { Carousel } from "../../../../libs/ui/src/components/carousel/index";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-export function normalizeCategories(data: any) {
-  return Object.entries(data).map(([sectionKey, sectionValue]: any) => ({
-    key: sectionKey,
-    title: sectionKey.replace(/-/g, " "),
-    groups: Object.entries(sectionValue).map(([groupKey, groupValue]: any) => ({
-      key: groupKey,
-      title: groupKey.replace(/-/g, " "),
-      href: groupValue.href,
-      categories: Object.entries(groupValue.categories || {}).map(
-        ([catKey, catValue]: any) => ({
-          key: catKey,
-          title: catValue.title,
-          products: catValue.products,
-          href: catValue.href,
-        }),
-      ),
-    })),
-  }));
-}
+import { replaceHyphens, safeCapitalize } from "../utils/string";
 
 export default function Index() {
-  const [category, setCategory] = useState<
-    ReturnType<typeof normalizeCategories>
-  >([]);
+  const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // Use http instead of https for localhost
-  //       const response = await axios.get(
-  //         "http://localhost:8000/scrapper/limeroad",
-  //       );
-
-  //       console.log(response.data.data);
-
-  //       setData(response.data.data);
-  //     } catch (err: any) {
-  //       setError(err.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/scrapper/myntra/products",
+          "http://localhost:8000/scrapper/myntra/categories",
         );
-
-        console.log(normalizeCategories(response.data.parsed));
-
-        setCategory(normalizeCategories(response.data.parsed));
+        const data = response.data.data;
+        console.log(data);
+        setCategory(data);
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -96,12 +53,15 @@ export default function Index() {
         </div>
 
         <div className="w-full h-auto gap-4 flex flex-col justify-center items-center">
-          <div className="lg:w-11/12 w-11/12 h-[60px] font-semibold text-xl flex justify-start items-center dark:text-white text-black ">
-            Shop by category
+          <div className="lg:w-11/12 w-11/12 h-[60px] font-semibold text-xl flex justify-start items-center dark:text-white text-black gap-x-1.5">
+            Shop by
+            <Link href={"/category"} className="text-green-500">
+              Category
+            </Link>
           </div>
-          <div className="flex-1 flex-grow-1 flex flex-wrap justify-center items-center gap-4">
+          <div className="lg:w-11/12 md:w-11/12 w-full h-auto flex flex-wrap justify-center items-center">
             {error ? (
-              <div className="text-red-500">Somethin went wrong</div>
+              <div className="text-red-500">Something went wrong</div>
             ) : (
               <></>
             )}
@@ -113,64 +73,78 @@ export default function Index() {
                     return (
                       <div
                         key={index}
-                        className="w-[300px] h-[40vh] dark:text-white text-black flex flex-col justify-center items-center rounded-md dark:bg-neutral-800 bg-neutral-200 animate-pulse"
-                      ></div>
+                        className="w-[250px] h-[35vh] dark:text-white text-black flex flex-col justify-start items-start rounded-md dark:bg-neutral-800 bg-neutral-200 animate-pulse gap-2 p-[20px]"
+                      >
+                        <div className="w-11/12 h-[30px] dark:bg-neutral-700 bg-neutral-300 rounded-md"></div>
+
+                        <div className="w-1/2 h-[30px] dark:bg-neutral-700 bg-neutral-300 rounded-md"></div>
+                      </div>
                     );
                   },
                 )}
               </div>
             ) : (
-              category?.map((cat, index) =>
-                cat.title !== "beauty" && cat.title !== "home"
-                  ? cat.groups.slice(0, 5).map((sub, idx) => {
-                      const images =
-                        sub.categories[0]?.products[0]?.images || [];
+              <div className="w-full overflow-hidden flex justify-start items-start">
+                {category.map((root: any) => {
+                  // 1️⃣ Collect all categories from all groups
+                  const allCategories = (root.groups ?? []).flatMap(
+                    (group: any) => group.categories ?? [],
+                  );
 
-                      const assetImage: string | undefined = images.find(
-                        (img: string) => img.includes("f_webp"),
-                      );
+                  // 2️⃣ Take only first 10
+                  const limitedCategories = allCategories.slice(0, 10);
 
-                      return (
+                  return (
+                    <div
+                      key={root.name}
+                      className="w-full flex flex-wrap justify-start items-start gap-4"
+                    >
+                      {limitedCategories.map((cat: any) => (
                         <Link
-                          href={""}
-                          key={idx}
-                          className="w-[300px] h-[40vh] flex flex-col justify-center items-center dark:bg-neutral-800 bg-neutral-200"
+                          href={`/${root.name}/${root.groups[0].name}/${cat.slug}`}
+                          key={cat.slug}
+                          className="w-[250px] h-[35vh] flex flex-col justify-center items-center dark:bg-neutral-800 overflow-hidden rounded-md hover:shadow-xl relative"
                         >
-                          <div className="w-11/12 flex-1 flex justify-center items-center">
+                          <div className="w-full h-full overflow-hidden">
                             <img
-                              src={
-                                `https://assets.myntassets.com/${assetImage}` ||
-                                ""
-                              }
-                              alt={sub.title}
+                              src={cat.image}
+                              className="w-full"
+                              alt={cat.slug}
                             />
                           </div>
 
-                          <div className="w-11/12 h-1/6 flex justify-center items-center bg-neutral-400">
-                            {cat.title} {"=>"} {sub.title}
+                          <div
+                            className={`w-11/12 h-[100px] bg absolute bottom-[8px] bg-green-500/80 backdrop-blur-sm dark:text-white text-black rounded-md flex justify-center items-center font-medium`}
+                          >
+                            <div className="w-11/12 flex flex-wrap justify-center items-center gap-x-1.5">
+                              <p>{safeCapitalize(replaceHyphens(cat.slug))}</p>
+                              <p>for</p>
+                              <p>{safeCapitalize(root.name)}</p>
+                            </div>
                           </div>
                         </Link>
-                      );
-                    })
-                  : null,
-              )
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>
 
         <div className="w-full h-auto gap-y-4 flex flex-col justify-center items-center my-4">
-          <div className="w-full h-[45vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black ">
+          <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black ">
             <div className="lg:w-11/12 w-11/12 h-1/6 flex justify-start items-center ">
               Recently Viewed products
             </div>
 
             <div className="lg:w-11/12 w-11/12 h-5/6 flex justify-start items-start overflow-hidden">
-              <div className="flex justify-start items-center gap-x-4 overflow-x-scroll ps-7">
+              <div className="h-full flex justify-start items-center gap-x-4 overflow-x-scroll ">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((d, index) => {
                   return (
                     <div
                       key={index}
-                      className="min-w-[300px] h-[40vh] bg-neutral-200 flex justify-center items-center dark:bg-neutral-800"
+                      className="min-w-[250px] h-[35vh] bg-neutral-200 flex justify-center items-center dark:bg-neutral-800 rounded-md hover:shadow-lg cursor-pointer"
                     >
                       {d}
                     </div>
@@ -180,7 +154,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
+          <div className="w-full h-[80vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
             <div className="lg:w-11/12 w-11/12 h-1/6 flex justify-start items-center">
               Shop by Looks - Recreate top fashion for your ownself sliders here
             </div>
@@ -208,12 +182,12 @@ export default function Index() {
             </Carousel>
           </div>
 
-          <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
+          <div className="w-full h-[80vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
             <div className="lg:w-11/12 w-11/12 h-1/6 flex justify-start items-center">
               Shop on sale - Event based sale sliders here
             </div>
             <Carousel
-              className="w-11/12 flex-1 flex justify-center items-center"
+              className="w-11/12 h-4/6 flex justify-center items-center"
               autoPlay={true}
               interval={3000}
               showArrows={true}
@@ -234,6 +208,41 @@ export default function Index() {
                 );
               })}
             </Carousel>
+          </div>
+
+           <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
+            <div className="lg:w-11/12 w-11/12 h-1/6 flex justify-start items-center">
+              Grand Global Brands
+            </div>
+            <Carousel
+              className="w-11/12 h-4/6 flex justify-center items-center"
+              autoPlay={true}
+              interval={3000}
+              showArrows={true}
+              showDots={true}
+            >
+              {[1, 2, 3, 4, 5, 6].map((d, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="w-full h-full bg-neutral-200 dark:bg-neutral-800 dark:text-white text-black"
+                  >
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Molestiae illo eaque facilis modi obcaecati ipsam qui
+                    laboriosam blanditiis, mollitia aliquam, suscipit nulla
+                    expedita officiis libero veritatis distinctio iure fugit eos
+                    molestias, accusantium animi ipsa.
+                  </div>
+                );
+              })}
+            </Carousel>
+          </div>
+
+           <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
+            <div className="lg:w-11/12 w-11/12 h-[50%] flex justify-start items-center dark:bg-neutral-800 bg-neutral-200 rounded-md">
+               {/* One Foot Opportunities */}
+            </div>
+             
           </div>
         </div>
       </div>

@@ -213,7 +213,7 @@ const Page = () => {
               optionData={<></>}
               inputContainerClassName="w-full "
               labelClassName="block mb-2.5 text-sm font-medium text-heading"
-              className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-br-md rounded-tr-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 dark:text-white text-black text-right`}
+              className={`flex-1 block ps-12 pe-3 py-3 dark:bg-neutral-700 bg-neutral-200 border dark:border-neutral-600 border-neutral-400 text-heading text-sm rounded-md focus:ring-brand focus:border-brand shadow-xs placeholder:dark:text-neutral-200 placeholder:text-neutral-600 dark:text-white text-black text-right`}
               phoneCode={false}
               value={formData.email}
               name="email"

@@ -25,9 +25,7 @@ export function normalizeCategories(data: any) {
 }
 
 const page = () => {
-  const [category, setCategory] = useState<
-    ReturnType<typeof normalizeCategories>
-  >([]);
+  const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,9 +36,9 @@ const page = () => {
           "http://localhost:8000/scrapper/myntra/products",
         );
 
-        console.log(normalizeCategories(response.data.parsed));
+        // console.log(normalizeCategories(response.data.data));
 
-        setCategory(normalizeCategories(response.data.parsed));
+        setCategory(response.data.data);
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -69,38 +67,35 @@ const page = () => {
           )}
         </div>
       ) : (
-        category?.map((cat, index) =>
-          cat.title === "men"
-            ? cat.groups.map((sub, idx) => {
-                const images = sub.categories[0]?.products[0]?.images || [];
+        // category
+        //   ?.filter((item: any) => item.rootCategory === "men")
+        //   .map((cat: any) => {
+        //     const image = cat.images?.[0];
 
-                const assetImage: string | undefined = images.find(
-                  (img: string) => img.includes("f_webp"),
-                );
+        //     return (
+        //       <Link
+        //         href={`/${cat.id}`}
+        //         key={cat.id}
+        //         className="min-w-[300px] h-[40vh] flex flex-col justify-center items-center dark:bg-neutral-800 bg-neutral-200 overflow-hidden"
+        //       >
+        //         <div className="w-11/12 flex-1 flex justify-center items-center">
+        //           {image && (
+        //             <img
+        //               src={image}
+        //               alt={cat.categorySlug}
+        //               className="w-full h-full"
+        //             />
+        //           )}
+        //         </div>
 
-                return (
-                  <Link
-                    href={""}
-                    key={idx}
-                    className="min-w-[300px] h-[40vh] flex flex-col justify-center items-center dark:bg-neutral-800 bg-neutral-200"
-                  >
-                    <div className="w-11/12 flex-1 flex justify-center items-center">
-                      <img
-                        src={
-                          `https://assets.myntassets.com/${assetImage}` || ""
-                        }
-                        alt={sub.title}
-                      />
-                    </div>
-
-                    <div className="w-11/12 h-1/6 flex justify-center items-center bg-neutral-400">
-                      {cat.title} {"=>"} {sub.title}
-                    </div>
-                  </Link>
-                );
-              })
-            : null,
-        )
+        //         <div className="w-11/12 h-1/6 flex justify-center items-center bg-neutral-400 text-sm text-center px-2">
+        //           {cat.rootCategory} {"=>"} {cat.groupCategory} {"=>"}{" "}
+        //           {cat.categorySlug}
+        //         </div>
+        //       </Link>
+        //     );
+        //   })
+        <></>
       )}
     </div>
   );

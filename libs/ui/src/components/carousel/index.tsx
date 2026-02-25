@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cn } from "../../utils/cn";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CarouselProps {
   children: React.ReactNode[];
@@ -59,15 +59,15 @@ export function Carousel({
         <>
           <button
             onClick={prev}
-            className="w-8 h-8 flex justify-center items-center absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+            className="w-16 h-16 flex justify-center items-center absolute left-2 top-1/2 -translate-y-1/2 rounded-md p-2 dark:text-white hover:bg-green-500/80"
           >
-            <ChevronLeft />
+            <ArrowLeft />
           </button>
           <button
             onClick={next}
-            className="w-8 h-8 flex justify-center items-center absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+            className="w-16 h-16 flex justify-center items-center absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 dark:text-white hover:bg-green-500/80"
           >
-            <ChevronRight />
+            <ArrowRight />
           </button>
         </>
       )}

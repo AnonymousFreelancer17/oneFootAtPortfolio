@@ -1,93 +1,178 @@
 import express, { Request, Response, NextFunction } from "express";
-import path from "path";
-import fs from "fs";
-import { scrapeMyntraProductdetails, scrapeMyntraProducts } from "../controller/myntra.controller";
+import { scrapperDb } from "../../../../libs/database/src/clients/scrapper.client";
+
+import { scrapeMyntraProductdetails } from "../controller/myntra.controller";
 
 const router = express.Router();
 
-router.get(
-  "/categories",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const filePath = path.join(
-        process.cwd(),
-        "apps/scrapper-service",
-        "tmp_cache",
-        "myntra/categories.json",
-      );
+router.get("/products", async (req, res) => {
+  try {
+    await scrapeMyntraProductdetails();
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error });
+  }
+});
 
-      const jsonData = fs.readFileSync(filePath, "utf-8");
-      const parsed = JSON.parse(jsonData);
+router.get("/categories", async (req, res) => {
+  try {
+    const products = await scrapperDb.myntraProduct.findMany({
+      select: {
+        rootCategory: true,
+        groupCategory: true,
+        categorySlug: true,
+        images: true, // ✅ corrected field
+      },
+    });
 
-      return res.status(200).json({
-        parsed,
-      });
+    const treeMap = new Map<string, any>();
 
-      // return await scrapeMyntraCategories();
-    } catch (error) {
-      return res.status(500).json({
-        message: `Something went wrong! : ${error}`,
-      });
-    }
-  },
-);
+    products.forEach((product) => {
+      const { rootCategory, groupCategory, categorySlug, images } = product;
 
-router.get(
-  "/products",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const filePath = path.join(
-        process.cwd(),
-        "apps/scrapper-service",
-        "tmp_cache",
-        "myntra/products.json",
-      );
+      // pick first image safely
+      const image =
+        Array.isArray(images) ? images[0] : images;
 
-      const jsonData = fs.readFileSync(filePath, "utf-8");
-      const parsed = JSON.parse(jsonData);
+      // ROOT
+      if (!treeMap.has(rootCategory)) {
+        treeMap.set(rootCategory, {
+          name: rootCategory,
+          image,
+          groups: new Map(),
+        });
+      }
 
-      return res.status(200).json({
-        parsed,
-      });
+      const root = treeMap.get(rootCategory);
 
-      // const data = await scrapeMyntraProducts();
+      // GROUP
+      if (!root.groups.has(groupCategory)) {
+        root.groups.set(groupCategory, {
+          name: groupCategory,
+          image,
+          categories: new Map(),
+        });
+      }
 
-      // return res.status(200).json(data);
-    } catch (error) {
-      return res.status(500).json({
-        message: `Something went wrong! : ${error}`,
-      });
-    }
-  },
-);
+      const group = root.groups.get(groupCategory);
 
-router.get(
-  "/product-details",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      // const filePath = path.join(
-      //   process.cwd(),
-      //   "apps/scrapper-service",
-      //   "tmp_cache",
-      //   "myntra/products.json",
-      // );
+      // CATEGORY
+      if (!group.categories.has(categorySlug)) {
+        group.categories.set(categorySlug, {
+          slug: categorySlug,
+          image,
+        });
+      }
+    });
 
-      // const jsonData = fs.readFileSync(filePath, "utf-8");
-      // const parsed = JSON.parse(jsonData);
+    const formatted = Array.from(treeMap.values()).map((root) => ({
+      name: root.name,
+      image: root.image,
+      groups: Array.from(root.groups.values()).map((group: any) => ({
+        name: group.name,
+        image: group.image,
+        categories: Array.from(group.categories.values()),
+      })),
+    }));
 
-      // return res.status(200).json({
-      //   parsed,
-      // });
+    return res.status(200).json({
+      success: true,
+      data: formatted,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
 
-      const data = await scrapeMyntraProductdetails();
+router.get("/categories/:rootCategory", async (req, res) => {
+  try {
+    const { rootCategory } = req.params;
 
-      return res.status(200).json(data);
-    } catch (error) {
-      return res.status(500).json({
-        message: `Something went wrong! : ${error}`,
-      });
-    }
-  },
-);
+    const products = await scrapperDb.myntraProduct.findMany({
+      where: { rootCategory },
+      orderBy: { createdAt: "desc" },
+    });
+
+    return res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
+
+router.get("/categories/:rootCategory/:slugCategory", async (req, res) => {
+  try {
+    const { rootCategory, slugCategory } = req.params;
+
+    const products = await scrapperDb.myntraProduct.findMany({
+      where: {
+        rootCategory,
+        categorySlug: slugCategory,
+      },
+      orderBy: { createdAt: "desc" },
+    });
+
+    return res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
+
+router.get("/brands", async (req, res) => {
+  try {
+    const { name } = req.query;
+
+    const products = await scrapperDb.myntraProduct.findMany({
+      where: name
+        ? {
+            brand: {
+              contains: String(name),
+              mode: "insensitive",
+            },
+          }
+        : undefined,
+      orderBy: { createdAt: "desc" },
+    });
+
+    return res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
+
+router.get("/brands/list", async (req, res) => {
+  try {
+    const brands = await scrapperDb.myntraProduct.findMany({
+      distinct: ["brand"],
+      select: { brand: true },
+    });
+
+    return res.json({
+      success: true,
+      data: brands.map((b) => b.brand),
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+});
 
 export default router;

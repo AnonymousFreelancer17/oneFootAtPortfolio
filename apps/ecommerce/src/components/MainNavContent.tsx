@@ -54,7 +54,7 @@ const MainNavContent = () => {
                       }
                       inputContainerClassName="w-full"
                       labelClassName="block mb-2.5 text-sm font-medium text-heading"
-                      className={`ps-12 p-3 rounded-tl-md rounded-bl-md bg-green-600 text-white w-full appearance-none`}
+                      className={`ps-12 p-3 rounded-tl-md rounded-bl-md bg-green-600 dark:text-white w-full appearance-none`}
                       phoneCode={false}
                       value={categories}
                       name="categories"
