@@ -5,8 +5,8 @@ import { ThemeProvider } from "../../../../libs/ui/src/hooks/ThemeProvider";
 import "./globals.css";
 
 import { Book, InfoIcon, Phone, Shield } from "lucide-react";
-import TopNavContent from "../components/TopNavContent";
-import MainNavContent from "../components/MainNavContent";
+import TopNavContent from "../components/navbar/TopNavContent";
+import MainNavContent from "../components/navbar/MainNavContent";
 import Link from "next/link";
 import { safeCapitalize } from "../utils/string";
 
@@ -133,7 +133,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar
             source="ecommerce"
-            className="w-screen h-[100px] flex justify-center items-center fixed top-0 dark:bg-neutral-900 bg-neutral-100 z-[9999]"
+            className="w-screen h-[100px] flex justify-center items-center fixed top-0 dark:bg-neutral-900 bg-neutral-100 z-[999999]"
             containerClassName="w-full flex flex-col justify-center items-center"
             hideNavAtRoutes={["/admin", ""]}
             topNav={true}
@@ -144,7 +144,7 @@ export default function RootLayout({
           {children}
           <Footer
             className={
-              "w-screen h-[80vh] dark:bg-neutral-800 bg-neutral-200 border-t dark:border-neutral-600 border-neutral-300 dark:text-white text-black flex flex-col justify-center items-center gap-y-4 z-[9999]"
+              "w-screen h-[80vh] dark:bg-neutral-800 bg-neutral-200 border-t dark:border-neutral-600 border-neutral-300 dark:text-white text-black flex flex-col justify-center items-center gap-y-4 z-[999999]"
             }
             topContent={
               <div className="lg:w-10/12 w-11/12 h-1/6 flex justify-start items-center">

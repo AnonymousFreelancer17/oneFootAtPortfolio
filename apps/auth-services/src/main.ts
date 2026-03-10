@@ -10,23 +10,13 @@ dotenv.config();
 
 const app = express();
 
-/* =========================
-   🔥 VERY IMPORTANT ORDER
-========================= */
-
-// 1️⃣ CORS FIRST (locked to frontend)
-// app.use(
-//   cors({
-//   })
-// );
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  next();
-});
-
+app.use(
+  cors({
+    origin: "http://localhost:4300",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // 2️⃣ Body parsers (ONLY ONCE)
 app.use(express.json({ limit: "1mb" }));

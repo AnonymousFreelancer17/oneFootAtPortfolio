@@ -1,5 +1,5 @@
 import { Menu, Smartphone } from "lucide-react";
-import { Button } from "../../../../libs/ui/src/components/button";
+import { Button } from "../../../../../libs/ui/src/components/button";
 import React from "react";
 
 interface NavLink {

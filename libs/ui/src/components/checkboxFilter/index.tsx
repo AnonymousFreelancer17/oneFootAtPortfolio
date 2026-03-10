@@ -40,20 +40,9 @@ export function CheckboxFilter({
 
       {/* Checkboxes */}
       <div className="flex flex-col gap-2">
-        {options.map((option) => (
-          <label
-            key={option.value}
-            className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 dark:text-gray-300"
-          >
-            <input
-              type="checkbox"
-              checked={selectedValues.includes(option.value)}
-              onChange={() => toggleValue(option.value)}
-              className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 accent-green-500"
-            />
-            {option.label}
-          </label>
-        ))}
+        {/* {options.map((option) => (
+          option.
+        ))} */}
       </div>
     </div>
   );

@@ -10,11 +10,9 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
-
-  const [service, setService] = useState("ecommerce");
   const [otp, setOtp] = useState("");
   const [formData, setFormData] = useState({
-    service: service,
+    service: "ecommerce",
     email: "",
     username: "",
     password: "",
@@ -37,17 +35,20 @@ const Page = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:8000/auth/register",
-        {
-          name: formData.username,
-          email: formData.email,
-          service: formData.service,
-        },
-        {
-          timeout: 15000, // ⏱ increase timeout
-        },
-      );
+      console.log(formData.username, formData.email, formData.service);
+
+      if (!formData.username || !formData.email || !formData.password) {
+        setErrorMsg("All fields are required");
+        return;
+      }
+
+      const res = await axios.post("http://localhost:8000/auth/register", {
+        name: formData.username,
+        email: formData.email,
+        service: formData.service,
+      });
+
+      console.log(res?.data);
 
       setRegistrationAsTrue(true);
       setSuccessMsg(res.data?.message || "OTP sent");
@@ -74,10 +75,17 @@ const Page = () => {
     try {
       setLoading(true);
 
+      if (!formData.username || !formData.email || !formData.password || !otp) {
+        setErrorMsg("All fields are required");
+        return;
+      }
+
       const res = await axios.post(
         `http://localhost:8000/auth/verify-registration`,
         {
           email: formData.email,
+          name: formData.username,
+          password: formData.password,
           service: formData.service,
           otp,
         },
@@ -103,16 +111,14 @@ const Page = () => {
     setSuccessMsg("");
     setErrorMsg("");
 
-    if (!otp) {
-      setErrorMsg("Validation error : OTP is not valid!");
-      return;
-    }
-
     try {
       setLoading(true);
 
       const res = await axios.post(`http://localhost:8000/auth/resend-OTP`, {
-        formData,
+        email: formData.email,
+        name: formData.username,
+        password: formData.password,
+        service: formData.service,
       });
 
       setSuccessMsg(`Verification successful! - ${res.data?.message}`);
@@ -209,7 +215,7 @@ const Page = () => {
               iconVisibility={true}
               icon={<Mail className="absolute top-[10px] left-[10px]" />}
               inputType="text"
-              placeholder="name@gmail.com"
+              placeholder="example@gmail.com"
               optionData={<></>}
               inputContainerClassName="w-full "
               labelClassName="block mb-2.5 text-sm font-medium text-heading"
@@ -227,7 +233,7 @@ const Page = () => {
               iconVisibility={true}
               icon={<Key className="absolute top-[10px] left-[10px]" />}
               inputType="password"
-              placeholder="*************"
+              placeholder="password"
               optionData={<></>}
               inputContainerClassName="w-full"
               labelClassName="block mb-2.5 text-sm font-medium text-heading"
@@ -256,7 +262,7 @@ const Page = () => {
                   className="text-green-600"
                   onClick={ResendOtp}
                 >
-                  Resend OTP to ${formData.email}
+                  Resend OTP to {formData.email}
                 </button>
               </div>
             ) : (
@@ -284,7 +290,7 @@ const Page = () => {
             <button
               type="button"
               disabled={loading}
-              className="w-full py-3 bg-green-500 font-medium text-white rounded-md flex justify-center items-center"
+              className="w-full py-3 bg-green-500 font-semibold text-white rounded-md flex justify-center items-center"
               onClick={(e) => handleRegister(e)}
             >
               {loading ? (
@@ -303,14 +309,14 @@ const Page = () => {
         <div className="w-10/12 flex justify-center items-center gap-x-2 text-white ">
           <button
             type="button"
-            className="w-1/2 px-10 py-3 bg-green-500 rounded-md flex justify-center items-center gap-x-2 font-medium"
+            className="w-1/2 h-[45px] bg-green-500 rounded-md flex justify-center items-center gap-x-2 font-semibold"
           >
             <FaGoogle />
             Google
           </button>
           <button
             type="button"
-            className="w-1/2 px-10 py-3 bg-green-500 rounded-md flex justify-center items-center gap-x-2 font-medium"
+            className="w-1/2 h-[45px] bg-green-500 rounded-md flex justify-center items-center gap-x-2 font-semibold"
           >
             <FaFacebook />
             Facebook

@@ -5,14 +5,7 @@ import { scrapeMyntraProductdetails } from "../controller/myntra.controller";
 
 const router = express.Router();
 
-router.get("/products", async (req, res) => {
-  try {
-    await scrapeMyntraProductdetails();
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ success: false, error });
-  }
-});
+//  catgeory routes
 
 router.get("/categories", async (req, res) => {
   try {
@@ -21,20 +14,75 @@ router.get("/categories", async (req, res) => {
         rootCategory: true,
         groupCategory: true,
         categorySlug: true,
-        images: true, // ✅ corrected field
+        MRP: true,
+        SRP: true,
+        images: true,
       },
     });
 
-    const treeMap = new Map<string, any>();
+    const discountMap = new Map<string, { min: number; max: number }>();
+
+    const treeMap = new Map<
+      string,
+      {
+        name: string;
+        image: string | null;
+        groups: Map<
+          string,
+          {
+            name: string;
+            image: string | null;
+            categories: Map<
+              string,
+              {
+                slug: string;
+                image: string | null;
+                minDiscount?: number;
+                maxDiscount?: number;
+              }
+            >;
+          }
+        >;
+      }
+    >();
 
     products.forEach((product) => {
-      const { rootCategory, groupCategory, categorySlug, images } = product;
+      const { rootCategory, groupCategory, categorySlug, images, SRP, MRP } =
+        product;
 
-      // pick first image safely
-      const image =
-        Array.isArray(images) ? images[0] : images;
+      if (!rootCategory || !groupCategory || !categorySlug) return;
 
-      // ROOT
+      const image = Array.isArray(images) ? images[0] : images || null;
+
+      // -------------------
+      // CALCULATE DISCOUNT
+      // -------------------
+      if (MRP && SRP) {
+        const mrp = Number(MRP.replace(/[^0-9]/g, ""));
+        const srp = Number(SRP.replace(/[^0-9]/g, ""));
+
+        if (mrp > 0 && srp > 0) {
+          const discount = ((mrp - srp) / mrp) * 100;
+
+          const key = `${rootCategory}__${categorySlug}`;
+
+          if (!discountMap.has(key)) {
+            discountMap.set(key, {
+              min: discount,
+              max: discount,
+            });
+          } else {
+            const existing = discountMap.get(key)!;
+            existing.min = Math.min(existing.min, discount);
+            existing.max = Math.max(existing.max, discount);
+          }
+        }
+      }
+
+      // -------------------
+      // BUILD TREE
+      // -------------------
+
       if (!treeMap.has(rootCategory)) {
         treeMap.set(rootCategory, {
           name: rootCategory,
@@ -43,9 +91,8 @@ router.get("/categories", async (req, res) => {
         });
       }
 
-      const root = treeMap.get(rootCategory);
+      const root = treeMap.get(rootCategory)!;
 
-      // GROUP
       if (!root.groups.has(groupCategory)) {
         root.groups.set(groupCategory, {
           name: groupCategory,
@@ -54,9 +101,8 @@ router.get("/categories", async (req, res) => {
         });
       }
 
-      const group = root.groups.get(groupCategory);
+      const group = root.groups.get(groupCategory)!;
 
-      // CATEGORY
       if (!group.categories.has(categorySlug)) {
         group.categories.set(categorySlug, {
           slug: categorySlug,
@@ -65,13 +111,26 @@ router.get("/categories", async (req, res) => {
       }
     });
 
+    // -------------------
+    // FORMAT FINAL OUTPUT
+    // -------------------
+
     const formatted = Array.from(treeMap.values()).map((root) => ({
       name: root.name,
       image: root.image,
-      groups: Array.from(root.groups.values()).map((group: any) => ({
+      groups: Array.from(root.groups.values()).map((group) => ({
         name: group.name,
         image: group.image,
-        categories: Array.from(group.categories.values()),
+        categories: Array.from(group.categories.values()).map((category) => {
+          const key = `${root.name}__${category.slug}`;
+          const discount = discountMap.get(key);
+
+          return {
+            ...category,
+            minDiscount: discount ? Number(discount.min.toFixed(2)) : 0,
+            maxDiscount: discount ? Number(discount.max.toFixed(2)) : 0,
+          };
+        }),
       })),
     }));
 
@@ -92,13 +151,77 @@ router.get("/categories/:rootCategory", async (req, res) => {
 
     const products = await scrapperDb.myntraProduct.findMany({
       where: { rootCategory },
-      orderBy: { createdAt: "desc" },
+      select: {
+        groupCategory: true,
+        MRP: true,
+        SRP: true,
+        images: true,
+      },
     });
+
+    if (!products.length) {
+      return res.status(404).json({
+        success: false,
+        message: "No products found for this category",
+      });
+    }
+
+    const groupMap = new Map<
+      string,
+      {
+        name: string;
+        image: string | null;
+        minDiscount: number;
+        maxDiscount: number;
+      }
+    >();
+
+    products.forEach((product) => {
+      const { groupCategory, MRP, SRP, images } = product;
+
+      if (!groupCategory) return;
+
+      const image = Array.isArray(images) ? images[0] : images || null;
+
+      let discount = 0;
+
+      if (MRP && SRP) {
+        const mrp = Number(MRP.replace(/[^0-9]/g, ""));
+        const srp = Number(SRP.replace(/[^0-9]/g, ""));
+
+        if (mrp > 0 && srp > 0) {
+          discount = ((mrp - srp) / mrp) * 100;
+        }
+      }
+
+      if (!groupMap.has(groupCategory)) {
+        groupMap.set(groupCategory, {
+          name: groupCategory,
+          image,
+          minDiscount: discount,
+          maxDiscount: discount,
+        });
+      } else {
+        const existing = groupMap.get(groupCategory)!;
+
+        existing.minDiscount = Math.min(existing.minDiscount, discount);
+
+        existing.maxDiscount = Math.max(existing.maxDiscount, discount);
+      }
+    });
+
+    const formatted = Array.from(groupMap.values()).map((group) => ({
+      name: group.name,
+      image: group.image,
+      minDiscount: Number(group.minDiscount.toFixed(2)),
+      maxDiscount: Number(group.maxDiscount.toFixed(2)),
+    }));
 
     return res.status(200).json({
       success: true,
-      count: products.length,
-      data: products,
+      rootCategory,
+      count: formatted.length,
+      data: formatted,
     });
   } catch (error) {
     return res.status(500).json({
@@ -107,22 +230,298 @@ router.get("/categories/:rootCategory", async (req, res) => {
   }
 });
 
-router.get("/categories/:rootCategory/:slugCategory", async (req, res) => {
+// product routes
+
+router.get("/products/:rootCategory", async (req, res) => {
   try {
-    const { rootCategory, slugCategory } = req.params;
+    const { rootCategory } = req.params;
 
     const products = await scrapperDb.myntraProduct.findMany({
-      where: {
-        rootCategory,
-        categorySlug: slugCategory,
+      where: { rootCategory },
+      select: {
+        productCode: true,
+        href: true,
+        brand: true,
+        title: true,
+        rating: true,
+        ratingCount: true,
+        SRP: true,
+        MRP: true,
+        images: true,
+        groupCategory: true,
+        categorySlug: true,
+        createdAt: true,
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    const formatted = products.map((product) => {
+      let discount = 0;
+
+      if (product.MRP && product.SRP) {
+        const mrp = Number(product.MRP.replace(/[^0-9]/g, ""));
+        const srp = Number(product.SRP.replace(/[^0-9]/g, ""));
+
+        if (mrp > 0 && srp > 0) {
+          discount = ((mrp - srp) / mrp) * 100;
+        }
+      }
+
+      return {
+        productCode: product.productCode,
+        href: product.href,
+        brand: product.brand,
+        title: product.title,
+        rating: product.rating,
+        ratingCount: product.ratingCount,
+        MRP: product.MRP,
+        SRP: product.SRP,
+        discount: Number(discount.toFixed(2)),
+        image: Array.isArray(product.images)
+          ? product.images
+          : product.images,
+        rootCategory,
+        groupCategory: product.groupCategory,
+        categorySlug: product.categorySlug,
+      };
     });
 
     return res.status(200).json({
       success: true,
-      count: products.length,
-      data: products,
+      rootCategory,
+      count: formatted.length,
+      data: formatted,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
+
+router.get("/products/:rootCategory/:groups", async (req, res) => {
+  try {
+    const { rootCategory, groups } = req.params;
+
+    const products = await scrapperDb.myntraProduct.findMany({
+      where: {
+        rootCategory,
+        groupCategory: groups,
+      },
+      select: {
+        productCode: true,
+        href: true,
+        brand: true,
+        title: true,
+        rating: true,
+        ratingCount: true,
+        SRP: true,
+        MRP: true,
+        images: true,
+        categorySlug: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 50,
+    });
+
+    if (!products.length) {
+      return res.status(404).json({
+        success: false,
+        message: "No products found for this group",
+      });
+    }
+
+    const formatted = products.map((product) => {
+      let discount = 0;
+
+      if (product.MRP && product.SRP) {
+        const mrp = Number(product.MRP.replace(/[^0-9]/g, ""));
+        const srp = Number(product.SRP.replace(/[^0-9]/g, ""));
+
+        if (mrp > 0 && srp > 0) {
+          discount = ((mrp - srp) / mrp) * 100;
+        }
+      }
+
+      return {
+        productCode: product.productCode,
+        href: product.href,
+        brand: product.brand,
+        title: product.title,
+        rating: product.rating,
+        ratingCount: product.ratingCount,
+        MRP: product.MRP,
+        SRP: product.SRP,
+        discount: Number(discount.toFixed(2)),
+        image: Array.isArray(product.images)
+          ? product.images
+          : product.images,
+        rootCategory,
+        groupCategory: groups,
+        categorySlug: product.categorySlug,
+      };
+    });
+
+    return res.status(200).json({
+      success: true,
+      rootCategory,
+      groups,
+      count: formatted.length,
+      data: formatted,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
+
+router.get("/products/:rootCategory/:group/:category", async (req, res) => {
+  try {
+    const { rootCategory, group, category } = req.params;
+
+    const products = await scrapperDb.myntraProduct.findMany({
+      where: {
+        rootCategory,
+        groupCategory: group,
+        categorySlug: category,
+      },
+      select: {
+        productCode: true,
+        href: true,
+        brand: true,
+        title: true,
+        rating: true,
+        ratingCount: true,
+        SRP: true,
+        MRP: true,
+        images: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 100,
+    });
+
+    if (!products.length) {
+      return res.status(404).json({
+        success: false,
+        message: "No products found",
+      });
+    }
+
+    const formatted = products.map((product) => {
+      let discount = 0;
+
+      if (product.MRP && product.SRP) {
+        const mrp = Number(product.MRP.replace(/[^0-9]/g, ""));
+        const srp = Number(product.SRP.replace(/[^0-9]/g, ""));
+
+        if (mrp > 0 && srp > 0) {
+          discount = ((mrp - srp) / mrp) * 100;
+        }
+      }
+
+      return {
+        productCode: product.productCode,
+        href: product.href,
+        brand: product.brand,
+        title: product.title,
+        rating: product.rating,
+        ratingCount: product.ratingCount,
+        MRP: product.MRP,
+        SRP: product.SRP,
+        discount: Number(discount.toFixed(2)),
+        image: Array.isArray(product.images)
+          ? product.images
+          : product.images,
+      };
+    });
+
+    return res.status(200).json({
+      success: true,
+      rootCategory,
+      group,
+      category,
+      count: formatted.length,
+      data: formatted,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Something went wrong! : ${error}`,
+    });
+  }
+});
+
+router.get("/product/:productCode", async (req, res) => {
+  try {
+    const { productCode } = req.params;
+
+    const product = await scrapperDb.myntraProduct.findUnique({
+      where: { productCode },
+      select: {
+        productCode: true,
+        href: true,
+        brand: true,
+        title: true,
+        rating: true,
+        ratingCount: true,
+        SRP: true,
+        MRP: true,
+        images: true,
+        rootCategory: true,
+        groupCategory: true,
+        categorySlug: true,
+        createdAt: true,
+      },
+    });
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    let discount = 0;
+
+    if (product.MRP && product.SRP) {
+      const mrp = Number(product.MRP.replace(/[^0-9]/g, ""));
+      const srp = Number(product.SRP.replace(/[^0-9]/g, ""));
+
+      if (mrp > 0 && srp > 0) {
+        discount = ((mrp - srp) / mrp) * 100;
+      }
+    }
+
+    const formatted = {
+      productCode: product.productCode,
+      href: product.href,
+      brand: product.brand,
+      title: product.title,
+      rating: product.rating,
+      ratingCount: product.ratingCount,
+      MRP: product.MRP,
+      SRP: product.SRP,
+      discount: Number(discount.toFixed(2)),
+      images: Array.isArray(product.images)
+        ? product.images
+        : [product.images],
+      rootCategory: product.rootCategory,
+      groupCategory: product.groupCategory,
+      categorySlug: product.categorySlug,
+      createdAt: product.createdAt,
+    };
+
+    return res.status(200).json({
+      success: true,
+      data: formatted,
     });
   } catch (error) {
     return res.status(500).json({

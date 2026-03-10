@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@ui/*": [
+        "../../libs/ui/src/*"
       ]
     },
     "outDir": "dist",

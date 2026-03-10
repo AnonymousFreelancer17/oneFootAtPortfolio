@@ -7,6 +7,7 @@ import { Carousel } from "../../../../libs/ui/src/components/carousel/index";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { replaceHyphens, safeCapitalize } from "../utils/string";
+import SkeletonCard from "../components/cards/SkeletonCard";
 
 export default function Index() {
   const [category, setCategory] = useState([]);
@@ -70,16 +71,7 @@ export default function Index() {
               <div className="w-full relative flex-1 dark:text-white text-black flex justify-center items-center flex-wrap gap-2 ">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
                   (d, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="w-[250px] h-[35vh] dark:text-white text-black flex flex-col justify-start items-start rounded-md dark:bg-neutral-800 bg-neutral-200 animate-pulse gap-2 p-[20px]"
-                      >
-                        <div className="w-11/12 h-[30px] dark:bg-neutral-700 bg-neutral-300 rounded-md"></div>
-
-                        <div className="w-1/2 h-[30px] dark:bg-neutral-700 bg-neutral-300 rounded-md"></div>
-                      </div>
-                    );
+                    return <SkeletonCard key={index} />;
                   },
                 )}
               </div>
@@ -102,7 +94,7 @@ export default function Index() {
                       {limitedCategories.map((cat: any) => (
                         <Link
                           href={`/${root.name}/${root.groups[0].name}/${cat.slug}`}
-                          key={cat.slug}
+                          key={root.name + "-" + cat.slug}
                           className="w-[250px] h-[35vh] flex flex-col justify-center items-center dark:bg-neutral-800 overflow-hidden rounded-md hover:shadow-xl relative"
                         >
                           <div className="w-full h-full overflow-hidden">
@@ -114,12 +106,27 @@ export default function Index() {
                           </div>
 
                           <div
-                            className={`w-11/12 h-[100px] bg absolute bottom-[8px] bg-green-500/80 backdrop-blur-sm dark:text-white text-black rounded-md flex justify-center items-center font-medium`}
+                            className={`w-11/12 h-[120px] bg absolute bottom-[8px] bg-green-500/80 backdrop-blur-sm dark:text-white text-black rounded-md flex flex-col justify-center items-center`}
                           >
-                            <div className="w-11/12 flex flex-wrap justify-center items-center gap-x-1.5">
-                              <p>{safeCapitalize(replaceHyphens(cat.slug))}</p>
-                              <p>for</p>
-                              <p>{safeCapitalize(root.name)}</p>
+                            <div className="w-11/12 flex flex-wrap justify-center items-center gap-x-1.5 text-bold">
+                              {/*  category-title */}
+                              <div className="w-full font-bold text-xl flex justify-center items-center flex-wrap">
+                                {safeCapitalize(replaceHyphens(cat.slug))}
+                              </div>
+                            </div>
+
+                            <div className="w-full flex flex-col justify-center items-center text-light">
+                              <div className="text-sm">upto</div>
+                              <div className="w-full flex justify-center items-center gap-x-1.5">
+                                <div className="font-bold text-xl">
+                                  {Math.trunc(cat.maxDiscount)}%
+                                </div>{" "}
+                                -{" "}
+                                <div className="font-bold text-xl">
+                                  {Math.trunc(cat.minDiscount)}%
+                                </div>
+                              </div>
+                              <div className="text-sm">Discounts</div>
                             </div>
                           </div>
                         </Link>
@@ -141,14 +148,7 @@ export default function Index() {
             <div className="lg:w-11/12 w-11/12 h-5/6 flex justify-start items-start overflow-hidden">
               <div className="h-full flex justify-start items-center gap-x-4 overflow-x-scroll ">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((d, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="min-w-[250px] h-[35vh] bg-neutral-200 flex justify-center items-center dark:bg-neutral-800 rounded-md hover:shadow-lg cursor-pointer"
-                    >
-                      {d}
-                    </div>
-                  );
+                  return <SkeletonCard key={index} />;
                 })}
               </div>
             </div>
@@ -169,13 +169,26 @@ export default function Index() {
                 return (
                   <div
                     key={index}
-                    className="lg:w-full w-11/12 h-full bg-neutral-200 dark:bg-neutral-800 dark:text-white text-black px-8"
+                    className="lg:w-full w-11/12 h-full flex justify-center items-center dark:text-white text-black p-8 gap-4"
                   >
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Molestiae illo eaque facilis modi obcaecati ipsam qui
-                    laboriosam blanditiis, mollitia aliquam, suscipit nulla
-                    expedita officiis libero veritatis distinctio iure fugit eos
-                    molestias, accusantium animi ipsa.
+                    <div className="lg:w-4/12 md:w-4/12 sm:w-4/12 w-4/12 h-full dark:bg-neutral-800 bg-neutral-200 text-xs font-light flex justify-center items-center">
+                      Complete Look
+                    </div>
+                    <div className="flex-1 h-full flex flex-col justify-center items-center gap-4">
+                      <div className="w-full h-1/2 flex justify-center items-center gap-4">
+                        {[1, 2, 3].map((d, idx) => {
+                          return (
+                            <div key={idx} className="w-1/3 h-full bg-neutral-200 dark:bg-neutral-800 flex justify-center items-center text-xs font-light rounded-md">
+                              {idx}
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="flex-1 w-full dark:bg-neutral-800 bg-neutral-200 text-xs font-light flex justify-center items-center">
+                        col layer
+                      </div>
+                    </div>
                   </div>
                 );
               })}
@@ -210,7 +223,7 @@ export default function Index() {
             </Carousel>
           </div>
 
-           <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
+          <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
             <div className="lg:w-11/12 w-11/12 h-1/6 flex justify-start items-center">
               Grand Global Brands
             </div>
@@ -238,11 +251,10 @@ export default function Index() {
             </Carousel>
           </div>
 
-           <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
+          <div className="w-full h-[60vh] font-semibold text-xl flex flex-col justify-center items-center dark:text-white text-black">
             <div className="lg:w-11/12 w-11/12 h-[50%] flex justify-start items-center dark:bg-neutral-800 bg-neutral-200 rounded-md">
-               {/* One Foot Opportunities */}
+              {/* One Foot Opportunities */}
             </div>
-             
           </div>
         </div>
       </div>

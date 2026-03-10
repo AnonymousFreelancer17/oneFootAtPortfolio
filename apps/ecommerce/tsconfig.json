@@ -48,7 +48,7 @@
     "src/**/*.tsx",
     ".next/types/**/*.ts",
     "./public/data/*.json"
-  ],
+, "src/components/cards/SkeletonCard.tsx"  ],
   "exclude": [
     "out-tsc",
     "dist",

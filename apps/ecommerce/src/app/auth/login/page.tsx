@@ -50,7 +50,7 @@ const Page = () => {
             iconVisibility={true}
             icon={<Mail className="absolute top-[10px] left-[10px]" />}
             inputType="text"
-            placeholder="name@gmail.com"
+            placeholder="example@gmail.com"
             optionData={<></>}
             inputContainerClassName="w-full "
             labelClassName="block mb-2.5 text-sm font-medium text-heading"
@@ -68,7 +68,7 @@ const Page = () => {
             iconVisibility={true}
             icon={<Key className="absolute top-[10px] left-[10px]" />}
             inputType="password"
-            placeholder="*************"
+            placeholder="password"
             optionData={<></>}
             inputContainerClassName="w-full"
             labelClassName="block mb-2.5 text-sm font-medium text-heading"
@@ -83,7 +83,7 @@ const Page = () => {
         <div className="w-10/12 text-gray-100">
           <button
             type="button"
-            className="w-full py-3 bg-green-600 rounded-md flex justify-center items-center"
+            className="w-full py-3 bg-green-600 rounded-md flex justify-center items-center font-semibold"
           >
             Login
           </button>
@@ -93,17 +93,17 @@ const Page = () => {
           <h2>Or</h2>
         </div>
 
-        <div className="w-10/12 flex justify-center items-center gap-x-2 text-gray-100">
+        <div className="w-10/12 flex justify-center items-center gap-x-2 text-gray-100 font-semibold">
           <button
             type="button"
-            className="w-1/2 px-10 py-3 bg-green-600 rounded-md flex justify-center items-center gap-x-2"
+            className="w-1/2 h-[45px] bg-green-600 rounded-md flex justify-center items-center gap-x-2"
           >
             <FaGoogle />
             Google
           </button>
           <button
             type="button"
-            className="w-1/2 px-10 py-3 bg-green-600 rounded-md flex justify-center items-center gap-x-2"
+            className="w-1/2 h-[45px] bg-green-600 rounded-md flex justify-center items-center gap-x-2"
           >
             <FaFacebook />
             Facebook
