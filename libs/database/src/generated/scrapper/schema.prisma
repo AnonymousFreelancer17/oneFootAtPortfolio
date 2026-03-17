@@ -8,6 +8,52 @@ datasource db {
   url      = env("SCRAPPER_DATABASE_URL")
 }
 
+model MyntraRootCategory {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String @unique
+
+  groups MyntraGroupCategory[]
+
+  createdAt DateTime @default(now())
+
+  @@map("myntra_root_categories")
+}
+
+model MyntraGroupCategory {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  slug  String
+  title String
+
+  rootCategoryId String             @db.ObjectId
+  rootCategory   MyntraRootCategory @relation(fields: [rootCategoryId], references: [id])
+
+  categories MyntraCategory[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([slug, rootCategoryId])
+  @@map("myntra_group_categories")
+}
+
+model MyntraCategory {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  slug  String
+  title String
+  href  String
+
+  groupCategoryId String              @db.ObjectId
+  groupCategory   MyntraGroupCategory @relation(fields: [groupCategoryId], references: [id])
+
+  products MyntraProduct[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([slug, groupCategoryId])
+  @@map("myntra_categories")
+}
+
 model MyntraProduct {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
@@ -32,14 +78,31 @@ model MyntraProduct {
   specification String[]
   seller        String[]
 
-  rootCategory  String
-  groupCategory String
-  categorySlug  String
+  categoryId String         @db.ObjectId
+  category   MyntraCategory @relation(fields: [categoryId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("myntra_products")
+  @@map("myntra_products_v1")
+}
+
+model ScrapeProgress {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  rootCategory  String
+  groupCategory String
+  category      String
+
+  totalProducts   Int @default(0)
+  scrapedProducts Int @default(0)
+
+  status String // pending | running | completed | failed
+
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  @@map("scrape_progress")
 }
 
 /**

@@ -66,11 +66,6 @@
           "scope:backend"
         ]
       },
-      "@source": {
-        "tags": [
-          "root"
-        ]
-      },
       "@ecommerce": {
         "tags": [
           "type:frontend"

@@ -34,9 +34,9 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-screen h-auto flex flex-wrap justify-center bg-neutral-100 dark:bg-neutral-900">
-      <div className="lg:w-11/12 md:w-11/12 sm:w-full flex flex-col justify-center items-center gap-4">
-        <div className="w-full h-screen  flex justify-center items-center dark:text-white text-black">
+    <div className="w-screen h-auto flex flex-col justify-center items-center bg-neutral-100 dark:bg-neutral-900">
+      <div className="lg:w-11/12 w-full flex flex-col justify-center items-center gap-4 ">
+        <div className="w-full h-screen flex justify-center items-center dark:text-white text-black">
           <div className="text-xl">
             Why only Stop at <div>Fashion ?</div>
           </div>
@@ -60,7 +60,7 @@ export default function Index() {
               Category
             </Link>
           </div>
-          <div className="lg:w-11/12 md:w-11/12 w-full h-auto flex flex-wrap justify-center items-center">
+          <div className="lg:w-11/12 md:w-full w-full h-auto flex flex-wrap justify-center items-center">
             {error ? (
               <div className="text-red-500">Something went wrong</div>
             ) : (
@@ -76,7 +76,7 @@ export default function Index() {
                 )}
               </div>
             ) : (
-              <div className="w-full overflow-hidden flex justify-start items-start">
+              <div className="w-full h-auto flex flex-wrap justify-start items-start gap-4">
                 {category.map((root: any) => {
                   // 1️⃣ Collect all categories from all groups
                   const allCategories = (root.groups ?? []).flatMap(
@@ -84,18 +84,15 @@ export default function Index() {
                   );
 
                   // 2️⃣ Take only first 10
-                  const limitedCategories = allCategories.slice(0, 10);
+                  const limitedCategories = allCategories.slice(0, 12);
 
                   return (
-                    <div
-                      key={root.name}
-                      className="w-full flex flex-wrap justify-start items-start gap-4"
-                    >
+                    <div className="w-full flex sm:flex-row flex-col flex-wrap lg:justify-start justify-center items-center gap-4">
                       {limitedCategories.map((cat: any) => (
                         <Link
                           href={`/${root.name}/${root.groups[0].name}/${cat.slug}`}
                           key={root.name + "-" + cat.slug}
-                          className="w-[250px] h-[35vh] flex flex-col justify-center items-center dark:bg-neutral-800 overflow-hidden rounded-md hover:shadow-xl relative"
+                          className="sm:w-[250px] w-[400px] sm:h-[35vh] h-[55vh] flex flex-col justify-center items-center dark:bg-neutral-800 overflow-hidden rounded-md hover:shadow-xl relative"
                         >
                           <div className="w-full h-full overflow-hidden">
                             <img
@@ -178,7 +175,10 @@ export default function Index() {
                       <div className="w-full h-1/2 flex justify-center items-center gap-4">
                         {[1, 2, 3].map((d, idx) => {
                           return (
-                            <div key={idx} className="w-1/3 h-full bg-neutral-200 dark:bg-neutral-800 flex justify-center items-center text-xs font-light rounded-md">
+                            <div
+                              key={idx}
+                              className="w-1/3 h-full bg-neutral-200 dark:bg-neutral-800 flex justify-center items-center text-xs font-light rounded-md"
+                            >
                               {idx}
                             </div>
                           );

@@ -3,7 +3,7 @@ import {
   checkOtpRestrictions,
   sendOtp,
   trackOtpRequests,
-  // validateRegistrationData,
+  validateRegistrationData,
   verifyOtp as verifyOtpHelper,
 } from "../utils/auth.helper";
 import { authDb as prisma } from "../../../../libs/database/src/index";
@@ -19,23 +19,121 @@ import { hashPassword } from "../utils/JWT";
 
 // const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+// export const userRegistration = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction,
+// ) => {
+//   try {
+//     const { name, email, service } = req.body;
+
+//     validateRegistrationData({ name, email, service }, "user");
+
+//     console.log("➡️ Registration request:", { name, email, service });
+
+//     if (!name || !email || !service) {
+//       throw new ValidationError("Name, email, phone number are required");
+//     }
+
+//     const existingUser = await prisma.users.findFirst({
+//       where: { email, service },
+//     });
+
+//     if (existingUser) {
+//       throw new ValidationError("User already exists");
+//     }
+
+//     await checkOtpRestrictions(email);
+//     console.log("✅ OTP restriction check passed");
+
+//     await trackOtpRequests(email);
+//     console.log("✅ OTP request tracked");
+
+//     await sendOtp(name, email, "user-activation-mail");
+//     console.log("📧 sendOtp called successfully");
+
+//     return res.status(200).json({
+//       message: "OTP sent to your email",
+//     });
+//   } catch (error) {
+//     return next(error);
+//   }
+// };
+
 export const userRegistration = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
+  console.log("🚀 Route hit: userRegistration");
+
   try {
     const { name, email, service } = req.body;
+    console.log("📥 Body received:", req.body);
 
-    console.log("➡️ Registration request:", { name, email, service });
+    console.log("1️⃣ Running validation...");
+    validateRegistrationData({ name, email, service }, "user");
+    console.log("✅ Validation passed");
 
     if (!name || !email || !service) {
       throw new ValidationError("Name, email, phone number are required");
     }
-    
 
+    console.log("2️⃣ Checking existing user...");
     const existingUser = await prisma.users.findFirst({
       where: { email, service },
+    });
+    console.log("✅ DB query finished");
+
+    if (existingUser) {
+      throw new ValidationError("User already exists");
+    }
+
+    console.log("3️⃣ Checking OTP restriction...");
+    await checkOtpRestrictions(email);
+    console.log("✅ OTP restriction check passed");
+
+    console.log("4️⃣ Tracking OTP request...");
+    await trackOtpRequests(email);
+    console.log("✅ OTP request tracked");
+
+    console.log("5️⃣ Sending OTP...");
+    await sendOtp(name, email, "user-activation-mail");
+    console.log("📧 OTP sent");
+
+    console.log("6️⃣ Sending response...");
+    return res.status(200).json({
+      message: "OTP sent to your email",
+    });
+  } catch (error) {
+    console.error("❌ Error in registration:", error);
+    return next(error);
+  }
+};
+
+export const vendorRegistration = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { name, email, phoneNumber, service } = req.body;
+
+    validateRegistrationData({ name, email, phoneNumber, service }, "vendor");
+
+    console.log("➡️ Registration request:", {
+      name,
+      email,
+      service,
+      phoneNumber,
+    });
+
+    if (!name || !email || !service || !phoneNumber) {
+      throw new ValidationError("Name, email, phone number are required");
+    }
+
+    const existingUser = await prisma.users.findFirst({
+      where: { email, phoneNumber, service },
     });
 
     if (existingUser) {
@@ -64,7 +162,7 @@ export const userRegistration = async (
  * - Validates OTP
  * - Creates user after successful verification
  */
-export const verifyRegistrationOtp = async (
+export const verifyUserRegistrationOtp = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -164,44 +262,6 @@ export const resendOtp = async (
 //     return res.status(200).json({ message: "Login OTP sent to your email." });
 //   } catch (error) {
 //     console.error("[Login Error]:", error);
-//     return next(error);
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// };
-
-/**
- * ✅ Verify Login OTP
- * - Validates OTP and generates JWT
- */
-// export const verifyLoginOtp = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) => {
-//   try {
-//     const { email, otp, service } = req.body;
-//     if (!email || !otp) throw new ValidationError("Email and OTP are required");
-
-//     const isValid = await verifyOtpHelper(email, otp);
-//     if (!isValid) throw new ValidationError("Invalid OTP");
-
-//     const user = await prisma.users.findUnique({ where: { email, service } });
-//     if (!user) throw new ValidationError("User not found");
-
-//     await redis.del(`otp:${email}`);
-
-//     const token = jwt.sign(
-//       { id: user.id, email: user.email },
-//       process.env.JWT_SECRET || "supersecret",
-//       {
-//         expiresIn: "7d",
-//       }
-//     );
-
-//     return res.status(200).json({ message: "Login successful", token, user });
-//   } catch (error) {
-//     console.error("[Verify Login OTP Error]:", error);
 //     return next(error);
 //   } finally {
 //     await prisma.$disconnect();

@@ -12,9 +12,9 @@ const layout = ({ children }: { children: ReactNode }) => {
         <SidebarFilter />
 
         {/* Main Content */}
-        <div className="md:w-[calc(100%-15vw)] mt-[70px] w-full h-auto flex flex-col justify-center items-center">
+        <div className="md:w-[calc(100%-15vw)] mt-[70px] w-full h-auto flex justify-center items-center">
           <div className="w-full flex flex-col justify-start items-center relative">
-            <div className="w-full h-[60px] flex justify-start items-center gap-x-2 px-[20px]">
+            <div className="w-full h-[60px] flex justify-start items-center gap-2">
               <Link href={"/"} className="font-medium hover:text-green-500">
                 Home
               </Link>{" "}

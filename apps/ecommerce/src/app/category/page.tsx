@@ -16,7 +16,7 @@ const page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // console.log(params.root);
+      // console.log(params.rootCategory);
 
       try {
         const response = await axios.get(
@@ -54,9 +54,9 @@ const page = () => {
           </div>
         ) : (
           <div className="w-full overflow-hidden flex justify-start items-start">
-            {category.map((root: any) => {
+            {category.map((rootCategory: any) => {
               // 1️⃣ Collect all categories from all groups
-              const allCategories = (root.groups ?? []).flatMap(
+              const allCategories = (rootCategory.groups ?? []).flatMap(
                 (group: any) => group.categories ?? [],
               );
 
@@ -65,13 +65,13 @@ const page = () => {
 
               return (
                 <div
-                  key={root.name}
+                  key={rootCategory.name}
                   className="w-full flex flex-wrap justify-start items-start gap-4"
                 >
-                  {limitedCategories.map((cat: any,idx:any) => (
+                  {limitedCategories.map((cat: any, idx: any) => (
                     <Link
-                      href={`category/${root.name}/${root.groups[0].name}/${cat.slug}`}
-                      key={`categories-${root.name}-${root.groups[0].name}-${cat.slug}-${idx}`}
+                      href={`/${rootCategory.name}/${rootCategory.groups[0].name}/${cat.slug}`}
+                      key={`categories-${rootCategory.name}-${rootCategory.groups[0].name}-${cat.slug}-${idx}`}
                       className="w-[250px] h-[35vh] flex flex-col justify-center items-center dark:bg-neutral-800 overflow-hidden rounded-md hover:shadow-xl relative"
                     >
                       <div className="w-full h-full overflow-hidden">

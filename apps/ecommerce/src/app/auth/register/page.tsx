@@ -27,8 +27,8 @@ const Page = () => {
   const handleRegister = async (e: any) => {
     e.preventDefault();
 
-    if (submittingRef.current) return;
-    submittingRef.current = true;
+    // if (submittingRef.current) return;
+    // submittingRef.current = true;
 
     setErrorMsg("");
     setSuccessMsg("");
@@ -42,7 +42,7 @@ const Page = () => {
         return;
       }
 
-      const res = await axios.post("http://localhost:8000/auth/register", {
+      const res = await axios.post("http://localhost:8000/auth/user-register", {
         name: formData.username,
         email: formData.email,
         service: formData.service,
@@ -58,7 +58,7 @@ const Page = () => {
       );
     } finally {
       setLoading(false);
-      submittingRef.current = false;
+      // submittingRef.current = false;
     }
   };
 
