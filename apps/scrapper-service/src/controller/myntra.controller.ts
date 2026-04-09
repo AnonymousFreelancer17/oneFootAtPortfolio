@@ -1,4 +1,4 @@
-import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
+// import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
 import fs from "fs";
 import path from "path";
 
@@ -13,7 +13,18 @@ import {
   extractAllProductCodes,
   filterRemainingProducts,
   getExistingProductCodes,
+  retry,
+  getTotalPages,
+  goToNextPage,
+  scrapeProductByHref,
+  updateProgressFromDB,
+  checkCategoryCompletion,
 } from "../utils/myntra/myntra.helper";
+
+// linit
+import pLimit from "p-limit";
+import { saveProductsToDB } from "../utils/myntra/myntra.dataInjection";
+import { multiBar } from "../utils/cli-progress";
 
 type Product = {
   productCode: string;
@@ -30,9 +41,9 @@ type Product = {
   images: Array<string>;
   productDetails: Array<string>;
   sizeAndFit: Array<string>;
-  materialAndCare: Array<String>;
+  materialAndCare: string[];
 
-  specification: Array<String>;
+  specification: string[];
 
   seller: Array<string>;
 };
@@ -52,6 +63,8 @@ type RootCategories = Record<
   "women" | "men" | "kids" | "home" | "beauty" | "genz",
   Record<string, CategoryGroup>
 >;
+
+const limit = pLimit(6);
 
 // categories
 export async function scrapeCategories(page: any) {
@@ -125,7 +138,7 @@ export async function scrapeCategories(page: any) {
                   title,
                   href: href.startsWith("http")
                     ? href
-                    : `https://www.myntra.com${href}`,
+                    : `https://www.myntra.com${href.startsWith("/") ? "" : "/"}${href}`,
                   products: {},
                 };
               }
@@ -148,75 +161,15 @@ export async function scrapeCategories(page: any) {
   return data;
 }
 
-export async function saveCategoriesToDB(data: any) {
-  for (const rootName of Object.keys(data)) {
-    const root = await scrapperDb.myntraRootCategory.upsert({
-      where: { name: rootName },
-      update: {},
-      create: {
-        name: rootName,
-      },
-    });
-
-    const groups = data[rootName];
-
-    for (const groupSlug of Object.keys(groups)) {
-      const groupData = groups[groupSlug];
-
-      const group = await scrapperDb.myntraGroupCategory.upsert({
-        where: {
-          slug_rootCategoryId: {
-            slug: groupSlug,
-            rootCategoryId: root.id,
-          },
-        },
-        update: {
-          title: groupSlug,
-        },
-        create: {
-          slug: groupSlug,
-          title: groupSlug,
-          rootCategoryId: root.id,
-        },
-      });
-
-      const categories = groupData.categories;
-
-      for (const categorySlug of Object.keys(categories)) {
-        const categoryData = categories[categorySlug];
-
-        await scrapperDb.myntraCategory.upsert({
-          where: {
-            slug_groupCategoryId: {
-              slug: categorySlug,
-              groupCategoryId: group.id,
-            },
-          },
-          update: {
-            title: categoryData.title,
-            href: categoryData.href,
-          },
-          create: {
-            slug: categorySlug,
-            title: categoryData.title,
-            href: categoryData.href,
-            groupCategoryId: group.id,
-          },
-        });
-      }
-    }
-  }
-}
-
 // helper funciton to extract data
 
 async function extractProductsFromPage(page: any) {
   return await page.evaluate(() => {
     const products: any[] = [];
 
-    document.querySelectorAll(".product-base").forEach((card) => {
+    document.querySelectorAll(".product-base,.results-base").forEach((card) => {
       // getting the product_code = id
-      const productCode = card.getAttribute("id");
+      const productCode = card.getAttribute("id") || "";
 
       // getting the href
       const linkEl = card.querySelector("a");
@@ -228,7 +181,9 @@ async function extractProductsFromPage(page: any) {
 
       products.push({
         productCode,
-        href: href.startsWith("http") ? href : `https://www.myntra.com/${href}`,
+        href: href.startsWith("http")
+          ? href
+          : `https://www.myntra.com${href.startsWith("/") ? "" : "/"}${href}`,
         brand: card.querySelector(".product-brand")?.textContent?.trim() || "",
         title:
           card.querySelector(".product-product")?.textContent?.trim() || "",
@@ -252,7 +207,7 @@ async function extractProductsFromPage(page: any) {
         productDetails: [],
         sizeAndFit: [],
         materialAndCare: [],
-        specification: {},
+        specification: [],
         seller: [],
       });
     });
@@ -260,97 +215,133 @@ async function extractProductsFromPage(page: any) {
     return products || [];
   });
 }
-async function getTotalPages(page: any) {
-  try {
-    const text = await page.$eval(
-      ".pagination-paginationMeta",
-      (el: any) => el.textContent,
-    );
 
-    const match = text.match(/Page\s+\d+\s+of\s+(\d+)/i);
-
-    return match ? parseInt(match[1]) : 1;
-  } catch {
-    return 1;
-  }
-}
-
-async function goToNextPage(page: any) {
-  const nextBtn = await page.$(".pagination-next");
-
-  if (!nextBtn) return false;
-
-  const disabled = await page.evaluate(
-    (btn: any) => btn.classList.contains("disabled"),
-    nextBtn,
-  );
-
-  if (disabled) return false;
-
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: "networkidle2" }),
-    nextBtn.click(),
-  ]);
-
-  return true;
-}
-
-export async function saveProductsToDB(
-  products: any[],
-  categoryId: string
+export async function scrapeSingleProduct(
+  page: any,
+  category: any,
+  rootKey: string,
+  groupKey: string,
+  categoryKey: any,
+  progressBar: any,
 ) {
-  if (!products.length) return;
-
   try {
-    const formattedProducts = products.map((p) => ({
-      productCode: p.productCode,
-      href: p.href,
-
-      brand: p.brand ?? "",
-      title: p.title ?? "",
-
-      rating: p.rating || null,
-      ratingCount: p.ratingCount || null,
-
-      size: p.size || null,
-      SRP: p.SRP || null,
-      MRP: p.MRP || null,
-
-      images: Array.isArray(p.images) ? p.images : [],
-
-      productDetails: Array.isArray(p.productDetails)
-        ? p.productDetails
-        : [],
-
-      sizeAndFit: Array.isArray(p.sizeAndFit)
-        ? p.sizeAndFit
-        : [],
-
-      materialAndCare: Array.isArray(p.materialAndCare)
-        ? p.materialAndCare
-        : [],
-
-      specification: Array.isArray(p.specification)
-        ? p.specification
-        : [],
-
-      seller: Array.isArray(p.seller) ? p.seller : [],
-
-      categoryId: categoryId,
-    }));
-
-    await scrapperDb.myntraProduct.createMany({
-      data: formattedProducts,
-      // skipDuplicates: true,
+    const dbGroup = await scrapperDb.myntraGroupCategory.findFirst({
+      where: { slug: groupKey },
     });
 
-    console.log(`💾 Saved ${formattedProducts.length} products`);
-  } catch (error) {
-    console.error("❌ DB Save Error:", error);
+    if (!dbGroup) return;
+
+    const dbCategory = await scrapperDb.myntraCategory.findUnique({
+      where: {
+        slug_groupCategoryId: {
+          slug: categoryKey,
+          groupCategoryId: dbGroup.id,
+        },
+      },
+    });
+
+    if (!dbCategory) return;
+
+    const categoryId = dbCategory.id;
+
+    if (!page || typeof page.goto !== "function") {
+      console.error("❌ Invalid page object");
+      return;
+    }
+
+    // ✅ FIXED loading strategy
+    await page.goto(category.href, {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    });
+
+    await page.waitForSelector(".product-base, .results-base", {
+      timeout: 30000,
+    });
+
+    const totalPages = await getTotalPages(page);
+
+    // ✅ IMPORTANT: set correct total
+    if (progressBar && totalPages) {
+      progressBar.setTotal(totalPages);
+    }
+
+    let currentPage = 1;
+    let totalCollected = 0;
+    const seen = new Set<string>();
+
+    while (currentPage <= totalPages) {
+      await deepAutoScroll(page);
+      await new Promise((res) => setTimeout(res, 1500));
+
+      const products = await extractProductsFromPage(page);
+
+      const newProducts = products.filter(
+        (p: any) => p.productCode && !seen.has(p.productCode),
+      );
+
+      newProducts.forEach((p: any) => seen.add(p.productCode));
+      totalCollected += newProducts.length;
+
+      await Promise.all(
+        newProducts.map((product: any) =>
+          limit(async () => {
+            const newPage = await page.browser().newPage();
+
+            try {
+              const details = await retry(() =>
+                scrapeProductByHref(newPage, product.href, categoryId),
+              );
+
+              if (!details) return;
+
+              await saveProductsToDB(
+                [{ ...product, ...details, categoryId }],
+                categoryId,
+                scrapperDb,
+              );
+            } catch (err: any) {
+              console.error("❌ Product failed:", product.href);
+              console.error("🔥 Error:", err?.message || err);
+
+              // optional: log stack for deep debugging
+              if (err?.stack) {
+                console.error("📛 Stack:", err.stack);
+              }
+            } finally {
+              await newPage.close();
+            }
+          }),
+        ),
+      );
+
+      // ✅ REAL-TIME UPDATE
+      if (progressBar) {
+        progressBar.update(currentPage, {
+          category: `${category.title} | Products: ${totalCollected}`,
+        });
+      }
+      if (currentPage >= totalPages) break;
+
+      const moved = await goToNextPage(page);
+      if (!moved) break;
+
+      currentPage++;
+
+      await page.waitForSelector(".product-base, .results-base");
+    }
+
+    if (progressBar) {
+      progressBar.update(totalPages);
+    }
+  } catch (err: any) {
+    console.error(
+      `❌ Failed: ${rootKey} → ${groupKey} → ${category.title} - ${err} `,
+    );
   }
 }
 
-export async function scrapeProducts(page: any) {
+export async function scrapeProducts(pages: any[]) {
   const filePath = path.join(
     process.cwd(),
     "apps/scrapper-service",
@@ -362,6 +353,8 @@ export async function scrapeProducts(page: any) {
   const raw = fs.readFileSync(filePath, "utf-8");
   const categories = JSON.parse(raw);
 
+  let pageIndex = 0;
+
   for (const rootKey of Object.keys(categories)) {
     const rootGroups = categories[rootKey];
 
@@ -370,229 +363,78 @@ export async function scrapeProducts(page: any) {
 
       for (const categoryKey of Object.keys(group.categories)) {
         const category = group.categories[categoryKey];
+        if (!category) continue;
+
+        // ✅ Get DB category
+        const dbGroup = await scrapperDb.myntraGroupCategory.findFirst({
+          where: { slug: groupKey },
+        });
+
+        if (!dbGroup) continue;
+
+        const dbCategory = await scrapperDb.myntraCategory.findUnique({
+          where: {
+            slug_groupCategoryId: {
+              slug: categoryKey,
+              groupCategoryId: dbGroup.id,
+            },
+          },
+        });
+
+        if (!dbCategory) continue;
+
+        const categoryId = dbCategory.id;
+
+        // 🔥 CHECK EXISTING DATA
+        // const { count, isCompleted } = await checkCategoryCompletion(
+        //   categoryId,
+        //   scrapperDb,
+        // );
+
+        // if (isCompleted) {
+        //   console.log(
+        //     `⏩ Skipping (Already scraped): ${rootKey} → ${groupKey} → ${category.title} (${count} products)`,
+        //   );
+
+        //   await updateProgressFromDB(
+        //     rootKey,
+        //     groupKey,
+        //     categoryKey,
+        //     count,
+        //     scrapperDb,
+        //     "completed",
+        //   );
+
+        //   continue; // 🚀 skip scraping
+        // }
+
+        // ❗ Not completed → scrape
+        const page = pages[pageIndex % pages.length];
+        pageIndex++;
 
         console.log(
-          `🔍 Scraping: ${rootKey} → ${groupKey} → ${category.title}`,
+          `🚀 Scraping: ${rootKey} → ${groupKey} → ${category.title}`,
         );
 
-        try {
-          // 🔥 get categoryId from DB
-          const dbCategory = await scrapperDb.myntraCategory.findFirst({
-            where: {
-              title: category.title,
-            },
-          });
+        // await updateProgressFromDB(
+        //   rootKey,
+        //   groupKey,
+        //   categoryKey,
+        //   count,
+        //   scrapperDb,
+        //   "running",
+        // );
 
-          if (!dbCategory) {
-            console.log(`⚠️ Category not found in DB: ${category.title}`);
-            continue;
-          }
-
-          const categoryId = dbCategory.id;
-
-          const seen = new Set<string>();
-
-          console.log(`➡️ Loading: ${category.href}`);
-
-          await page.goto(category.href, {
-            waitUntil: "networkidle2",
-            timeout: 60000,
-          });
-
-          await page.waitForSelector(".product-base", {
-            timeout: 30000,
-          });
-
-          const totalPages = await getTotalPages(page);
-
-          console.log(`📄 Total pages: ${totalPages}`);
-
-          let currentPage = 1;
-
-          while (true) {
-            console.log(`📄 Scraping page ${currentPage}`);
-
-            await deepAutoScroll(page);
-
-            await new Promise((r) => setTimeout(r, 2000));
-
-            const products = await extractProductsFromPage(page);
-
-            const newProducts: any[] = [];
-
-            for (const product of products) {
-              if (!product.productCode) continue;
-
-              if (!seen.has(product.productCode)) {
-                seen.add(product.productCode);
-
-                category.products[product.productCode] = product;
-
-                newProducts.push(product);
-              }
-            }
-
-            // 🔥 save products to DB
-            await saveProductsToDB(newProducts, categoryId);
-
-            console.log(
-              `📦 Collected: ${Object.keys(category.products).length}`,
-            );
-
-            if (currentPage >= totalPages) break;
-
-            const moved = await goToNextPage(page);
-
-            if (!moved) break;
-
-            currentPage++;
-
-            await page.waitForSelector(".product-base");
-          }
-
-          console.log(
-            `✅ ${category.title}: ${Object.keys(category.products).length} products`,
-          );
-        } catch (err: any) {
-          console.error(
-            `❌ Failed: ${rootKey} → ${groupKey} → ${category.title}`,
-          );
-
-          console.error(err?.message || err);
-
-          try {
-            await page.screenshot({
-              path: `error-${categoryKey}.png`,
-              fullPage: true,
-            });
-          } catch {}
-
-          continue;
-        }
+        await scrapeSingleProduct(
+          page,
+          category,
+          rootKey,
+          groupKey,
+          categoryKey,
+          null, // progressBar optional
+        );
       }
     }
   }
 }
 
-// export async function getProductsDetails(page: any) {
-//   const filePath = path.join(
-//     process.cwd(),
-//     "apps/scrapper-service",
-//     "tmp_cache",
-//     "myntra",
-//     "products.json",
-//   );
-
-//   const raw = fs.readFileSync(filePath, "utf-8");
-//   const categories = JSON.parse(raw);
-
-//   const allProducts = extractAllProductCodes(categories);
-//   const existingCodes = await getExistingProductCodes(scrapperDb);
-//   const remaining = filterRemainingProducts(allProducts, existingCodes);
-
-//   console.log(`📦 Total products in JSON: ${allProducts.length}`);
-//   console.log(`✅ Already scraped: ${existingCodes.size}`);
-//   console.log(`⏳ Remaining to scrape: ${remaining.length}`);
-
-//   const startTime = Date.now();
-
-//   for (let i = 0; i < remaining.length; i++) {
-//     const product = remaining[i];
-
-//     console.log(
-//       `🔍 [${i + 1}/${remaining.length}] Scraping ${product.productCode}`,
-//     );
-
-//     try {
-//       await page.goto(product.href, {
-//         waitUntil: "networkidle2",
-//         timeout: 60000,
-//       });
-
-//       await page.waitForSelector(".pdp-title", { timeout: 20000 });
-
-//       const details = await page.evaluate(() => {
-//         const textArr = (sel: string) =>
-//           Array.from(document.querySelectorAll(sel))
-//             .map((e) => e.textContent?.trim())
-//             .filter(Boolean);
-
-//         const images = Array.from(
-//           document.querySelectorAll(".image-grid-image"),
-//         )
-//           .map((el) => {
-//             const bg = window.getComputedStyle(el).backgroundImage;
-//             const match = bg?.match(/url\(["']?(.*?)["']?\)/);
-//             return match?.[1];
-//           })
-//           .filter(Boolean);
-
-//         const specification: string[] = [];
-
-//         document
-//           .querySelectorAll(".index-tableContainer")
-//           .forEach((container) => {
-//             const keys = container.querySelectorAll(".index-rowKey");
-//             const values = container.querySelectorAll(".index-rowValue");
-
-//             keys.forEach((keyEl, idx) => {
-//               const key = keyEl.textContent?.trim();
-//               const val = values[idx]?.textContent?.trim();
-//               if (key && val) specification.push(`${key}: ${val}`);
-//             });
-//           });
-
-//         return {
-//           brand: document.querySelector(".pdp-title")?.textContent || "",
-//           title: document.querySelector(".pdp-name")?.textContent || "",
-//           rating:
-//             document.querySelector(".index-overallRating")?.textContent || "",
-//           ratingCount:
-//             document.querySelector(".index-ratingsCount")?.textContent || "",
-//           SRP: document.querySelector(".pdp-price strong")?.textContent || "",
-//           MRP: document.querySelector(".pdp-mrp s")?.textContent || "",
-//           images,
-//           productDetails: textArr(".pdp-productDescriptorsContainer"),
-//           sizeAndFit: textArr(".pdp-sizeFitDesc"),
-//           materialAndCare: textArr(".pdp-sizeFitDesc"),
-//           specification,
-//           seller: textArr(".supplier-productSellerName"),
-//         };
-//       });
-
-//       await scrapperDb.myntraProduct.create({
-//         data: {
-//           productCode: product.productCode,
-//           href: product.href,
-//           ...details,
-//           rootCategory: product.rootCategory,
-//           groupCategory: product.groupCategory,
-//           categorySlug: product.categorySlug,
-//         },
-//       });
-
-//       console.log(`✅ Saved ${product.productCode}`);
-
-//       await new Promise((r) => setTimeout(r, 1200));
-//     } catch (err: any) {
-//       console.error(`❌ Failed ${product.productCode}`, err?.message || err);
-//     }
-//   }
-
-//   const totalTime = (Date.now() - startTime) / 1000;
-//   console.log(`🎉 Scraping done in ${Math.round(totalTime / 60)} minutes`);
-// }
-
-// // rotating session for normal scrapper
-
-// export async function scrapeMyntraCategories() {
-//   return await rotateSession(scrapeCategories);
-// }
-
-// export async function scrapeMyntraProducts() {
-//   return await rotateSession(getProducts);
-// }
-
-// export async function scrapeMyntraProductdetails() {
-//   return rotateSession(getProductsDetails);
-// }

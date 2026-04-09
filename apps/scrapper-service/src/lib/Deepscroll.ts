@@ -1,5 +1,5 @@
  export default async function deepAutoScroll(page: any) {
-  console.log("📜 Starting deep auto-scroll...");
+  // console.log("📜 Starting deep auto-scroll...");
 
   await page.evaluate(async () => {
     const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
@@ -27,6 +27,6 @@
       lastHeight = newHeight;
     }
 
-    console.log("✅ Finished auto-scroll, all lazy content loaded.");
+    // console.log("✅ Finished auto-scroll, all lazy content loaded.");
   });
 }

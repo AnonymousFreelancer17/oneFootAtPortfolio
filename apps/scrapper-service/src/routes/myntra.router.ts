@@ -1,6 +1,11 @@
 import express, { Request, Response, NextFunction } from "express";
-import {  scrapeCategories,saveCategoriesToDB, scrapeProducts, saveProductsToDB } from "../controller/myntra.controller";
+import {
+  scrapeCategories,
+  scrapeProducts,
+} from "../controller/myntra.controller";
 import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
+import { scrapperDb } from "../../../../libs/database/src/clients/scrapper.client";
+import { saveCategoriesToDB } from "../utils/myntra/myntra.dataInjection";
 
 const router = express.Router();
 
@@ -9,21 +14,20 @@ router.get(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data = await rotateSession(scrapeCategories);
-      
+
       console.log(data);
 
-      if(data){
-        await saveCategoriesToDB(data);
-      }else{
+      if (data) {
+        await saveCategoriesToDB(data, scrapperDb);
+      } else {
         return;
       }
 
       return res.status(200).json({
-        success : true,
+        success: true,
         message: `data stored successfully`,
-        data: data
-      })
-
+        data: data,
+      });
     } catch (error) {
       console.log("❌ Scraping failed: ", error);
       return res.status(200).json({
@@ -35,21 +39,17 @@ router.get(
   },
 );
 
-
 router.get(
   "/scrapeProducts",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-
       await rotateSession(scrapeProducts);
 
       return res.status(200).json({
         success: true,
         message: "Products scraped and stored successfully",
       });
-
     } catch (error) {
-
       console.log("❌ Scraping failed:", error);
 
       return res.status(500).json({
@@ -58,7 +58,7 @@ router.get(
         error,
       });
     }
-  }
+  },
 );
 
 //  catgeory routes

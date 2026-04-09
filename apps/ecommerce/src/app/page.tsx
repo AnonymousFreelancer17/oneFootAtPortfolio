@@ -62,7 +62,7 @@ export default function Index() {
           </div>
           <div className="lg:w-11/12 md:w-full w-full h-auto flex flex-wrap justify-center items-center">
             {error ? (
-              <div className="text-red-500">Something went wrong</div>
+              <div className="text-red-500 w-screen h-screen flex justify-center items-center ">Something went wrong</div>
             ) : (
               <></>
             )}

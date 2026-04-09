@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model myntraScrapeProgress
+ * 
+ */
+export type myntraScrapeProgress = $Result.DefaultSelection<Prisma.$myntraScrapeProgressPayload>
+/**
  * Model MyntraRootCategory
  * 
  */
@@ -34,11 +39,6 @@ export type MyntraCategory = $Result.DefaultSelection<Prisma.$MyntraCategoryPayl
  */
 export type MyntraProduct = $Result.DefaultSelection<Prisma.$MyntraProductPayload>
 /**
- * Model ScrapeProgress
- * 
- */
-export type ScrapeProgress = $Result.DefaultSelection<Prisma.$ScrapeProgressPayload>
-/**
  * Model BlinkitProduct
  * 
  */
@@ -56,8 +56,8 @@ export type LimeroadProduct = $Result.DefaultSelection<Prisma.$LimeroadProductPa
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more MyntraRootCategories
- * const myntraRootCategories = await prisma.myntraRootCategory.findMany()
+ * // Fetch zero or more MyntraScrapeProgresses
+ * const myntraScrapeProgresses = await prisma.myntraScrapeProgress.findMany()
  * ```
  *
  *
@@ -77,8 +77,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more MyntraRootCategories
-   * const myntraRootCategories = await prisma.myntraRootCategory.findMany()
+   * // Fetch zero or more MyntraScrapeProgresses
+   * const myntraScrapeProgresses = await prisma.myntraScrapeProgress.findMany()
    * ```
    *
    *
@@ -142,6 +142,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.myntraScrapeProgress`: Exposes CRUD operations for the **myntraScrapeProgress** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MyntraScrapeProgresses
+    * const myntraScrapeProgresses = await prisma.myntraScrapeProgress.findMany()
+    * ```
+    */
+  get myntraScrapeProgress(): Prisma.myntraScrapeProgressDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.myntraRootCategory`: Exposes CRUD operations for the **MyntraRootCategory** model.
     * Example usage:
     * ```ts
@@ -180,16 +190,6 @@ export class PrismaClient<
     * ```
     */
   get myntraProduct(): Prisma.MyntraProductDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.scrapeProgress`: Exposes CRUD operations for the **ScrapeProgress** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ScrapeProgresses
-    * const scrapeProgresses = await prisma.scrapeProgress.findMany()
-    * ```
-    */
-  get scrapeProgress(): Prisma.ScrapeProgressDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.blinkitProduct`: Exposes CRUD operations for the **BlinkitProduct** model.
@@ -650,11 +650,11 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    myntraScrapeProgress: 'myntraScrapeProgress',
     MyntraRootCategory: 'MyntraRootCategory',
     MyntraGroupCategory: 'MyntraGroupCategory',
     MyntraCategory: 'MyntraCategory',
     MyntraProduct: 'MyntraProduct',
-    ScrapeProgress: 'ScrapeProgress',
     BlinkitProduct: 'BlinkitProduct',
     LimeroadProduct: 'LimeroadProduct'
   };
@@ -675,10 +675,84 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "myntraRootCategory" | "myntraGroupCategory" | "myntraCategory" | "myntraProduct" | "scrapeProgress" | "blinkitProduct" | "limeroadProduct"
+      modelProps: "myntraScrapeProgress" | "myntraRootCategory" | "myntraGroupCategory" | "myntraCategory" | "myntraProduct" | "blinkitProduct" | "limeroadProduct"
       txIsolationLevel: never
     }
     model: {
+      myntraScrapeProgress: {
+        payload: Prisma.$myntraScrapeProgressPayload<ExtArgs>
+        fields: Prisma.myntraScrapeProgressFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.myntraScrapeProgressFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.myntraScrapeProgressFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>
+          }
+          findFirst: {
+            args: Prisma.myntraScrapeProgressFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.myntraScrapeProgressFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>
+          }
+          findMany: {
+            args: Prisma.myntraScrapeProgressFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>[]
+          }
+          create: {
+            args: Prisma.myntraScrapeProgressCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>
+          }
+          createMany: {
+            args: Prisma.myntraScrapeProgressCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.myntraScrapeProgressDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>
+          }
+          update: {
+            args: Prisma.myntraScrapeProgressUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>
+          }
+          deleteMany: {
+            args: Prisma.myntraScrapeProgressDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.myntraScrapeProgressUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.myntraScrapeProgressUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$myntraScrapeProgressPayload>
+          }
+          aggregate: {
+            args: Prisma.MyntraScrapeProgressAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMyntraScrapeProgress>
+          }
+          groupBy: {
+            args: Prisma.myntraScrapeProgressGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MyntraScrapeProgressGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.myntraScrapeProgressFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.myntraScrapeProgressAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.myntraScrapeProgressCountArgs<ExtArgs>
+            result: $Utils.Optional<MyntraScrapeProgressCountAggregateOutputType> | number
+          }
+        }
+      }
       MyntraRootCategory: {
         payload: Prisma.$MyntraRootCategoryPayload<ExtArgs>
         fields: Prisma.MyntraRootCategoryFieldRefs
@@ -975,80 +1049,6 @@ export namespace Prisma {
           }
         }
       }
-      ScrapeProgress: {
-        payload: Prisma.$ScrapeProgressPayload<ExtArgs>
-        fields: Prisma.ScrapeProgressFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ScrapeProgressFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ScrapeProgressFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>
-          }
-          findFirst: {
-            args: Prisma.ScrapeProgressFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ScrapeProgressFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>
-          }
-          findMany: {
-            args: Prisma.ScrapeProgressFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>[]
-          }
-          create: {
-            args: Prisma.ScrapeProgressCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>
-          }
-          createMany: {
-            args: Prisma.ScrapeProgressCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.ScrapeProgressDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>
-          }
-          update: {
-            args: Prisma.ScrapeProgressUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>
-          }
-          deleteMany: {
-            args: Prisma.ScrapeProgressDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ScrapeProgressUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.ScrapeProgressUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ScrapeProgressPayload>
-          }
-          aggregate: {
-            args: Prisma.ScrapeProgressAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateScrapeProgress>
-          }
-          groupBy: {
-            args: Prisma.ScrapeProgressGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ScrapeProgressGroupByOutputType>[]
-          }
-          findRaw: {
-            args: Prisma.ScrapeProgressFindRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.ScrapeProgressAggregateRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          count: {
-            args: Prisma.ScrapeProgressCountArgs<ExtArgs>
-            result: $Utils.Optional<ScrapeProgressCountAggregateOutputType> | number
-          }
-        }
-      }
       BlinkitProduct: {
         payload: Prisma.$BlinkitProductPayload<ExtArgs>
         fields: Prisma.BlinkitProductFieldRefs
@@ -1268,11 +1268,11 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    myntraScrapeProgress?: myntraScrapeProgressOmit
     myntraRootCategory?: MyntraRootCategoryOmit
     myntraGroupCategory?: MyntraGroupCategoryOmit
     myntraCategory?: MyntraCategoryOmit
     myntraProduct?: MyntraProductOmit
-    scrapeProgress?: ScrapeProgressOmit
     blinkitProduct?: BlinkitProductOmit
     limeroadProduct?: LimeroadProductOmit
   }
@@ -1460,6 +1460,1024 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model myntraScrapeProgress
+   */
+
+  export type AggregateMyntraScrapeProgress = {
+    _count: MyntraScrapeProgressCountAggregateOutputType | null
+    _avg: MyntraScrapeProgressAvgAggregateOutputType | null
+    _sum: MyntraScrapeProgressSumAggregateOutputType | null
+    _min: MyntraScrapeProgressMinAggregateOutputType | null
+    _max: MyntraScrapeProgressMaxAggregateOutputType | null
+  }
+
+  export type MyntraScrapeProgressAvgAggregateOutputType = {
+    currentPage: number | null
+    totalPages: number | null
+    totalProducts: number | null
+  }
+
+  export type MyntraScrapeProgressSumAggregateOutputType = {
+    currentPage: number | null
+    totalPages: number | null
+    totalProducts: number | null
+  }
+
+  export type MyntraScrapeProgressMinAggregateOutputType = {
+    id: string | null
+    rootCategory: string | null
+    groupCategory: string | null
+    categorySlug: string | null
+    status: string | null
+    currentPage: number | null
+    totalPages: number | null
+    totalProducts: number | null
+    updatedAt: Date | null
+  }
+
+  export type MyntraScrapeProgressMaxAggregateOutputType = {
+    id: string | null
+    rootCategory: string | null
+    groupCategory: string | null
+    categorySlug: string | null
+    status: string | null
+    currentPage: number | null
+    totalPages: number | null
+    totalProducts: number | null
+    updatedAt: Date | null
+  }
+
+  export type MyntraScrapeProgressCountAggregateOutputType = {
+    id: number
+    rootCategory: number
+    groupCategory: number
+    categorySlug: number
+    status: number
+    currentPage: number
+    totalPages: number
+    totalProducts: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MyntraScrapeProgressAvgAggregateInputType = {
+    currentPage?: true
+    totalPages?: true
+    totalProducts?: true
+  }
+
+  export type MyntraScrapeProgressSumAggregateInputType = {
+    currentPage?: true
+    totalPages?: true
+    totalProducts?: true
+  }
+
+  export type MyntraScrapeProgressMinAggregateInputType = {
+    id?: true
+    rootCategory?: true
+    groupCategory?: true
+    categorySlug?: true
+    status?: true
+    currentPage?: true
+    totalPages?: true
+    totalProducts?: true
+    updatedAt?: true
+  }
+
+  export type MyntraScrapeProgressMaxAggregateInputType = {
+    id?: true
+    rootCategory?: true
+    groupCategory?: true
+    categorySlug?: true
+    status?: true
+    currentPage?: true
+    totalPages?: true
+    totalProducts?: true
+    updatedAt?: true
+  }
+
+  export type MyntraScrapeProgressCountAggregateInputType = {
+    id?: true
+    rootCategory?: true
+    groupCategory?: true
+    categorySlug?: true
+    status?: true
+    currentPage?: true
+    totalPages?: true
+    totalProducts?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MyntraScrapeProgressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which myntraScrapeProgress to aggregate.
+     */
+    where?: myntraScrapeProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of myntraScrapeProgresses to fetch.
+     */
+    orderBy?: myntraScrapeProgressOrderByWithRelationInput | myntraScrapeProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: myntraScrapeProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` myntraScrapeProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` myntraScrapeProgresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned myntraScrapeProgresses
+    **/
+    _count?: true | MyntraScrapeProgressCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MyntraScrapeProgressAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MyntraScrapeProgressSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MyntraScrapeProgressMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MyntraScrapeProgressMaxAggregateInputType
+  }
+
+  export type GetMyntraScrapeProgressAggregateType<T extends MyntraScrapeProgressAggregateArgs> = {
+        [P in keyof T & keyof AggregateMyntraScrapeProgress]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMyntraScrapeProgress[P]>
+      : GetScalarType<T[P], AggregateMyntraScrapeProgress[P]>
+  }
+
+
+
+
+  export type myntraScrapeProgressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: myntraScrapeProgressWhereInput
+    orderBy?: myntraScrapeProgressOrderByWithAggregationInput | myntraScrapeProgressOrderByWithAggregationInput[]
+    by: MyntraScrapeProgressScalarFieldEnum[] | MyntraScrapeProgressScalarFieldEnum
+    having?: myntraScrapeProgressScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MyntraScrapeProgressCountAggregateInputType | true
+    _avg?: MyntraScrapeProgressAvgAggregateInputType
+    _sum?: MyntraScrapeProgressSumAggregateInputType
+    _min?: MyntraScrapeProgressMinAggregateInputType
+    _max?: MyntraScrapeProgressMaxAggregateInputType
+  }
+
+  export type MyntraScrapeProgressGroupByOutputType = {
+    id: string
+    rootCategory: string
+    groupCategory: string
+    categorySlug: string
+    status: string
+    currentPage: number
+    totalPages: number | null
+    totalProducts: number
+    updatedAt: Date
+    _count: MyntraScrapeProgressCountAggregateOutputType | null
+    _avg: MyntraScrapeProgressAvgAggregateOutputType | null
+    _sum: MyntraScrapeProgressSumAggregateOutputType | null
+    _min: MyntraScrapeProgressMinAggregateOutputType | null
+    _max: MyntraScrapeProgressMaxAggregateOutputType | null
+  }
+
+  type GetMyntraScrapeProgressGroupByPayload<T extends myntraScrapeProgressGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MyntraScrapeProgressGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MyntraScrapeProgressGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MyntraScrapeProgressGroupByOutputType[P]>
+            : GetScalarType<T[P], MyntraScrapeProgressGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type myntraScrapeProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rootCategory?: boolean
+    groupCategory?: boolean
+    categorySlug?: boolean
+    status?: boolean
+    currentPage?: boolean
+    totalPages?: boolean
+    totalProducts?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["myntraScrapeProgress"]>
+
+
+
+  export type myntraScrapeProgressSelectScalar = {
+    id?: boolean
+    rootCategory?: boolean
+    groupCategory?: boolean
+    categorySlug?: boolean
+    status?: boolean
+    currentPage?: boolean
+    totalPages?: boolean
+    totalProducts?: boolean
+    updatedAt?: boolean
+  }
+
+  export type myntraScrapeProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rootCategory" | "groupCategory" | "categorySlug" | "status" | "currentPage" | "totalPages" | "totalProducts" | "updatedAt", ExtArgs["result"]["myntraScrapeProgress"]>
+
+  export type $myntraScrapeProgressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "myntraScrapeProgress"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      rootCategory: string
+      groupCategory: string
+      categorySlug: string
+      status: string
+      currentPage: number
+      totalPages: number | null
+      totalProducts: number
+      updatedAt: Date
+    }, ExtArgs["result"]["myntraScrapeProgress"]>
+    composites: {}
+  }
+
+  type myntraScrapeProgressGetPayload<S extends boolean | null | undefined | myntraScrapeProgressDefaultArgs> = $Result.GetResult<Prisma.$myntraScrapeProgressPayload, S>
+
+  type myntraScrapeProgressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<myntraScrapeProgressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MyntraScrapeProgressCountAggregateInputType | true
+    }
+
+  export interface myntraScrapeProgressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['myntraScrapeProgress'], meta: { name: 'myntraScrapeProgress' } }
+    /**
+     * Find zero or one MyntraScrapeProgress that matches the filter.
+     * @param {myntraScrapeProgressFindUniqueArgs} args - Arguments to find a MyntraScrapeProgress
+     * @example
+     * // Get one MyntraScrapeProgress
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends myntraScrapeProgressFindUniqueArgs>(args: SelectSubset<T, myntraScrapeProgressFindUniqueArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MyntraScrapeProgress that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {myntraScrapeProgressFindUniqueOrThrowArgs} args - Arguments to find a MyntraScrapeProgress
+     * @example
+     * // Get one MyntraScrapeProgress
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends myntraScrapeProgressFindUniqueOrThrowArgs>(args: SelectSubset<T, myntraScrapeProgressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MyntraScrapeProgress that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {myntraScrapeProgressFindFirstArgs} args - Arguments to find a MyntraScrapeProgress
+     * @example
+     * // Get one MyntraScrapeProgress
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends myntraScrapeProgressFindFirstArgs>(args?: SelectSubset<T, myntraScrapeProgressFindFirstArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MyntraScrapeProgress that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {myntraScrapeProgressFindFirstOrThrowArgs} args - Arguments to find a MyntraScrapeProgress
+     * @example
+     * // Get one MyntraScrapeProgress
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends myntraScrapeProgressFindFirstOrThrowArgs>(args?: SelectSubset<T, myntraScrapeProgressFindFirstOrThrowArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MyntraScrapeProgresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {myntraScrapeProgressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MyntraScrapeProgresses
+     * const myntraScrapeProgresses = await prisma.myntraScrapeProgress.findMany()
+     * 
+     * // Get first 10 MyntraScrapeProgresses
+     * const myntraScrapeProgresses = await prisma.myntraScrapeProgress.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const myntraScrapeProgressWithIdOnly = await prisma.myntraScrapeProgress.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends myntraScrapeProgressFindManyArgs>(args?: SelectSubset<T, myntraScrapeProgressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MyntraScrapeProgress.
+     * @param {myntraScrapeProgressCreateArgs} args - Arguments to create a MyntraScrapeProgress.
+     * @example
+     * // Create one MyntraScrapeProgress
+     * const MyntraScrapeProgress = await prisma.myntraScrapeProgress.create({
+     *   data: {
+     *     // ... data to create a MyntraScrapeProgress
+     *   }
+     * })
+     * 
+     */
+    create<T extends myntraScrapeProgressCreateArgs>(args: SelectSubset<T, myntraScrapeProgressCreateArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MyntraScrapeProgresses.
+     * @param {myntraScrapeProgressCreateManyArgs} args - Arguments to create many MyntraScrapeProgresses.
+     * @example
+     * // Create many MyntraScrapeProgresses
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends myntraScrapeProgressCreateManyArgs>(args?: SelectSubset<T, myntraScrapeProgressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MyntraScrapeProgress.
+     * @param {myntraScrapeProgressDeleteArgs} args - Arguments to delete one MyntraScrapeProgress.
+     * @example
+     * // Delete one MyntraScrapeProgress
+     * const MyntraScrapeProgress = await prisma.myntraScrapeProgress.delete({
+     *   where: {
+     *     // ... filter to delete one MyntraScrapeProgress
+     *   }
+     * })
+     * 
+     */
+    delete<T extends myntraScrapeProgressDeleteArgs>(args: SelectSubset<T, myntraScrapeProgressDeleteArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MyntraScrapeProgress.
+     * @param {myntraScrapeProgressUpdateArgs} args - Arguments to update one MyntraScrapeProgress.
+     * @example
+     * // Update one MyntraScrapeProgress
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends myntraScrapeProgressUpdateArgs>(args: SelectSubset<T, myntraScrapeProgressUpdateArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MyntraScrapeProgresses.
+     * @param {myntraScrapeProgressDeleteManyArgs} args - Arguments to filter MyntraScrapeProgresses to delete.
+     * @example
+     * // Delete a few MyntraScrapeProgresses
+     * const { count } = await prisma.myntraScrapeProgress.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends myntraScrapeProgressDeleteManyArgs>(args?: SelectSubset<T, myntraScrapeProgressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MyntraScrapeProgresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {myntraScrapeProgressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MyntraScrapeProgresses
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends myntraScrapeProgressUpdateManyArgs>(args: SelectSubset<T, myntraScrapeProgressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MyntraScrapeProgress.
+     * @param {myntraScrapeProgressUpsertArgs} args - Arguments to update or create a MyntraScrapeProgress.
+     * @example
+     * // Update or create a MyntraScrapeProgress
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.upsert({
+     *   create: {
+     *     // ... data to create a MyntraScrapeProgress
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MyntraScrapeProgress we want to update
+     *   }
+     * })
+     */
+    upsert<T extends myntraScrapeProgressUpsertArgs>(args: SelectSubset<T, myntraScrapeProgressUpsertArgs<ExtArgs>>): Prisma__myntraScrapeProgressClient<$Result.GetResult<Prisma.$myntraScrapeProgressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MyntraScrapeProgresses that matches the filter.
+     * @param {myntraScrapeProgressFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: myntraScrapeProgressFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a MyntraScrapeProgress.
+     * @param {myntraScrapeProgressAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const myntraScrapeProgress = await prisma.myntraScrapeProgress.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: myntraScrapeProgressAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of MyntraScrapeProgresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {myntraScrapeProgressCountArgs} args - Arguments to filter MyntraScrapeProgresses to count.
+     * @example
+     * // Count the number of MyntraScrapeProgresses
+     * const count = await prisma.myntraScrapeProgress.count({
+     *   where: {
+     *     // ... the filter for the MyntraScrapeProgresses we want to count
+     *   }
+     * })
+    **/
+    count<T extends myntraScrapeProgressCountArgs>(
+      args?: Subset<T, myntraScrapeProgressCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MyntraScrapeProgressCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MyntraScrapeProgress.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MyntraScrapeProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MyntraScrapeProgressAggregateArgs>(args: Subset<T, MyntraScrapeProgressAggregateArgs>): Prisma.PrismaPromise<GetMyntraScrapeProgressAggregateType<T>>
+
+    /**
+     * Group by MyntraScrapeProgress.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {myntraScrapeProgressGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends myntraScrapeProgressGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: myntraScrapeProgressGroupByArgs['orderBy'] }
+        : { orderBy?: myntraScrapeProgressGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, myntraScrapeProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMyntraScrapeProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the myntraScrapeProgress model
+   */
+  readonly fields: myntraScrapeProgressFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for myntraScrapeProgress.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__myntraScrapeProgressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the myntraScrapeProgress model
+   */ 
+  interface myntraScrapeProgressFieldRefs {
+    readonly id: FieldRef<"myntraScrapeProgress", 'String'>
+    readonly rootCategory: FieldRef<"myntraScrapeProgress", 'String'>
+    readonly groupCategory: FieldRef<"myntraScrapeProgress", 'String'>
+    readonly categorySlug: FieldRef<"myntraScrapeProgress", 'String'>
+    readonly status: FieldRef<"myntraScrapeProgress", 'String'>
+    readonly currentPage: FieldRef<"myntraScrapeProgress", 'Int'>
+    readonly totalPages: FieldRef<"myntraScrapeProgress", 'Int'>
+    readonly totalProducts: FieldRef<"myntraScrapeProgress", 'Int'>
+    readonly updatedAt: FieldRef<"myntraScrapeProgress", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * myntraScrapeProgress findUnique
+   */
+  export type myntraScrapeProgressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * Filter, which myntraScrapeProgress to fetch.
+     */
+    where: myntraScrapeProgressWhereUniqueInput
+  }
+
+  /**
+   * myntraScrapeProgress findUniqueOrThrow
+   */
+  export type myntraScrapeProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * Filter, which myntraScrapeProgress to fetch.
+     */
+    where: myntraScrapeProgressWhereUniqueInput
+  }
+
+  /**
+   * myntraScrapeProgress findFirst
+   */
+  export type myntraScrapeProgressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * Filter, which myntraScrapeProgress to fetch.
+     */
+    where?: myntraScrapeProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of myntraScrapeProgresses to fetch.
+     */
+    orderBy?: myntraScrapeProgressOrderByWithRelationInput | myntraScrapeProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for myntraScrapeProgresses.
+     */
+    cursor?: myntraScrapeProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` myntraScrapeProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` myntraScrapeProgresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of myntraScrapeProgresses.
+     */
+    distinct?: MyntraScrapeProgressScalarFieldEnum | MyntraScrapeProgressScalarFieldEnum[]
+  }
+
+  /**
+   * myntraScrapeProgress findFirstOrThrow
+   */
+  export type myntraScrapeProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * Filter, which myntraScrapeProgress to fetch.
+     */
+    where?: myntraScrapeProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of myntraScrapeProgresses to fetch.
+     */
+    orderBy?: myntraScrapeProgressOrderByWithRelationInput | myntraScrapeProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for myntraScrapeProgresses.
+     */
+    cursor?: myntraScrapeProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` myntraScrapeProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` myntraScrapeProgresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of myntraScrapeProgresses.
+     */
+    distinct?: MyntraScrapeProgressScalarFieldEnum | MyntraScrapeProgressScalarFieldEnum[]
+  }
+
+  /**
+   * myntraScrapeProgress findMany
+   */
+  export type myntraScrapeProgressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * Filter, which myntraScrapeProgresses to fetch.
+     */
+    where?: myntraScrapeProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of myntraScrapeProgresses to fetch.
+     */
+    orderBy?: myntraScrapeProgressOrderByWithRelationInput | myntraScrapeProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing myntraScrapeProgresses.
+     */
+    cursor?: myntraScrapeProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` myntraScrapeProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` myntraScrapeProgresses.
+     */
+    skip?: number
+    distinct?: MyntraScrapeProgressScalarFieldEnum | MyntraScrapeProgressScalarFieldEnum[]
+  }
+
+  /**
+   * myntraScrapeProgress create
+   */
+  export type myntraScrapeProgressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * The data needed to create a myntraScrapeProgress.
+     */
+    data: XOR<myntraScrapeProgressCreateInput, myntraScrapeProgressUncheckedCreateInput>
+  }
+
+  /**
+   * myntraScrapeProgress createMany
+   */
+  export type myntraScrapeProgressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many myntraScrapeProgresses.
+     */
+    data: myntraScrapeProgressCreateManyInput | myntraScrapeProgressCreateManyInput[]
+  }
+
+  /**
+   * myntraScrapeProgress update
+   */
+  export type myntraScrapeProgressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * The data needed to update a myntraScrapeProgress.
+     */
+    data: XOR<myntraScrapeProgressUpdateInput, myntraScrapeProgressUncheckedUpdateInput>
+    /**
+     * Choose, which myntraScrapeProgress to update.
+     */
+    where: myntraScrapeProgressWhereUniqueInput
+  }
+
+  /**
+   * myntraScrapeProgress updateMany
+   */
+  export type myntraScrapeProgressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update myntraScrapeProgresses.
+     */
+    data: XOR<myntraScrapeProgressUpdateManyMutationInput, myntraScrapeProgressUncheckedUpdateManyInput>
+    /**
+     * Filter which myntraScrapeProgresses to update
+     */
+    where?: myntraScrapeProgressWhereInput
+    /**
+     * Limit how many myntraScrapeProgresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * myntraScrapeProgress upsert
+   */
+  export type myntraScrapeProgressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * The filter to search for the myntraScrapeProgress to update in case it exists.
+     */
+    where: myntraScrapeProgressWhereUniqueInput
+    /**
+     * In case the myntraScrapeProgress found by the `where` argument doesn't exist, create a new myntraScrapeProgress with this data.
+     */
+    create: XOR<myntraScrapeProgressCreateInput, myntraScrapeProgressUncheckedCreateInput>
+    /**
+     * In case the myntraScrapeProgress was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<myntraScrapeProgressUpdateInput, myntraScrapeProgressUncheckedUpdateInput>
+  }
+
+  /**
+   * myntraScrapeProgress delete
+   */
+  export type myntraScrapeProgressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+    /**
+     * Filter which myntraScrapeProgress to delete.
+     */
+    where: myntraScrapeProgressWhereUniqueInput
+  }
+
+  /**
+   * myntraScrapeProgress deleteMany
+   */
+  export type myntraScrapeProgressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which myntraScrapeProgresses to delete
+     */
+    where?: myntraScrapeProgressWhereInput
+    /**
+     * Limit how many myntraScrapeProgresses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * myntraScrapeProgress findRaw
+   */
+  export type myntraScrapeProgressFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * myntraScrapeProgress aggregateRaw
+   */
+  export type myntraScrapeProgressAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * myntraScrapeProgress without action
+   */
+  export type myntraScrapeProgressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the myntraScrapeProgress
+     */
+    select?: myntraScrapeProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the myntraScrapeProgress
+     */
+    omit?: myntraScrapeProgressOmit<ExtArgs> | null
+  }
+
 
   /**
    * Model MyntraRootCategory
@@ -5583,1020 +6601,6 @@ export namespace Prisma {
 
 
   /**
-   * Model ScrapeProgress
-   */
-
-  export type AggregateScrapeProgress = {
-    _count: ScrapeProgressCountAggregateOutputType | null
-    _avg: ScrapeProgressAvgAggregateOutputType | null
-    _sum: ScrapeProgressSumAggregateOutputType | null
-    _min: ScrapeProgressMinAggregateOutputType | null
-    _max: ScrapeProgressMaxAggregateOutputType | null
-  }
-
-  export type ScrapeProgressAvgAggregateOutputType = {
-    totalProducts: number | null
-    scrapedProducts: number | null
-  }
-
-  export type ScrapeProgressSumAggregateOutputType = {
-    totalProducts: number | null
-    scrapedProducts: number | null
-  }
-
-  export type ScrapeProgressMinAggregateOutputType = {
-    id: string | null
-    rootCategory: string | null
-    groupCategory: string | null
-    category: string | null
-    totalProducts: number | null
-    scrapedProducts: number | null
-    status: string | null
-    startedAt: Date | null
-    completedAt: Date | null
-  }
-
-  export type ScrapeProgressMaxAggregateOutputType = {
-    id: string | null
-    rootCategory: string | null
-    groupCategory: string | null
-    category: string | null
-    totalProducts: number | null
-    scrapedProducts: number | null
-    status: string | null
-    startedAt: Date | null
-    completedAt: Date | null
-  }
-
-  export type ScrapeProgressCountAggregateOutputType = {
-    id: number
-    rootCategory: number
-    groupCategory: number
-    category: number
-    totalProducts: number
-    scrapedProducts: number
-    status: number
-    startedAt: number
-    completedAt: number
-    _all: number
-  }
-
-
-  export type ScrapeProgressAvgAggregateInputType = {
-    totalProducts?: true
-    scrapedProducts?: true
-  }
-
-  export type ScrapeProgressSumAggregateInputType = {
-    totalProducts?: true
-    scrapedProducts?: true
-  }
-
-  export type ScrapeProgressMinAggregateInputType = {
-    id?: true
-    rootCategory?: true
-    groupCategory?: true
-    category?: true
-    totalProducts?: true
-    scrapedProducts?: true
-    status?: true
-    startedAt?: true
-    completedAt?: true
-  }
-
-  export type ScrapeProgressMaxAggregateInputType = {
-    id?: true
-    rootCategory?: true
-    groupCategory?: true
-    category?: true
-    totalProducts?: true
-    scrapedProducts?: true
-    status?: true
-    startedAt?: true
-    completedAt?: true
-  }
-
-  export type ScrapeProgressCountAggregateInputType = {
-    id?: true
-    rootCategory?: true
-    groupCategory?: true
-    category?: true
-    totalProducts?: true
-    scrapedProducts?: true
-    status?: true
-    startedAt?: true
-    completedAt?: true
-    _all?: true
-  }
-
-  export type ScrapeProgressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ScrapeProgress to aggregate.
-     */
-    where?: ScrapeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ScrapeProgresses to fetch.
-     */
-    orderBy?: ScrapeProgressOrderByWithRelationInput | ScrapeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ScrapeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ScrapeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ScrapeProgresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ScrapeProgresses
-    **/
-    _count?: true | ScrapeProgressCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ScrapeProgressAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ScrapeProgressSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ScrapeProgressMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ScrapeProgressMaxAggregateInputType
-  }
-
-  export type GetScrapeProgressAggregateType<T extends ScrapeProgressAggregateArgs> = {
-        [P in keyof T & keyof AggregateScrapeProgress]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateScrapeProgress[P]>
-      : GetScalarType<T[P], AggregateScrapeProgress[P]>
-  }
-
-
-
-
-  export type ScrapeProgressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScrapeProgressWhereInput
-    orderBy?: ScrapeProgressOrderByWithAggregationInput | ScrapeProgressOrderByWithAggregationInput[]
-    by: ScrapeProgressScalarFieldEnum[] | ScrapeProgressScalarFieldEnum
-    having?: ScrapeProgressScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ScrapeProgressCountAggregateInputType | true
-    _avg?: ScrapeProgressAvgAggregateInputType
-    _sum?: ScrapeProgressSumAggregateInputType
-    _min?: ScrapeProgressMinAggregateInputType
-    _max?: ScrapeProgressMaxAggregateInputType
-  }
-
-  export type ScrapeProgressGroupByOutputType = {
-    id: string
-    rootCategory: string
-    groupCategory: string
-    category: string
-    totalProducts: number
-    scrapedProducts: number
-    status: string
-    startedAt: Date | null
-    completedAt: Date | null
-    _count: ScrapeProgressCountAggregateOutputType | null
-    _avg: ScrapeProgressAvgAggregateOutputType | null
-    _sum: ScrapeProgressSumAggregateOutputType | null
-    _min: ScrapeProgressMinAggregateOutputType | null
-    _max: ScrapeProgressMaxAggregateOutputType | null
-  }
-
-  type GetScrapeProgressGroupByPayload<T extends ScrapeProgressGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ScrapeProgressGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ScrapeProgressGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ScrapeProgressGroupByOutputType[P]>
-            : GetScalarType<T[P], ScrapeProgressGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ScrapeProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    rootCategory?: boolean
-    groupCategory?: boolean
-    category?: boolean
-    totalProducts?: boolean
-    scrapedProducts?: boolean
-    status?: boolean
-    startedAt?: boolean
-    completedAt?: boolean
-  }, ExtArgs["result"]["scrapeProgress"]>
-
-
-
-  export type ScrapeProgressSelectScalar = {
-    id?: boolean
-    rootCategory?: boolean
-    groupCategory?: boolean
-    category?: boolean
-    totalProducts?: boolean
-    scrapedProducts?: boolean
-    status?: boolean
-    startedAt?: boolean
-    completedAt?: boolean
-  }
-
-  export type ScrapeProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rootCategory" | "groupCategory" | "category" | "totalProducts" | "scrapedProducts" | "status" | "startedAt" | "completedAt", ExtArgs["result"]["scrapeProgress"]>
-
-  export type $ScrapeProgressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ScrapeProgress"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      rootCategory: string
-      groupCategory: string
-      category: string
-      totalProducts: number
-      scrapedProducts: number
-      status: string
-      startedAt: Date | null
-      completedAt: Date | null
-    }, ExtArgs["result"]["scrapeProgress"]>
-    composites: {}
-  }
-
-  type ScrapeProgressGetPayload<S extends boolean | null | undefined | ScrapeProgressDefaultArgs> = $Result.GetResult<Prisma.$ScrapeProgressPayload, S>
-
-  type ScrapeProgressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ScrapeProgressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ScrapeProgressCountAggregateInputType | true
-    }
-
-  export interface ScrapeProgressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ScrapeProgress'], meta: { name: 'ScrapeProgress' } }
-    /**
-     * Find zero or one ScrapeProgress that matches the filter.
-     * @param {ScrapeProgressFindUniqueArgs} args - Arguments to find a ScrapeProgress
-     * @example
-     * // Get one ScrapeProgress
-     * const scrapeProgress = await prisma.scrapeProgress.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ScrapeProgressFindUniqueArgs>(args: SelectSubset<T, ScrapeProgressFindUniqueArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one ScrapeProgress that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ScrapeProgressFindUniqueOrThrowArgs} args - Arguments to find a ScrapeProgress
-     * @example
-     * // Get one ScrapeProgress
-     * const scrapeProgress = await prisma.scrapeProgress.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ScrapeProgressFindUniqueOrThrowArgs>(args: SelectSubset<T, ScrapeProgressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ScrapeProgress that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressFindFirstArgs} args - Arguments to find a ScrapeProgress
-     * @example
-     * // Get one ScrapeProgress
-     * const scrapeProgress = await prisma.scrapeProgress.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ScrapeProgressFindFirstArgs>(args?: SelectSubset<T, ScrapeProgressFindFirstArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ScrapeProgress that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressFindFirstOrThrowArgs} args - Arguments to find a ScrapeProgress
-     * @example
-     * // Get one ScrapeProgress
-     * const scrapeProgress = await prisma.scrapeProgress.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ScrapeProgressFindFirstOrThrowArgs>(args?: SelectSubset<T, ScrapeProgressFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more ScrapeProgresses that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ScrapeProgresses
-     * const scrapeProgresses = await prisma.scrapeProgress.findMany()
-     * 
-     * // Get first 10 ScrapeProgresses
-     * const scrapeProgresses = await prisma.scrapeProgress.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const scrapeProgressWithIdOnly = await prisma.scrapeProgress.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ScrapeProgressFindManyArgs>(args?: SelectSubset<T, ScrapeProgressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a ScrapeProgress.
-     * @param {ScrapeProgressCreateArgs} args - Arguments to create a ScrapeProgress.
-     * @example
-     * // Create one ScrapeProgress
-     * const ScrapeProgress = await prisma.scrapeProgress.create({
-     *   data: {
-     *     // ... data to create a ScrapeProgress
-     *   }
-     * })
-     * 
-     */
-    create<T extends ScrapeProgressCreateArgs>(args: SelectSubset<T, ScrapeProgressCreateArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many ScrapeProgresses.
-     * @param {ScrapeProgressCreateManyArgs} args - Arguments to create many ScrapeProgresses.
-     * @example
-     * // Create many ScrapeProgresses
-     * const scrapeProgress = await prisma.scrapeProgress.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ScrapeProgressCreateManyArgs>(args?: SelectSubset<T, ScrapeProgressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a ScrapeProgress.
-     * @param {ScrapeProgressDeleteArgs} args - Arguments to delete one ScrapeProgress.
-     * @example
-     * // Delete one ScrapeProgress
-     * const ScrapeProgress = await prisma.scrapeProgress.delete({
-     *   where: {
-     *     // ... filter to delete one ScrapeProgress
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ScrapeProgressDeleteArgs>(args: SelectSubset<T, ScrapeProgressDeleteArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one ScrapeProgress.
-     * @param {ScrapeProgressUpdateArgs} args - Arguments to update one ScrapeProgress.
-     * @example
-     * // Update one ScrapeProgress
-     * const scrapeProgress = await prisma.scrapeProgress.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ScrapeProgressUpdateArgs>(args: SelectSubset<T, ScrapeProgressUpdateArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more ScrapeProgresses.
-     * @param {ScrapeProgressDeleteManyArgs} args - Arguments to filter ScrapeProgresses to delete.
-     * @example
-     * // Delete a few ScrapeProgresses
-     * const { count } = await prisma.scrapeProgress.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ScrapeProgressDeleteManyArgs>(args?: SelectSubset<T, ScrapeProgressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ScrapeProgresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ScrapeProgresses
-     * const scrapeProgress = await prisma.scrapeProgress.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ScrapeProgressUpdateManyArgs>(args: SelectSubset<T, ScrapeProgressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ScrapeProgress.
-     * @param {ScrapeProgressUpsertArgs} args - Arguments to update or create a ScrapeProgress.
-     * @example
-     * // Update or create a ScrapeProgress
-     * const scrapeProgress = await prisma.scrapeProgress.upsert({
-     *   create: {
-     *     // ... data to create a ScrapeProgress
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ScrapeProgress we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ScrapeProgressUpsertArgs>(args: SelectSubset<T, ScrapeProgressUpsertArgs<ExtArgs>>): Prisma__ScrapeProgressClient<$Result.GetResult<Prisma.$ScrapeProgressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more ScrapeProgresses that matches the filter.
-     * @param {ScrapeProgressFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const scrapeProgress = await prisma.scrapeProgress.findRaw({
-     *   filter: { age: { $gt: 25 } }
-     * })
-     */
-    findRaw(args?: ScrapeProgressFindRawArgs): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a ScrapeProgress.
-     * @param {ScrapeProgressAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const scrapeProgress = await prisma.scrapeProgress.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-     */
-    aggregateRaw(args?: ScrapeProgressAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
-
-
-    /**
-     * Count the number of ScrapeProgresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressCountArgs} args - Arguments to filter ScrapeProgresses to count.
-     * @example
-     * // Count the number of ScrapeProgresses
-     * const count = await prisma.scrapeProgress.count({
-     *   where: {
-     *     // ... the filter for the ScrapeProgresses we want to count
-     *   }
-     * })
-    **/
-    count<T extends ScrapeProgressCountArgs>(
-      args?: Subset<T, ScrapeProgressCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ScrapeProgressCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ScrapeProgress.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ScrapeProgressAggregateArgs>(args: Subset<T, ScrapeProgressAggregateArgs>): Prisma.PrismaPromise<GetScrapeProgressAggregateType<T>>
-
-    /**
-     * Group by ScrapeProgress.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScrapeProgressGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ScrapeProgressGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ScrapeProgressGroupByArgs['orderBy'] }
-        : { orderBy?: ScrapeProgressGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ScrapeProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetScrapeProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ScrapeProgress model
-   */
-  readonly fields: ScrapeProgressFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ScrapeProgress.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ScrapeProgressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the ScrapeProgress model
-   */ 
-  interface ScrapeProgressFieldRefs {
-    readonly id: FieldRef<"ScrapeProgress", 'String'>
-    readonly rootCategory: FieldRef<"ScrapeProgress", 'String'>
-    readonly groupCategory: FieldRef<"ScrapeProgress", 'String'>
-    readonly category: FieldRef<"ScrapeProgress", 'String'>
-    readonly totalProducts: FieldRef<"ScrapeProgress", 'Int'>
-    readonly scrapedProducts: FieldRef<"ScrapeProgress", 'Int'>
-    readonly status: FieldRef<"ScrapeProgress", 'String'>
-    readonly startedAt: FieldRef<"ScrapeProgress", 'DateTime'>
-    readonly completedAt: FieldRef<"ScrapeProgress", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ScrapeProgress findUnique
-   */
-  export type ScrapeProgressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * Filter, which ScrapeProgress to fetch.
-     */
-    where: ScrapeProgressWhereUniqueInput
-  }
-
-  /**
-   * ScrapeProgress findUniqueOrThrow
-   */
-  export type ScrapeProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * Filter, which ScrapeProgress to fetch.
-     */
-    where: ScrapeProgressWhereUniqueInput
-  }
-
-  /**
-   * ScrapeProgress findFirst
-   */
-  export type ScrapeProgressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * Filter, which ScrapeProgress to fetch.
-     */
-    where?: ScrapeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ScrapeProgresses to fetch.
-     */
-    orderBy?: ScrapeProgressOrderByWithRelationInput | ScrapeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ScrapeProgresses.
-     */
-    cursor?: ScrapeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ScrapeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ScrapeProgresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ScrapeProgresses.
-     */
-    distinct?: ScrapeProgressScalarFieldEnum | ScrapeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ScrapeProgress findFirstOrThrow
-   */
-  export type ScrapeProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * Filter, which ScrapeProgress to fetch.
-     */
-    where?: ScrapeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ScrapeProgresses to fetch.
-     */
-    orderBy?: ScrapeProgressOrderByWithRelationInput | ScrapeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ScrapeProgresses.
-     */
-    cursor?: ScrapeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ScrapeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ScrapeProgresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ScrapeProgresses.
-     */
-    distinct?: ScrapeProgressScalarFieldEnum | ScrapeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ScrapeProgress findMany
-   */
-  export type ScrapeProgressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * Filter, which ScrapeProgresses to fetch.
-     */
-    where?: ScrapeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ScrapeProgresses to fetch.
-     */
-    orderBy?: ScrapeProgressOrderByWithRelationInput | ScrapeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ScrapeProgresses.
-     */
-    cursor?: ScrapeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ScrapeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ScrapeProgresses.
-     */
-    skip?: number
-    distinct?: ScrapeProgressScalarFieldEnum | ScrapeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ScrapeProgress create
-   */
-  export type ScrapeProgressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * The data needed to create a ScrapeProgress.
-     */
-    data: XOR<ScrapeProgressCreateInput, ScrapeProgressUncheckedCreateInput>
-  }
-
-  /**
-   * ScrapeProgress createMany
-   */
-  export type ScrapeProgressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ScrapeProgresses.
-     */
-    data: ScrapeProgressCreateManyInput | ScrapeProgressCreateManyInput[]
-  }
-
-  /**
-   * ScrapeProgress update
-   */
-  export type ScrapeProgressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * The data needed to update a ScrapeProgress.
-     */
-    data: XOR<ScrapeProgressUpdateInput, ScrapeProgressUncheckedUpdateInput>
-    /**
-     * Choose, which ScrapeProgress to update.
-     */
-    where: ScrapeProgressWhereUniqueInput
-  }
-
-  /**
-   * ScrapeProgress updateMany
-   */
-  export type ScrapeProgressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ScrapeProgresses.
-     */
-    data: XOR<ScrapeProgressUpdateManyMutationInput, ScrapeProgressUncheckedUpdateManyInput>
-    /**
-     * Filter which ScrapeProgresses to update
-     */
-    where?: ScrapeProgressWhereInput
-    /**
-     * Limit how many ScrapeProgresses to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * ScrapeProgress upsert
-   */
-  export type ScrapeProgressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * The filter to search for the ScrapeProgress to update in case it exists.
-     */
-    where: ScrapeProgressWhereUniqueInput
-    /**
-     * In case the ScrapeProgress found by the `where` argument doesn't exist, create a new ScrapeProgress with this data.
-     */
-    create: XOR<ScrapeProgressCreateInput, ScrapeProgressUncheckedCreateInput>
-    /**
-     * In case the ScrapeProgress was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ScrapeProgressUpdateInput, ScrapeProgressUncheckedUpdateInput>
-  }
-
-  /**
-   * ScrapeProgress delete
-   */
-  export type ScrapeProgressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-    /**
-     * Filter which ScrapeProgress to delete.
-     */
-    where: ScrapeProgressWhereUniqueInput
-  }
-
-  /**
-   * ScrapeProgress deleteMany
-   */
-  export type ScrapeProgressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ScrapeProgresses to delete
-     */
-    where?: ScrapeProgressWhereInput
-    /**
-     * Limit how many ScrapeProgresses to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * ScrapeProgress findRaw
-   */
-  export type ScrapeProgressFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * ScrapeProgress aggregateRaw
-   */
-  export type ScrapeProgressAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * ScrapeProgress without action
-   */
-  export type ScrapeProgressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ScrapeProgress
-     */
-    select?: ScrapeProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ScrapeProgress
-     */
-    omit?: ScrapeProgressOmit<ExtArgs> | null
-  }
-
-
-  /**
    * Model BlinkitProduct
    */
 
@@ -8615,6 +8619,21 @@ export namespace Prisma {
    * Enums
    */
 
+  export const MyntraScrapeProgressScalarFieldEnum: {
+    id: 'id',
+    rootCategory: 'rootCategory',
+    groupCategory: 'groupCategory',
+    categorySlug: 'categorySlug',
+    status: 'status',
+    currentPage: 'currentPage',
+    totalPages: 'totalPages',
+    totalProducts: 'totalProducts',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MyntraScrapeProgressScalarFieldEnum = (typeof MyntraScrapeProgressScalarFieldEnum)[keyof typeof MyntraScrapeProgressScalarFieldEnum]
+
+
   export const MyntraRootCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -8670,21 +8689,6 @@ export namespace Prisma {
   };
 
   export type MyntraProductScalarFieldEnum = (typeof MyntraProductScalarFieldEnum)[keyof typeof MyntraProductScalarFieldEnum]
-
-
-  export const ScrapeProgressScalarFieldEnum: {
-    id: 'id',
-    rootCategory: 'rootCategory',
-    groupCategory: 'groupCategory',
-    category: 'category',
-    totalProducts: 'totalProducts',
-    scrapedProducts: 'scrapedProducts',
-    status: 'status',
-    startedAt: 'startedAt',
-    completedAt: 'completedAt'
-  };
-
-  export type ScrapeProgressScalarFieldEnum = (typeof ScrapeProgressScalarFieldEnum)[keyof typeof ScrapeProgressScalarFieldEnum]
 
 
   export const BlinkitProductScalarFieldEnum: {
@@ -8756,20 +8760,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -8780,6 +8770,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -8799,6 +8803,81 @@ export namespace Prisma {
    * Deep Input Types
    */
 
+
+  export type myntraScrapeProgressWhereInput = {
+    AND?: myntraScrapeProgressWhereInput | myntraScrapeProgressWhereInput[]
+    OR?: myntraScrapeProgressWhereInput[]
+    NOT?: myntraScrapeProgressWhereInput | myntraScrapeProgressWhereInput[]
+    id?: StringFilter<"myntraScrapeProgress"> | string
+    rootCategory?: StringFilter<"myntraScrapeProgress"> | string
+    groupCategory?: StringFilter<"myntraScrapeProgress"> | string
+    categorySlug?: StringFilter<"myntraScrapeProgress"> | string
+    status?: StringFilter<"myntraScrapeProgress"> | string
+    currentPage?: IntFilter<"myntraScrapeProgress"> | number
+    totalPages?: IntNullableFilter<"myntraScrapeProgress"> | number | null
+    totalProducts?: IntFilter<"myntraScrapeProgress"> | number
+    updatedAt?: DateTimeFilter<"myntraScrapeProgress"> | Date | string
+  }
+
+  export type myntraScrapeProgressOrderByWithRelationInput = {
+    id?: SortOrder
+    rootCategory?: SortOrder
+    groupCategory?: SortOrder
+    categorySlug?: SortOrder
+    status?: SortOrder
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type myntraScrapeProgressWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    rootCategory_groupCategory_categorySlug?: myntraScrapeProgressRootCategoryGroupCategoryCategorySlugCompoundUniqueInput
+    AND?: myntraScrapeProgressWhereInput | myntraScrapeProgressWhereInput[]
+    OR?: myntraScrapeProgressWhereInput[]
+    NOT?: myntraScrapeProgressWhereInput | myntraScrapeProgressWhereInput[]
+    rootCategory?: StringFilter<"myntraScrapeProgress"> | string
+    groupCategory?: StringFilter<"myntraScrapeProgress"> | string
+    categorySlug?: StringFilter<"myntraScrapeProgress"> | string
+    status?: StringFilter<"myntraScrapeProgress"> | string
+    currentPage?: IntFilter<"myntraScrapeProgress"> | number
+    totalPages?: IntNullableFilter<"myntraScrapeProgress"> | number | null
+    totalProducts?: IntFilter<"myntraScrapeProgress"> | number
+    updatedAt?: DateTimeFilter<"myntraScrapeProgress"> | Date | string
+  }, "id" | "rootCategory_groupCategory_categorySlug">
+
+  export type myntraScrapeProgressOrderByWithAggregationInput = {
+    id?: SortOrder
+    rootCategory?: SortOrder
+    groupCategory?: SortOrder
+    categorySlug?: SortOrder
+    status?: SortOrder
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+    updatedAt?: SortOrder
+    _count?: myntraScrapeProgressCountOrderByAggregateInput
+    _avg?: myntraScrapeProgressAvgOrderByAggregateInput
+    _max?: myntraScrapeProgressMaxOrderByAggregateInput
+    _min?: myntraScrapeProgressMinOrderByAggregateInput
+    _sum?: myntraScrapeProgressSumOrderByAggregateInput
+  }
+
+  export type myntraScrapeProgressScalarWhereWithAggregatesInput = {
+    AND?: myntraScrapeProgressScalarWhereWithAggregatesInput | myntraScrapeProgressScalarWhereWithAggregatesInput[]
+    OR?: myntraScrapeProgressScalarWhereWithAggregatesInput[]
+    NOT?: myntraScrapeProgressScalarWhereWithAggregatesInput | myntraScrapeProgressScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"myntraScrapeProgress"> | string
+    rootCategory?: StringWithAggregatesFilter<"myntraScrapeProgress"> | string
+    groupCategory?: StringWithAggregatesFilter<"myntraScrapeProgress"> | string
+    categorySlug?: StringWithAggregatesFilter<"myntraScrapeProgress"> | string
+    status?: StringWithAggregatesFilter<"myntraScrapeProgress"> | string
+    currentPage?: IntWithAggregatesFilter<"myntraScrapeProgress"> | number
+    totalPages?: IntNullableWithAggregatesFilter<"myntraScrapeProgress"> | number | null
+    totalProducts?: IntWithAggregatesFilter<"myntraScrapeProgress"> | number
+    updatedAt?: DateTimeWithAggregatesFilter<"myntraScrapeProgress"> | Date | string
+  }
 
   export type MyntraRootCategoryWhereInput = {
     AND?: MyntraRootCategoryWhereInput | MyntraRootCategoryWhereInput[]
@@ -9093,80 +9172,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"MyntraProduct"> | Date | string
   }
 
-  export type ScrapeProgressWhereInput = {
-    AND?: ScrapeProgressWhereInput | ScrapeProgressWhereInput[]
-    OR?: ScrapeProgressWhereInput[]
-    NOT?: ScrapeProgressWhereInput | ScrapeProgressWhereInput[]
-    id?: StringFilter<"ScrapeProgress"> | string
-    rootCategory?: StringFilter<"ScrapeProgress"> | string
-    groupCategory?: StringFilter<"ScrapeProgress"> | string
-    category?: StringFilter<"ScrapeProgress"> | string
-    totalProducts?: IntFilter<"ScrapeProgress"> | number
-    scrapedProducts?: IntFilter<"ScrapeProgress"> | number
-    status?: StringFilter<"ScrapeProgress"> | string
-    startedAt?: DateTimeNullableFilter<"ScrapeProgress"> | Date | string | null
-    completedAt?: DateTimeNullableFilter<"ScrapeProgress"> | Date | string | null
-  }
-
-  export type ScrapeProgressOrderByWithRelationInput = {
-    id?: SortOrder
-    rootCategory?: SortOrder
-    groupCategory?: SortOrder
-    category?: SortOrder
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-    status?: SortOrder
-    startedAt?: SortOrder
-    completedAt?: SortOrder
-  }
-
-  export type ScrapeProgressWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: ScrapeProgressWhereInput | ScrapeProgressWhereInput[]
-    OR?: ScrapeProgressWhereInput[]
-    NOT?: ScrapeProgressWhereInput | ScrapeProgressWhereInput[]
-    rootCategory?: StringFilter<"ScrapeProgress"> | string
-    groupCategory?: StringFilter<"ScrapeProgress"> | string
-    category?: StringFilter<"ScrapeProgress"> | string
-    totalProducts?: IntFilter<"ScrapeProgress"> | number
-    scrapedProducts?: IntFilter<"ScrapeProgress"> | number
-    status?: StringFilter<"ScrapeProgress"> | string
-    startedAt?: DateTimeNullableFilter<"ScrapeProgress"> | Date | string | null
-    completedAt?: DateTimeNullableFilter<"ScrapeProgress"> | Date | string | null
-  }, "id">
-
-  export type ScrapeProgressOrderByWithAggregationInput = {
-    id?: SortOrder
-    rootCategory?: SortOrder
-    groupCategory?: SortOrder
-    category?: SortOrder
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-    status?: SortOrder
-    startedAt?: SortOrder
-    completedAt?: SortOrder
-    _count?: ScrapeProgressCountOrderByAggregateInput
-    _avg?: ScrapeProgressAvgOrderByAggregateInput
-    _max?: ScrapeProgressMaxOrderByAggregateInput
-    _min?: ScrapeProgressMinOrderByAggregateInput
-    _sum?: ScrapeProgressSumOrderByAggregateInput
-  }
-
-  export type ScrapeProgressScalarWhereWithAggregatesInput = {
-    AND?: ScrapeProgressScalarWhereWithAggregatesInput | ScrapeProgressScalarWhereWithAggregatesInput[]
-    OR?: ScrapeProgressScalarWhereWithAggregatesInput[]
-    NOT?: ScrapeProgressScalarWhereWithAggregatesInput | ScrapeProgressScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ScrapeProgress"> | string
-    rootCategory?: StringWithAggregatesFilter<"ScrapeProgress"> | string
-    groupCategory?: StringWithAggregatesFilter<"ScrapeProgress"> | string
-    category?: StringWithAggregatesFilter<"ScrapeProgress"> | string
-    totalProducts?: IntWithAggregatesFilter<"ScrapeProgress"> | number
-    scrapedProducts?: IntWithAggregatesFilter<"ScrapeProgress"> | number
-    status?: StringWithAggregatesFilter<"ScrapeProgress"> | string
-    startedAt?: DateTimeNullableWithAggregatesFilter<"ScrapeProgress"> | Date | string | null
-    completedAt?: DateTimeNullableWithAggregatesFilter<"ScrapeProgress"> | Date | string | null
-  }
-
   export type BlinkitProductWhereInput = {
     AND?: BlinkitProductWhereInput | BlinkitProductWhereInput[]
     OR?: BlinkitProductWhereInput[]
@@ -9326,6 +9331,86 @@ export namespace Prisma {
     category?: StringWithAggregatesFilter<"LimeroadProduct"> | string
     createdAt?: DateTimeWithAggregatesFilter<"LimeroadProduct"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"LimeroadProduct"> | Date | string
+  }
+
+  export type myntraScrapeProgressCreateInput = {
+    id?: string
+    rootCategory: string
+    groupCategory: string
+    categorySlug: string
+    status: string
+    currentPage?: number
+    totalPages?: number | null
+    totalProducts?: number
+    updatedAt?: Date | string
+  }
+
+  export type myntraScrapeProgressUncheckedCreateInput = {
+    id?: string
+    rootCategory: string
+    groupCategory: string
+    categorySlug: string
+    status: string
+    currentPage?: number
+    totalPages?: number | null
+    totalProducts?: number
+    updatedAt?: Date | string
+  }
+
+  export type myntraScrapeProgressUpdateInput = {
+    rootCategory?: StringFieldUpdateOperationsInput | string
+    groupCategory?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentPage?: IntFieldUpdateOperationsInput | number
+    totalPages?: NullableIntFieldUpdateOperationsInput | number | null
+    totalProducts?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type myntraScrapeProgressUncheckedUpdateInput = {
+    rootCategory?: StringFieldUpdateOperationsInput | string
+    groupCategory?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentPage?: IntFieldUpdateOperationsInput | number
+    totalPages?: NullableIntFieldUpdateOperationsInput | number | null
+    totalProducts?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type myntraScrapeProgressCreateManyInput = {
+    id?: string
+    rootCategory: string
+    groupCategory: string
+    categorySlug: string
+    status: string
+    currentPage?: number
+    totalPages?: number | null
+    totalProducts?: number
+    updatedAt?: Date | string
+  }
+
+  export type myntraScrapeProgressUpdateManyMutationInput = {
+    rootCategory?: StringFieldUpdateOperationsInput | string
+    groupCategory?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentPage?: IntFieldUpdateOperationsInput | number
+    totalPages?: NullableIntFieldUpdateOperationsInput | number | null
+    totalProducts?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type myntraScrapeProgressUncheckedUpdateManyInput = {
+    rootCategory?: StringFieldUpdateOperationsInput | string
+    groupCategory?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentPage?: IntFieldUpdateOperationsInput | number
+    totalPages?: NullableIntFieldUpdateOperationsInput | number | null
+    totalProducts?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MyntraRootCategoryCreateInput = {
@@ -9636,86 +9721,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScrapeProgressCreateInput = {
-    id?: string
-    rootCategory: string
-    groupCategory: string
-    category: string
-    totalProducts?: number
-    scrapedProducts?: number
-    status: string
-    startedAt?: Date | string | null
-    completedAt?: Date | string | null
-  }
-
-  export type ScrapeProgressUncheckedCreateInput = {
-    id?: string
-    rootCategory: string
-    groupCategory: string
-    category: string
-    totalProducts?: number
-    scrapedProducts?: number
-    status: string
-    startedAt?: Date | string | null
-    completedAt?: Date | string | null
-  }
-
-  export type ScrapeProgressUpdateInput = {
-    rootCategory?: StringFieldUpdateOperationsInput | string
-    groupCategory?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    totalProducts?: IntFieldUpdateOperationsInput | number
-    scrapedProducts?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type ScrapeProgressUncheckedUpdateInput = {
-    rootCategory?: StringFieldUpdateOperationsInput | string
-    groupCategory?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    totalProducts?: IntFieldUpdateOperationsInput | number
-    scrapedProducts?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type ScrapeProgressCreateManyInput = {
-    id?: string
-    rootCategory: string
-    groupCategory: string
-    category: string
-    totalProducts?: number
-    scrapedProducts?: number
-    status: string
-    startedAt?: Date | string | null
-    completedAt?: Date | string | null
-  }
-
-  export type ScrapeProgressUpdateManyMutationInput = {
-    rootCategory?: StringFieldUpdateOperationsInput | string
-    groupCategory?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    totalProducts?: IntFieldUpdateOperationsInput | number
-    scrapedProducts?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type ScrapeProgressUncheckedUpdateManyInput = {
-    rootCategory?: StringFieldUpdateOperationsInput | string
-    groupCategory?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    totalProducts?: IntFieldUpdateOperationsInput | number
-    scrapedProducts?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
   export type BlinkitProductCreateInput = {
     id?: string
     sku: string
@@ -9912,6 +9917,29 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9921,6 +9949,125 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type myntraScrapeProgressRootCategoryGroupCategoryCategorySlugCompoundUniqueInput = {
+    rootCategory: string
+    groupCategory: string
+    categorySlug: string
+  }
+
+  export type myntraScrapeProgressCountOrderByAggregateInput = {
+    id?: SortOrder
+    rootCategory?: SortOrder
+    groupCategory?: SortOrder
+    categorySlug?: SortOrder
+    status?: SortOrder
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type myntraScrapeProgressAvgOrderByAggregateInput = {
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+  }
+
+  export type myntraScrapeProgressMaxOrderByAggregateInput = {
+    id?: SortOrder
+    rootCategory?: SortOrder
+    groupCategory?: SortOrder
+    categorySlug?: SortOrder
+    status?: SortOrder
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type myntraScrapeProgressMinOrderByAggregateInput = {
+    id?: SortOrder
+    rootCategory?: SortOrder
+    groupCategory?: SortOrder
+    categorySlug?: SortOrder
+    status?: SortOrder
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type myntraScrapeProgressSumOrderByAggregateInput = {
+    currentPage?: SortOrder
+    totalPages?: SortOrder
+    totalProducts?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type MyntraGroupCategoryListRelationFilter = {
@@ -9949,38 +10096,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type MyntraRootCategoryScalarRelationFilter = {
@@ -10176,106 +10291,6 @@ export namespace Prisma {
     isSet?: boolean
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-    isSet?: boolean
-  }
-
-  export type ScrapeProgressCountOrderByAggregateInput = {
-    id?: SortOrder
-    rootCategory?: SortOrder
-    groupCategory?: SortOrder
-    category?: SortOrder
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-    status?: SortOrder
-    startedAt?: SortOrder
-    completedAt?: SortOrder
-  }
-
-  export type ScrapeProgressAvgOrderByAggregateInput = {
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-  }
-
-  export type ScrapeProgressMaxOrderByAggregateInput = {
-    id?: SortOrder
-    rootCategory?: SortOrder
-    groupCategory?: SortOrder
-    category?: SortOrder
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-    status?: SortOrder
-    startedAt?: SortOrder
-    completedAt?: SortOrder
-  }
-
-  export type ScrapeProgressMinOrderByAggregateInput = {
-    id?: SortOrder
-    rootCategory?: SortOrder
-    groupCategory?: SortOrder
-    category?: SortOrder
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-    status?: SortOrder
-    startedAt?: SortOrder
-    completedAt?: SortOrder
-  }
-
-  export type ScrapeProgressSumOrderByAggregateInput = {
-    totalProducts?: SortOrder
-    scrapedProducts?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -10419,6 +10434,31 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+    unset?: boolean
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type MyntraGroupCategoryCreateNestedManyWithoutRootCategoryInput = {
     create?: XOR<MyntraGroupCategoryCreateWithoutRootCategoryInput, MyntraGroupCategoryUncheckedCreateWithoutRootCategoryInput> | MyntraGroupCategoryCreateWithoutRootCategoryInput[] | MyntraGroupCategoryUncheckedCreateWithoutRootCategoryInput[]
     connectOrCreate?: MyntraGroupCategoryCreateOrConnectWithoutRootCategoryInput | MyntraGroupCategoryCreateOrConnectWithoutRootCategoryInput[]
@@ -10431,14 +10471,6 @@ export namespace Prisma {
     connectOrCreate?: MyntraGroupCategoryCreateOrConnectWithoutRootCategoryInput | MyntraGroupCategoryCreateOrConnectWithoutRootCategoryInput[]
     createMany?: MyntraGroupCategoryCreateManyRootCategoryInputEnvelope
     connect?: MyntraGroupCategoryWhereUniqueInput | MyntraGroupCategoryWhereUniqueInput[]
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type MyntraGroupCategoryUpdateManyWithoutRootCategoryNestedInput = {
@@ -10654,19 +10686,6 @@ export namespace Prisma {
     update?: XOR<XOR<MyntraCategoryUpdateToOneWithWhereWithoutProductsInput, MyntraCategoryUpdateWithoutProductsInput>, MyntraCategoryUncheckedUpdateWithoutProductsInput>
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-    unset?: boolean
-  }
-
   export type BlinkitProductCreateimagesInput = {
     set: string[]
   }
@@ -10716,6 +10735,29 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -10744,7 +10786,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -10752,7 +10794,52 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -10799,84 +10886,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-    isSet?: boolean
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
     isSet?: boolean
   }
 

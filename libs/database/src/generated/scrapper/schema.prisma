@@ -8,6 +8,25 @@ datasource db {
   url      = env("SCRAPPER_DATABASE_URL")
 }
 
+model myntraScrapeProgress {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  rootCategory  String
+  groupCategory String
+  categorySlug  String
+
+  status String // pending | running | completed
+
+  currentPage Int  @default(1)
+  totalPages  Int?
+
+  totalProducts Int @default(0)
+
+  updatedAt DateTime @updatedAt
+
+  @@unique([rootCategory, groupCategory, categorySlug])
+}
+
 model MyntraRootCategory {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String @unique
@@ -85,24 +104,6 @@ model MyntraProduct {
   updatedAt DateTime @updatedAt
 
   @@map("myntra_products_v1")
-}
-
-model ScrapeProgress {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-
-  rootCategory  String
-  groupCategory String
-  category      String
-
-  totalProducts   Int @default(0)
-  scrapedProducts Int @default(0)
-
-  status String // pending | running | completed | failed
-
-  startedAt   DateTime?
-  completedAt DateTime?
-
-  @@map("scrape_progress")
 }
 
 /**

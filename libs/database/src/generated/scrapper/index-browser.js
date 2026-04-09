@@ -110,6 +110,18 @@ Prisma.NullTypes = {
  * Enums
  */
 
+exports.Prisma.MyntraScrapeProgressScalarFieldEnum = {
+  id: 'id',
+  rootCategory: 'rootCategory',
+  groupCategory: 'groupCategory',
+  categorySlug: 'categorySlug',
+  status: 'status',
+  currentPage: 'currentPage',
+  totalPages: 'totalPages',
+  totalProducts: 'totalProducts',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.MyntraRootCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -155,18 +167,6 @@ exports.Prisma.MyntraProductScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ScrapeProgressScalarFieldEnum = {
-  id: 'id',
-  rootCategory: 'rootCategory',
-  groupCategory: 'groupCategory',
-  category: 'category',
-  totalProducts: 'totalProducts',
-  scrapedProducts: 'scrapedProducts',
-  status: 'status',
-  startedAt: 'startedAt',
-  completedAt: 'completedAt'
-};
-
 exports.Prisma.BlinkitProductScalarFieldEnum = {
   id: 'id',
   sku: 'sku',
@@ -206,11 +206,11 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
+  myntraScrapeProgress: 'myntraScrapeProgress',
   MyntraRootCategory: 'MyntraRootCategory',
   MyntraGroupCategory: 'MyntraGroupCategory',
   MyntraCategory: 'MyntraCategory',
   MyntraProduct: 'MyntraProduct',
-  ScrapeProgress: 'ScrapeProgress',
   BlinkitProduct: 'BlinkitProduct',
   LimeroadProduct: 'LimeroadProduct'
 };
