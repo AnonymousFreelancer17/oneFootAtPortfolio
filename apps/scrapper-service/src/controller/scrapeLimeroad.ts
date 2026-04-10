@@ -5,7 +5,7 @@ import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
 import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";
 import killLimeRoadPopup from "../lib/AutoKillPopups";
-import { cacheExists } from "../utils/cache.utils";
+// import { cacheExists } from "../utils/cache.utils";
 
 type CategoryItem = {
   href: string;
@@ -206,52 +206,52 @@ export async function scrapeProductsFromCategory(
 }
 
 export async function getProducts(page: any) {
-  const cached = await cacheExists("/limeroad/categories");
+  // const cached = await cacheExists("/limeroad/categories");
 
-  if (cached) {
-    console.log("Serving the limeroad categories");
-  }
+  // if (cached) {
+  //   console.log("Serving the limeroad categories");
+  // }
 
-  for (const [sectionName, section] of Object.entries(cached)) {
-    for (const [groupName, group] of Object.entries(section as any)) {
-      const categories = (group as any).categories;
-      if (!categories) continue;
+  // for (const [sectionName, section] of Object.entries(cached)) {
+  //   for (const [groupName, group] of Object.entries(section as any)) {
+  //     const categories = (group as any).categories;
+  //     if (!categories) continue;
 
-      console.log(`🗂 ${sectionName} → ${groupName}`);
+  //     console.log(`🗂 ${sectionName} → ${groupName}`);
 
-      for (const [categoryName, category] of Object.entries(categories)) {
-        const categoryObj = category as any;
+  //     for (const [categoryName, category] of Object.entries(categories)) {
+  //       const categoryObj = category as any;
 
-        // ✅ Skip if already scraped
-        if (Array.isArray(categoryObj.products)) {
-          console.log(`⏩ Cached: ${categoryName}`);
-          continue;
-        }
+  //       // ✅ Skip if already scraped
+  //       if (Array.isArray(categoryObj.products)) {
+  //         console.log(`⏩ Cached: ${categoryName}`);
+  //         continue;
+  //       }
 
-        if (!categoryObj.href) continue;
+  //       if (!categoryObj.href) continue;
 
-        console.log(`🔗 Scraping: ${categoryName}`);
+  //       console.log(`🔗 Scraping: ${categoryName}`);
 
-        try {
-          const products = await scrapeProductsFromCategory(
-            page,
-            categoryObj.href
-          );
+  //       try {
+  //         const products = await scrapeProductsFromCategory(
+  //           page,
+  //           categoryObj.href
+  //         );
 
-          // 🔥 THIS IS THE ONLY MUTATION
-          categoryObj.products = products;
+  //         // 🔥 THIS IS THE ONLY MUTATION
+  //         categoryObj.products = products;
 
-          // 🔐 Persist immediately
-          await SafeWriteJSON(
-            "apps/scrapper-service/tmp_cache/products.json",
-            cached
-          );
-        } catch (err) {
-          console.error(`❌ Failed: ${categoryName}`, err);
-        }
-      }
-    }
-  }
+  //         // 🔐 Persist immediately
+  //         await SafeWriteJSON(
+  //           "apps/scrapper-service/tmp_cache/products.json",
+  //           cached
+  //         );
+  //       } catch (err) {
+  //         console.error(`❌ Failed: ${categoryName}`, err);
+  //       }
+  //     }
+  //   }
+  // }
 
   return [];
 }

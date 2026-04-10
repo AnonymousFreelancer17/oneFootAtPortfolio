@@ -1,30 +1,11 @@
-// import { rotateSession } from "../../../../libs/puppeteer-utils/src/index";
 import fs from "fs";
 import path from "path";
 
-//  importing prisma.client from scrapper db
 import { scrapperDb } from "../../../../libs/database/src/index";
 
-//  import deepScroll functionality
-import deepAutoScroll from "../lib/Deepscroll";
 import SafeWriteJSON from "../lib/SafeWriteJSON";
 
-import {
-  extractAllProductCodes,
-  filterRemainingProducts,
-  getExistingProductCodes,
-  retry,
-  getTotalPages,
-  goToNextPage,
-  scrapeProductByHref,
-  updateProgressFromDB,
-  checkCategoryCompletion,
-} from "../utils/myntra/myntra.helper";
-
-// linit
-import pLimit from "p-limit";
-import { saveProductsToDB } from "../utils/myntra/myntra.dataInjection";
-import { multiBar } from "../utils/cli-progress";
+import { scrapeSingleProduct } from "../utils/myntra/myntra.products.helper";
 
 type Product = {
   productCode: string;
@@ -63,8 +44,6 @@ type RootCategories = Record<
   "women" | "men" | "kids" | "home" | "beauty" | "genz",
   Record<string, CategoryGroup>
 >;
-
-const limit = pLimit(6);
 
 // categories
 export async function scrapeCategories(page: any) {
@@ -163,183 +142,170 @@ export async function scrapeCategories(page: any) {
 
 // helper funciton to extract data
 
-async function extractProductsFromPage(page: any) {
-  return await page.evaluate(() => {
-    const products: any[] = [];
+// async function extractProductsFromPage(page: any) {
+//   return await page.evaluate(() => {
+//     const products: any[] = [];
 
-    document.querySelectorAll(".product-base,.results-base").forEach((card) => {
-      // getting the product_code = id
-      const productCode = card.getAttribute("id") || "";
+//     document.querySelectorAll(".product-base,.results-base").forEach((card) => {
+//       // getting the product_code = id
+//       const productCode = card.getAttribute("id") || "";
 
-      // getting the href
-      const linkEl = card.querySelector("a");
-      // const imgEl = card.querySelector("img");
-      const images = card.querySelector("source")?.getAttribute("srcset");
+//       // getting the href
+//       const linkEl = card.querySelector("a");
+//       // const imgEl = card.querySelector("img");
+//       const images = card.querySelector("source")?.getAttribute("srcset");
 
-      const href = linkEl?.getAttribute("href");
-      if (!href) return;
+//       const href = linkEl?.getAttribute("href");
+//       if (!href) return;
 
-      products.push({
-        productCode,
-        href: href.startsWith("http")
-          ? href
-          : `https://www.myntra.com${href.startsWith("/") ? "" : "/"}${href}`,
-        brand: card.querySelector(".product-brand")?.textContent?.trim() || "",
-        title:
-          card.querySelector(".product-product")?.textContent?.trim() || "",
-        rating:
-          card.querySelector(".product-ratingsContainer span")?.textContent ||
-          "",
-        ratingCount:
-          card
-            .querySelector(".product-ratingsCount")
-            ?.textContent?.replace("|", "")
-            ?.trim() || "",
-        size:
-          card
-            .querySelector(".product-sizeInventoryPresent")
-            ?.textContent?.trim() || null,
-        SRP: card.querySelector(".product-discountedPrice")?.textContent || "",
-        MRP: card.querySelector(".product-strike")?.textContent || "",
-        images: images
-          ? images.split(",").map((i) => i.trim().split(" ")[0])
-          : [],
-        productDetails: [],
-        sizeAndFit: [],
-        materialAndCare: [],
-        specification: [],
-        seller: [],
-      });
-    });
+//       products.push({
+//         productCode,
+//         href: href.startsWith("http")
+//           ? href
+//           : `https://www.myntra.com${href.startsWith("/") ? "" : "/"}${href}`,
+//         brand: card.querySelector(".product-brand")?.textContent?.trim() || "",
+//         title:
+//           card.querySelector(".product-product")?.textContent?.trim() || "",
+//         rating:
+//           card.querySelector(".product-ratingsContainer span")?.textContent ||
+//           "",
+//         ratingCount:
+//           card
+//             .querySelector(".product-ratingsCount")
+//             ?.textContent?.replace("|", "")
+//             ?.trim() || "",
+//         size:
+//           card
+//             .querySelector(".product-sizeInventoryPresent")
+//             ?.textContent?.trim() || null,
+//         SRP: card.querySelector(".product-discountedPrice")?.textContent || "",
+//         MRP: card.querySelector(".product-strike")?.textContent || "",
+//         images: images
+//           ? images.split(",").map((i) => i.trim().split(" ")[0])
+//           : [],
+//         productDetails: [],
+//         sizeAndFit: [],
+//         materialAndCare: [],
+//         specification: [],
+//         seller: [],
+//       });
+//     });
 
-    return products || [];
-  });
-}
+//     return products || [];
+//   });
+// }
 
-export async function scrapeSingleProduct(
-  page: any,
-  category: any,
-  rootKey: string,
-  groupKey: string,
-  categoryKey: any,
-  progressBar: any,
-) {
-  try {
-    const dbGroup = await scrapperDb.myntraGroupCategory.findFirst({
-      where: { slug: groupKey },
-    });
+// export async function scrapeSingleProduct(
+//   page: any,
+//   category: any,
+//   rootKey: string,
+//   groupKey: string,
+//   categoryKey: any,
+//   // progressBar: any,
+// ) {
+//   try {
 
-    if (!dbGroup) return;
+//     const dbGroup = await scrapperDb.myntraGroupCategory.findFirst({
+//       where: { slug: groupKey },
+//     });
 
-    const dbCategory = await scrapperDb.myntraCategory.findUnique({
-      where: {
-        slug_groupCategoryId: {
-          slug: categoryKey,
-          groupCategoryId: dbGroup.id,
-        },
-      },
-    });
+//     if (!dbGroup) return;
 
-    if (!dbCategory) return;
+//     const dbCategory = await scrapperDb.myntraCategory.findUnique({
+//       where: {
+//         slug_groupCategoryId: {
+//           slug: categoryKey,
+//           groupCategoryId: dbGroup.id,
+//         },
+//       },
+//     });
 
-    const categoryId = dbCategory.id;
+//     if (!dbCategory) return;
 
-    if (!page || typeof page.goto !== "function") {
-      console.error("❌ Invalid page object");
-      return;
-    }
+//     const categoryId = dbCategory.id;
 
-    // ✅ FIXED loading strategy
-    await page.goto(category.href, {
-      waitUntil: "domcontentloaded",
-      timeout: 60000,
-    });
+//     if (!page || typeof page.goto !== "function") {
+//       console.error("❌ Invalid page object");
+//       return;
+//     }
 
-    await page.waitForSelector(".product-base, .results-base", {
-      timeout: 30000,
-    });
+//     // ✅ FIXED loading strategy
+//     await page.goto(category.href, {
+//       waitUntil: "domcontentloaded",
+//       timeout: 60000,
+//     });
 
-    const totalPages = await getTotalPages(page);
+//     await page.waitForSelector(".product-base, .results-base", {
+//       timeout: 30000,
+//     });
 
-    // ✅ IMPORTANT: set correct total
-    if (progressBar && totalPages) {
-      progressBar.setTotal(totalPages);
-    }
+//     const totalPages = await getTotalPages(page);
 
-    let currentPage = 1;
-    let totalCollected = 0;
-    const seen = new Set<string>();
+//     let currentPage = 1;
+//     let totalCollected = 0;
+//     const seen = new Set<string>();
 
-    while (currentPage <= totalPages) {
-      await deepAutoScroll(page);
-      await new Promise((res) => setTimeout(res, 1500));
+//     while (currentPage <= totalPages) {
+//       await deepAutoScroll(page);
+//       await new Promise((res) => setTimeout(res, 1500));
 
-      const products = await extractProductsFromPage(page);
+//       const products = await extractProductsFromPage(page);
 
-      const newProducts = products.filter(
-        (p: any) => p.productCode && !seen.has(p.productCode),
-      );
+//       const newProducts = products.filter(
+//         (p: any) => p.productCode && !seen.has(p.productCode),
+//       );
 
-      newProducts.forEach((p: any) => seen.add(p.productCode));
-      totalCollected += newProducts.length;
+//       newProducts.forEach((p: any) => seen.add(p.productCode));
+//       totalCollected += newProducts.length;
 
-      await Promise.all(
-        newProducts.map((product: any) =>
-          limit(async () => {
-            const newPage = await page.browser().newPage();
+//       await Promise.all(
+//         newProducts.map((product: any) =>
+//           limit(async () => {
+//             const newPage = await page.browser().newPage();
 
-            try {
-              const details = await retry(() =>
-                scrapeProductByHref(newPage, product.href, categoryId),
-              );
+//             try {
+//               const details = await retry(() =>
+//                 scrapeProductByHref(newPage, product.href, categoryId),
+//               );
 
-              if (!details) return;
+//               if (!details) return;
 
-              await saveProductsToDB(
-                [{ ...product, ...details, categoryId }],
-                categoryId,
-                scrapperDb,
-              );
-            } catch (err: any) {
-              console.error("❌ Product failed:", product.href);
-              console.error("🔥 Error:", err?.message || err);
+//               await saveProductsToDB(
+//                 [{ ...product, ...details, categoryId }],
+//                 categoryId,
+//                 scrapperDb,
+//               );
+//             } catch (err: any) {
+//               console.error("❌ Product failed:", product.href);
+//               console.error("🔥 Error:", err?.message || err);
 
-              // optional: log stack for deep debugging
-              if (err?.stack) {
-                console.error("📛 Stack:", err.stack);
-              }
-            } finally {
-              await newPage.close();
-            }
-          }),
-        ),
-      );
+//               // optional: log stack for deep debugging
+//               if (err?.stack) {
+//                 console.error("📛 Stack:", err.stack);
+//               }
+//             } finally {
+//               await newPage.close();
+//             }
+//           }),
+//         ),
+//       );
 
-      // ✅ REAL-TIME UPDATE
-      if (progressBar) {
-        progressBar.update(currentPage, {
-          category: `${category.title} | Products: ${totalCollected}`,
-        });
-      }
-      if (currentPage >= totalPages) break;
+//       if (currentPage >= totalPages) break;
 
-      const moved = await goToNextPage(page);
-      if (!moved) break;
+//       const moved = await goToNextPage(page);
+//       if (!moved) break;
 
-      currentPage++;
+//       currentPage++;
 
-      await page.waitForSelector(".product-base, .results-base");
-    }
+//       await page.waitForSelector(".product-base, .results-base");
+//     }
 
-    if (progressBar) {
-      progressBar.update(totalPages);
-    }
-  } catch (err: any) {
-    console.error(
-      `❌ Failed: ${rootKey} → ${groupKey} → ${category.title} - ${err} `,
-    );
-  }
-}
+//   } catch (err: any) {
+//     console.error(
+//       `❌ Failed: ${rootKey} → ${groupKey} → ${category.title} - ${err} `,
+//     );
+//   }
+// }
 
 export async function scrapeProducts(pages: any[]) {
   const filePath = path.join(
@@ -352,6 +318,11 @@ export async function scrapeProducts(pages: any[]) {
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const categories = JSON.parse(raw);
+
+  if(!categories){
+    console.error("File Not Found!")
+    return
+  }
 
   let pageIndex = 0;
 
@@ -383,58 +354,24 @@ export async function scrapeProducts(pages: any[]) {
 
         if (!dbCategory) continue;
 
-        const categoryId = dbCategory.id;
-
-        // 🔥 CHECK EXISTING DATA
-        // const { count, isCompleted } = await checkCategoryCompletion(
-        //   categoryId,
-        //   scrapperDb,
-        // );
-
-        // if (isCompleted) {
-        //   console.log(
-        //     `⏩ Skipping (Already scraped): ${rootKey} → ${groupKey} → ${category.title} (${count} products)`,
-        //   );
-
-        //   await updateProgressFromDB(
-        //     rootKey,
-        //     groupKey,
-        //     categoryKey,
-        //     count,
-        //     scrapperDb,
-        //     "completed",
-        //   );
-
-        //   continue; // 🚀 skip scraping
-        // }
-
         // ❗ Not completed → scrape
         const page = pages[pageIndex % pages.length];
         pageIndex++;
 
-        console.log(
-          `🚀 Scraping: ${rootKey} → ${groupKey} → ${category.title}`,
-        );
-
-        // await updateProgressFromDB(
-        //   rootKey,
-        //   groupKey,
-        //   categoryKey,
-        //   count,
-        //   scrapperDb,
-        //   "running",
-        // );
-
-        await scrapeSingleProduct(
-          page,
-          category,
-          rootKey,
-          groupKey,
-          categoryKey,
-          null, // progressBar optional
-        );
+        if (!page || !category || !rootKey || !groupKey || !categoryKey) {
+          console.error("Required fields missing! - scrapeSingleProduct");
+          return;
+        } else {
+          await scrapeSingleProduct(
+            page,
+            category,
+            rootKey,
+            groupKey,
+            categoryKey,
+            scrapperDb,
+          );
+        }
       }
     }
   }
 }
-
