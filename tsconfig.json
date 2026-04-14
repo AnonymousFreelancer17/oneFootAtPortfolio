@@ -42,6 +42,9 @@
     },
     {
       "path": "./apps/restaurant"
+    },
+    {
+      "path": "./apps/uday"
     }
   ]
 }
