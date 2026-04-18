@@ -68,12 +68,12 @@ export const userRegistration = async (
   console.log("🚀 Route hit: userRegistration");
 
   try {
-    const { name, email, service } = req.body;
+    const { name, email, password, service } = req.body;
     console.log("📥 Body received:", req.body);
 
-    console.log("1️⃣ Running validation...");
-    validateRegistrationData({ name, email, service }, "user");
-    console.log("✅ Validation passed");
+    // console.log("1️⃣ Running validation...");
+    // // validateRegistrationData({ name, email, passsword, service }, "user");
+    // console.log("✅ Validation passed");
 
     if (!name || !email || !service) {
       throw new ValidationError("Name, email, phone number are required");

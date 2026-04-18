@@ -10,7 +10,7 @@ export const validateRegistrationData = (
   data: any,
   userType: "user" | "vendor"
 ) => {
-  const { name, email, password, phone_number } = data;
+  const { name, email, password, service, phone_number } = data;
 
   // Common required fields
   if (!name || !email || !password) {

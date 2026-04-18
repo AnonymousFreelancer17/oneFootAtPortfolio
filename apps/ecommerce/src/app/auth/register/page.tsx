@@ -296,9 +296,7 @@ const Page = () => {
               {loading ? (
                 <FaSpinner color="#fff" className="animate-spin" />
               ) : (
-                "Register"
-              )}
-            </button>
+                "Register" )} </button>
           )}
         </div>
 

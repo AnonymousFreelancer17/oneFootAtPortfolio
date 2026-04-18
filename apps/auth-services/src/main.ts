@@ -10,10 +10,29 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3900",
+  "http://localhost:4000",
+  "http://localhost:4100",
+  "http://localhost:4200",
+  "http://localhost:4300",
+  "http://localhost:4400",
+  "http://localhost:4500",
+  "http://localhost:4600",
+  "http://localhost:4700",
+  "http://localhost:4800",
+  "*",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:4300",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -33,6 +52,11 @@ app.use((req, _res, next) => {
   req.on("aborted", () => {
     console.warn("⚠️ Request aborted:", req.method, req.url);
   });
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log("Headers:", req.headers);
   next();
 });
 

@@ -12,9 +12,10 @@ router.get("/", (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.post("/user-register",  (req: Request,res: Response,next: NextFunction)=>{
-  console.log("🔥 userRegistration route hit")
-  next()
-}, userRegistration);
+   
+  userRegistration(req,res,next);
+ 
+});
 
 router.post("/verify-user-registration", verifyUserRegistrationOtp);
 
