@@ -1,6 +1,8 @@
 "use client";
 
-export default function Index() {
+import React from 'react'
+
+const page = () => {
   return (
     <div  className='w-screen flex flex-col justify-center items-center'>
         <div className='h-screen w-full bg-red-400 flex justify-center items-center text-6xl' id='landing'>Landing</div>
@@ -12,5 +14,7 @@ export default function Index() {
         <div className='h-screen w-full bg-orange-400 flex justify-center items-center text-6xl' id='contactUs'>contactUs</div>
 
     </div>
-  );
+  )
 }
+
+export default page
