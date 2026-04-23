@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 
 const NavigationSidebar = () => {
   const currentRoute = usePathname();
-  const [visibility, setVisibility] = useState(false);
-  const [id, setId] = useState(0)
+  const [hoveredId, setHoveredId] = useState(-1);
+const [activeId, setActiveId] = useState(0); // 👈 first visible by default
+
 
   const data = [
     {
@@ -44,19 +45,19 @@ const NavigationSidebar = () => {
         return (
           <li
             key={index}
-            className="list-none w-1/2 h-[60px] hover:w-3/4 border-t border-neutral-600 text-sm transition-[width,border-width] duration-300 delay-300 ease-linear hover:border-t-[5px] flex justify-start items-start"
+            className="list-none w-1/2 h-[60px] hover:w-3/4 border-t border-neutral-800 text-sm transition-[width,border-width] duration-300 delay-300 ease-linear hover:border-t-[5px] flex justify-start items-start"
             onMouseOver={()=>{
-              setVisibility(true);
-              setId(index)
+              setHoveredId(index)
             }}
             onMouseOut={()=>{
-              setVisibility(false)
-              setId(100)
+              setHoveredId(-1)
             }}
+            
           >
             <button
-              className={`w-full opacity-0 ${visibility && id === index ? "opacity-100" : "opacity-0" } hover:opacity-100 flex justify-start items-start transition-opacity duration-150 delay-75 ease-linear py-2 `}
+              className={`w-full ${hoveredId === index || activeId === index ? "opacity-100" : "opacity-0" } hover:opacity-100 flex justify-start items-start transition-opacity duration-150 delay-75 ease-linear py-2 `}
               onClick={() => {
+                setActiveId(index)
                 const el = document.getElementById(d.referredSection);
                 if (el) {
                   el.scrollIntoView({ behavior: "smooth", block: "start" });

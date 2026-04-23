@@ -3,6 +3,8 @@ import { Navbar } from "../../../../libs/ui/src/components/Navbar";
 import { Footer } from "../../../../libs/ui/src/components/Footer";
 import NavigationSidebar from "../component/NavigationSidebar";
 import Link from "next/link";
+import NavLinks from "../component/NavlInks";
+import { SearchIcon, Menu, MoonIcon, Sun } from "lucide-react";
 
 export const metadata = {
   title: "Welcome: OneFoot Labs",
@@ -16,25 +18,37 @@ export default function RootLayout({
 }) {
   const navlinks = [
     {
-      title: "services",
+      title: "Services",
       type: "",
       redirect: "/services",
       content: [{}],
     },
     {
-      title: "about us",
+      title: "About-us",
       type: "",
       redirect: "/about-us",
       content: [{}],
     },
     {
-      title: "contact us",
+      title: "Projects",
+      type: "",
+      redirect: "/projects",
+      content: [{}],
+    },
+    {
+      title: "Contact-us",
       type: "",
       redirect: "/contact-us",
       content: [{}],
     },
     {
-      title: "carrer",
+      title: "Blogs",
+      type: "",
+      redirect: "/blogs",
+      content: [{}],
+    },
+    {
+      title: "Carrer",
       type: "",
       redirect: "/carrer",
       content: [{}],
@@ -45,7 +59,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="w-screen overflow-x-hidden">
         <Navbar
-          className="w-screen h-[100px] bg-neutral-100 dark:bg-neutral-900 flex justify-center items-center"
+          className="w-screen h-[100px] bg-neutral-100 dark:bg-neutral-900 flex justify-center items-center fixed top-0 left-0 z-50"
           source="portfolio"
           containerClassName="w-full flex justify-center
            items-center"
@@ -55,23 +69,40 @@ export default function RootLayout({
           mainNavContent={
             <div className="lg:w-8/12 md:w-8/12 w-full h-[100px] flex justify-between items-center">
               <div>
-                <Link href={`/`}>OneFootLabs</Link>
+                <Link href={`/`} className="font-medium text-xl">
+                  OneFootLabs
+                </Link>
               </div>
 
-              <div className="flex list-none cursor-pointer gap-x-4">
-                {navlinks.map((d, index) => {
-                  return (
-                    <Link href={d.redirect} key={index}>
-                      {d?.title}
-                    </Link>
-                  );
-                })}
+              <div className="lg:flex hidden list-none cursor-pointer gap-x-4">
+                <NavLinks navLinks={navlinks} />
+              </div>
+
+              <div className="flex gap-x-4">
+                <button
+                  type="button"
+                  className="w-10 h-10 bg-neutral-100 rounded-full shadow-xl/30 hover:shadow-xl flex justify-center items-center border border-neutral-400"
+                >
+                  <SearchIcon size={20} />
+                </button>
+                <button
+                  type="button"
+                  className="w-10 h-10 bg-neutral-100 rounded-full shadow-xl/30 hover:shadow-xl flex justify-center items-center border border-neutral-400"
+                >
+                  <MoonIcon size={20} />
+                </button>
+                <button
+                  type="button"
+                  className="w-10 h-10 bg-neutral-900 text-neutral-100 rounded-full shadow-md hover:shadow-lg shadow-[20px,20px] flex justify-center items-center"
+                >
+                  <Menu size={20} />
+                </button>
               </div>
             </div>
           }
           hideNavAtRoutes={["", ""]}
         />
-        <div className=" bg-neutral-100">
+        <div className=" bg-neutral-100 mt-[100px]">
           <NavigationSidebar />
 
           {children}

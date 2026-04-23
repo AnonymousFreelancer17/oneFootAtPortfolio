@@ -3,7 +3,7 @@
 export default function Index() {
   return (
     <div  className='w-screen flex flex-col justify-center items-center'>
-        <div className='h-screen w-full bg-red-400 flex justify-center items-center text-6xl' id='landing'>Landing</div>
+        <div className='h-screen w-full bg-red-800 flex justify-center items-center text-6xl' id='landing'>Landing</div>
         <div className='h-screen w-full bg-blue-400 flex justify-center items-center text-6xl' id='skills'>skills</div>
         <div className='h-screen w-full bg-green-400 flex justify-center items-center text-6xl' id='operating'>operating</div>
         <div className='h-screen w-full bg-violet-400 flex justify-center items-center text-6xl' id='aboutUs'>aboutUs</div>
