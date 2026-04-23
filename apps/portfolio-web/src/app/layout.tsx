@@ -48,9 +48,9 @@ export default function RootLayout({
       content: [{}],
     },
     {
-      title: "Carrer",
+      title: "Carrers",
       type: "",
-      redirect: "/carrer",
+      redirect: "/carrers",
       content: [{}],
     },
   ];

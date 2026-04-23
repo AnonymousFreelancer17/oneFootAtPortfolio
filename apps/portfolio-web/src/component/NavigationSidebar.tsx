@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const NavigationSidebar = () => {
@@ -37,7 +37,40 @@ const [activeId, setActiveId] = useState(0); // 👈 first visible by default
     },
   ];
 
-  const currentSectionData = data.find((d) => d.route === currentRoute);
+    const currentSectionData = data.find((d) => d.route === currentRoute);
+
+  useEffect(() => {
+  if (!currentSectionData) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = currentSectionData.section.findIndex(
+            (sec) => sec.referredSection === entry.target.id
+          );
+
+          if (index !== -1) {
+            setActiveId(index);
+          }
+        }
+      });
+    },
+    {
+      threshold: 0.6, // 60% visible → active
+    }
+  );
+
+  // observe all sections
+  currentSectionData.section.forEach((sec) => {
+    const el = document.getElementById(sec.referredSection);
+    if (el) observer.observe(el);
+  });
+
+  return () => observer.disconnect();
+}, [currentSectionData]);
+
+
 
   return (
     <div className="w-[100px] h-[60vh] mx-[20px] fixed left-0 top-[20%] flex flex-col justify-center items-start gap-y-4 z-20">
